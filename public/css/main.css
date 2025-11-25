@@ -1,0 +1,674 @@
+/* ========== GLOBAL TOKENS ========== */
+:root {
+  /* Brand palette */
+  --color-bg: #fef8eb;
+  /* body background */
+  --color-text: #93897e;
+  /* normal text */
+  --color-heading: #152705;
+  /* headings */
+  --color-accent: #24360f;
+  /* buttons / primary */
+  --color-accent-hover: #7a6753;
+  /* button hover + warm accent */
+
+  /* Typography */
+  --font-body: "Montserrat", sans-serif;
+  --font-heading: "Abril Fatface", sans-serif;
+
+  /* Layout */
+  --container-max: 1490px;
+  --container-pad-desktop: 90px;
+  --container-pad-tablet: 40px;
+  --container-pad-mobile: 20px;
+
+  /* UI */
+  --radius-pill: 25px;
+  --transition-fast: 0.3s ease;
+}
+
+/* ========== GLOBAL RESET / BODY ========== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  height: 2000px;
+  /*just for testing*/
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+
+/* ========== GLOBAL HEADER / NAVBAR (WP clone) ========== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  /* ct-header / ct-menu-link */
+  z-index: 50;
+  background: transparent;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.site-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+.site-header.is-scrolled {
+  background: var(--color-bg);
+}
+
+.site-header-inner {
+  /* Make the header container much wider like the original Blocksy header */
+  width: min(100%, 1900px);
+  /* matches --theme-normal-container-max-width */
+  padding-inline: clamp(24px, 6vw, 130px);
+  /* grows with screen, caps at 130px */
+  height: 120px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* Logo */
+.site-logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+/* Desktop nav list */
+
+.site-nav {
+  display: flex;
+  width: 100%;
+}
+
+.site-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 90px;
+  /* --menu-items-gap */
+  align-items: center;
+}
+
+.site-nav--left {
+  justify-content: flex-start;
+}
+
+.site-nav--right {
+  justify-content: flex-end;
+}
+
+/* ===== TOP LEVEL LINKS (ct-menu-link clone) ===== */
+.site-nav-item {
+  position: relative;
+}
+
+/* Right nav dropdown aligns right like WP */
+.site-nav--right .dropdown {
+  left: auto;
+  right: 0;
+}
+
+
+.site-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 120px;
+  padding: 0 30px 0 0;
+
+  /* if you want ONLY right padding like before:
+     padding: 0 30px 0 0;
+  */
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: normal;
+  line-height: 18.2px;
+  /* computed line-height */
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  color: #000;
+  /* computed --theme-link-initial-color */
+  text-decoration: none;
+
+  transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.site-nav-link:hover {
+  color: #000;
+}
+
+
+
+/* caret */
+.dropdown-caret {
+  font-size: 12px;
+  margin-left: 6px;
+  transform: translateY(-1px);
+}
+
+/* ===== DROPDOWN PANEL (sub-menu clone) ===== */
+.dropdown {
+  position: absolute;
+  top: 120px;
+  /* exactly under header */
+  left: 0;
+
+  width: 250px;
+  /* --dropdown-width */
+  background: var(--color-bg);
+
+  border-radius: 0 0 2px 2px;
+  /* computed */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* computed: no padding on panel */
+  overflow: hidden;
+  z-index: 60;
+
+  box-shadow: 0 10px 20px rgba(41, 51, 61, 0.1);
+  /* computed */
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  /* computed transform */
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* show dropdown */
+.has-dropdown:hover>.dropdown,
+.has-dropdown:focus-within>.dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ===== DROPDOWN LINKS (sub-menu ct-link clone) ===== */
+.dropdown-link {
+  display: block;
+  padding: 10px 18px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text);
+  /* computed submenu size */
+  font-weight: 400;
+  /* computed submenu weight */
+  line-height: 26.4px;
+  /* computed */
+  text-transform: none;
+  /* computed */
+  white-space: nowrap;
+
+  
+ 
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+}
+
+.dropdown-link:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+
+/* ===============================
+   MOBILE TOGGLE (hidden desktop)
+   =============================== */
+.nav-toggle {
+  display: none;
+  justify-self: end;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-toggle span {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: #000;
+  border-radius: 2px;
+}
+
+.nav-toggle span:nth-child(1) {
+  top: 12px;
+}
+
+.nav-toggle span:nth-child(2) {
+  top: 21px;
+}
+
+.nav-toggle span:nth-child(3) {
+  top: 30px;
+}
+
+.nav-toggle.is-active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.nav-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile breakpoint */
+@media (max-width: 1024px) {
+  .site-header {
+    height: 90px;
+  }
+
+  .site-header-inner {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 var(--container-pad-tablet);
+    height: 90px;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-logo img {
+    height: 58px;
+  }
+
+  /* dropdowns not used on hover for mobile */
+  .dropdown {
+    position: static;
+    width: 100%;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
+/* ===============================
+   MOBILE OFFCANVAS NAV
+   =============================== */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-nav.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-inner {
+  width: min(80vw, 340px);
+  max-width: 400px;
+  background: var(--color-bg);
+  padding: 24px 20px 32px;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-nav.is-open .mobile-nav-inner {
+  transform: translateX(0);
+}
+
+.mobile-nav-close {
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-nav-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000;
+}
+
+.mobile-submenu {
+  list-style: none;
+  margin: 4px 0 8px;
+  padding: 0 0 0 12px;
+}
+
+.mobile-submenu-link {
+  display: block;
+  padding: 6px 0;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+@media (min-width: 1025px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+
+
+/* HOMEPAGE – HERO */
+
+/* Outer section: background + vertical centering */
+.hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+
+  background-image: url("/images/hero/hero-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Inner container: controls left offset & max width */
+.hero-inner {
+  width: 100%;
+  max-width: var(--container-max);
+  /* was 1490px */
+  margin: 0;
+  /* Removed auto centering to allow left positioning */
+  display: flex;
+  justify-content: center;
+  /* keep block left */
+  align-items: center;
+  /* vertical center in hero */
+}
+
+/* New wrapper: this is what we center inside */
+.hero-content {
+  max-width: 600px;
+  /* close to original h2 width (you can tweak) */
+  text-align: center;
+  /* centers text AND button horizontally */
+}
+
+/* Heading */
+.hero-title {
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 300;
+  /* match original */
+  line-height: 43px;
+  /* match original */
+  letter-spacing: normal;
+  /* original was normal */
+  word-spacing: 5px;
+  /* original */
+  color: var(--color-heading);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.hero-title span {
+  display: block;
+  /* each span = a line */
+  font: inherit;
+  /* don't override anything */
+}
+
+
+
+
+
+/* Button */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  /* was #24360f */
+  color: var(--color-bg);
+  /* was #fef8eb */
+  border-radius: var(--radius-pill);
+  /* was 25px */
+  padding: 10px 40px;
+
+  font-size: 19px;
+  line-height: 19px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+
+  border: none;
+  transition: all var(--transition-fast);
+  /* was all 0.3s ease */
+}
+
+.btn--primary:hover {
+  background-color: var(--color-accent-hover);
+  /* was #7a6753 */
+  color: var(--color-bg);
+  /* was #fef8eb */
+}
+
+/* Mobile tweak */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 40px 20px;
+  }
+
+  .hero-inner {
+    padding: 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+}
+
+
+/* HOMEPAGE – INTRO HEADING (post-hero) */
+/* INTRO SECTION — container clone */
+.intro {
+  width: 100vw;
+  /* Elementor: --width: 100vw */
+  min-height: 30vh;
+  /* Elementor: --min-height: 30vh */
+  display: flex;
+  /* Elementor: --display: flex */
+  flex-direction: column;
+  /* Elementor: --flex-direction: column */
+  justify-content: center;
+  /* Elementor: --justify-content: center */
+  align-items: center;
+  /* Elementor: --align-items: center */
+  padding: 70px 0;
+  /* Elementor: top/bottom 70px, left/right 0 */
+  background: transparent;
+}
+
+/* keeps content from stretching too wide, like Elementor content-width */
+.intro-inner {
+  width: min(100%, var(--container-max));
+  /* was 1490px */
+  margin: 0 auto;
+  padding: 0 var(--container-pad-desktop);
+  /* was 0 90px */
+  text-align: center;
+  /* visually matches centered widget */
+}
+
+/* INTRO HEADING — exact Elementor typography */
+.intro-title {
+  font-family: var(--font-heading);
+  /* was "Abril Fatface" */
+  font-size: 55px;
+  font-weight: 100;
+  line-height: 80px;
+  color: var(--color-heading);
+  /* was #152705 */
+  margin: 0;
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+  .intro-inner {
+    padding: var(--container-pad-tablet) var(--container-pad-mobile);
+    /* was 40px 20px */
+  }
+
+  .intro-title {
+    text-align: left;
+  }
+}
+
+/* ========== HOMEPAGE – SERVICES SECTION ========== */
+.services {
+  width: 100vw;
+  /* Full viewport width */
+  display: flex;
+  /* Flex container */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  border-style: solid;
+  /* Border styling */
+  border-width: 2px 0px 2px 0px;
+  /* Top and bottom borders only */
+  border-color: var(--color-heading);
+  /* Use brand heading color (#152705) */
+  padding: 20px 0;
+  /* Top/bottom padding, no horizontal padding */
+  background: transparent;
+  /* No background */
+}
+
+.services-container {
+  width: min(100%, var(--container-max));
+  /* Constrain width but allow full viewport on smaller screens */
+  display: flex;
+  /* Flex container */
+  justify-content: center;
+  /* Center content */
+  align-items: center;
+  /* Vertical centering */
+}
+
+.services-heading {
+  display: flex;
+  /* Flex container for heading */
+  justify-content: center;
+  /* Center the heading */
+  align-items: center;
+  /* Vertical centering */
+  width: 100%;
+  /* Full width of container */
+}
+
+.services-title {
+  font-family: "Abril Fatface", Sans-serif;
+  /* Exact font family */
+  font-size: 35px;
+  /* Exact font size */
+  font-weight: 300;
+  /* Exact font weight */
+  line-height: 12px;
+  /* Exact line height */
+  letter-spacing: 1.6px;
+  /* Exact letter spacing */
+  color: #152705;
+  /* Exact heading color */
+  margin: 0;
+  /* Remove default margin */
+  text-align: center;
+  /* Center the text */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .services {
+    padding: 15px 0;
+    /* Slightly less padding on mobile */
+  }
+
+  .services-title {
+    font-size: 28px;
+    /* Smaller on mobile */
+    line-height: 10px;
+    /* Adjusted line height for mobile */
+  }
+}

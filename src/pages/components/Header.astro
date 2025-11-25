@@ -1,0 +1,195 @@
+---
+const leftMenu = [
+  { label: "PORTFOLIO", href: "/portfolio/" },
+  {
+    label: "SERVICES",
+    href: "#",
+    children: [
+      { label: "PERTH FOOD PHOTOGRAPHY", href: "/perth-food-photography/" },
+      { label: "PERTH PORTRAIT PHOTOGRAPHY", href: "/perth-portrait-photography/" },
+      { label: "PERTH CONTENT CREATION", href: "/perth-content-creation/" },
+    ],
+  },
+];
+
+const rightMenu = [
+  {
+    label: "PRICING",
+    href: "#",
+    children: [
+      { label: "FOOD PHOTOGRAPHY", href: "/perth-food-photography/#food-price" },
+      { label: "PRODUCT PHOTOGRAPHY", href: "/perth-food-photography/#ecommerce-price" },
+      { label: "PORTRAIT PHOTOGRAPHY", href: "/perth-portrait-photography/#portrait-price" },
+    ],
+  },
+  { label: "CONTACTS", href: "/#work-with-us" },
+];
+---
+
+<header class="site-header" id="site-header">
+  <div class="site-header-inner">
+    <!-- LEFT NAV -->
+    <nav class="site-nav site-nav--left" aria-label="Left menu">
+      <ul class="site-nav-list">
+        {leftMenu.map((item) => (
+          <li class:list={["site-nav-item", item.children && "has-dropdown"]}>
+            <a class="site-nav-link" href={item.href}>
+              {item.label}
+              {item.children && <span class="dropdown-caret" aria-hidden="true">&#9662;</span>}
+            </a>
+
+            {item.children && (
+              <ul class="dropdown">
+                {item.children.map((c) => (
+                  <li class="dropdown-item">
+                    <a class="dropdown-link" href={c.href}>{c.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- LOGO (CENTER) -->
+    <div class="site-logo">
+      <a href="/" aria-label="Amplify Creative Lab home">
+        <img
+          src="/images/logo/logo-web.png"
+          alt="Best food photography Perth"
+          width="2409"
+          height="803"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+    </div>
+
+    <!-- RIGHT NAV -->
+    <nav class="site-nav site-nav--right" aria-label="Right menu">
+      <ul class="site-nav-list">
+        {rightMenu.map((item) => (
+          <li class:list={["site-nav-item", item.children && "has-dropdown"]}>
+            <a class="site-nav-link" href={item.href}>
+              {item.label}
+              {item.children && <span class="dropdown-caret" aria-hidden="true">&#9662;</span>}
+            </a>
+
+            {item.children && (
+              <ul class="dropdown">
+                {item.children.map((c) => (
+                  <li class="dropdown-item">
+                    <a class="dropdown-link" href={c.href}>{c.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- MOBILE BURGER -->
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Menu"
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+      data-nav-toggle
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- MOBILE OFFCANVAS -->
+  <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
+    <div class="mobile-nav-inner">
+      <button class="mobile-nav-close" type="button" aria-label="Close menu" data-nav-close>&times;</button>
+
+      <nav aria-label="Mobile menu">
+        <ul class="mobile-nav-list">
+          {[...leftMenu, ...rightMenu].map((item) => (
+            <li class:list={["mobile-nav-item", item.children && "has-dropdown"]}>
+              <a class="mobile-nav-link" href={item.href}>{item.label}</a>
+              {item.children && (
+                <ul class="mobile-submenu">
+                  {item.children.map((c) => (
+                    <li><a class="mobile-submenu-link" href={c.href}>{c.label}</a></li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    // Mobile nav
+    const toggle = document.querySelector("[data-nav-toggle]");
+    const closeBtn = document.querySelector("[data-nav-close]");
+    const panel = document.querySelector("[data-mobile-nav]");
+    const header = document.getElementById("site-header");
+
+    function openNav() {
+      if (!(panel instanceof HTMLElement) || !(toggle instanceof HTMLElement)) return;
+      panel.hidden = false;
+      requestAnimationFrame(() => {
+        panel.classList.add("is-open");
+        toggle.classList.add("is-active");
+      });
+      toggle.setAttribute("aria-expanded", "true");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeNav() {
+      if (!(panel instanceof HTMLElement) || !(toggle instanceof HTMLElement)) return;
+      panel.classList.remove("is-open");
+      toggle.classList.remove("is-active");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("no-scroll");
+      setTimeout(() => (panel.hidden = true), 200);
+    }
+
+    toggle?.addEventListener("click", openNav);
+    closeBtn?.addEventListener("click", closeNav);
+    panel?.addEventListener("click", (e) => {
+      if (e.target === panel) closeNav();
+    });
+
+    // Hide header on scroll down, show on scroll up
+    let lastScrollY = window.scrollY;
+    const SCROLL_THRESHOLD = 80; // px before behavior kicks in
+
+    window.addEventListener("scroll", () => {
+      if (!header) return;
+
+      const currentY = window.scrollY;
+      const scrolledPastThreshold = currentY > SCROLL_THRESHOLD;
+
+      // Add solid background once we've scrolled past the threshold
+      header.classList.toggle("is-scrolled", scrolledPastThreshold);
+
+      // If mobile nav is open, don't hide header
+      const mobileNavOpen = panel?.classList.contains("is-open");
+      if (mobileNavOpen) {
+        header.classList.remove("is-hidden");
+        lastScrollY = currentY;
+        return;
+      }
+
+      if (currentY > lastScrollY && scrolledPastThreshold) {
+        // scrolling down
+        header.classList.add("is-hidden");
+      } else {
+        // scrolling up OR near top
+        header.classList.remove("is-hidden");
+      }
+
+      lastScrollY = currentY;
+    });
+  </script>
+</header>
