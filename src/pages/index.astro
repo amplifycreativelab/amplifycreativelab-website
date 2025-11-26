@@ -34,13 +34,96 @@ const pageDescription =
 		</section>
 
 		<section class="services">
-  <div class="services-container">
+  <!-- Full-width bar with top/bottom border -->
+  <div class="services-heading-bar">
     <div class="services-heading">
       <h2 class="services-title">OUR SERVICES</h2>
     </div>
   </div>
-</section>
 
+  <!-- Normal constrained container for the cards -->
+  <div class="services-container">
+    <div class="services-grid">
+      <!-- Service 1 – Food Photography -->
+      <article class="service-card">
+        <a class="service-image-link" href="/food-photography">
+          <img
+            class="service-image"
+            src="/images/home/food-photography-perth-768.jpg"
+            srcset="
+              /images/home/food-photography-perth-240.jpg 240w,
+              /images/home/food-photography-perth-768.jpg 768w,
+              /images/home/food-photography-perth-1640.jpg 1640w
+            "
+            sizes="(max-width: 768px) 100vw,
+                   (max-width: 1200px) 50vw,
+                   33vw"
+            width="768"
+            height="960"
+            alt="Food photography in Perth for restaurants and cafés"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <a class="service-button" href="/food-photography">
+          Food Photography
+        </a>
+      </article>
+
+      <!-- Service 2 – Portrait Photography -->
+      <article class="service-card">
+        <a class="service-image-link" href="/portrait-photography">
+          <img
+            class="service-image"
+            src="/images/home/portrait-photography-perth-768.jpg"
+            srcset="
+              /images/home/portrait-photography-perth-240.jpg 240w,
+              /images/home/portrait-photography-perth-768.jpg 768w,
+              /images/home/portrait-photography-perth-1640.jpg 1640w
+            "
+            sizes="(max-width: 768px) 100vw,
+                   (max-width: 1200px) 50vw,
+                   33vw"
+            width="768"
+            height="960"
+            alt="Wedding and portrait photography in Perth with floral background"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <a class="service-button" href="/portrait-photography">
+          Portrait Photography
+        </a>
+      </article>
+
+      <!-- Service 3 – Content Creation -->
+      <article class="service-card">
+        <a class="service-image-link" href="/content-creation">
+          <img
+            class="service-image"
+            src="/images/home/content-creation-perth-768.jpg"
+            srcset="
+              /images/home/content-creation-perth-240.jpg 240w,
+              /images/home/content-creation-perth-768.jpg 768w,
+              /images/home/content-creation-perth-1640.jpg 1640w
+            "
+            sizes="(max-width: 768px) 100vw,
+                   (max-width: 1200px) 50vw,
+                   33vw"
+            width="768"
+            height="960"
+            alt="Content creation and social media visuals for Perth businesses"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <a class="service-button" href="/content-creation">
+          Content Creation
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
 
 
 		<section class="portfolio-preview">

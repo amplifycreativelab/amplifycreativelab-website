@@ -80,7 +80,7 @@ body.no-scroll {
 
 .site-header-inner {
   /* Make the header container much wider like the original Blocksy header */
-  width: min(100%, 1900px);
+  width: min(100%);
   /* matches --theme-normal-container-max-width */
   padding-inline: clamp(24px, 6vw, 130px);
   /* grows with screen, caps at 130px */
@@ -109,8 +109,7 @@ body.no-scroll {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 90px;
-  /* --menu-items-gap */
+  gap: 90px; /* space between items */
   align-items: center;
 }
 
@@ -160,6 +159,10 @@ body.no-scroll {
   text-decoration: none;
 
   transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.site-nav--right .site-nav-link {
+  padding-right: 0; /* reduce empty space at far right */
 }
 
 .site-nav-link:hover {
@@ -458,6 +461,7 @@ body.no-scroll {
   /* close to original h2 width (you can tweak) */
   text-align: center;
   /* centers text AND button horizontally */
+  margin-left: -10rem;
 }
 
 /* Heading */
@@ -555,7 +559,7 @@ body.no-scroll {
   /* Elementor: --justify-content: center */
   align-items: center;
   /* Elementor: --align-items: center */
-  padding: 70px 0;
+  padding: 80px 0;
   /* Elementor: top/bottom 70px, left/right 0 */
   background: transparent;
 }
@@ -596,79 +600,146 @@ body.no-scroll {
 }
 
 /* ========== HOMEPAGE – SERVICES SECTION ========== */
+
+/* Whole section background only */
 .services {
-  width: 100vw;
-  /* Full viewport width */
-  display: flex;
-  /* Flex container */
-  justify-content: center;
-  /* Center horizontally */
-  align-items: center;
-  /* Center vertically */
-  border-style: solid;
-  /* Border styling */
-  border-width: 2px 0px 2px 0px;
-  /* Top and bottom borders only */
-  border-color: var(--color-heading);
-  /* Use brand heading color (#152705) */
+  background: var(--color-page-bg, #fef8eb);
+}
+
+/* Bar with top/bottom border, full-width like the original screenshot */
+.services-heading-bar {
+  width: 100%;
+  border-top: 2px solid var(--color-heading);
+  border-bottom: 2px solid var(--color-heading);
   padding: 20px 0;
-  /* Top/bottom padding, no horizontal padding */
-  background: transparent;
-  /* No background */
 }
 
-.services-container {
-  width: min(100%, var(--container-max));
-  /* Constrain width but allow full viewport on smaller screens */
-  display: flex;
-  /* Flex container */
-  justify-content: center;
-  /* Center content */
-  align-items: center;
-  /* Vertical centering */
-}
-
+/* Center the text inside the bar */
 .services-heading {
   display: flex;
-  /* Flex container for heading */
   justify-content: center;
-  /* Center the heading */
   align-items: center;
-  /* Vertical centering */
-  width: 100%;
-  /* Full width of container */
+  width: min(100%, var(--container-max));
+  margin: 0 auto;
 }
 
 .services-title {
   font-family: "Abril Fatface", Sans-serif;
-  /* Exact font family */
   font-size: 35px;
-  /* Exact font size */
   font-weight: 300;
-  /* Exact font weight */
   line-height: 12px;
-  /* Exact line height */
   letter-spacing: 1.6px;
-  /* Exact letter spacing */
   color: #152705;
-  /* Exact heading color */
   margin: 0;
-  /* Remove default margin */
   text-align: center;
-  /* Center the text */
 }
 
-/* Mobile responsiveness */
+/* Content area below the bar */
+.services-container {
+  width: min(100%,);
+  padding: 40px 40px 40px 40px; /* top 20, sides 40, bottom 40 (like Elementor row) */
+}
+
+
+/* Grid of service cards – same as original */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  width: 100%;
+}
+
+/* Individual card layout */
+/* Single service card – matches Elementor child container behaviour */
+.service-card {
+  display: flex;
+  flex-direction: column;     /* image on top, button below */
+  justify-content: center;    /* center content vertically inside card */
+  align-items: center;        /* center horizontally */
+  gap: 20px;                  /* same as Elementor widget spacing */
+  padding: 10px;              /* similar to Elementor default container padding */
+}
+
+
+/* Image fills card width */
+.service-image-link,
+.service-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Button under each image */
+.service-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", Sans-serif;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: underline;
+ letter-spacing: 0.08em;
+  border-radius: 3px;
+  background-color: transparent;
+  color: var(--color-accent, #24360f);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast, 0.3s ease);
+}
+
+.service-button:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-bg, #fef8eb);
+}
+
+/* Responsive columns, same behaviour as Elementor “wrap” */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
-  .services {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .services-container {
     padding: 15px 0;
-    /* Slightly less padding on mobile */
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .services-container {
+    padding: 15px 0;
   }
 
   .services-title {
     font-size: 28px;
-    /* Smaller on mobile */
     line-height: 10px;
-    /* Adjusted line height for mobile */
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 1024px) {
+  .services-container {
+    padding: 20px var(--container-pad-tablet) 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-container {
+    padding: 15px var(--container-pad-mobile) 25px;
   }
 }
