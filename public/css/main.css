@@ -109,7 +109,8 @@ body.no-scroll {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 90px; /* space between items */
+  gap: 90px;
+  /* space between items */
   align-items: center;
 }
 
@@ -162,7 +163,8 @@ body.no-scroll {
 }
 
 .site-nav--right .site-nav-link {
-  padding-right: 0; /* reduce empty space at far right */
+  padding-right: 0;
+  /* reduce empty space at far right */
 }
 
 .site-nav-link:hover {
@@ -238,8 +240,8 @@ body.no-scroll {
   /* computed */
   white-space: nowrap;
 
-  
- 
+
+
   text-decoration: none;
 
   transition: background 0.2s ease;
@@ -636,8 +638,9 @@ body.no-scroll {
 
 /* Content area below the bar */
 .services-container {
-  width: min(100%,);
-  padding: 40px 40px 40px 40px; /* top 20, sides 40, bottom 40 (like Elementor row) */
+  width: min(100%, );
+  padding: 40px 40px 40px 40px;
+  /* top 20, sides 40, bottom 40 (like Elementor row) */
 }
 
 
@@ -653,11 +656,16 @@ body.no-scroll {
 /* Single service card – matches Elementor child container behaviour */
 .service-card {
   display: flex;
-  flex-direction: column;     /* image on top, button below */
-  justify-content: center;    /* center content vertically inside card */
-  align-items: center;        /* center horizontally */
-  gap: 20px;                  /* same as Elementor widget spacing */
-  padding: 10px;              /* similar to Elementor default container padding */
+  flex-direction: column;
+  /* image on top, button below */
+  justify-content: center;
+  /* center content vertically inside card */
+  align-items: center;
+  /* center horizontally */
+  gap: 20px;
+  /* same as Elementor widget spacing */
+  padding: 10px;
+  /* similar to Elementor default container padding */
 }
 
 
@@ -679,7 +687,7 @@ body.no-scroll {
   font-size: 1rem;
   font-weight: 600;
   text-decoration: underline;
- letter-spacing: 0.08em;
+  letter-spacing: 0.08em;
   border-radius: 3px;
   background-color: transparent;
   color: var(--color-accent, #24360f);
@@ -732,6 +740,7 @@ body.no-scroll {
     grid-template-columns: 1fr;
   }
 }
+
 @media (max-width: 1024px) {
   .services-container {
     padding: 20px var(--container-pad-tablet) 30px;
@@ -741,5 +750,225 @@ body.no-scroll {
 @media (max-width: 768px) {
   .services-container {
     padding: 15px var(--container-pad-mobile) 25px;
+  }
+}
+
+
+.hero-intro {
+  background-color: var(--e-global-color-8e31e7a, #24360F);
+  color: var(--e-global-color-primary, #FEF8EB);
+height:40vh;
+  /* In Elementor, padding is on the inner container, 
+     so here we keep it 0 and let the inner handle spacing */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* Inner container = Elementor 0e684ae */
+.hero-intro__inner {
+  /* Matches Elementor container max-width */
+ 
+  height:100%;
+ max-width: 1490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* from --justify-content */
+  align-items: center;
+  /* using flex-start for left-aligned text */
+  padding:50px 50px;
+  gap:20px
+
+ 
+}
+
+
+
+/* Title */
+.hero-intro__title {
+  /* From Elementor heading */
+  font-family: "Abril Fatface", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+  /* desktop size */
+  letter-spacing: 1px;
+  color: var(--e-global-color-primary, #FEF8EB);
+  margin: 0;
+
+  /* Elementor sets line-height: 0 on this widget, but that's
+     risky outside that environment (text can clip).
+     Using a tight line-height instead to visually match. */
+  line-height: 0.3;
+}
+
+
+/* Tagline under the title */
+.hero-intro__tagline {
+  /* From Elementor 2a12bf2 */
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--e-global-color-primary, #FEF8EB);
+
+  /* Match Elementor's tighter paragraph spacing */
+  margin-bottom: 20px;
+}
+
+
+
+
+.hero-intro__text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Button */
+
+
+.hero-intro__lead {
+  width: 100%;
+  max-width: 100%;
+  align-self: center;
+
+  text-align: center;
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+  font-style: italic;
+  line-height: 35px;
+  color: var(--e-global-color-primary, #FEF8EB);
+
+  margin: 0;
+}
+
+
+.hero-intro__body {
+  /* From .elementor-element-b37a071 */
+  width: 100%;
+  max-width: 100%;
+  align-self: center;
+
+  text-align: center;
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 23px;
+  color: var(--e-global-color-primary, #FEF8EB);
+
+  /* Elementor sets p:last-child margin-bottom:0 
+     and uses widget gap for vertical spacing,
+     so we keep paragraphs marginless and rely on flex gap */
+  margin: 0;
+}
+
+
+/* Mirror: .elementor-widget-text-editor p:last-child { margin-bottom: 0; } */
+.hero-intro__body:last-child,
+.hero-intro__lead:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* Mobile tweak – you can adjust to taste */
+@media (max-width: 768px) {
+  .hero-intro__inner {
+    padding: 60px 20px 20px;
+  }
+}
+
+/* Optional: scale down on smaller screens */
+@media (max-width: 1024px) {
+  .hero-intro__title {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-intro__title {
+    font-size: 36px;
+  }
+}
+
+.background-slideshow {
+  position: relative;
+  width: 100%;
+  height: 400px; /* adjust to match original section */
+  overflow: hidden;
+}
+
+.background-slideshow-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: background-slideshow-fade 12s infinite;
+}
+
+/* Slide images (point to your local copies) */
+.hero-slideshow {
+  position: relative;
+  width: 100%;
+  /* Match original “wide banner” ratio: 1025 / 2560 ≈ 0.40 */
+  height: min(40vw);
+  overflow: hidden;
+}
+
+/* Mobile: a bit taller so it doesn’t become tiny */
+@media (max-width: 768px) {
+  .hero-slideshow {
+    height: 260px;
+  }
+}
+
+.hero-slideshow-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: hero-slideshow-fade 16s infinite;
+}
+
+/* One class per slide – update URLs to your real filenames */
+.hero-slideshow-slide-1 {
+  background-image: url("/images/home/mussels-2560x1025.jpg");
+  animation-delay: 0s;
+}
+
+.hero-slideshow-slide-2 {
+  background-image: url("/images/home/orecchiette-2560x1025.jpg");
+  animation-delay: 4s;
+}
+
+.hero-slideshow-slide-3 {
+  background-image: url("/images/home/wedding-2560x1025.jpg");
+  animation-delay: 8s;
+}
+
+.hero-slideshow-slide-4 {
+  background-image: url("/images/home/family-2560x1025.jpg");
+  animation-delay: 12s;
+}
+
+/* 4-slide cross-fade:
+   – total cycle: 24s
+   – each slide: visible ~0–20% of its own window, then fades out
+*/
+@keyframes hero-slideshow-fade {
+  0%,
+  20% {
+    opacity: 1;
+  }
+  25%,
+  100% {
+    opacity: 0;
   }
 }

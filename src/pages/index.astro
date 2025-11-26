@@ -3,135 +3,164 @@ import BaseLayout from "./layouts/BaseLayout.astro";
 
 const pageTitle = "Perth Food Photographer | AmplifyCreativeLab";
 const pageDescription =
-	"Perth food photographer specializing in restaurant imagery for menus, websites & socials.";
+  "Perth food photographer specializing in restaurant imagery for menus, websites & socials.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-	<main class="page-home">
-		<section class="hero">
-			<div class="hero-inner">
-				<div class="hero-content">
-					<h1 class="hero-title">
-						<span>GROWING A BUSINESS ISN'T EASY,</span>
-						<span>BUT WE'VE GOT YOUR BACK.</span>
-					</h1>
+  <main class="page-home">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span>GROWING A BUSINESS ISN'T EASY,</span>
+            <span>BUT WE'VE GOT YOUR BACK.</span>
+          </h1>
 
-					<a href="#work-with-us" class="btn btn--primary hero-cta">
-						WORK WITH US
-					</a>
-				</div>
-			</div>
-		</section>
+          <a href="#work-with-us" class="btn btn--primary hero-cta">
+            WORK WITH US
+          </a>
+        </div>
+      </div>
+    </section>
 
-		<section class="intro">
-			<div class="intro-inner">
-				<h2 class="intro-title">
-					We are a full-service creative studio specialising<br />
-					in photography, digital content creation, and<br />
-					social media management.
-				</h2>
-			</div>
-		</section>
+    <section class="intro">
+      <div class="intro-inner">
+        <h2 class="intro-title">
+          We are a full-service creative studio specialising<br />
+          in photography, digital content creation, and<br />
+          social media management.
+        </h2>
+      </div>
+    </section>
 
-		<section class="services">
-  <!-- Full-width bar with top/bottom border -->
-  <div class="services-heading-bar">
-    <div class="services-heading">
-      <h2 class="services-title">OUR SERVICES</h2>
-    </div>
-  </div>
+    <section class="services">
+      <!-- Full-width bar with top/bottom border -->
+      <div class="services-heading-bar">
+        <div class="services-heading">
+          <h2 class="services-title">OUR SERVICES</h2>
+        </div>
+      </div>
 
-  <!-- Normal constrained container for the cards -->
-  <div class="services-container">
-    <div class="services-grid">
-      <!-- Service 1 – Food Photography -->
-      <article class="service-card">
-        <a class="service-image-link" href="/food-photography">
-          <img
-            class="service-image"
-            src="/images/home/food-photography-perth-768.jpg"
-            srcset="
+      <!-- Normal constrained container for the cards -->
+      <div class="services-container">
+        <div class="services-grid">
+          <!-- Service 1 – Food Photography -->
+          <article class="service-card">
+            <a class="service-image-link" href="/food-photography">
+              <img
+                class="service-image"
+                src="/images/home/food-photography-perth-768.jpg"
+                srcset="
               /images/home/food-photography-perth-240.jpg 240w,
               /images/home/food-photography-perth-768.jpg 768w,
               /images/home/food-photography-perth-1640.jpg 1640w
             "
-            sizes="(max-width: 768px) 100vw,
+                sizes="(max-width: 768px) 100vw,
                    (max-width: 1200px) 50vw,
                    33vw"
-            width="768"
-            height="960"
-            alt="Food photography in Perth for restaurants and cafés"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
-        <a class="service-button" href="/food-photography">
-          Food Photography
-        </a>
-      </article>
+                width="768"
+                height="960"
+                alt="Food photography in Perth for restaurants and cafés"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a class="service-button" href="/food-photography">
+              Food Photography
+            </a>
+          </article>
 
-      <!-- Service 2 – Portrait Photography -->
-      <article class="service-card">
-        <a class="service-image-link" href="/portrait-photography">
-          <img
-            class="service-image"
-            src="/images/home/portrait-photography-perth-768.jpg"
-            srcset="
+          <!-- Service 2 – Portrait Photography -->
+          <article class="service-card">
+            <a class="service-image-link" href="/portrait-photography">
+              <img
+                class="service-image"
+                src="/images/home/portrait-photography-perth-768.jpg"
+                srcset="
               /images/home/portrait-photography-perth-240.jpg 240w,
               /images/home/portrait-photography-perth-768.jpg 768w,
               /images/home/portrait-photography-perth-1640.jpg 1640w
             "
-            sizes="(max-width: 768px) 100vw,
+                sizes="(max-width: 768px) 100vw,
                    (max-width: 1200px) 50vw,
                    33vw"
-            width="768"
-            height="960"
-            alt="Wedding and portrait photography in Perth with floral background"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
-        <a class="service-button" href="/portrait-photography">
-          Portrait Photography
-        </a>
-      </article>
+                width="768"
+                height="960"
+                alt="Wedding and portrait photography in Perth with floral background"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a class="service-button" href="/portrait-photography">
+              Portrait Photography
+            </a>
+          </article>
 
-      <!-- Service 3 – Content Creation -->
-      <article class="service-card">
-        <a class="service-image-link" href="/content-creation">
-          <img
-            class="service-image"
-            src="/images/home/content-creation-perth-768.jpg"
-            srcset="
+          <!-- Service 3 – Content Creation -->
+          <article class="service-card">
+            <a class="service-image-link" href="/content-creation">
+              <img
+                class="service-image"
+                src="/images/home/content-creation-perth-768.jpg"
+                srcset="
               /images/home/content-creation-perth-240.jpg 240w,
               /images/home/content-creation-perth-768.jpg 768w,
               /images/home/content-creation-perth-1640.jpg 1640w
             "
-            sizes="(max-width: 768px) 100vw,
+                sizes="(max-width: 768px) 100vw,
                    (max-width: 1200px) 50vw,
                    33vw"
-            width="768"
-            height="960"
-            alt="Content creation and social media visuals for Perth businesses"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
-        <a class="service-button" href="/content-creation">
-          Content Creation
-        </a>
-      </article>
-    </div>
-  </div>
+                width="768"
+                height="960"
+                alt="Content creation and social media visuals for Perth businesses"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a class="service-button" href="/content-creation">
+              Content Creation
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero-intro">
+      <div class="hero-intro__inner">
+        <h2 class="hero-intro__title">Amplify Creative LAB</h2>
+
+        <p class="hero-intro__tagline">Where Stories Amplify into Impact</p>
+
+        <p class="hero-intro__lead">
+          In the digital world, you need content that truly resonates with your
+          customers. It’s about transforming ordinary moments into extraordinary
+          experiences.
+        </p>
+
+        <p class="hero-intro__body">
+          Everyone claims to be a photographer and content creator, but you
+          still need us—a full-service creative studio. Our photography goes
+          beyond capturing moments; it visualises stories and ignites emotions
+          across the digital landscape. Let the experts handle the professional
+          work, freeing you to focus on what truly matters—running your business
+          and spending quality time with loved ones. With Amplify, you amplify
+          your impact, not your stress. That’s what Amplify Creative Lab is all
+          about.
+        </p>
+      </div>
+    </section>
+
+    <section class="hero-slideshow">
+  <div class="hero-slideshow-slide hero-slideshow-slide-1"></div>
+  <div class="hero-slideshow-slide hero-slideshow-slide-2"></div>
+  <div class="hero-slideshow-slide hero-slideshow-slide-3"></div>
+  <div class="hero-slideshow-slide hero-slideshow-slide-4"></div>
 </section>
 
 
-		<section class="portfolio-preview">
-			<!-- a few highlight images -->
-		</section>
 
-		<section class="cta-contact">
-			<!-- request a quote CTA -->
-		</section>
-	</main>
+    <section class="cta-contact">
+      <!-- request a quote CTA -->
+    </section>
+  </main>
 </BaseLayout>
