@@ -1,0 +1,23 @@
+---
+import BaseLayout from "./layouts/BaseLayout.astro";
+import PerthEventPhotographyIntro from "./components/perth-event-photography/PerthEventPhotographyIntro.astro";
+import EventPhotography from "./components/perth-event-photography/EventPhotography.astro";
+import FamilyPhotography from "./components/perth-event-photography/FamilyPhotography.astro";
+import PortraitPhotography from "./components/perth-event-photography/PortraitPhotography.astro";
+
+
+const pageTitle = "Perth Food Photographer | AmplifyCreativeLab Food Photography";
+const pageDescription =
+  "Perth food photographer specializing in restaurant imagery for menus, websites & socials.";
+
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="page-perth-event-photography">
+    <PerthEventPhotographyIntro />
+    <EventPhotography />
+    <PortraitPhotography></PortraitPhotography>
+    <FamilyPhotography />
+    
+    </main>
+</BaseLayout>

@@ -1,0 +1,210 @@
+---
+const {
+  imageSrc,
+  imageAlt,
+  reverse = false,
+  sectionBackground,
+  contentBackground,
+  contentTextColor,
+} = Astro.props;
+
+const innerClass = `event-service__inner${reverse ? " event-service__inner--reverse" : ""}`;
+const sectionStyle = sectionBackground ? `background-color: ${sectionBackground};` : "";
+
+const contentStyleParts: string[] = [];
+if (contentBackground) contentStyleParts.push(`background-color: ${contentBackground};`);
+if (contentTextColor) contentStyleParts.push(`color: ${contentTextColor};`);
+const contentStyle = contentStyleParts.join(" ");
+---
+
+<section class="event-service" style={sectionStyle}>
+  <div class={innerClass}>
+    <!-- Image -->
+    <figure class="event-service__media">
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        loading="lazy"
+        decoding="async"
+        class="event-service__image"
+      />
+    </figure>
+
+    <!-- Content -->
+    <div class="event-service__content" style={contentStyle}>
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .event-service {
+    background-color: var(--e-global-color-secondary, #e8d8c3);
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .event-service__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .event-service__inner--reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* IMAGE SIDE */
+  .event-service__media {
+    margin: 0;
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+
+  .event-service__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* TEXT SIDE */
+  .event-service__content {
+    flex: 1 1 50%;
+    max-width: 50%;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    text-align: left;
+    color: var(--e-global-color-fadab83, #4a2e1c);
+  }
+
+  .event-service__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin: 0;
+  }
+
+  /* Eyebrow */
+  .event-service__eyebrow {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 1.5px;
+    word-spacing: 5px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* Main heading */
+  .event-service__title {
+    font-family: "Abril Fatface", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 56px;
+    letter-spacing: 1.5px;
+    word-spacing: 5px;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+
+  /* Body text */
+  .event-service__copy p {
+    margin: 0 0 0.75rem;
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 22px;
+  }
+
+  .event-service__copy p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Button */
+  .event-service__button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    max-width: 150px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+    border: solid 3px #4a2e1c;
+    background-color: transparent;
+    color: #4a2e1c;
+    transition: all 0.3s ease;
+  }
+
+  .event-service__button:hover {
+    background-color: #4a2e1c;
+    color: #ffffff;
+  }
+
+  .event-service__button--light {
+    border-color: #E8D8C3;
+    color: #E8D8C3;
+  }
+
+  .event-service__button--light:hover {
+    background-color: #E8D8C3;
+    color: #4a2e1c;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .event-service {
+      padding: 50px 16px;
+    }
+
+    .event-service__inner {
+      flex-direction: column;
+    }
+
+    .event-service__media,
+    .event-service__content {
+      max-width: 100%;
+      flex-basis: 100%;
+      padding-left: 0;
+    }
+
+    .event-service__content {
+      margin-top: 30px;
+    }
+
+    .event-service__title {
+      font-size: 34px;
+      line-height: 1.1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .event-service {
+      padding: 40px 16px;
+    }
+
+    .event-service__title {
+      font-size: 30px;
+    }
+
+    .event-service__copy p {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+</style>
