@@ -3,6 +3,7 @@ interface PortfolioItem {
   src: string;
   alt: string;
   title: string;
+  category: "food" | "portrait" | "events" | "product";
 }
 
 const portfolioItems: PortfolioItem[] = [
@@ -10,61 +11,80 @@ const portfolioItems: PortfolioItem[] = [
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Beef-Cheek-Ravioli_01-scaled.jpg",
     alt: "Food styling and photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/WA-Lobster-Linguine_01-scaled.jpg",
     alt: "Restaurant marketing Perth",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Spaghertti-Carbonara_01-scaled.jpg",
     alt: "Perth restaurant photographer",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Chill-Mussels_01-scaled.jpg",
     alt: "Restaurant menu photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Beef-Check-Ravioli_02-scaled.jpg",
     alt: "Food styling and photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Orecchiette-Salsiccia-Broccoli_02-scaled.jpg",
     alt: "Perth restaurant photographer",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Pork-Belly-Bites_02-scaled.jpg",
     alt: "Restaurant menu photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Linguine-Clams-Prawns_02-scaled.jpg",
     alt: "Food styling and photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/0N2A1571-Edit.jpg",
     alt: "Food styling and photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/0N2A1903-Edit.jpg",
     alt: "Food styling and photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/FISH-OF-THE-DAY_02-scaled.jpg",
     alt: "Restaurant menu photography",
     title: "Food Photography",
+    category: "food",
   },
   {
     src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Spaghertti-Carbonara_02-scaled.jpg",
     alt: "Perth restaurant photographer",
     title: "Food Photography",
+    category: "food",
+  },
+
+  {
+    src: "../images/portfolio/event photography.jpg",
+    alt: "Perth event photographer",
+    title: "Event Photography",
+    category: "events",
   },
   // 👉 continue adding all remaining images here
   // {
@@ -77,30 +97,89 @@ const portfolioItems: PortfolioItem[] = [
 
 <section class="portfolio-section" aria-label="Photography portfolio gallery">
   <div class="portfolio-inner">
-    <div class="portfolio-grid">
-      {portfolioItems.map((item) => (
-        <a
-          class="portfolio-item"
-          href={item.src}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <figure class="portfolio-item-figure">
-            <img
-              src={item.src}
-              alt={item.alt}
-              loading="lazy"
-              decoding="async"
-              class="portfolio-item-image"
-            />
-            <figcaption class="portfolio-item-overlay">
-              <span class="portfolio-item-title">{item.title}</span>
-              <span class="portfolio-item-label">- view -</span>
-            </figcaption>
-          </figure>
-        </a>
-      ))}
+    <div class="portfolio-filters" aria-label="Filter portfolio by category">
+      <button class="portfolio-filter is-active" data-filter="all">All</button>
+      <button class="portfolio-filter" data-filter="food">Food</button>
+      <button class="portfolio-filter" data-filter="product">Product</button>
+      <button class="portfolio-filter" data-filter="events">Events</button>
+      <button class="portfolio-filter" data-filter="portrait">Portrait</button>
+      
+      
     </div>
+    <div class="portfolio-grid">
+      {
+        portfolioItems.map((item, index) => (
+          <a
+            class="portfolio-item"
+            href="#"
+            data-index={index}
+            data-src={item.src}
+            data-alt={item.alt}
+            data-title={item.title}
+            data-category={item.category}
+          >
+            <figure class="portfolio-item-figure">
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                class="portfolio-item-image"
+              />
+              <figcaption class="portfolio-item-overlay">
+                <span class="portfolio-item-title">{item.title}</span>
+                <span class="portfolio-item-label">- view -</span>
+              </figcaption>
+            </figure>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <div
+    class="portfolio-lightbox"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+  >
+    <button
+      class="portfolio-lightbox__close"
+      type="button"
+      aria-label="Close image"
+    >
+      ×
+    </button>
+
+    <button
+      class="portfolio-lightbox__nav portfolio-lightbox__nav--prev"
+      type="button"
+      aria-label="Previous image"
+    >
+      ‹
+    </button>
+
+    <figure class="portfolio-lightbox__figure">
+      <img
+        class="portfolio-lightbox__image"
+        src=""
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption class="portfolio-lightbox__caption">
+        <span class="portfolio-lightbox__title"></span>
+        <span class="portfolio-lightbox__index"></span>
+      </figcaption>
+    </figure>
+
+    <button
+      class="portfolio-lightbox__nav portfolio-lightbox__nav--next"
+      type="button"
+      aria-label="Next image"
+    >
+      ›
+    </button>
   </div>
 </section>
 
@@ -108,12 +187,45 @@ const portfolioItems: PortfolioItem[] = [
   .portfolio-section {
     background-color: #000000;
     padding-block: 3rem;
+     min-height: 100vh;
   }
 
   .portfolio-inner {
     /* mimic Elementor boxed container with max-width ~1490px */
     width: min(1490px, 100% - 2 * 1.5rem);
     margin-inline: auto;
+  }
+
+  .portfolio-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .portfolio-filter {
+    display: inline-block;
+    margin-top: 0;
+    padding: 12px 24px;
+    max-width: 150px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: solid 3px #4a2e1c;
+    background-color: transparent;
+    color: #4a2e1c;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+  }
+
+  .portfolio-filter.is-active,
+  .portfolio-filter:hover {
+    background-color: #4a2e1c;
+    color: #ffffff;
   }
 
   .portfolio-grid {
@@ -169,7 +281,7 @@ const portfolioItems: PortfolioItem[] = [
 
   .portfolio-item-label {
     margin-top: 0.25rem;
-     font-family: var(--font-body: "Montserrat", sans-serif;);
+    font-family: var(--font-body: "Montserrat", sans-serif;);
     font-weight: 100;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -216,6 +328,108 @@ const portfolioItems: PortfolioItem[] = [
     .portfolio-item-label {
       font-size: 0.75rem;
       letter-spacing: 0.15em;
+    }
+  }
+
+  /* Lightbox overlay */
+  .portfolio-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .portfolio-lightbox.is-active {
+    display: flex;
+  }
+
+  .portfolio-lightbox__figure {
+    margin: 0;
+    max-width: min(90vw, 1200px);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .portfolio-lightbox__image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .portfolio-lightbox__caption {
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.85;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .portfolio-lightbox__title {
+    font-weight: 400;
+  }
+
+  .portfolio-lightbox__index {
+    font-weight: 200;
+  }
+
+  .portfolio-lightbox__close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .portfolio-lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .portfolio-lightbox__nav--prev {
+    left: 20px;
+  }
+
+  .portfolio-lightbox__nav--next {
+    right: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-lightbox__nav {
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
     }
   }
 </style>
