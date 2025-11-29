@@ -3,108 +3,262 @@ interface PortfolioItem {
   src: string;
   alt: string;
   title: string;
-  category: "food" | "portrait" | "events" | "product";
+  category: string;
 }
 
-const portfolioItems: PortfolioItem[] = [
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Beef-Cheek-Ravioli_01-scaled.jpg",
-    alt: "Food styling and photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/WA-Lobster-Linguine_01-scaled.jpg",
-    alt: "Restaurant marketing Perth",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Spaghertti-Carbonara_01-scaled.jpg",
-    alt: "Perth restaurant photographer",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Chill-Mussels_01-scaled.jpg",
-    alt: "Restaurant menu photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Beef-Check-Ravioli_02-scaled.jpg",
-    alt: "Food styling and photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Orecchiette-Salsiccia-Broccoli_02-scaled.jpg",
-    alt: "Perth restaurant photographer",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Pork-Belly-Bites_02-scaled.jpg",
-    alt: "Restaurant menu photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Linguine-Clams-Prawns_02-scaled.jpg",
-    alt: "Food styling and photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/0N2A1571-Edit.jpg",
-    alt: "Food styling and photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/0N2A1903-Edit.jpg",
-    alt: "Food styling and photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/FISH-OF-THE-DAY_02-scaled.jpg",
-    alt: "Restaurant menu photography",
-    title: "Food Photography",
-    category: "food",
-  },
-  {
-    src: "https://amplifycreativelab.com/wp-content/uploads/2024/07/Spaghertti-Carbonara_02-scaled.jpg",
-    alt: "Perth restaurant photographer",
-    title: "Food Photography",
-    category: "food",
-  },
+const foodFiles = [
+  "Food-Photography_114.jpg",
+  "Food-Photography_4.jpg",
+  "Food-Photography_35.jpg",
+  "Food-Photography_141.jpg",
+  "Food-Photography_115.jpg",
+  "Food-Photography_109.jpg",
+  "Food-Photography_76.jpg",
+  "Food-Photography_6.jpg",
+  "Food-Photography_20.jpg",
+  "Food-Photography_134.jpg",
+  "Food-Photography_145.jpg",
+  "Food-Photography_42.jpg",
+  "Food-Photography_64.jpg",
+  "Food-Photography_77.jpg",
+  "Food-Photography_86.jpg",
+  "Food-Photography_120.jpg",
+  "Food-Photography_14.jpg",
+  "Food-Photography_2.jpg",
+  "Food-Photography_103.jpg",
+  "Food-Photography_102.jpg",
+  "Food-Photography_94.jpg",
+  "Food-Photography_54.jpg",
+  "Food-Photography_10.jpg",
+  "Food-Photography_96.jpg",
+  "Food-Photography_44.jpg",
+  "Food-Photography_111.jpg",
+  "Food-Photography_108.jpg",
+  "Food-Photography_121.jpg",
+  "Food-Photography_105.jpg",
+  "Food-Photography_53.jpg",
+  "Food-Photography_79.jpg",
+  "Food-Photography_7.jpg",
+  "Food-Photography_83.jpg",
+  "Food-Photography_5.jpg",
+  "Food-Photography_98.jpg",
+  "Food-Photography_126.jpg",
+  "Food-Photography_74.jpg",
+  "Food-Photography_125.jpg",
+  "Food-Photography_50.jpg",
+  "Food-Photography_17.jpg",
+  "Food-Photography_128.jpg",
+  "Food-Photography_36.jpg",
+  "Food-Photography_142.jpg",
+  "Food-Photography_58.jpg",
+  "Food-Photography_70.jpg",
+  "Food-Photography_25.jpg",
+  "Food-Photography_15.jpg",
+  "Food-Photography_136.jpg",
+];
 
-  {
-    src: "../images/portfolio/event photography.jpg",
-    alt: "Perth event photographer",
+const eventFiles = [
+  "Event-Photography89.webp",
+  "Event-Photography1.webp",
+  "Event-Photography97.webp",
+  "Event-Photography95.webp",
+  "Event-Photography48.webp",
+  "Event-Photography37.webp",
+  "Event-Photography129.webp",
+  "Event-Photography9.webp",
+  "Event-Photography100.webp",
+  "Event-Photography23.webp",
+  "Event-Photography105.webp",
+  "Event-Photography11.webp",
+  "Event-Photography20.webp",
+  "Event-Photography49.webp",
+  "Event-Photography47.webp",
+  "Event-Photography58.webp",
+  "Event-Photography81.webp",
+  "Event-Photography73.webp",
+  "Event-Photography28.webp",
+  "Event-Photography116.webp",
+  "Event-Photography74.webp",
+  "Event-Photography92.webp",
+  "Event-Photography5.webp",
+  "Event-Photography84.webp",
+  "Event-Photography60.webp",
+  "Event-Photography35.webp",
+  "Event-Photography39.webp",
+  "Event-Photography18.webp",
+  "Event-Photography3.webp",
+  "Event-Photography103.webp",
+  "Event-Photography106.webp",
+  "Event-Photography111.webp",
+  "Event-Photography90.webp",
+  "Event-Photography31.webp",
+  "Event-Photography63.webp",
+  "Event-Photography67.webp",
+  "Event-Photography126.webp",
+  "Event-Photography132.webp",
+  "Event-Photography80.webp",
+  "Event-Photography123.webp",
+  "Event-Photography45.webp",
+  "Event-Photography93.webp",
+  "Event-Photography62.webp",
+  "Event-Photography76.webp",
+  "Event-Photography10.webp",
+  "Event-Photography2.webp",
+  "Event-Photography72.webp",
+  "Event-Photography86.webp",
+];
+
+const familyFiles = [
+  "Family-Photography_170.webp",
+  "Family-Photography_97.webp",
+  "Family-Photography_52.webp",
+  "Family-Photography_43.webp",
+  "Family-Photography_77.webp",
+  "Family-Photography_117.webp",
+  "Family-Photography_46.webp",
+  "Family-Photography_35.webp",
+  "Family-Photography_140.webp",
+  "Family-Photography_25.webp",
+  "Family-Photography_116.webp",
+  "Family-Photography_134.webp",
+  "Family-Photography_40.webp",
+  "Family-Photography_158.webp",
+  "Family-Photography_187.webp",
+  "Family-Photography_26.webp",
+  "Family-Photography_146.webp",
+  "Family-Photography_86.webp",
+  "Family-Photography_59.webp",
+  "Family-Photography_36.webp",
+  "Family-Photography_142.webp",
+  "Family-Photography_139.webp",
+  "Family-Photography_153.webp",
+  "Family-Photography_186.webp",
+  "Family-Photography_78.webp",
+  "Family-Photography_79.webp",
+  "Family-Photography_73.webp",
+  "Family-Photography_190.webp",
+  "Family-Photography_30.webp",
+  "Family-Photography_58.webp",
+  "Family-Photography_113.webp",
+  "Family-Photography_157.webp",
+  "Family-Photography_121.webp",
+  "Family-Photography_62.webp",
+  "Family-Photography_76.webp",
+  "Family-Photography_185.webp",
+  "Family-Photography_44.webp",
+  "Family-Photography_127.webp",
+  "Family-Photography_132.webp",
+  "Family-Photography_74.webp",
+  "Family-Photography_119.webp",
+  "Family-Photography_64.webp",
+  "Family-Photography_148.webp",
+  "Family-Photography_91.webp",
+  "Family-Photography_95.webp",
+  "Family-Photography_48.webp",
+  "Family-Photography_42.webp",
+  "Family-Photography_179.webp",
+];
+
+const portraitFiles = [
+  "Portrait-Photography8.jpg",
+  "Portrait-Photography1.jpg",
+  "Portrait-Photography5.jpg",
+  "Portrait-Photography4.jpg",
+  "Portrait-Photography9.jpg",
+  "Portrait-Photography7.jpg",
+  "Portrait-Photography6.jpg",
+  "Portrait-Photography2.jpg",
+  "Portrait-Photography3.jpg",
+];
+
+const productFiles = [
+  "Product-Photography_7.jpg",
+  "Product-Photography_20.jpg",
+  "Product-Photography_13.jpg",
+  "Product-Photography38.jpg",
+  "Product-Photography_11.jpg",
+  "Product-Photography28.jpg",
+  "Product-Photography_3.jpg",
+  "Product-Photography43.jpg",
+  "Product-Photography25.jpg",
+  "Product-Photography30.jpg",
+  "Product-Photography_18.jpg",
+  "Product-Photography26.jpg",
+  "Product-Photography_19.jpg",
+  "Product-Photography32.jpg",
+  "Product-Photography36.jpg",
+  "Product-Photography_10.jpg",
+  "Product-Photography29.jpg",
+  "Product-Photography_15.jpg",
+  "Product-Photography39.jpg",
+  "Product-Photography_21.jpg",
+  "Product-Photography40.jpg",
+  "Product-Photography_17.jpg",
+  "Product-Photography_9.jpg",
+  "Product-Photography_6.jpg",
+  "Product-Photography_8.jpg",
+  "Product-Photography35.jpg",
+  "Product-Photography_14.jpg",
+  "Product-Photography31.jpg",
+  "Product-Photography_4.jpg",
+  "Product-Photography41.jpg",
+  "Product-Photography_2.jpg",
+  "Product-Photography_23.jpg",
+  "Product-Photography27.jpg",
+  "Product-Photography_24.jpg",
+  "Product-Photography_12.jpg",
+  "Product-Photography_22.jpg",
+  "Product-Photography34.jpg",
+  "Product-Photography37.jpg",
+  "Product-Photography33.jpg",
+  "Product-Photography42.jpg",
+  "Product-Photography_1.jpg",
+  "Product-Photography_16.jpg",
+  "Product-Photography_5.jpg",
+];
+
+const portfolioItems: PortfolioItem[] = [
+  ...foodFiles.map((file, index) => ({
+    src: `/images/portfolio/food/${file}`,
+    alt: `Food photography in Perth ${index + 1}`,
+    title: "Food Photography",
+    category: "food",
+  })),
+  ...eventFiles.map((file, index) => ({
+    src: `/images/portfolio/event/${file}`,
+    alt: `Event photography in Perth ${index + 1}`,
     title: "Event Photography",
     category: "events",
-  },
-  // 👉 continue adding all remaining images here
-  // {
-  //   src: "FULL_URL",
-  //   alt: "Descriptive alt",
-  //   title: "Food Photography | Product Photography | Restaurant Photography",
-  // },
+  })),
+  ...familyFiles.map((file, index) => ({
+    src: `/images/portfolio/family/${file}`,
+    alt: `Family photography in Perth ${index + 1}`,
+    title: "Family Photography",
+    category: "family",
+  })),
+  ...productFiles.map((file, index) => ({
+    src: `/images/portfolio/product/${file}`,
+    alt: `Product photography in Perth ${index + 1}`,
+    title: "Product Photography",
+    category: "product",
+  })),
+  ...portraitFiles.map((file, index) => ({
+    src: `/images/portfolio/portrait/${file}`,
+    alt: `Portrait photography in Perth ${index + 1}`,
+    title: "Portrait Photography",
+    category: "portrait",
+  })),
 ];
 ---
 
 <section class="portfolio-section" aria-label="Photography portfolio gallery">
   <div class="portfolio-inner">
     <div class="portfolio-filters" aria-label="Filter portfolio by category">
-      <button class="portfolio-filter is-active" data-filter="all">All</button>
-      <button class="portfolio-filter" data-filter="food">Food</button>
-      <button class="portfolio-filter" data-filter="product">Product</button>
+      <button class="portfolio-filter is-active" data-filter="food">Food</button>
       <button class="portfolio-filter" data-filter="events">Events</button>
+      <button class="portfolio-filter" data-filter="family">Family</button>
+      <button class="portfolio-filter" data-filter="product">Product</button>
       <button class="portfolio-filter" data-filter="portrait">Portrait</button>
-      
-      
     </div>
     <div class="portfolio-grid">
       {
@@ -135,6 +289,16 @@ const portfolioItems: PortfolioItem[] = [
         ))
       }
     </div>
+
+    <div class="portfolio-load-more-wrapper">
+      <button
+        type="button"
+        class="portfolio-load-more portfolio-filter"
+        data-action="load-more"
+      >
+        Load more
+      </button>
+    </div>
   </div>
 
   <div
@@ -143,21 +307,9 @@ const portfolioItems: PortfolioItem[] = [
     role="dialog"
     aria-modal="true"
   >
-    <button
-      class="portfolio-lightbox__close"
-      type="button"
-      aria-label="Close image"
-    >
-      ×
-    </button>
+        <button class="portfolio-lightbox__close" type="button" aria-label="Close image">X</button>
 
-    <button
-      class="portfolio-lightbox__nav portfolio-lightbox__nav--prev"
-      type="button"
-      aria-label="Previous image"
-    >
-      ‹
-    </button>
+        <button class="portfolio-lightbox__nav portfolio-lightbox__nav--prev" type="button" aria-label="Previous image">&lt;</button>
 
     <figure class="portfolio-lightbox__figure">
       <img
@@ -173,25 +325,223 @@ const portfolioItems: PortfolioItem[] = [
       </figcaption>
     </figure>
 
-    <button
-      class="portfolio-lightbox__nav portfolio-lightbox__nav--next"
-      type="button"
-      aria-label="Next image"
-    >
-      ›
-    </button>
+        <button class="portfolio-lightbox__nav portfolio-lightbox__nav--next" type="button" aria-label="Next image">&gt;</button>
   </div>
 </section>
+
+<script>
+  // @ts-nocheck
+  const ITEMS_PER_BATCH = 12;
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", () => {
+      /** @type {HTMLElement | null} */
+      const grid = document.querySelector(".portfolio-grid");
+      const filterButtons = Array.from(
+        /** @type {NodeListOf<HTMLElement>} */ (
+          document.querySelectorAll(".portfolio-filter[data-filter]")
+        ),
+      );
+      /** @type {HTMLElement | null} */
+      const loadMoreButton = document.querySelector(".portfolio-load-more");
+      /** @type {HTMLElement[]} */
+      const items = grid
+        ? Array.from(
+            /** @type {NodeListOf<HTMLElement>} */ (
+              grid.querySelectorAll(".portfolio-item")
+            ),
+          )
+        : [];
+
+      let currentFilter =
+        (filterButtons[0] && filterButtons[0].dataset.filter) || "food";
+      let visibleCount = ITEMS_PER_BATCH;
+
+      /**
+       * @param {string} filter
+       * @returns {HTMLElement[]}
+       */
+      function getItemsForFilter(filter) {
+        if (filter === "all") return items;
+        return items.filter((item) => item.dataset.category === filter);
+      }
+
+      function updateVisibility() {
+        const visibleItems = getItemsForFilter(currentFilter);
+
+        items.forEach((item) => {
+          item.style.display = "none";
+        });
+
+        visibleItems.forEach((item, index) => {
+          if (index < visibleCount) {
+            item.style.display = "block";
+          }
+        });
+
+        if (loadMoreButton) {
+          loadMoreButton.style.display =
+            visibleCount >= visibleItems.length ? "none" : "inline-block";
+        }
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter || "all";
+          currentFilter = filter;
+          visibleCount = ITEMS_PER_BATCH;
+
+          filterButtons.forEach((btn) => {
+            if (btn === button) {
+              btn.classList.add("is-active");
+            } else {
+              btn.classList.remove("is-active");
+            }
+          });
+
+          updateVisibility();
+        });
+      });
+
+      if (loadMoreButton) {
+        loadMoreButton.addEventListener("click", () => {
+          visibleCount += ITEMS_PER_BATCH;
+          updateVisibility();
+        });
+      }
+
+      updateVisibility();
+
+      // Lightbox behavior
+      /** @type {HTMLElement | null} */
+      const lightbox = document.querySelector(".portfolio-lightbox");
+      const lightboxImage =
+        /** @type {HTMLImageElement | null} */ (
+          lightbox &&
+          lightbox.querySelector(".portfolio-lightbox__image")
+        );
+      const lightboxTitle = lightbox &&
+        lightbox.querySelector(".portfolio-lightbox__title");
+      const lightboxIndex = lightbox &&
+        lightbox.querySelector(".portfolio-lightbox__index");
+      const closeButton = lightbox &&
+        lightbox.querySelector(".portfolio-lightbox__close");
+      const prevButton = lightbox &&
+        lightbox.querySelector(".portfolio-lightbox__nav--prev");
+      const nextButton = lightbox &&
+        lightbox.querySelector(".portfolio-lightbox__nav--next");
+
+      let currentIndex = 0;
+
+      /**
+       * @param {number} index
+       */
+      function openLightbox(index) {
+        if (!lightbox || !lightboxImage) return;
+
+        const item = items[index];
+        if (!item) return;
+
+        /** @type {HTMLImageElement | null} */
+        const img = item.querySelector(".portfolio-item-image");
+        if (!img) return;
+
+        currentIndex = index;
+
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || "";
+
+        const title =
+          item.dataset.title || item.getAttribute("data-title") || img.alt || "";
+
+        if (lightboxTitle) {
+          lightboxTitle.textContent = title;
+        }
+
+        if (lightboxIndex) {
+          lightboxIndex.textContent = `${index + 1} / ${items.length}`;
+        }
+
+        lightbox.classList.add("is-active");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove("is-active");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      function showNext() {
+        if (!items.length) return;
+        currentIndex = (currentIndex + 1) % items.length;
+        openLightbox(currentIndex);
+      }
+
+      function showPrev() {
+        if (!items.length) return;
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        openLightbox(currentIndex);
+      }
+
+      items.forEach((item, index) => {
+        item.addEventListener("click", (event) => {
+          event.preventDefault();
+          openLightbox(index);
+        });
+      });
+
+      if (closeButton) {
+        closeButton.addEventListener("click", () => {
+          closeLightbox();
+        });
+      }
+
+      if (nextButton) {
+        nextButton.addEventListener("click", () => {
+          showNext();
+        });
+      }
+
+      if (prevButton) {
+        prevButton.addEventListener("click", () => {
+          showPrev();
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+        if (event.key === "ArrowRight") {
+          showNext();
+        }
+        if (event.key === "ArrowLeft") {
+          showPrev();
+        }
+      });
+
+      if (lightbox) {
+        lightbox.addEventListener("click", (event) => {
+          if (event.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      }
+    });
+  }
+</script>
 
 <style>
   .portfolio-section {
     background-color: #000000;
     padding-block: 3rem;
-     min-height: 100vh;
+    min-height: 100vh;
   }
 
   .portfolio-inner {
-    /* mimic Elementor boxed container with max-width ~1490px */
     width: min(1490px, 100% - 2 * 1.5rem);
     margin-inline: auto;
   }
@@ -231,7 +581,7 @@ const portfolioItems: PortfolioItem[] = [
   .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0; /* Elementor had 0 gap */
+    gap: 0;
   }
 
   .portfolio-item {
@@ -248,7 +598,7 @@ const portfolioItems: PortfolioItem[] = [
   .portfolio-item-image {
     width: 100%;
     height: 100%;
-    aspect-ratio: 1 / 1; /* matches Elementor aspect_ratio 1:1 */
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
     transform: scale(1);
@@ -271,7 +621,7 @@ const portfolioItems: PortfolioItem[] = [
   }
 
   .portfolio-item-title {
-    font-family: var(--font-body: "Montserrat", sans-serif;);
+    font-family: var(--font-body, "Montserrat", sans-serif);
     font-size: 0.95rem;
     letter-spacing: 0.08em;
     font-weight: 100;
@@ -281,7 +631,7 @@ const portfolioItems: PortfolioItem[] = [
 
   .portfolio-item-label {
     margin-top: 0.25rem;
-    font-family: var(--font-body: "Montserrat", sans-serif;);
+    font-family: var(--font-body, "Montserrat", sans-serif);
     font-weight: 100;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -304,14 +654,17 @@ const portfolioItems: PortfolioItem[] = [
     outline-offset: 2px;
   }
 
-  /* Tablet */
+  .portfolio-load-more-wrapper {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
   @media (max-width: 1024px) {
     .portfolio-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
-  /* Mobile */
   @media (max-width: 768px) {
     .portfolio-inner {
       width: min(100% - 2 * 1rem, 100%);
@@ -331,7 +684,6 @@ const portfolioItems: PortfolioItem[] = [
     }
   }
 
-  /* Lightbox overlay */
   .portfolio-lightbox {
     position: fixed;
     top: 0;
@@ -433,3 +785,7 @@ const portfolioItems: PortfolioItem[] = [
     }
   }
 </style>
+
+
+
+
