@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./layouts/BaseLayout.astro";
+import PerthProductPhotographyIntro from "./components/perth-product-photography/PerthProductPhotographyIntro.astro";
+import ProductCataloguePhotography from "./components/perth-product-photography/ProductCataloguePhotography.astro";
+import ProductLifestylePhotography from "./components/perth-product-photography/ProductLifestylePhotography.astro";
+
+const pageTitle = "Perth Product Photographer | AmplifyCreativeLab Product Photography";
+const pageDescription =
+  "Perth product photographer specialising in studio and lifestyle imagery for ecommerce, menus and marketing.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="page-perth-product-photography">
+    <PerthProductPhotographyIntro />
+    <ProductCataloguePhotography />
+    <ProductLifestylePhotography />
+  </main>
+</BaseLayout>
+

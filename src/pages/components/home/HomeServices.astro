@@ -14,7 +14,7 @@
     <div class="services-grid">
       <!-- Service 1 – Food Photography -->
       <article class="service-card">
-        <a class="service-image-link" href="/food-photography">
+        <a class="service-image-link" href="/perth-food-photography">
           <img
             class="service-image"
             src="/images/home/food-photography-perth-768.jpg"
@@ -33,14 +33,14 @@
             decoding="async"
           />
         </a>
-        <a class="service-button" href="/food-photography">
+        <a class="service-button" href="/perth-food-photography">
           Food Photography
         </a>
       </article>
 
       <!-- Service 2 – Portrait Photography -->
       <article class="service-card">
-        <a class="service-image-link" href="/portrait-photography">
+        <a class="service-image-link" href="/perth-event-photography">
           <img
             class="service-image"
             src="/images/home/portrait-photography-perth-768.jpg"
@@ -59,14 +59,14 @@
             decoding="async"
           />
         </a>
-        <a class="service-button" href="/portrait-photography">
-          Portrait Photography
+        <a class="service-button" href="/perth-event-photography">
+          Event Photography
         </a>
       </article>
 
       <!-- Service 3 – Content Creation -->
       <article class="service-card">
-        <a class="service-image-link" href="/content-creation">
+        <a class="service-image-link" href="/perth-product-photography">
           <img
             class="service-image"
             src="/images/home/content-creation-perth-768.jpg"
@@ -85,8 +85,33 @@
             decoding="async"
           />
         </a>
-        <a class="service-button" href="/content-creation">
-          Content Creation
+        <a class="service-button" href="/perth-product-photography">
+          Product Photography
+        </a>
+      </article>
+      <!-- Service 4 – Web Development -->
+      <article class="service-card">
+        <a class="service-image-link" href="/website-development/">
+          <img
+            class="service-image"
+            src="/images/home/content-creation-perth-768.jpg"
+            srcset="
+              /images/home/content-creation-perth-240.jpg 240w,
+              /images/home/content-creation-perth-768.jpg 768w,
+              /images/home/content-creation-perth-1640.jpg 1640w
+            "
+            sizes="(max-width: 768px) 100vw,
+                   (max-width: 1200px) 50vw,
+                   33vw"
+            width="768"
+            height="960"
+            alt="Website design and development for Perth businesses"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <a class="service-button" href="/website-development/">
+          Website Development
         </a>
       </article>
     </div>
@@ -140,7 +165,7 @@
 /* Grid of service cards – same as original */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 40px;
   width: 100%;
 }
@@ -246,4 +271,3 @@
   }
 }
 </style>
-

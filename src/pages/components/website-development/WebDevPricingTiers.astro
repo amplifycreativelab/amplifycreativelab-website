@@ -1,0 +1,286 @@
+---
+---
+
+<section class="webdev-pricing" id="web-pricing">
+  <div class="webdev-pricing__inner">
+    
+    <header class="webdev-pricing__header">
+      <p class="webdev-pricing__kicker">WEBSITE PACKAGES</p>
+      <h2 class="webdev-pricing__title">Three ways to get a site that actually works</h2>
+      <p class="webdev-pricing__intro">
+        Choose the option that fits where your venue is at right now.
+        All packages can be tailored once we chat about your goals.
+      </p>
+    </header>
+
+    <div class="webdev-pricing__grid">
+      
+      <article class="webdev-tier">
+        <div class="webdev-tier__content">
+          <div class="webdev-tier__badge">Starter</div>
+          <h3 class="webdev-tier__name">Launch Menu Site</h3>
+          <p class="webdev-tier__price">From $1,800</p>
+          <p class="webdev-tier__tagline">
+            A clean, one-page website that gives guests everything they need to visit you tonight.
+          </p>
+
+          <ul class="webdev-tier__features">
+            <li>Single-page scroll layout</li>
+            <li>Mobile-first design & basic SEO</li>
+            <li>Booking & Click-to-call integration</li>
+            <li>Connected to your domain</li>
+          </ul>
+
+          <a href="/#work-with-us" class="webdev-tier__cta">
+            Enquire about Starter
+          </a>
+        </div>
+      </article>
+
+      <article class="webdev-tier tier--highlight">
+        <div class="webdev-tier__content">
+          <div class="webdev-tier__badge">Most popular</div>
+          <h3 class="webdev-tier__name">Signature Site</h3>
+          <p class="webdev-tier__price">From $3,500</p>
+          <p class="webdev-tier__tagline">
+            A multi-page site that pairs your food photography with a clear story and booking flow.
+          </p>
+
+          <ul class="webdev-tier__features">
+            <li>Up to 6 custom-designed pages</li>
+            <li>Conversion-focused layout</li>
+            <li>Blog/Journal setup for SEO</li>
+            <li>Performance-focused build</li>
+            <li>CMS Training included</li>
+          </ul>
+
+          <a href="/#work-with-us" class="webdev-tier__cta cta--primary">
+            Enquire about Signature
+          </a>
+        </div>
+      </article>
+
+      <article class="webdev-tier">
+        <div class="webdev-tier__content">
+          <div class="webdev-tier__badge">Custom</div>
+          <h3 class="webdev-tier__name">Digital Flagship</h3>
+          <p class="webdev-tier__price">Project Based</p>
+          <p class="webdev-tier__tagline">
+            A fully bespoke site for groups, multi-venue brands or concepts that need more than a template.
+          </p>
+
+          <ul class="webdev-tier__features">
+            <li>Discovery & UX Workshops</li>
+            <li>Advanced functionality (Ordering, Gifts)</li>
+            <li>Custom page templates</li>
+            <li>Ongoing optimisation support</li>
+          </ul>
+
+          <a href="/#work-with-us" class="webdev-tier__cta">
+            Chat about custom
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* --- Section Container --- */
+  .webdev-pricing {
+    background-color: #f5ead7;
+    padding: 5rem 1.5rem;
+    position: relative;
+    border-bottom: 1px solid #e3d4b4;
+  }
+
+  .webdev-pricing__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* --- Header --- */
+  .webdev-pricing__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  .webdev-pricing__kicker {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7b5b33;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .webdev-pricing__title {
+    font-family: "Abril Fatface", serif;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: #152705;
+    margin: 0 0 1rem 0;
+  }
+
+  .webdev-pricing__intro {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #24360f;
+    margin: 0;
+  }
+
+  /* --- Grid Layout --- */
+  .webdev-pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* --- Card Styling --- */
+  .webdev-tier {
+    background-color: #fffaf1;
+    border-radius: 6px;
+    padding: 6px; /* Creates the outer rim for the double border */
+    box-shadow: 0 8px 30px rgba(21, 39, 5, 0.06);
+    height: 100%;
+  }
+
+  .webdev-tier__content {
+    border: 1px solid #e3d4b4; /* Inner Border */
+    padding: 2.5rem 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #fffaf1; /* Matches card bg */
+  }
+
+  /* Highlight Tier Styling */
+  .tier--highlight {
+    background-color: #152705;
+    color: #fef8eb;
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(21, 39, 5, 0.2);
+  }
+
+  .tier--highlight .webdev-tier__content {
+    background-color: #152705;
+    border-color: #7b5b33;
+  }
+
+  /* --- Typography & Elements --- */
+  .webdev-tier__badge {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    padding: 0.35rem 0.85rem;
+    background: #e3d4b4;
+    color: #152705;
+    border-radius: 99px;
+    font-weight: 600;
+  }
+
+  .tier--highlight .webdev-tier__badge {
+    background: #fadab8;
+  }
+
+  .webdev-tier__name {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .webdev-tier__price {
+    font-family: "Abril Fatface", serif;
+    font-size: 2.2rem;
+    color: #7b5b33;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .tier--highlight .webdev-tier__price {
+    color: #fadab8;
+  }
+
+  .webdev-tier__tagline {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin: 0 0 1.5rem;
+    opacity: 0.9;
+  }
+
+  /* List Styling */
+  .webdev-tier__features {
+    list-style: none;
+    padding: 1.5rem 0 0 0;
+    margin: 0 0 2rem 0;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 1rem;
+  }
+
+  .tier--highlight .webdev-tier__features {
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* Button Styling */
+  .webdev-tier__cta {
+    margin-top: auto;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid #152705;
+    border-radius: 999px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #152705;
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+
+  .webdev-tier__cta:hover {
+    background: #152705;
+    color: #fff;
+  }
+
+  .cta--primary {
+    background: #fadab8;
+    border-color: #fadab8;
+    color: #152705;
+  }
+
+  .cta--primary:hover {
+    background: #fff;
+    border-color: #fff;
+    color: #152705;
+  }
+
+  /* --- Mobile Responsiveness --- */
+  @media (max-width: 900px) {
+    .webdev-pricing__grid {
+      grid-template-columns: 1fr; /* Stack into 1 column */
+      max-width: 450px;
+      margin: 0 auto;
+    }
+    
+    .tier--highlight {
+      transform: none; /* Remove hover effect on mobile */
+    }
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./layouts/BaseLayout.astro";
+import WebDevIntro from "./components/website-development/WebDevIntro.astro";
+import WebDevWhySection from "./components/website-development/WebDevWhySection.astro";
+import WebDevPricingTiers from "./components/website-development/WebDevPricingTiers.astro";
+
+const pageTitle = "Perth Website Design & Development | Amplify Creative Lab";
+const pageDescription =
+  "Custom websites for Perth hospitality and lifestyle brands, with strategy-led design and fast, SEO-friendly builds.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="page-website-development">
+    <WebDevIntro />
+    <WebDevWhySection />
+    <WebDevPricingTiers />
+  </main>
+</BaseLayout>
+
