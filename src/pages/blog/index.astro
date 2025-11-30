@@ -1,0 +1,297 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface BlogPostSummary {
+  slug: string;
+  title: string;
+  description: string;
+  publishDate: string;
+  readTime?: string;
+  category?: string;
+  featuredImage?: string;
+}
+
+const canonicalUrl = new URL(
+  "/blog/",
+  "https://amplifycreativelab.com"
+).toString();
+
+// For now, we define posts manually.
+// When you add more posts, just add them here.
+const posts: BlogPostSummary[] = [
+  {
+    slug: "food-photography-tips-restaurants",
+    title: "5 Food Photography Tips That Will Make Your Menu Irresistible",
+    description:
+      "Practical, restaurant-focused tips for creating menu and marketing images that make your dishes impossible to scroll past.",
+    publishDate: "2024-11-30",
+    readTime: "7 min read",
+    category: "Food Photography",
+    featuredImage: "/images/blog/food-photography-tips-restaurants.jpg",
+  },
+];
+
+const sortedPosts = posts.sort(
+  (a, b) =>
+    new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+---
+
+<BaseLayout
+  title="Blog | Amplify Creative Lab"
+  description="Articles on food photography, restaurant branding and visual storytelling for venues in Perth."
+  canonical={canonicalUrl}
+>
+  <main class="blog-index-page">
+    <section class="blog-index-hero">
+      <p class="blog-index-kicker">Insights for Perth venues</p>
+      <h1 class="blog-index-title">Photography &amp; marketing tips</h1>
+      <p class="blog-index-intro">
+        Stories and practical advice on food photography, branding and visual
+        content that helps restaurants, cafés and bars stand out in Perth’s
+        dining scene.
+      </p>
+    </section>
+
+    <section class="blog-index-list" aria-label="Blog articles">
+      {sortedPosts.length === 0 ? (
+        <p class="blog-index-empty">
+          New articles are on the way. Check back soon.
+        </p>
+      ) : (
+        <div class="blog-grid">
+          {sortedPosts.map((post) => (
+            <article class="blog-card">
+              <a href={`/blog/${post.slug}/`} class="blog-card-link">
+                {post.featuredImage && (
+                  <div class="blog-card-image-wrapper">
+                    <img
+                      src={post.featuredImage}
+                      alt={post.title}
+                      loading="lazy"
+                      decoding="async"
+                      class="blog-card-image"
+                      width="900"
+                      height="600"
+                    />
+                  </div>
+                )}
+
+                <div class="blog-card-body">
+                  <div class="blog-card-meta">
+                    {post.category && (
+                      <span class="blog-card-category">{post.category}</span>
+                    )}
+                    <time
+                      class="blog-card-date"
+                      datetime={post.publishDate}
+                    >
+                      {new Date(post.publishDate).toLocaleDateString("en-AU", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                    {post.readTime && (
+                      <>
+                        <span class="blog-card-dot">•</span>
+                        <span class="blog-card-readtime">
+                          {post.readTime}
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  <h2 class="blog-card-title">{post.title}</h2>
+                  <p class="blog-card-description">{post.description}</p>
+
+                  <span class="blog-card-cta">Read article →</span>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-index-page {
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    background-color: #fef8eb;
+  }
+
+  .blog-index-hero {
+    max-width: 720px;
+    margin: 0 auto clamp(2.5rem, 5vw, 3rem);
+    text-align: left;
+  }
+
+  .blog-index-kicker {
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7b5b33;
+    margin-bottom: 0.4rem;
+  }
+
+  .blog-index-title {
+    font-family: "Abril Fatface", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-size: clamp(2.4rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: #152705;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-index-intro {
+    font-family: "Darker Grotesque", system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #24360f;
+  }
+
+  .blog-index-list {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .blog-index-empty {
+    font-family: "Darker Grotesque", system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.05rem;
+    color: #24360f;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1.75rem, 3vw, 2.25rem);
+  }
+
+  .blog-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fffaf1;
+    border: 1px solid #e3d4b4;
+    box-shadow: 0 10px 30px rgba(21, 39, 5, 0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .blog-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .blog-card-image-wrapper {
+    overflow: hidden;
+  }
+
+  .blog-card-image {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+
+  .blog-card-body {
+    padding: 1.25rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .blog-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-size: 0.8rem;
+    color: #7b5b33;
+  }
+
+  .blog-card-category {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .blog-card-dot {
+    opacity: 0.6;
+  }
+
+  .blog-card-title {
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #152705;
+  }
+
+  .blog-card-description {
+    font-family: "Darker Grotesque", system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: #24360f;
+  }
+
+  .blog-card-cta {
+    margin-top: 0.3rem;
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #24360f;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .blog-card-cta::after {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 1px;
+    margin-left: 6px;
+    background-color: #24360f;
+    transition: transform 0.18s ease, width 0.18s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(21, 39, 5, 0.12);
+    border-color: #d7c29e;
+  }
+
+  .blog-card:hover .blog-card-image {
+    transform: scale(1.03);
+  }
+
+  .blog-card:hover .blog-card-cta::after {
+    width: 18px;
+    transform: translateX(2px);
+  }
+
+  @media (max-width: 768px) {
+    .blog-index-page {
+      padding-inline: 1.25rem;
+      padding-block: 2.5rem;
+    }
+
+    .blog-card-image {
+      height: 200px;
+    }
+  }
+</style>

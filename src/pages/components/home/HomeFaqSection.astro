@@ -31,31 +31,37 @@ const faqs = [
       "Simply send us an enquiry through the contact form with a few details about your project (type of shoot, location, preferred dates), and we’ll get back to you with availability, pricing and next steps.",
   },
 ];
+
+// This logic limits the list to the first 4 items
+const topFaqs = faqs.slice(0, 4);
 ---
 
 <section class="faq-section" aria-labelledby="faq-heading">
+
+<section class="faq-section" aria-labelledby="faq-heading">
   <div class="faq-inner">
-    <!-- LEFT COLUMN: heading -->
+    
     <div class="faq-column faq-column--intro">
       <h2 id="faq-heading" class="faq-title">FAQ</h2>
+      <p class="faq-subtitle">Common questions about our process.</p>
+      
+      <a href="/faq" class="faq-link">
+        View all questions &rarr;
+      </a>
     </div>
 
-    <!-- RIGHT COLUMN: cards -->
     <div class="faq-column faq-column--questions">
       <div class="faq-list">
         {
-          faqs.map((item, index) => (
-            <details
-              class="faq-item"
-              {...(index === 0 ? { open: true } : {})}
-            >
+          topFaqs.map((item, index) => (
+            <details class="faq-item" {...(index === 0 ? { open: true } : {})}>
               <summary class="faq-question">
                 <span>{item.question}</span>
-                <span class="faq-icon" aria-hidden="true">
-                  +
-                </span>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </summary>
-              <p class="faq-answer">{item.answer}</p>
+              <div class="faq-answer-wrapper">
+                <p class="faq-answer">{item.answer}</p>
+              </div>
             </details>
           ))
         }
@@ -65,75 +71,85 @@ const faqs = [
 </section>
 
 <style>
+  /* Same styles as Option 1, with these additions/tweaks */
+
   .faq-section {
     --color-bg: #fef8eb;
     --color-text: #93897e;
     --color-heading: #152705;
+    --color-border: rgba(147, 137, 126, 0.3);
 
     background-color: var(--color-bg);
     color: var(--color-text);
-    padding: clamp(3rem, 6vw, 4.5rem);
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
   }
 
   .faq-inner {
-    max-width: 1900px;
+    max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr);
-    gap: clamp(2rem, 4vw, 3rem);
-    align-items: center;
-    justify-content: center;
+    grid-template-columns: 1fr 2fr; 
+    gap: clamp(3rem, 5vw, 6rem);
+    align-items: start; 
   }
 
   .faq-column--intro {
-    padding-right: clamp(0.5rem, 2vw, 1.5rem);
+    position: sticky;
+    top: 2rem; 
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-heading); 
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns button to left */
   }
 
   .faq-title {
-    color: var(--color-text);
-    font-size: clamp(8rem, 10vw, 11rem);
-    letter-spacing: 0.23em;
-    text-transform: uppercase;
+    color: var(--color-heading);
+    font-size: clamp(3rem, 5vw, 4.5rem); 
+    letter-spacing: -0.02em;
+    line-height: 1;
     margin-bottom: 1rem;
-    font-family: "Abril Fatface", Sans-serif;
+    font-family: "Abril Fatface", serif;
   }
 
-  .faq-title span {
-    display: block;
+  .faq-subtitle {
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    margin-bottom: 2rem;
+    opacity: 0.8;
   }
 
-  .faq-title span + span {
-    margin-top: 0.1em;
+  /* NEW BUTTON STYLE */
+  .faq-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-heading);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
   }
-
-  .faq-column--questions {
-    align-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  
+  .faq-link:hover {
+    opacity: 0.6;
   }
 
   .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     width: 100%;
-    max-width: 60rem;
   }
 
   .faq-item {
-    border-radius: 0.6rem;
-    background: var(--color-bg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0.65rem 1.5rem 0.65rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem 0;
   }
-
-  .faq-item[open] {
-    background: var(--color-bg);
+  
+  .faq-item:first-child {
+    padding-top: 0; 
   }
 
   .faq-question {
@@ -141,10 +157,15 @@ const faqs = [
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-text);
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-heading);
+    transition: color 0.2s;
+  }
+
+  .faq-question:hover {
+    color: #5e564d;
   }
 
   .faq-question::-webkit-details-marker {
@@ -152,10 +173,9 @@ const faqs = [
   }
 
   .faq-icon {
-    margin-left: auto;
-    font-size: 1rem;
-    transform-origin: center;
-    transition: transform 0.2s ease;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
   }
 
   .faq-item[open] .faq-icon {
@@ -163,35 +183,31 @@ const faqs = [
   }
 
   .faq-answer {
-    margin-top: 0.45rem;
-    font-size: 0.85rem;
-    line-height: 1.6;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 65ch;
     color: var(--color-text);
   }
 
-  .faq-question:focus-visible {
-    outline: 2px solid var(--color-heading);
-    outline-offset: 3px;
-  }
-
-  @media (max-width: 800px) {
+  /* Mobile Responsive */
+  @media (max-width: 900px) {
     .faq-inner {
       grid-template-columns: 1fr;
+      gap: 3rem;
     }
-
     .faq-column--intro {
-      padding-right: 0;
+      position: relative;
+      top: 0;
+      border-top: none;
+      align-items: center; /* Center align on mobile */
+      text-align: center;
     }
-  }
-
-  @media (max-width: 600px) {
-    .faq-section {
-      padding-inline: 1.25rem;
-    }
-
-    .faq-item {
-      padding: 0.85rem 0.9rem;
+    
+    /* Hide the button on mobile if you want to save space, 
+       otherwise keep it */
+    .faq-subtitle {
+        margin-bottom: 1.5rem;
     }
   }
 </style>
-
