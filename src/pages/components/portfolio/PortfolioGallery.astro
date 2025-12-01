@@ -217,34 +217,40 @@ const productFiles = [
   "Product-Photography_5.jpg",
 ];
 
+const foodAlts: Record<string, string> = {};
+const eventAlts: Record<string, string> = {};
+const familyAlts: Record<string, string> = {};
+const productAlts: Record<string, string> = {};
+const portraitAlts: Record<string, string> = {};
+
 const portfolioItems: PortfolioItem[] = [
   ...foodFiles.map((file, index) => ({
     src: `/images/portfolio/food/${file}`,
-    alt: `Food photography in Perth ${index + 1}`,
+    alt: foodAlts[file] || `Food photography in Perth ${index + 1}`,
     title: "Food Photography",
     category: "food",
   })),
   ...eventFiles.map((file, index) => ({
     src: `/images/portfolio/event/${file}`,
-    alt: `Event photography in Perth ${index + 1}`,
+    alt: eventAlts[file] || `Event photography in Perth ${index + 1}`,
     title: "Event Photography",
     category: "events",
   })),
   ...familyFiles.map((file, index) => ({
     src: `/images/portfolio/family/${file}`,
-    alt: `Family photography in Perth ${index + 1}`,
+    alt: familyAlts[file] || `Family photography in Perth ${index + 1}`,
     title: "Family Photography",
     category: "family",
   })),
   ...productFiles.map((file, index) => ({
     src: `/images/portfolio/product/${file}`,
-    alt: `Product photography in Perth ${index + 1}`,
+    alt: productAlts[file] || `Product photography in Perth ${index + 1}`,
     title: "Product Photography",
     category: "product",
   })),
   ...portraitFiles.map((file, index) => ({
     src: `/images/portfolio/portrait/${file}`,
-    alt: `Portrait photography in Perth ${index + 1}`,
+    alt: portraitAlts[file] || `Portrait photography in Perth ${index + 1}`,
     title: "Portrait Photography",
     category: "portrait",
   })),
