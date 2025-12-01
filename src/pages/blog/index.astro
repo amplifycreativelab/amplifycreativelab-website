@@ -44,7 +44,7 @@ const sortedPosts: BlogPostSummary[] = entries
   <main class="blog-index-page">
     <section class="blog-index-hero">
       <p class="blog-index-kicker">Insights for Perth venues</p>
-      <h1 class="blog-index-title">Photography &amp; marketing tips</h1>
+      <h1 class="blog-index-title">Photography &amp; Marketing Tips</h1>
       <p class="blog-index-intro">
         Stories and practical advice on food photography, branding and visual
         content that helps restaurants, cafés and bars stand out in Perth’s
@@ -120,6 +120,11 @@ const sortedPosts: BlogPostSummary[] = entries
     padding-inline: clamp(1.5rem, 5vw, 4rem);
     padding-block: clamp(3rem, 6vw, 4.5rem);
     background-color: #fef8eb;
+    max-width: 100vw;
+    margin-inline: auto;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
   }
 
   .blog-index-hero {
