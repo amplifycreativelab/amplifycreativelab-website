@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir /b *.webp)"
+      "Bash(dir /b *.webp)",
+      "Bash(dir \"C:\\Users\\Stefano\\CODING\\Amplify scratch\\public\\images\\portfolio\\product\" /b)",
+      "Bash(ren \"Product-Photography_16.webp\" \"roam-whisky-box-open-front.webp\")"
     ],
     "deny": [],
     "ask": []
