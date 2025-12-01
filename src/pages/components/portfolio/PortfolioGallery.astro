@@ -95,17 +95,26 @@ const eventFiles = [
 const familyFiles = [
   "family-beach-lookout-sunset-portrait-perth.webp",
   "couple-heart-hands-sunset-silhouette-perth.webp",
+  "toddler-painting-activity-yellow-smock.webp",
+  "three-generations-women-perth-skyline-view.webp",
+  "baby-playing-vintage-piano-outdoors-perth.webp",
+  "mother-daughter-portrait-south-perth-foreshore.webp",
+  "playful-girl-pink-dress-funny-face.webp",
+  "daughters-kissing-mother-cheek-perth-skyline.webp",
+  "women-family-portrait-sunset-river-perth.webp",
+  "toddler-reaching-cupcakes-birthday-party-perth.webp",
   "woman-profile-golden-hour-beach-perth.webp",
   "couple-champagne-celebration-sunset-beach-perth.webp",
   "group-champagne-toast-beach-party-perth.webp",
   "fun-family-poses-sunset-beach-perth.webp",
   "mother-kissing-daughter-beach-deck-perth.webp",
-  "romantic-couple-close-up-beach-sunset-perth.webp",
+  
   "group-beach-portrait-golden-hour-perth.webp",
   "couple-silhouette-flowing-dress-sunset-perth.webp",
   "bridal-portrait-veil-bougainvillea-perth.webp",
   "groom-lifting-bride-veil-candid-perth.webp",
   "romantic-wedding-couple-garden-perth.webp",
+  "couple-pouring-sand-jar-beach-ceremony-perth.webp",
   "sisters-park-picnic-family-photography-perth.webp",
   "mother-daughter-outdoor-portrait-perth.webp",
   "wedding-cake-cutting-native-flowers-perth.webp",
@@ -116,34 +125,28 @@ const familyFiles = [
   "family-portrait-autumn-leaves-outdoor-perth.webp",
   "bride-groom-kissing-bubbles-wedding-perth.webp",
   "mother-baby-candid-autumn-flowers-perth.webp",
-  "toddler-painting-activity-yellow-smock.webp",
-  "three-generations-women-perth-skyline-view.webp",
-  "baby-playing-vintage-piano-outdoors-perth.webp",
-  "mother-daughter-portrait-south-perth-foreshore.webp",
-  "playful-girl-pink-dress-funny-face.webp",
-  "daughters-kissing-mother-cheek-perth-skyline.webp",
-  "women-family-portrait-sunset-river-perth.webp",
-  "toddler-reaching-cupcakes-birthday-party-perth.webp",
+  
   "kids-eating-cake-icing-tiger-face-paint-perth.webp",
   "candid-birthday-girl-eating-cake-messy-face.webp",
   "family-birthday-cake-celebration-home-perth.webp",
   "girls-butterfly-face-paint-balloons-party-perth.webp",
   "champagne-toast-beach-celebration-close-up.webp",
   "kids-pinata-party-game-action-shot-perth.webp",
+  "romantic-couple-close-up-beach-sunset-perth.webp",
   "childrens-party-entertainer-giant-bubbles-perth.webp",
   "toddler-making-giant-bubbles-with-entertainer.webp"
 ];
 
 const portraitFiles = [
-  "Portrait-Photography8.jpg",
-  "Portrait-Photography1.jpg",
-  "Portrait-Photography5.jpg",
-  "Portrait-Photography4.jpg",
-  "Portrait-Photography9.jpg",
-  "Portrait-Photography7.jpg",
-  "Portrait-Photography6.jpg",
-  "Portrait-Photography2.jpg",
-  "Portrait-Photography3.jpg",
+  "female-chef-professional-headshot-perth.webp",
+  "cultural-performer-child-portrait-gold-costume.webp",
+  "hospitality-staff-portrait-black-uniform-perth.webp",
+  "male-chef-studio-portrait-black-apron-perth.webp",
+  "black-and-white-actor-headshot-moody-perth.webp",
+  "corporate-business-portrait-man-laptop-perth.webp",
+  "candid-child-portrait-messy-eating-cake.webp",
+  "male-model-studio-portrait-grey-background-perth.webp",
+  "sports-portrait-tennis-player-wilson-bag-perth.webp",
 ];
 
 const productFiles = [
@@ -425,6 +428,8 @@ const familyAlts: Record<string, string> = {
     "Children's party entertainer fascinating kids with giant bubbles at a celebration in Perth.",
   "toddler-making-giant-bubbles-with-entertainer.webp":
     "Toddler learning to make giant bubbles with guidance from a party entertainer in Perth.",
+    "couple-pouring-sand-jar-beach-ceremony-perth.webp":
+    "Close-up detail of a couple's hands pouring sand into a glass jar during a symbolic beach ceremony at sunset in Perth.",
 };
 const productAlts: Record<string, string> = {
   "premium-red-gift-box-dark-red-background.webp":
@@ -494,7 +499,26 @@ const productAlts: Record<string, string> = {
   "red-gift-box-open-studio-shot.webp":
     "Open red presentation box styled on white backdrop – premium packaging product photography Perth.",
 };
-const portraitAlts: Record<string, string> = {};
+const portraitAlts: Record<string, string> = {
+  "female-chef-professional-headshot-perth.webp":
+    "Studio portrait of a smiling female chef wearing a white uniform and green apron against a black background.",
+  "cultural-performer-child-portrait-gold-costume.webp":
+    "A portrait of a young girl with a serious expression wearing a yellow sequin costume and gold headpiece.",
+  "hospitality-staff-portrait-black-uniform-perth.webp":
+    "Professional headshot of a female hospitality worker in a black chef's uniform with red piping posing with crossed arms.",
+  "male-chef-studio-portrait-black-apron-perth.webp":
+    "A smiling male chef wearing a white shirt and black apron posing confidently for a professional profile photo.",
+  "black-and-white-actor-headshot-moody-perth.webp":
+    "Artistic black and white portrait of a bearded man in a black shirt looking intensely at the camera.",
+  "corporate-business-portrait-man-laptop-perth.webp":
+    "Professional corporate headshot of a man in a grey sweater holding a laptop against a white background.",
+  "candid-child-portrait-messy-eating-cake.webp":
+    "A candid and funny portrait of a young girl with face paint laughing while eating cake with her hands.",
+  "male-model-studio-portrait-grey-background-perth.webp":
+    "A classic studio portrait of a man with a beard wearing a black button-up shirt against a grey background.",
+  "sports-portrait-tennis-player-wilson-bag-perth.webp":
+    "A sports portrait of a male tennis player carrying a Wilson equipment bag over his shoulder.",
+};
 
 const portfolioItems: PortfolioItem[] = [
   ...foodFiles.map((file, index) => ({
