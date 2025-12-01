@@ -3,7 +3,9 @@
     "allow": [
       "Bash(dir /b *.webp)",
       "Bash(dir \"C:\\Users\\Stefano\\CODING\\Amplify scratch\\public\\images\\portfolio\\product\" /b)",
-      "Bash(ren \"Product-Photography_16.webp\" \"roam-whisky-box-open-front.webp\")"
+      "Bash(ren \"Product-Photography_16.webp\" \"roam-whisky-box-open-front.webp\")",
+      "Bash(dir \"public\\images\\portfolio\\event\" /b)",
+      "Bash(ren \"Event-Photography3.webp\" \"young-girl-traditional-dress-perth-cultural-event.webp\")"
     ],
     "deny": [],
     "ask": []
