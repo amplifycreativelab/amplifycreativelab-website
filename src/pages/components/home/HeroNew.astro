@@ -1,0 +1,360 @@
+---
+// Replace these image paths with your own restaurant photos.
+// Each slide supports a WebP source with a JPEG/PNG fallback.
+const slides = [
+  {
+    webp: "/images/hero/Beef-Check-Ravioli_01-2048x2048.webp",
+    fallback: "/images/hero/public/images/portfolio/food/mussels-marinara-seafood-food-photography-perth.webp",
+    alt: "Restaurant interior with warm ambient lighting",
+  },
+  {
+    webp: "/images/hero/mussels-marinara-seafood-food-photography-perth.webp",
+    fallback: "/images/hero/restaurant-hero-2.jpg",
+    alt: "Plated restaurant dishes on a wooden table",
+  },
+  {
+    webp: "/images/hero/lobster-linguine-restaurant-food-photography-perth.webp",
+    fallback: "/images/hero/restaurant-hero-3.jpg",
+    alt: "Chef plating food in an open kitchen",
+  },
+];
+
+// Time each slide stays fully visible (ms)
+const SLIDE_INTERVAL = 1500;
+---
+
+<section class="hero-new" data-hero-new data-interval={SLIDE_INTERVAL}>
+  <div class="hero-new__media">
+    {slides.map((slide, index) => (
+      <picture
+        class:list={[
+          "hero-new__slide",
+          index === 0 && "hero-new__slide--active",
+        ]}
+        data-hero-slide
+        data-index={index}
+      >
+        <source srcset={slide.webp} type="image/webp" />
+        <img
+          src={slide.fallback}
+          alt={slide.alt}
+          loading={index === 0 ? "eager" : "lazy"}
+          decoding="async"
+        />
+      </picture>
+    ))}
+  </div>
+
+  <div class="hero-new__overlay"></div>
+
+  <div class="hero-new__inner">
+    <div class="hero-new__content">
+      <h1 class="hero-new__heading">Restaurant Photography</h1>
+      <p class="hero-new__subheading">Capturing the vibrancy of your brand</p>
+      <div class="hero-new__cta">
+        <a href="/portfolio/" class="hero-new__button">
+          See More Photos
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-new__dots" aria-label="Change hero background" role="tablist">
+    {slides.map((_, index) => (
+      <button
+        type="button"
+        class:list={[
+          "hero-new__dot",
+          index === 0 && "hero-new__dot--active",
+        ]}
+        data-hero-dot
+        role="tab"
+        aria-label={`Go to slide ${index + 1}`}
+        aria-selected={index === 0}
+      />
+    ))}
+  </div>
+
+  <script is:inline>
+    const script = document.currentScript;
+    const hero = script?.closest("[data-hero-new]");
+
+    if (hero) {
+      const slides = Array.from(
+        hero.querySelectorAll("[data-hero-slide]")
+      );
+      const dots = Array.from(hero.querySelectorAll("[data-hero-dot]"));
+
+      if (slides.length > 1) {
+        const intervalMs = Number(hero.dataset.interval) || 9000;
+        let index = 0;
+        let timer;
+
+        const goToSlide = (nextIndex) => {
+          const total = slides.length;
+          const newIndex = ((nextIndex % total) + total) % total;
+
+          if (newIndex === index) return;
+
+          slides[index].classList.remove("hero-new__slide--active");
+          dots[index]?.classList.remove("hero-new__dot--active");
+          dots[index]?.setAttribute("aria-selected", "false");
+
+          index = newIndex;
+
+          slides[index].classList.add("hero-new__slide--active");
+          dots[index]?.classList.add("hero-new__dot--active");
+          dots[index]?.setAttribute("aria-selected", "true");
+        };
+
+        const start = () => {
+          stop();
+          timer = setInterval(() => {
+            goToSlide(index + 1);
+          }, intervalMs);
+        };
+
+        const stop = () => {
+          if (timer) clearInterval(timer);
+        };
+
+        dots.forEach((dot, dotIndex) => {
+          dot.addEventListener("click", () => {
+            goToSlide(dotIndex);
+            start();
+          });
+        });
+
+        hero.addEventListener("mouseenter", stop);
+        hero.addEventListener("mouseleave", start);
+
+        start();
+      } else {
+        // If there's only one slide, hide the dots.
+        const dotsWrapper = hero.querySelector(".hero-new__dots");
+        if (dotsWrapper) {
+          dotsWrapper.style.display = "none";
+        }
+      }
+    }
+  </script>
+</section>
+
+<style>
+  .hero-new {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+    color: var(--color-bg, #fef8eb);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    isolation: isolate;
+  }
+
+  @media (min-width: 768px) {
+    .hero-new {
+      min-height: 100vh;
+    }
+  }
+
+  .hero-new__media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+  }
+
+  .hero-new__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition:
+      opacity 1.2s ease-in-out,
+      transform 13s ease-out;
+    transform: scale(1);
+    will-change: opacity, transform;
+    pointer-events: none;
+  }
+
+  .hero-new__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-new__slide--active {
+    opacity: 1;
+    transform: scale(1.05);
+    z-index: -1;
+  }
+
+  .hero-new__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.35),
+        rgba(0, 0, 0, 0.15)
+      );
+    mix-blend-mode: multiply;
+    opacity: 0.85;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .hero-new__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-inline: clamp(20px, 6vw, 80px);
+    padding-bottom: clamp(3rem, 10vh, 5rem);
+  }
+
+  .hero-new__content {
+    max-width: 700px;
+    text-align: center;
+    text-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.7),
+      0 0 1px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-new__heading {
+    font-family: var(--font-heading, var(--font-body));
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: clamp(2.1rem, 3vw + 1rem, 3.4rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-new__heading::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -0.7rem;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 200px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .hero-new__subheading {
+    margin: 1.8rem auto 0;
+    max-width: 40rem;
+    font-size: clamp(1rem, 1.1vw + 0.85rem, 1.4rem);
+    line-height: 1.5;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero-new__cta {
+    margin-top: 2.5rem;
+  }
+
+  .hero-new__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.6rem;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.94);
+    color: #111;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .hero-new__button:hover {
+    background-color: #ffffff;
+    color: #111;
+    transform: translateY(-1px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-new__button:focus-visible {
+    outline: 2px solid var(--color-accent, #24360f);
+    outline-offset: 3px;
+  }
+
+  .hero-new__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 1.8rem;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.45rem;
+    z-index: 2;
+  }
+
+  .hero-new__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.7;
+    transition:
+      opacity 0.2s ease,
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .hero-new__dot--active {
+    background-color: rgba(255, 255, 255, 0.98);
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  .hero-new__dot:focus-visible {
+    outline: 2px solid var(--color-accent, #24360f);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-new {
+      min-height: 70vh;
+    }
+
+    .hero-new__inner {
+      padding-inline: 20px;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-new__heading {
+      font-size: 2rem;
+    }
+
+    .hero-new__subheading {
+      font-size: 1rem;
+    }
+
+    .hero-new__cta {
+      margin-top: 2rem;
+    }
+
+    .hero-new__dots {
+      bottom: 1.3rem;
+    }
+  }
+</style>

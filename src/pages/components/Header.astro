@@ -1,7 +1,13 @@
 ---
 import { Image } from "astro:assets";
 
-const leftMenu = [
+interface MenuItem {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}
+
+const leftMenu: MenuItem[] = [
   { label: "PORTFOLIO", href: "/portfolio/" },
   {
     label: "SERVICES",
@@ -15,7 +21,7 @@ const leftMenu = [
   },
 ];
 
-const rightMenu = [
+const rightMenu: MenuItem[] = [
   { label: "BLOG", href: "/blog/" },
   { label: "FAQ", href: "/faq/" },
   { label: "CONTACTS", href: "/#work-with-us" },
@@ -53,7 +59,7 @@ const rightMenu = [
       <a href="/" aria-label="Amplify Creative Lab home">
         <Image
           src="/images/logo/logo-web.png"
-          alt="Best food photography Perth"
+          alt="Amplify Creative Lab – Perth photography and web design studio logo"
           width="2409"
           height="803"
           loading="eager"

@@ -7,6 +7,7 @@ import HomeIntro from "./components/home/HomeIntro.astro";
 import HomeServices from "./components/home/HomeServices.astro";
 import HomeBrandIntro from "./components/home/HomeBrandIntro.astro";
 import HomeHeroSlideshow from "./components/home/HomeHeroSlideshow.astro";
+import HeroNew from "./components/home/HeroNew.astro";
 
 const pageTitle = "Perth Food Photographer | AmplifyCreativeLab";
 const pageDescription =
@@ -15,8 +16,9 @@ const pageDescription =
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-home">
+    <HeroNew />
     <HomeHero />
-
+    
     <HomeIntro />
 
     <HomeServices />
