@@ -10,6 +10,7 @@ export interface BlogPost {
   category?: string;
   readTime?: string;
   featuredImage?: string;
+  featuredImageAlt?: string;
   tags?: string[];
   canonicalUrl?: string;
   featuredImagePosition?: string;
@@ -68,7 +69,7 @@ const encodedTitle = encodeURIComponent(title);
         <div class="blog-hero">
           <Image
             src={featuredImage}
-            alt={title}
+            alt={Astro.props.featuredImageAlt ?? title}
             class="blog-hero-image"
             loading="eager"
             decoding="async"

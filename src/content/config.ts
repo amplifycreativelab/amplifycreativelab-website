@@ -10,6 +10,7 @@ const blog = defineCollection({
     category: z.string().optional(),
     readTime: z.string().optional(),
     featuredImage: z.string().optional(),
+    featuredImageAlt: z.string().optional(),
     featuredImagePosition: z.string().default("center center"),
     tags: z.array(z.string()).default([]),
     canonicalUrl: z.string().url().optional(),
@@ -19,4 +20,3 @@ const blog = defineCollection({
 export const collections = {
   blog,
 };
-
