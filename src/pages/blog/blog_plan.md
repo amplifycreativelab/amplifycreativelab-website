@@ -550,13 +550,13 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
 **_Cluster: Revenue & Web Design (Around Article 1 & 4)_**
 ----------------------------------------------------------
 
-*   **_\[ \] How Much Should a Perth Restaurant Website Cost in 2025?_**
+*   **_\[x\] How Much Should a Perth Restaurant Website Cost in 2025?_**
     
-*   **_10 Essential Features Every Perth Café Website Needs_**
+*   **_\[x\] 10 Essential Features Every Perth Café Website Needs_**
     
-*   **_The Complete Guide to Mobile-First Menu Design_**
+*   **_\[x\] The Complete Guide to Mobile-First Menu Design_**
     
-*   **_Why Perth Restaurants Lose Bookings to Slow Sites_**
+*   **_\[x\] Why Perth Restaurants Lose Bookings to Slow Sites_**
     
 *   **_Restaurant SEO vs Paid Ads: Which Gets More Bookings?_**
     
