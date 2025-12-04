@@ -11,6 +11,7 @@ interface BlogPostSummary {
   readTime?: string;
   category?: string;
   featuredImage?: string;
+  tags?: string[];
 }
 
 const canonicalUrl = new URL(
@@ -29,6 +30,7 @@ const sortedPosts: BlogPostSummary[] = entries
     readTime: entry.data.readTime,
     category: entry.data.category,
     featuredImage: entry.data.featuredImage,
+    tags: entry.data.tags ?? [],
   }))
   .sort(
     (a, b) =>
@@ -37,6 +39,14 @@ const sortedPosts: BlogPostSummary[] = entries
 
 const categories = Array.from(
   new Set(sortedPosts.map((post) => post.category).filter(Boolean))
+).sort();
+
+const allTags = Array.from(
+  new Set(
+    sortedPosts
+      .flatMap((post) => post.tags ?? [])
+      .filter(Boolean)
+  )
 ).sort();
 ---
 
@@ -63,30 +73,53 @@ const categories = Array.from(
         </p>
       ) : (
         <>
-          {categories.length > 1 && (
-            <div class="blog-filters" aria-label="Filter articles by category">
-              <label for="category-filter" class="blog-filter-label">
-                Filter by topic
-              </label>
-              <select
-                id="category-filter"
-                class="blog-filter-select"
-                aria-controls="blog-grid"
-              >
-                <option value="all">All topics</option>
-                {categories.map((category) => (
-                  <option value={category}>{category}</option>
-                ))}
-              </select>
+          {(categories.length > 1 || allTags.length > 0) && (
+            <div class="blog-filters" aria-label="Filter articles by category and tag">
+              {categories.length > 1 && (
+                <div class="blog-filter-group">
+                  <label for="category-filter" class="blog-filter-label">
+                    Category
+                  </label>
+                  <select
+                    id="category-filter"
+                    class="blog-filter-select"
+                    aria-controls="blog-grid"
+                  >
+                    <option value="all">All topics</option>
+                    {categories.map((category) => (
+                      <option value={category}>{category}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
+              {allTags.length > 0 && (
+                <div class="blog-filter-group">
+                  <label for="tag-filter" class="blog-filter-label">
+                    Tag
+                  </label>
+                  <select
+                    id="tag-filter"
+                    class="blog-filter-select"
+                    aria-controls="blog-grid"
+                  >
+                    <option value="all">All tags</option>
+                    {allTags.map((tag) => (
+                      <option value={tag}>{tag}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </div>
           )}
 
           <div class="blog-grid" id="blog-grid">
-          {sortedPosts.map((post) => (
-            <article
-              class="blog-card"
-              data-category={post.category || "Uncategorized"}
-            >
+            {sortedPosts.map((post) => (
+              <article
+                class="blog-card"
+                data-category={post.category || "Uncategorized"}
+                data-tags={post.tags && post.tags.length ? post.tags.join("|") : ""}
+              >
               <a href={`/blog/${post.slug}/`} class="blog-card-link">
                 {post.featuredImage && (
                   <div class="blog-card-image-wrapper">
@@ -143,23 +176,35 @@ const categories = Array.from(
   </BaseLayout>
 
   <script>
-    const filterSelect = document.querySelector("#category-filter");
+    const categoryFilter = document.querySelector("#category-filter");
+    const tagFilter = document.querySelector("#tag-filter");
     const cards = document.querySelectorAll(".blog-card");
 
-    if (filterSelect && cards.length) {
-      filterSelect.addEventListener("change", () => {
-        const selected = filterSelect.value;
+    const applyFilters = () => {
+      const selectedCategory = categoryFilter ? categoryFilter.value : "all";
+      const selectedTag = tagFilter ? tagFilter.value : "all";
 
-        cards.forEach((card) => {
-          const category = card.getAttribute("data-category") || "";
+      cards.forEach((card) => {
+        const category = card.getAttribute("data-category") || "";
+        const tagsAttr = card.getAttribute("data-tags") || "";
+        const tags = tagsAttr ? tagsAttr.split("|") : [];
 
-          if (selected === "all" || category === selected) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
-        });
+        const categoryMatches =
+          selectedCategory === "all" || category === selectedCategory;
+        const tagMatches =
+          selectedTag === "all" || tags.includes(selectedTag);
+
+        card.style.display = categoryMatches && tagMatches ? "" : "none";
       });
+    };
+
+    if ((categoryFilter || tagFilter) && cards.length) {
+      if (categoryFilter) {
+        categoryFilter.addEventListener("change", applyFilters);
+      }
+      if (tagFilter) {
+        tagFilter.addEventListener("change", applyFilters);
+      }
     }
   </script>
 
@@ -223,13 +268,19 @@ const categories = Array.from(
   .blog-filters {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    gap: 0.75rem;
+    align-items: flex-end;
+    gap: 1rem;
     margin-bottom: 1.75rem;
     font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", sans-serif;
     font-size: 0.9rem;
     color: #24360f;
+  }
+
+  .blog-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .blog-filter-label {

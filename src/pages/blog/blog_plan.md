@@ -548,9 +548,11 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
 **_These articles should be treated as **supporting content** that internally links back to the four pillars and the relevant service pages._**
 
 **_Cluster: Revenue & Web Design (Around Article 1 & 4)_**
-----------------------------------------------------------
-
-*   **_\[x\] How Much Should a Perth Restaurant Website Cost in 2025?_**
+  ----------------------------------------------------------
+  
+  *   **_Recommended category for this cluster: Web Design (use Digital Marketing for SEO/ads-focused articles)._**
+  
+  *   **_\[x\] How Much Should a Perth Restaurant Website Cost in 2025?_**
     
 *   **_\[x\] 10 Essential Features Every Perth Café Website Needs_**
     
@@ -558,45 +560,50 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
     
 *   **_\[x\] Why Perth Restaurants Lose Bookings to Slow Sites_**
     
-*   **_Restaurant SEO vs Paid Ads: Which Gets More Bookings?_**
+*   **_\[x\] Restaurant SEO vs Paid Ads: Which Gets More Bookings?_**
     
-*   **_The Web Design Checklist for New Restaurants in WA_**
+*   **_\[x\] The Web Design Checklist for New Restaurants in WA_**
     
-*   **_10 Real Examples: Good vs Bad Restaurant Websites in Perth_**
+*   **_\[x\] 10 Real Examples: Good vs Bad Restaurant Websites in Perth_**
     
 
 **_Cluster: Food Photography & Visual Conversion (Around Article 2)_**
-----------------------------------------------------------------------
-
-*   **_Before & After: The Photography Mistakes Costing You Customers_**
+  ----------------------------------------------------------------------
+  
+  *   **_Recommended category for this cluster: Food Photography._**
+  
+  *   **_\[x\] Before & After: The Photography Mistakes Costing You Customers_**
     
-*   **_The Perth Food Photography Style Guide (2025 Trends)_**
+*   **_\[x\] The Perth Food Photography Style Guide (2025 Trends)_**
     
-*   **_How to Prepare Your Kitchen for a Successful Food Shoot_**
+*   **_\[x\] How to Prepare Your Kitchen for a Successful Food Shoot_**
     
-*   **_Menu Engineering: How Photography Boosts Dish Sales_**
+*   **_\[x\] Menu Engineering: How Photography Boosts Dish Sales_**
     
-*   **_How to Use Food Photography Across Website, Instagram & UberEats_**
+*   **_\[x\] How to Use Food Photography Across Website, Instagram & UberEats_**
     
-*   **_Natural Light vs Artificial Light: What Works for Perth Cafés?_**
+*   **_\[x\] Natural Light vs Artificial Light: What Works for Perth Cafés?_**
     
 
 **_Cluster: Event & Product Launch (Around Article 3)_**
 --------------------------------------------------------
 
-*   **_Why You Need a Photographer at Your Venue’s Opening Night_**
+*   **_\[x\] Why You Need a Photographer at Your Venue’s Opening Night_**
     
-*   **_How to Build a Pre-Launch Landing Page That Captures Emails_**
+*    **_\[x\] How to Build a Pre-Launch Landing Page That Captures Emails_**
     
 *   **_The Ultimate Guide to Packshot Photography for WA Brands_**
     
-*   **_Event Photography: The 90-Day Content Strategy Perth Venues Overlook_**
-    
-
-**_Cluster: Technical & SEO Authority (Around Article 4)_**
------------------------------------------------------------
-
-*   **_Core Web Vitals for Hospitality Websites Explained Simply_**
+  *   **_Event Photography: The 90-Day Content Strategy Perth Venues Overlook_**
+      
+  *   **_Recommended category for this cluster: Product Photography or Event Photography (depending on emphasis)._**
+  
+  **_Cluster: Technical & SEO Authority (Around Article 4)_**
+  -----------------------------------------------------------
+  
+  *   **_Recommended category for this cluster: Performance (or Web Design when discussing build choices)._**
+  
+  *   **_Core Web Vitals for Hospitality Websites Explained Simply_**
     
 *   **_Astro vs WordPress for Hospitality Websites: A Perth-Focused Comparison_**
     
@@ -625,12 +632,15 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
 *   **_Hospitality Marketing Trends in Western Australia_**
     
 *   **_The Perth Restaurant Digital Checklist (Annual Edition)_**
-    
-
-**_Cluster: Case Studies (Once Available)_**
---------------------------------------------
-
-*   **_Case Study: How a Menu Redesign Increased Bookings by X%_**
+      
+  *   **_Recommended category for this cluster: Digital Marketing._**
+  
+  **_Cluster: Case Studies (Once Available)_**
+  --------------------------------------------
+  
+  *   **_Recommended category: Match the underlying topic (Web Design, Food Photography, Product Photography, Event Photography, Digital Marketing, or Performance)._**
+  
+  *   **_Case Study: How a Menu Redesign Increased Bookings by X%_**
     
 *   **_Case Study: Before & After Food Photography for a Perth Café_**
     
@@ -846,23 +856,19 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
     
 *   **_**_**Category** → category_**_**
     
-    *   **_**_Suggested categories:_**_**
-        
-        *   **_**_Food Photography_**_**
-            
-        *   **_**_Web Design_**_**
-            
-        *   **_**_Product Photography_**_**
-            
-        *   **_**_Event Photography_**_**
-            
-        *   **_**_Branding_**_**
-            
-        *   **_**_Performance_**_**
-            
-        *   **_**_Local SEO_**_**
-            
-        *   **_**_Case Study_**_**
+    *   **_**_Suggested categories (choose one per article):_**_**
+          
+          *   **_**_Web Design_**_**
+              
+          *   **_**_Food Photography_**_**
+              
+          *   **_**_Product Photography_**_**
+              
+          *   **_**_Event Photography_**_**
+              
+          *   **_**_Digital Marketing_**_**
+              
+          *   **_**_Performance_**_**
             
 *   **_**_**Read Time** → readTime such as "6 min read" or "8 min read"._**_**
     
@@ -870,7 +876,7 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
     
 *   **_**_**Tags** → tags array mixing topic + intent + location, for example:_**_**
     
-    *   **_**_\["Restaurant Web Design", "Mobile Menus", "Perth"\]_**_**
+      *   **_**_\["Restaurant Web Design", "Mobile Menus", "Perth Hospitality"\]_**_**
         
     *   **_**_\["Food Photography", "Restaurant Marketing", "Perth Cafes"\]_**_**
         
