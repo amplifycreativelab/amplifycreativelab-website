@@ -1,29 +1,46 @@
 ---
-// Replace these image paths with your own restaurant photos.
-// Each slide supports a WebP source with a JPEG/PNG fallback.
 const slides = [
   {
     webp: "/images/hero/Beef-Check-Ravioli_01-2048x2048.webp",
     fallback: "/images/hero/public/images/portfolio/food/mussels-marinara-seafood-food-photography-perth.webp",
     alt: "Restaurant interior with warm ambient lighting",
+    heading: "Restaurant Photography",
+    subheading: "Capturing the vibrancy of your brand",
+    buttonLabel: "See More Photos",
+    buttonHref: "/portfolio/",
   },
   {
     webp: "/images/hero/mussels-marinara-seafood-food-photography-perth.webp",
     fallback: "/images/hero/restaurant-hero-2.jpg",
     alt: "Plated restaurant dishes on a wooden table",
+    heading: "Menu & Venue Storytelling",
+    subheading: "Show guests what makes your dishes unforgettable before they arrive.",
+    buttonLabel: "View Restaurant Work",
+    buttonHref: "/portfolio/restaurant-photography/",
   },
   {
     webp: "/images/hero/lobster-linguine-restaurant-food-photography-perth.webp",
     fallback: "/images/hero/restaurant-hero-3.jpg",
     alt: "Chef plating food in an open kitchen",
+    heading: "Photography For Hospitality Brands",
+    subheading: "From launch campaigns to evergreen imagery, build a library you can use everywhere.",
+    buttonLabel: "Plan Your Shoot",
+    buttonHref: "/contact/",
   },
 ];
 
 // Time each slide stays fully visible (ms)
-const SLIDE_INTERVAL = 1500;
+const SLIDE_INTERVAL = 1800;
+// Shorter delay before the very first auto-advance (ms)
+const INITIAL_SLIDE_DELAY = 150;
 ---
 
-<section class="hero-new" data-hero-new data-interval={SLIDE_INTERVAL}>
+<section
+  class="hero-new"
+  data-hero-new
+  data-interval={SLIDE_INTERVAL}
+  data-initial-delay={INITIAL_SLIDE_DELAY}
+>
   <div class="hero-new__media">
     {slides.map((slide, index) => (
       <picture
@@ -49,13 +66,25 @@ const SLIDE_INTERVAL = 1500;
 
   <div class="hero-new__inner">
     <div class="hero-new__content">
-      <h1 class="hero-new__heading">Restaurant Photography</h1>
-      <p class="hero-new__subheading">Capturing the vibrancy of your brand</p>
-      <div class="hero-new__cta">
-        <a href="/portfolio/" class="hero-new__button">
-          See More Photos
-        </a>
-      </div>
+      {slides.map((slide, index) => (
+        <div
+          class:list={[
+            "hero-new__panel",
+            index === 0 && "hero-new__panel--active",
+          ]}
+          data-hero-panel
+          data-index={index}
+          aria-hidden={index === 0 ? "false" : "true"}
+        >
+          <h1 class="hero-new__heading">{slide.heading}</h1>
+          <p class="hero-new__subheading">{slide.subheading}</p>
+          <div class="hero-new__cta">
+            <a href={slide.buttonHref} class="hero-new__button">
+              {slide.buttonLabel}
+            </a>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
@@ -84,11 +113,17 @@ const SLIDE_INTERVAL = 1500;
         hero.querySelectorAll("[data-hero-slide]")
       );
       const dots = Array.from(hero.querySelectorAll("[data-hero-dot]"));
+      const panels = Array.from(hero.querySelectorAll("[data-hero-panel]"));
 
       if (slides.length > 1) {
         const intervalMs = Number(hero.dataset.interval) || 9000;
+        const initialDelay =
+          Number(hero.dataset.initialDelay) || Math.min(intervalMs, 1000);
+
         let index = 0;
         let timer;
+        let initialTimeout;
+        let hasStarted = false;
 
         const goToSlide = (nextIndex) => {
           const total = slides.length;
@@ -99,36 +134,80 @@ const SLIDE_INTERVAL = 1500;
           slides[index].classList.remove("hero-new__slide--active");
           dots[index]?.classList.remove("hero-new__dot--active");
           dots[index]?.setAttribute("aria-selected", "false");
+          if (panels[index]) {
+            panels[index].classList.remove("hero-new__panel--active");
+            panels[index].setAttribute("aria-hidden", "true");
+          }
 
           index = newIndex;
 
           slides[index].classList.add("hero-new__slide--active");
           dots[index]?.classList.add("hero-new__dot--active");
           dots[index]?.setAttribute("aria-selected", "true");
+          if (panels[index]) {
+            panels[index].classList.add("hero-new__panel--active");
+            panels[index].setAttribute("aria-hidden", "false");
+          }
+        };
+
+        const clearInitial = () => {
+          if (initialTimeout) {
+            clearTimeout(initialTimeout);
+            initialTimeout = undefined;
+          }
+        };
+
+        const stop = () => {
+          if (timer) {
+            clearInterval(timer);
+            timer = undefined;
+          }
         };
 
         const start = () => {
+          clearInitial();
           stop();
           timer = setInterval(() => {
             goToSlide(index + 1);
           }, intervalMs);
+          hasStarted = true;
         };
 
-        const stop = () => {
-          if (timer) clearInterval(timer);
+        const scheduleInitial = () => {
+          if (hasStarted) {
+            start();
+            return;
+          }
+
+          clearInitial();
+          initialTimeout = setTimeout(() => {
+            goToSlide(index + 1);
+            start();
+          }, initialDelay);
         };
 
         dots.forEach((dot, dotIndex) => {
           dot.addEventListener("click", () => {
+            clearInitial();
             goToSlide(dotIndex);
             start();
           });
         });
 
-        hero.addEventListener("mouseenter", stop);
-        hero.addEventListener("mouseleave", start);
+        hero.addEventListener("mouseenter", () => {
+          stop();
+          clearInitial();
+        });
 
-        start();
+        hero.addEventListener("mouseleave", () => {
+          if (hasStarted) {
+            start();
+          } else {
+            scheduleInitial();
+          }
+        });
+
+        scheduleInitial();
       } else {
         // If there's only one slide, hide the dots.
         const dotsWrapper = hero.querySelector(".hero-new__dots");
@@ -144,7 +223,7 @@ const SLIDE_INTERVAL = 1500;
   .hero-new {
     position: relative;
     width: 100%;
-    min-height: 70vh;
+    min-height: 60vh;
     color: var(--color-bg, #fef8eb);
     overflow: hidden;
     display: flex;
@@ -171,7 +250,7 @@ const SLIDE_INTERVAL = 1500;
     inset: 0;
     opacity: 0;
     transition:
-      opacity 1.2s ease-in-out,
+      opacity 1s ease-in-out,
       transform 13s ease-out;
     transform: scale(1);
     will-change: opacity, transform;
@@ -222,6 +301,14 @@ const SLIDE_INTERVAL = 1500;
     text-shadow:
       0 10px 30px rgba(0, 0, 0, 0.7),
       0 0 1px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-new__panel {
+    display: none;
+  }
+
+  .hero-new__panel--active {
+    display: block;
   }
 
   .hero-new__heading {

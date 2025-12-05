@@ -627,11 +627,11 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
     
 *   **_\[x\] How to Generate More Reviews for Your Restaurant, Ethically_**
     
-*   **_The Best Perth Suburbs for New Hospitality Venues_**
+*   **_\[x\] The Best Perth Suburbs for New Hospitality Venues_**
     
-*   **_Hospitality Marketing Trends in Western Australia_**
+*   **_\[x\] Hospitality Marketing Trends in Western Australia_**
     
-*   **_The Perth Restaurant Digital Checklist (Annual Edition)_**
+*   **_\[x\] The Perth Restaurant Digital Checklist (Annual Edition)_**
       
   *   **_Recommended category for this cluster: Digital Marketing._**
   
@@ -640,13 +640,13 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
   
   *   **_Recommended category: Match the underlying topic (Web Design, Food Photography, Product Photography, Event Photography, Digital Marketing, or Performance)._**
   
-  *   **_Case Study: How a Menu Redesign Increased Bookings by X%_**
+  *   **_\[x\] Case Study: How a Menu Redesign Increased Bookings by X%_**
     
-*   **_Case Study: Before & After Food Photography for a Perth Café_**
+*   **_\[x\] Case Study: Before & After Food Photography for a Perth Café_**
     
-*   **_Case Study: Launch Marketing for a WA Beverage Brand_**
+*   **_\[x\] Case Study: Launch Marketing for a WA Beverage Brand_**
     
-*   **_Case Study: Web Speed Optimization for a Fremantle Restaurant_**
+*   **_Case Study: Web Speed Optimization for a  Restaurant in Success_**
     
 
 **_🆕 Cluster: Platform Domination (High Intent)_**
