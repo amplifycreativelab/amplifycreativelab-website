@@ -16,7 +16,7 @@ interface Props {
   groups: FaqGroup[];
 }
 
-const { groups } = Astro.props as Props;
+const { groups = [] } = Astro.props as Props;
 ---
 
 <section class="faq-page" aria-labelledby="faq-page-heading">

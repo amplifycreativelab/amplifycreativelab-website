@@ -646,7 +646,7 @@ GLOBAL SEO & STYLE GUIDELINES (For Developers/Writers)
     
 *   **_\[x\] Case Study: Launch Marketing for a WA Beverage Brand_**
     
-*   **_Case Study: Web Speed Optimization for a  Restaurant in Success_**
+*   **_\[x\] Case Study: Web Speed Optimization for a  Restaurant in Success_**
     
 
 **_🆕 Cluster: Platform Domination (High Intent)_**
