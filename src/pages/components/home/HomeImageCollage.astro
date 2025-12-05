@@ -1,0 +1,229 @@
+---
+import { Image } from "astro:assets";
+
+// Images
+import foodVertical from "../../../assets/images/home/food-photography-perth-768.jpg";
+import contentVertical from "../../../assets/images/home/content-creation-perth-768.jpg";
+import portraitVertical from "../../../assets/images/home/portrait-photography-perth-768.jpg";
+import musselsWide from "../../../assets/images/home/mussels-2560x1025.jpg";
+import orecchietteWide from "../../../assets/images/home/orecchiette-2560x1025.jpg";
+import weddingWide from "../../../assets/images/home/wedding-2560x1025.jpg";
+import eventWide from "../../../assets/images/perth-event-photography/event.jpg";
+
+const galleryItems = [
+  // ROW 1
+  {
+    src: foodVertical,
+    alt: "Hero food photography of a plated dish",
+    layout: "tall", 
+  },
+  {
+    src: musselsWide,
+    alt: "Overhead shot of mussels in a rustic pan",
+    layout: "wide", 
+  },
+  
+  // ROW 2 (Wide then Tall)
+  {
+    src: weddingWide,
+    alt: "Candid moment from a wedding reception",
+    layout: "wide",
+  },
+  {
+    src: contentVertical,
+    alt: "Product and packaging photography",
+    layout: "tall",
+  },
+
+  // ROW 3
+  {
+    src: portraitVertical,
+    alt: "Portrait photography with soft light",
+    layout: "tall",
+  },
+  {
+    src: orecchietteWide,
+    alt: "Close-up of orecchiette pasta",
+    layout: "wide",
+  },
+  
+  // ROW 4
+  {
+    src: eventWide,
+    alt: "Guests mingling at a styled event",
+    layout: "full",
+  },
+];
+---
+
+<section class="gallery-section">
+  <div class="gallery-inner">
+    
+    <header class="gallery-header">
+      <div class="header-content">
+        <span class="eyebrow">Selected Work</span>
+        <h2>Visuals that build your brand.</h2>
+        <p>
+          From styled food shoots to candid event coverage, we create imagery 
+          that stops the scroll.
+        </p>
+      </div>
+      <a href="/portfolio" class="view-all-link">View Full Portfolio &rarr;</a>
+    </header>
+
+    <div class="bento-grid">
+      {galleryItems.map((item) => (
+        <figure class={`bento-item type-${item.layout}`}>
+          <Image
+            src={item.src}
+            alt={item.alt}
+            widths={[400, 800, 1200]}
+            sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 33vw"
+            class="bento-image"
+          />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* --- BASE STYLES --- */
+  .gallery-section {
+    padding: clamp(3rem, 5vw, 5rem) 1.5rem;
+    background: var(--color-page-bg, #fef8eb);
+  }
+
+  .gallery-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* --- HEADER --- */
+  .gallery-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+
+  .header-content { max-width: 600px; }
+
+  .eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #93897e;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .gallery-header h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+    color: #1a1a1a;
+  }
+
+  .gallery-header p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #555;
+    margin: 0;
+  }
+
+  .view-all-link {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-bottom: 1px solid currentColor;
+    white-space: nowrap;
+    margin-bottom: 5px;
+  }
+
+  /* --- DESKTOP GRID --- */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 350px; /* Large, luxurious rows on desktop */
+    gap: 16px;
+    grid-auto-flow: dense;
+  }
+
+  .bento-item {
+    margin: 0;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e0e0e0;
+  }
+
+  .bento-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .bento-item:hover .bento-image {
+    transform: scale(1.05);
+  }
+
+  /* Desktop Spans */
+  .type-wide { grid-column: span 2; }
+  .type-tall { grid-column: span 1; }
+  .type-full { grid-column: 1 / -1; }
+
+  /* --- TABLET (Simplifying) --- */
+  @media (max-width: 900px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 300px;
+    }
+    .type-wide, .type-tall { grid-column: span 1; }
+    .type-full { grid-column: span 2; }
+  }
+
+  /* --- MOBILE (The "Instagram" Grid) --- */
+  @media (max-width: 600px) {
+    .gallery-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .view-all-link { display: none; }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+      grid-auto-rows: 160px; /* Thumbnail height */
+      gap: 10px;
+      padding-bottom: 0;
+    }
+
+    /* Reset ALL spans to 1x1 squares */
+    .type-wide, .type-tall { 
+      grid-column: span 1; 
+    }
+
+    /* Keep the feature image full width */
+    .type-full { 
+      grid-column: 1 / -1; 
+      height: 220px; 
+    }
+    
+    .bento-item {
+      /* --- THIS IS THE MISSING FIX --- */
+      min-width: 0;  /* 1. Allows the box to shrink smaller than the image inside it */
+      width: 100%;   /* 2. Ensures it fills the grid cell exactly */
+      /* ------------------------------- */
+      
+      border-radius: 8px;
+    }
+  }
+</style>
