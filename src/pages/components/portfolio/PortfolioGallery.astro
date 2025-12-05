@@ -1,9 +1,51 @@
 ---
+import { Image } from "astro:assets";
+
 interface PortfolioItem {
   src: string;
   alt: string;
   title: string;
   category: string;
+  image?: any;
+}
+
+// Eagerly import all portfolio images from src/assets so Astro can
+// optimize them while still letting us group them by category.
+const portfolioImageModules = import.meta.glob(
+  "../../../assets/images/portfolio/**/*.{webp,avif,jpg,jpeg,png}",
+  { eager: true },
+);
+
+function getPortfolioImage(folder: string, file: string) {
+  const key = `../../../assets/images/portfolio/${folder}/${file}`;
+  const mod = (portfolioImageModules as Record<string, any>)[key];
+
+  if (!mod) return undefined;
+
+  // For asset imports the metadata is usually the default export.
+  return mod.default ?? mod;
+}
+
+function createPortfolioItems(
+  folder: string,
+  category: string,
+  files: string[],
+  alts: Record<string, string>,
+  title: string,
+  altPrefix: string,
+): PortfolioItem[] {
+  return files.map((file, index) => {
+    const image = getPortfolioImage(folder, file);
+    const src = (image && image.src) || `/images/portfolio/${folder}/${file}`;
+
+    return {
+      src,
+      alt: alts[file] || `${altPrefix} ${index + 1}`,
+      title,
+      category,
+      image,
+    };
+  });
 }
 
 const foodFiles = [
@@ -516,39 +558,49 @@ const portraitAlts: Record<string, string> = {
     "A classic studio portrait of a man with a beard wearing a black button-up shirt against a grey background.",
   "sports-portrait-tennis-player-wilson-bag-perth.webp":
     "A sports portrait of a male tennis player carrying a Wilson equipment bag over his shoulder.",
-};
+  };
 
 const portfolioItems: PortfolioItem[] = [
-  ...foodFiles.map((file, index) => ({
-    src: `/images/portfolio/food/${file}`,
-    alt: foodAlts[file] || `Food photography in Perth ${index + 1}`,
-    title: "Food Photography",
-    category: "food",
-  })),
-  ...eventFiles.map((file, index) => ({
-    src: `/images/portfolio/event/${file}`,
-    alt: eventAlts[file] || `Event photography in Perth ${index + 1}`,
-    title: "Event Photography",
-    category: "events",
-  })),
-  ...familyFiles.map((file, index) => ({
-    src: `/images/portfolio/family/${file}`,
-    alt: familyAlts[file] || `Family photography in Perth ${index + 1}`,
-    title: "Family Photography",
-    category: "family",
-  })),
-  ...productFiles.map((file, index) => ({
-    src: `/images/portfolio/product/${file}`,
-    alt: productAlts[file] || `Product photography in Perth ${index + 1}`,
-    title: "Product Photography",
-    category: "product",
-  })),
-  ...portraitFiles.map((file, index) => ({
-    src: `/images/portfolio/portrait/${file}`,
-    alt: portraitAlts[file] || `Portrait photography in Perth ${index + 1}`,
-    title: "Portrait Photography",
-    category: "portrait",
-  })),
+  ...createPortfolioItems(
+    "food",
+    "food",
+    foodFiles,
+    foodAlts,
+    "Food Photography",
+    "Food photography in Perth",
+  ),
+  ...createPortfolioItems(
+    "event",
+    "events",
+    eventFiles,
+    eventAlts,
+    "Event Photography",
+    "Event photography in Perth",
+  ),
+  ...createPortfolioItems(
+    "family",
+    "family",
+    familyFiles,
+    familyAlts,
+    "Family Photography",
+    "Family photography in Perth",
+  ),
+  ...createPortfolioItems(
+    "product",
+    "product",
+    productFiles,
+    productAlts,
+    "Product Photography",
+    "Product photography in Perth",
+  ),
+  ...createPortfolioItems(
+    "portrait",
+    "portrait",
+    portraitFiles,
+    portraitAlts,
+    "Portrait Photography",
+    "Portrait photography in Perth",
+  ),
 ];
 ---
 
@@ -562,31 +614,30 @@ const portfolioItems: PortfolioItem[] = [
       <button class="portfolio-filter" data-filter="product">Product</button>
       <button class="portfolio-filter" data-filter="portrait">Portrait</button>
     </div>
-    <div class="portfolio-grid">
-      {
-        portfolioItems.map((item, index) => (
-          <a
-            class="portfolio-item"
-            href="#"
-            data-index={index}
-            data-src={item.src}
-            data-alt={item.alt}
-            data-title={item.title}
-            data-category={item.category}
-          >
-            <figure class="portfolio-item-figure">
-              <img
-                src={item.src}
-                alt={item.alt}
-                loading="lazy"
-                decoding="async"
-                class="portfolio-item-image"
-              />
-              <figcaption class="portfolio-item-overlay">
-                <span class="portfolio-item-title">{item.title}</span>
-                <span class="portfolio-item-label">- view -</span>
-              </figcaption>
-            </figure>
+      <div class="portfolio-grid">
+        {
+          portfolioItems.map((item, index) => (
+            <a
+              class="portfolio-item"
+              href="#"
+              data-index={index}
+              data-alt={item.alt}
+              data-title={item.title}
+              data-category={item.category}
+            >
+              <figure class="portfolio-item-figure">
+                <Image
+                  src={item.image ?? item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="portfolio-item-image"
+                />
+                <figcaption class="portfolio-item-overlay">
+                  <span class="portfolio-item-title">{item.title}</span>
+                  <span class="portfolio-item-label">- view -</span>
+                </figcaption>
+              </figure>
           </a>
         ))
       }
