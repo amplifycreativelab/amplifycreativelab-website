@@ -8,6 +8,12 @@ const {
   contentTextColor,
 } = Astro.props;
 
+// Support both string URLs and optimized asset imports from src/assets
+// by resolving to a final string src for the <img>.
+// @ts-ignore - runtime type narrowing is sufficient here
+const resolvedImageSrc: string =
+  typeof imageSrc === "string" ? imageSrc : imageSrc?.src ?? "";
+
 const innerClass = `food-service__inner${reverse ? " food-service__inner--reverse" : ""}`;
 const sectionStyle = sectionBackground ? `background-color: ${sectionBackground};` : "";
 
@@ -22,7 +28,7 @@ const contentStyle = contentStyleParts.join(" ");
     <!-- Image -->
     <figure class="food-service__media">
       <img
-        src={imageSrc}
+        src={resolvedImageSrc}
         alt={imageAlt}
         loading="lazy"
         decoding="async"
@@ -170,7 +176,7 @@ const contentStyle = contentStyleParts.join(" ");
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .food-service {
-      padding: 50px 16px;
+      padding: 0px 0px;
     }
 
     .food-service__inner {
@@ -181,11 +187,12 @@ const contentStyle = contentStyleParts.join(" ");
     .food-service__content {
       max-width: 100%;
       flex-basis: 100%;
-      padding-left: 0;
+      
     }
 
     .food-service__content {
-      margin-top: 30px;
+
+      padding:30px 16px;
     }
 
     .food-service__title {
@@ -196,7 +203,7 @@ const contentStyle = contentStyleParts.join(" ");
 
   @media (max-width: 600px) {
     .food-service {
-      padding: 40px 16px;
+      padding: 0px 0px;
     }
 
     .food-service__title {
@@ -207,5 +214,12 @@ const contentStyle = contentStyleParts.join(" ");
       font-size: 16px;
       line-height: 22px;
     }
+
+     .food-service__content {
+    
+      padding-bottom:20px
+    }
   }
+
+  
 </style>

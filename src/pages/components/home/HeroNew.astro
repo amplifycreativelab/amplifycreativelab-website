@@ -1,8 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import heroSlide1Fallback from "../../../assets/images/hero/mussels-marinara-seafood-food-photography-perth.webp";
+import heroSlide2Fallback from "../../../assets/images/hero/hero-banner.jpg";
+import heroSlide3Fallback from "../../../assets/images/hero/lobster-linguine-restaurant-food-photography-perth.webp";
+
 const slides = [
   {
     webp: "/images/hero/Beef-Check-Ravioli_01-2048x2048.webp",
-    fallback: "/images/hero/public/images/portfolio/food/mussels-marinara-seafood-food-photography-perth.webp",
+    fallback: heroSlide1Fallback,
     alt: "Restaurant interior with warm ambient lighting",
     heading: "Restaurant Photography",
     subheading: "Capturing the vibrancy of your brand",
@@ -11,7 +16,7 @@ const slides = [
   },
   {
     webp: "/images/hero/mussels-marinara-seafood-food-photography-perth.webp",
-    fallback: "/images/hero/restaurant-hero-2.jpg",
+    fallback: heroSlide2Fallback,
     alt: "Plated restaurant dishes on a wooden table",
     heading: "Menu & Venue Storytelling",
     subheading: "Show guests what makes your dishes unforgettable before they arrive.",
@@ -20,7 +25,7 @@ const slides = [
   },
   {
     webp: "/images/hero/lobster-linguine-restaurant-food-photography-perth.webp",
-    fallback: "/images/hero/restaurant-hero-3.jpg",
+    fallback: heroSlide3Fallback,
     alt: "Chef plating food in an open kitchen",
     heading: "Photography For Hospitality Brands",
     subheading: "From launch campaigns to evergreen imagery, build a library you can use everywhere.",
@@ -52,11 +57,11 @@ const INITIAL_SLIDE_DELAY = 200;
         data-index={index}
       >
         <source srcset={slide.webp} type="image/webp" />
-        <img
+        <Image
           src={slide.fallback}
           alt={slide.alt}
-          width={index === 0 ? "1920" : undefined}
-          height={index === 0 ? "1080" : undefined}
+          width={index === 0 ? 1920 : undefined}
+          height={index === 0 ? 1080 : undefined}
           fetchpriority={index === 0 ? "high" : undefined}
           loading={index === 0 ? "eager" : "lazy"}
           decoding="async"

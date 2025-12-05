@@ -8,6 +8,12 @@ const {
   contentTextColor,
 } = Astro.props;
 
+// Support both optimized asset imports (objects from src/assets)
+// and plain string paths by resolving to a string URL.
+// @ts-ignore - runtime check is sufficient here
+const resolvedImageSrc: string =
+  typeof imageSrc === "string" ? imageSrc : imageSrc?.src ?? "";
+
 const innerClass = `event-service__inner${reverse ? " event-service__inner--reverse" : ""}`;
 const sectionStyle = sectionBackground ? `background-color: ${sectionBackground};` : "";
 
@@ -22,7 +28,7 @@ const contentStyle = contentStyleParts.join(" ");
     <!-- Image -->
     <figure class="event-service__media">
       <img
-        src={imageSrc}
+        src={resolvedImageSrc}
         alt={imageAlt}
         loading="lazy"
         decoding="async"

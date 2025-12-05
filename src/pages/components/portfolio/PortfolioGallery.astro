@@ -177,7 +177,7 @@ const productFiles = [
   "open-white-magnetic-box-matte-two-compartments.webp",
   "whipper-snapper-distillery-box-display.webp",
   "closed-green-rectangular-box-matte.webp",
-  "open-green-magnetic-box-matte-two-compartments.webp",
+  
   "closed-black-rectangular-box-matte-clean-minimal.webp",
   "red-gift-box-studio-lighting.webp",
   "roam-whisky-box-open-front.webp",
@@ -486,8 +486,6 @@ const productAlts: Record<string, string> = {
     "Whipper Snapper Distillery premium gift box displayed with multiple black boxes – Perth commercial photography.",
   "closed-green-rectangular-box-matte.webp":
     "Closed green rectangular gift box with solid matte finish – clean studio product photography Perth.",
-  "open-green-magnetic-box-matte-two-compartments.webp":
-    "Open green magnetic box with matching interior and two compartments – matte studio product photography Perth.",
   "closed-black-rectangular-box-matte-clean-minimal.webp":
     "Closed black rectangular gift box with matte finish – clean and minimal studio product photography Perth.",
   "red-gift-box-studio-lighting.webp":
@@ -620,8 +618,8 @@ const portfolioItems: PortfolioItem[] = [
     <button
       class="portfolio-lightbox__nav portfolio-lightbox__nav--prev"
       type="button"
-      aria-label="Previous image"><</button
-    >
+      aria-label="Previous image"
+    >&lt;</button>
 
     <figure class="portfolio-lightbox__figure">
       <img
@@ -640,8 +638,8 @@ const portfolioItems: PortfolioItem[] = [
     <button
       class="portfolio-lightbox__nav portfolio-lightbox__nav--next"
       type="button"
-      aria-label="Next image">></button
-    >
+      aria-label="Next image"
+    >&gt;</button>
   </div>
 </section>
 
@@ -883,7 +881,7 @@ const portfolioItems: PortfolioItem[] = [
     letter-spacing: 0.12em;
     border: solid 3px #4a2e1c;
     background-color: transparent;
-    color: #4a2e1c;
+    color: #ffffff;
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 50px;
@@ -1101,4 +1099,23 @@ const portfolioItems: PortfolioItem[] = [
       height: 40px;
     }
   }
+
+ @media (max-width: 768px) {
+  .portfolio-filters {
+    flex-wrap: nowrap;          /* keep them on one line */
+    justify-content: space-between;
+    gap: 0.5rem;                /* smaller gaps */
+  }
+
+  .portfolio-filter {
+    flex: 1 1 0;                /* let them shrink to share one row */
+    max-width: none;            /* remove the 150px cap */
+    padding: clamp(6px, 1.2vw + 2px, 8px)
+             clamp(6px, 2vw + 4px, 10px);
+    font-size: clamp(0.7rem, 2.3vw, 0.8rem);
+    letter-spacing: 0.08em;     /* slightly less spacing to save width */
+    white-space: nowrap;        /* keep label on one line */
+    text-align: center;
+  }
+}
 </style>
