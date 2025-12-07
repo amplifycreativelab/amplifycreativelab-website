@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import heroSlide1Fallback from "../../../assets/images/hero/mussels-marinara-seafood-food-photography-perth.webp";
-import heroSlide2Fallback from "../../../assets/images/hero/hero-banner.jpg";
-import heroSlide3Fallback from "../../../assets/images/hero/lobster-linguine-restaurant-food-photography-perth.webp";
+import heroSlide1Fallback from "../../../assets/images/hero/Beef.webp";
+import heroSlide2Fallback from "../../../assets/images/hero/Mussels.webp";
+import heroSlide3Fallback from "../../../assets/images/hero/Crab.webp";
 
 const slides = [
   {
-    webp: "/images/hero/Beef-Check-Ravioli_01-2048x2048.webp",
+    webp: heroSlide1Fallback.src,
     fallback: heroSlide1Fallback,
     alt: "Restaurant interior with warm ambient lighting",
     heading: "Commercial Food Photography",
@@ -15,7 +15,7 @@ const slides = [
     buttonHref: "/portfolio/",
   },
   {
-    webp: "/images/hero/mussels-marinara-seafood-food-photography-perth.webp",
+    webp: heroSlide2Fallback.src,
     fallback: heroSlide2Fallback,
     alt: "Plated restaurant dishes on a wooden table",
     heading: "Elevate Your Menu",
@@ -24,7 +24,7 @@ const slides = [
     buttonHref: "/portfolio/restaurant-photography/",
   },
   {
-    webp: "/images/hero/lobster-linguine-restaurant-food-photography-perth.webp",
+    webp: heroSlide3Fallback.src,
     fallback: heroSlide3Fallback,
     alt: "Chef plating food in an open kitchen",
     heading: "Content That Converts",
