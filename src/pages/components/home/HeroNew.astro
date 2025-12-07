@@ -250,10 +250,8 @@ const INITIAL_SLIDE_DELAY = 200;
     inset: 0;
     opacity: 0;
     transition:
-      opacity 1s ease-in-out,
-      transform 13s ease-out;
-    transform: scale(1);
-    will-change: opacity, transform;
+      opacity 1s ease-in-out;
+    will-change: opacity;
     pointer-events: none;
   }
 
@@ -266,7 +264,6 @@ const INITIAL_SLIDE_DELAY = 200;
 
   .hero-new__slide--active {
     opacity: 1;
-    transform: scale(1.05);
     z-index: -1;
   }
 
