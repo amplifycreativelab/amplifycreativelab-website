@@ -1,7 +1,6 @@
 <footer class="site-footer">
   <div class="footer-main">
     <nav class="footer-col nav-col">
-      <p class="col-header">Explore</p>
       <ul class="nav-list">
         <li><a href="/">Home</a></li>
         <li><a href="/portfolio/">Portfolio</a></li>
@@ -262,8 +261,9 @@
       }
 
       .nav-list {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: flex-start;
+        text-align: left;
       }
 
       .footer-bottom {
