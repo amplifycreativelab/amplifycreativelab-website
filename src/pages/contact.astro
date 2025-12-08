@@ -27,10 +27,13 @@ const contactPageSchema = {
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <main class="page-contact">
+  <main class="page-contact" aria-labelledby="contact-page-title">
     <section class="contact-page-intro">
       <div class="contact-page-intro__inner">
-        <p>
+        <h1 id="contact-page-title" class="contact-page-title">
+          Contact Amplify Creative Lab in Perth, Western Australia
+        </h1>
+        <p class="contact-page-intro__body">
           Amplify Creative Lab is a Perth-based photography and web design
           studio specialising in food photography, product photography, event
           photography, and custom website development for hospitality venues,
@@ -39,13 +42,98 @@ const contactPageSchema = {
           within one business day.
         </p>
 
-        <p>Email: <a href="mailto:support@amplifycreativelab.com">support@amplifycreativelab.com</a></p>
-        <p>Based in Perth, Western Australia</p>
+        <div class="contact-page-intro__meta">
+          <p class="contact-page-intro__meta-item">
+            <strong>Email:</strong>
+            {" "}
+            <a href="mailto:support@amplifycreativelab.com">support@amplifycreativelab.com</a>
+          </p>
+          <p class="contact-page-intro__meta-item">
+            <strong>Location:</strong>
+            {" "}
+            Based in Perth, Western Australia
+          </p>
+        </div>
       </div>
     </section>
 
     <ContactForm />
   </main>
+
+  <style>
+    .page-contact {
+      background: var(--color-bg);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .contact-page-intro {
+      padding-block: clamp(2.25rem, 4vw, 3rem);
+      border-bottom: 1px solid rgba(21, 39, 5, 0.08);
+    }
+
+    .contact-page-intro__inner {
+      max-width: 900px;
+      margin-inline: auto;
+      padding-inline: clamp(
+        var(--container-pad-mobile),
+        5vw,
+        var(--container-pad-desktop)
+      );
+    }
+
+    .contact-page-title {
+      font-family: "Abril Fatface", system-ui, serif;
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      line-height: 1.1;
+      color: var(--color-heading);
+      margin: 0 0 1rem;
+    }
+
+    .contact-page-intro__body {
+      font-family: "Darker Grotesque", system-ui, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #24360f;
+      margin: 0 0 1rem;
+    }
+
+    .contact-page-intro__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-family: "Darker Grotesque", system-ui, sans-serif;
+      font-size: 1rem;
+      color: #24360f;
+    }
+
+    .contact-page-intro__meta-item {
+      margin: 0;
+    }
+
+    .contact-page-intro__meta a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.16em;
+      font-weight: 500;
+      color: inherit;
+    }
+
+    /* Let the image-backed contact section stretch to the footer
+       on taller viewports so there is no plain main background
+       showing between the form and footer. */
+    .page-contact .contact-section {
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .contact-page-intro__meta {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+    }
+  </style>
 
   <script type="application/ld+json">
     {JSON.stringify(contactPageSchema)}
