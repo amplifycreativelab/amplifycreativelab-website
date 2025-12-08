@@ -1,0 +1,53 @@
+---
+import BaseLayout from "./layouts/BaseLayout.astro";
+import ContactForm from "./components/ContactForm.astro";
+
+const pageTitle = "Contact Amplify Creative Lab | Perth Photography & Web";
+const pageDescription =
+  "Enquire about food, product, event photography or website design in Perth. Share a few details and we will respond within one business day.";
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://amplifycreativelab.com/#contact",
+  name: "Contact Amplify Creative Lab",
+  url: "https://amplifycreativelab.com/contact/",
+  description:
+    "Contact Amplify Creative Lab for food photography, product photography, event photography, and website design services in Perth, Western Australia.",
+  mainEntity: {
+    "@type": "Organization",
+    "@id": "https://amplifycreativelab.com/#organization",
+  },
+  contactOption: ["TollFree", "HearingImpairedSupported"],
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Perth, Western Australia",
+  },
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="page-contact">
+    <section class="contact-page-intro">
+      <div class="contact-page-intro__inner">
+        <p>
+          Amplify Creative Lab is a Perth-based photography and web design
+          studio specialising in food photography, product photography, event
+          photography, and custom website development for hospitality venues,
+          retail brands, and local businesses across Western Australia. Use the
+          form below to request a quote or ask a question &mdash; we reply
+          within one business day.
+        </p>
+
+        <p>Email: <a href="mailto:support@amplifycreativelab.com">support@amplifycreativelab.com</a></p>
+        <p>Based in Perth, Western Australia</p>
+      </div>
+    </section>
+
+    <ContactForm />
+  </main>
+
+  <script type="application/ld+json">
+    {JSON.stringify(contactPageSchema)}
+  </script>
+</BaseLayout>

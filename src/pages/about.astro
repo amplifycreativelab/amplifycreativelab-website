@@ -5,6 +5,23 @@ import { Image } from "astro:assets";
 const pageTitle = "About Amplify Creative Lab | Jojo & Stefano";
 const pageDescription =
   "Meet Jojo, Perth food and product photographer, and Stefano, web developer behind Amplify Creative Lab.";
+
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://amplifycreativelab.com/about/",
+  url: "https://amplifycreativelab.com/about/",
+  name: pageTitle,
+  description:
+    "Learn about Amplify Creative Lab, a Perth studio led by Jojo, a food, product and event photographer, and Stefano, a web developer and technical strategist.",
+  mainEntity: {
+    "@id": "https://amplifycreativelab.com/#organization",
+  },
+  about: [
+    { "@id": "https://amplifycreativelab.com/#person-jojo" },
+    { "@id": "https://amplifycreativelab.com/#person-stefano" },
+  ],
+};
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -130,7 +147,7 @@ const pageDescription =
           <p>
             If you&apos;d like to talk about a project,
             {" "}
-            <a href="/#work-with-us">reach out via our contact form</a>
+            <a href="/contact/">reach out via our contact form</a>
             {" "}
             and we&apos;ll reply with a practical, non-pushy recommendation.
           </p>
@@ -138,6 +155,10 @@ const pageDescription =
       </div>
     </section>
   </main>
+
+  <script type="application/ld+json">
+    {JSON.stringify(aboutPageSchema)}
+  </script>
 
   <style>
     .page-about {

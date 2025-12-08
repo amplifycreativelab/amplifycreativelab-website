@@ -134,7 +134,25 @@ const businessSchema = {
             provider: {
                 "@id": `${siteUrl}/#organization`,
             },
-            url: `${siteUrl}/website-development/`,
+            url: `${siteUrl}/perth-website-development/`,
+        },
+        {
+            "@type": "Person",
+            "@id": `${siteUrl}/#person-jojo`,
+            name: "Jojo",
+            jobTitle: "Food, product and event photographer",
+            worksFor: { "@id": `${siteUrl}/#organization` },
+            homeLocation: {
+                "@type": "Place",
+                name: "North Perth, Western Australia",
+            },
+        },
+        {
+            "@type": "Person",
+            "@id": `${siteUrl}/#person-stefano`,
+            name: "Stefano",
+            jobTitle: "Web developer and technical strategist",
+            worksFor: { "@id": `${siteUrl}/#organization` },
         },
     ],
 };

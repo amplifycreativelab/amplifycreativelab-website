@@ -37,7 +37,10 @@ const faqSchema = {
       url: "https://amplifycreativelab.com/perth-food-photography/",
       description:
         "Premium food photography for Perth restaurants, cafés, bars and hospitality brands, optimised for menus, websites, social media and delivery apps.",
-      areaServed: "Perth, Western Australia",
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Perth, Western Australia",
+      },
       provider: {
         "@id": "https://amplifycreativelab.com/#organization",
       },
