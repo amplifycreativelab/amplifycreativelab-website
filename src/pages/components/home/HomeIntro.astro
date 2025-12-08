@@ -1,70 +1,72 @@
 ---
+
 ---
 
 <section class="intro">
   <div class="intro-inner">
     <h1 class="intro-title">
-  We are a Perth-based creative studio specialising
-  in commercial photography, digital content, and
-  custom website design.
-</h1>
+      Amplify Creative Lab is a Perth-based creative studio specialising in
+      commercial photography, food photography, product photography, and custom
+      website design for hospitality, retail, and e-commerce brands. We help
+      businesses elevate their visual identity through professionally crafted
+      images, strategic content, and high-performance digital experiences.
+    </h1>
   </div>
 </section>
 
 <style>
   /* HOMEPAGE – INTRO HEADING (post-hero) */
-/* INTRO SECTION — container clone */
-.intro {
-  width: 100vw;
-  /* Elementor: --width: 100vw */
-  min-height: 30vh;
-  /* Elementor: --min-height: 30vh */
-  display: flex;
-  /* Elementor: --display: flex */
-  flex-direction: column;
-  /* Elementor: --flex-direction: column */
-  justify-content: center;
-  /* Elementor: --justify-content: center */
-  align-items: center;
-  /* Elementor: --align-items: center */
-  padding: 80px 0;
-  /* Elementor: top/bottom 70px, left/right 0 */
-  background: transparent;
-}
+  /* INTRO SECTION — container clone */
+  .intro {
+    width: 100vw;
+    /* Elementor: --width: 100vw */
+    min-height: 30vh;
+    /* Elementor: --min-height: 30vh */
+    display: flex;
+    /* Elementor: --display: flex */
+    flex-direction: column;
+    /* Elementor: --flex-direction: column */
+    justify-content: center;
+    /* Elementor: --justify-content: center */
+    align-items: center;
+    /* Elementor: --align-items: center */
+    
+    /* Elementor: top/bottom 70px, left/right 0 */
+    background: transparent;
+  }
 
-/* keeps content from stretching too wide, like Elementor content-width */
-.intro-inner {
-  width: min(100%, var(--container-max));
-  /* was 1490px */
-  margin: 0 auto;
-  padding: 0 var(--container-pad-desktop);
-  /* was 0 90px */
-  text-align: center;
-  /* visually matches centered widget */
-}
-
-/* INTRO HEADING — exact Elementor typography */
-.intro-title {
-  font-family: var(--font-heading);
-  /* was "Abril Fatface" */
-   font-size: clamp(1.3rem, 4vw, 3.4375rem);
-  font-weight: 100;
-  line-height: normal;
-  color: var(--color-heading);
-  /* was #152705 */
-  margin: 0;
-}
-
-/* Mobile spacing */
-@media (max-width: 768px) {
+  /* keeps content from stretching too wide, like Elementor content-width */
   .intro-inner {
-    padding: var(--container-pad-tablet) var(--container-pad-mobile);
-    /* was 40px 20px */
-  }
-
-  .intro-title {
+   
+    /* was 1490px */
+    margin: 0;
+    padding: 20px 70px;
+    /* was 0 90px */
     text-align: center;
+    /* visually matches centered widget */
   }
-}
-</style>
 
+  /* INTRO HEADING — exact Elementor typography */
+  .intro-title {
+    font-family: var(--font-heading);
+    /* was "Abril Fatface" */
+    font-size: clamp(0.9rem, 3vw, 3rem);
+    font-weight: 100;
+    line-height: normal;
+    color: var(--color-heading);
+    /* was #152705 */
+    margin: 0;
+  }
+
+  /* Mobile spacing */
+  @media (max-width: 768px) {
+    .intro-inner {
+      padding: 30px 30px;
+      /* was 40px 20px */
+    }
+
+    .intro-title {
+      text-align: center;
+    }
+  }
+</style>

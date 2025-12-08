@@ -33,6 +33,11 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
         <a class="service-button" href="/perth-food-photography">
           Food Photography
         </a>
+        <p class="service-summary">
+          Professional food photography for Perth restaurants, cafés, and
+          hospitality venues. Menu imagery, styled hero dishes, and social-ready
+          content created with commercial lighting and studio techniques.
+        </p>
       </article>
 
       <!-- Service 2 – Portrait Photography -->
@@ -51,6 +56,11 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
         <a class="service-button" href="/perth-event-photography">
           Event Photography
         </a>
+        <p class="service-summary">
+          Event and portrait photography for Perth businesses, weddings, and
+          private events. Coverage includes candid moments, branding content,
+          and story-focused imagery.
+        </p>
       </article>
 
       <!-- Service 3 – Event -->
@@ -69,6 +79,11 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
         <a class="service-button" href="/perth-product-photography">
           Product Photography
         </a>
+        <p class="service-summary">
+          Product photography for e-commerce and retail brands in Perth.
+          Studio-lit catalogue shots, styled product scenes, and
+          conversion-optimized imagery for online stores.
+        </p>
       </article>
       <!-- Service 4 – Web Development -->
       <article class="service-card">
@@ -86,6 +101,11 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
         <a class="service-button" href="/website-development/">
           Website Development
         </a>
+        <p class="service-summary">
+          Custom website design and development for Perth businesses.
+          Fast-loading, SEO-friendly, mobile-responsive sites crafted for
+          hospitality, retail, and service industries.
+        </p>
       </article>
     </div>
   </div>
@@ -94,177 +114,180 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
 <style>
   /* ========== HOMEPAGE – SERVICES SECTION ========== */
 
-/* Whole section background only */
-.services {
-  background: var(--color-page-bg, #fef8eb);
-}
-
-/* Bar with top/bottom border, full-width like the original screenshot */
-.services-heading-bar {
-  width: 100%;
-  border-top: 2px solid var(--color-heading);
-  border-bottom: 2px solid var(--color-heading);
-  padding: 20px 0;
-}
-
-/* Center the text inside the bar */
-.services-heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: min(100%, var(--container-max));
-  margin: 0 auto;
-}
-
-.services-title {
-  font-family: "Abril Fatface", Sans-serif;
-  font-size: 35px;
-  font-weight: 300;
-  line-height: 12px;
-  letter-spacing: 1.6px;
-  color: #152705;
-  margin: 0;
-  text-align: center;
-}
-
-/* Content area below the bar */
-.services-container {
-  width: min(100%, );
-  padding: 40px 40px 40px 40px;
-  /* top 20, sides 40, bottom 40 (like Elementor row) */
-}
-
-
-/* Grid of service cards – same as original */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-  width: 100%;
-}
-
-/* Individual card layout */
-/* Single service card – matches Elementor child container behaviour */
-.service-card {
-  display: flex;
-  flex-direction: column;
-  /* image on top, button below */
-  justify-content: center;
-  /* center content vertically inside card */
-  align-items: center;
-  /* center horizontally */
-  gap: 40px;
-  /* same as Elementor widget spacing */
- 
-  /* similar to Elementor default container padding */
-}
-
-
-/* Image fills card width */
-.service-image-link,
-.service-image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Button under each image */
-.service-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Montserrat", Sans-serif;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: underline;
-  letter-spacing: 0.08em;
-  border-radius: 3px;
-  background-color: transparent;
-  color: var(--color-accent, #24360f);
-  border: none;
-  cursor: pointer;
-  transition: background-color var(--transition-fast, 0.3s ease);
-}
-
-.service-button:hover {
-  background-color: var(--color-accent-hover);
-  color: var(--color-bg, #fef8eb);
-}
-
-/* Responsive columns, same behaviour as Elementor “wrap” */
-@media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap:0px
-  }
-}
-
-
-/* Mobile responsiveness */
-@media (max-width: 1024px) {
-  .services-container {
-    padding: 15px 0;
+  /* Whole section background only */
+  .services {
+    background: var(--color-page-bg, #fef8eb);
   }
 
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Bar with top/bottom border, full-width like the original screenshot */
+  .services-heading-bar {
+    width: 100%;
+    border-top: 2px solid var(--color-heading);
+    border-bottom: 2px solid var(--color-heading);
+    padding: 20px 0;
   }
-}
 
-@media (max-width: 768px) {
-  .services-container {
-    padding: 15px 0;
+  /* Center the text inside the bar */
+  .services-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(100%, var(--container-max));
+    margin: 0 auto;
   }
 
   .services-title {
-    font-size: 28px;
-    line-height: 10px;
+    font-family: "Abril Fatface", Sans-serif;
+    font-size: 35px;
+    font-weight: 300;
+    line-height: 12px;
+    letter-spacing: 1.6px;
+    color: #152705;
+    margin: 0;
+    text-align: center;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-  .service-button {
-    padding:30px 0px 30px 0px;
-  }
-}
-
-@media (max-width: 480px) {
-.services-container {
-    padding: 15px 0;
-  }
-
-  .service-card {
-    gap:0px;
-  }
-  .service-button {
-    padding:30px 0px 30px 0px;
-  }
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap:0px
-  }
-}
-
-@media (max-width: 1024px) {
+  /* Content area below the bar */
   .services-container {
-    padding: 20px 0px;
+    width: min(100%);
+    padding: 50px 50px 50px 50px;
+    /* top 20, sides 40, bottom 40 (like Elementor row) */
   }
-}
 
-@media (max-width: 768px) {
-  .services-container {
-    padding: 15px 0px;
+  /* Grid of service cards – same as original */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 50px;
+    width: 100%;
   }
+
+  /* Individual card layout */
+  /* Single service card – matches Elementor child container behaviour */
   .service-card {
-    gap:0px;
+    display: flex;
+    flex-direction: column;
+    /* image on top, button below */
+    justify-content: center;
+    /* center content vertically inside card */
+    align-items: center;
+    /* center horizontally */
+    gap: 50px;
+    /* same as Elementor widget spacing */
+
+    /* similar to Elementor default container padding */
   }
-}
+
+  /* Image fills card width */
+  .service-image-link,
+  .service-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Button under each image */
+  .service-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", Sans-serif;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: underline;
+    letter-spacing: 0.08em;
+    border-radius: 3px;
+    background-color: transparent;
+    color: var(--color-accent, #24360f);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast, 0.3s ease);
+  }
+
+  .service-button:hover {
+    background-color: var(--color-accent-hover);
+    color: var(--color-bg, #fef8eb);
+  }
+
+  .service-summary {
+font-size:15x;
+
+
+  }
+
+  /* Responsive columns, same behaviour as Elementor “wrap” */
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 1024px) {
+    .services-container {
+      padding: 15px 0;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-container {
+      padding: 15px 0;
+    }
+
+    .services-title {
+      font-size: 28px;
+      line-height: 10px;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-button {
+      padding: 30px 0px 30px 0px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-container {
+      padding: 15px 0;
+    }
+
+    .service-card {
+      gap: 0px;
+    }
+    .service-button {
+      padding: 30px 0px 30px 0px;
+    }
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .services-container {
+      padding: 20px 0px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-container {
+      padding: 15px 0px;
+    }
+    .service-card {
+      gap: 0px;
+    }
+  }
 </style>

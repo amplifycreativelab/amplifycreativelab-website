@@ -15,14 +15,14 @@ const galleryItems = [
   {
     src: foodVertical,
     alt: "Hero food photography of a plated dish",
-    layout: "tall", 
+    layout: "tall",
   },
   {
     src: musselsWide,
     alt: "Overhead shot of mussels in a rustic pan",
-    layout: "wide", 
+    layout: "wide",
   },
-  
+
   // ROW 2 (Wide then Tall)
   {
     src: weddingWide,
@@ -46,7 +46,7 @@ const galleryItems = [
     alt: "Close-up of orecchiette pasta",
     layout: "wide",
   },
-  
+
   // ROW 4
   {
     src: eventWide,
@@ -58,31 +58,34 @@ const galleryItems = [
 
 <section class="gallery-section">
   <div class="gallery-inner">
-    
     <header class="gallery-header">
       <div class="header-content">
         <span class="eyebrow">Selected Work</span>
         <h2>Visuals that build your brand.</h2>
         <p>
-          From styled food shoots to candid event coverage, we create imagery 
-          that stops the scroll.
+          We combine art direction, commercial-grade photography, and modern web
+          design to help brands stand out in competitive markets. Our work
+          supports restaurants, cafés, product makers, retailers, and
+          service-based businesses throughout Western Australia.
         </p>
       </div>
       <a href="/portfolio" class="view-all-link">View Full Portfolio &rarr;</a>
     </header>
 
     <div class="bento-grid">
-      {galleryItems.map((item) => (
-        <figure class={`bento-item type-${item.layout}`}>
-          <Image
-            src={item.src}
-            alt={item.alt}
-            widths={[400, 800, 1200]}
-            sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 33vw"
-            class="bento-image"
-          />
-        </figure>
-      ))}
+      {
+        galleryItems.map((item) => (
+          <figure class={`bento-item type-${item.layout}`}>
+            <Image
+              src={item.src}
+              alt={item.alt}
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 33vw"
+              class="bento-image"
+            />
+          </figure>
+        ))
+      }
     </div>
 
     <a href="/portfolio" class="view-all-link view-all-link--mobile">
@@ -96,11 +99,9 @@ const galleryItems = [
   .gallery-section {
     padding: clamp(3rem, 5vw, 5rem) 3rem;
     background: var(--color-page-bg, #fef8eb);
-    
   }
 
   .gallery-inner {
-   
     margin: 0 auto;
   }
 
@@ -113,7 +114,9 @@ const galleryItems = [
     gap: 2rem;
   }
 
-  .header-content { max-width: 600px; }
+  .header-content {
+    max-width: 600px;
+  }
 
   .eyebrow {
     display: block;
@@ -174,7 +177,7 @@ const galleryItems = [
   .bento-image {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
   }
@@ -184,9 +187,15 @@ const galleryItems = [
   }
 
   /* Desktop Spans */
-  .type-wide { grid-column: span 2; }
-  .type-tall { grid-column: span 1; }
-  .type-full { grid-column: 1 / -1; }
+  .type-wide {
+    grid-column: span 2;
+  }
+  .type-tall {
+    grid-column: span 1;
+  }
+  .type-full {
+    grid-column: 1 / -1;
+  }
 
   /* --- TABLET (Simplifying) --- */
   @media (max-width: 900px) {
@@ -194,8 +203,13 @@ const galleryItems = [
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 300px;
     }
-    .type-wide, .type-tall { grid-column: span 1; }
-    .type-full { grid-column: span 2; }
+    .type-wide,
+    .type-tall {
+      grid-column: span 1;
+    }
+    .type-full {
+      grid-column: span 2;
+    }
   }
 
   /* --- MOBILE (The "Instagram" Grid) --- */
@@ -215,22 +229,23 @@ const galleryItems = [
     }
 
     /* Reset ALL spans to 1x1 squares */
-    .type-wide, .type-tall { 
-      grid-column: span 1; 
+    .type-wide,
+    .type-tall {
+      grid-column: span 1;
     }
 
     /* Keep the feature image full width */
-    .type-full { 
-      grid-column: 1 / -1; 
-      height: 220px; 
+    .type-full {
+      grid-column: 1 / -1;
+      height: 220px;
     }
-    
+
     .bento-item {
       /* --- THIS IS THE MISSING FIX --- */
-      min-width: 0;  /* 1. Allows the box to shrink smaller than the image inside it */
-      width: 100%;   /* 2. Ensures it fills the grid cell exactly */
+      min-width: 0; /* 1. Allows the box to shrink smaller than the image inside it */
+      width: 100%; /* 2. Ensures it fills the grid cell exactly */
       /* ------------------------------- */
-      
+
       border-radius: 8px;
     }
 
