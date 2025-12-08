@@ -1,0 +1,218 @@
+---
+import { Image } from "astro:assets";
+
+const title = "Website Design & Development";
+---
+
+<section class="webdev-intro">
+  <div class="webdev-intro__inner">
+    <div class="webdev-intro__content">
+      <div class="webdev-intro__kicker-wrapper">
+        <span class="webdev-intro__line"></span>
+        <p class="webdev-intro__kicker">FOR RESTAURANTS, CAFÉS & FOOD BRANDS</p>
+      </div>
+      
+      <h1 class="webdev-intro__title">{title}</h1>
+      
+      <p class="webdev-intro__lead">
+        As a Perth website designer and developer, we build fast, search-friendly websites that feel as
+        welcoming as your best front-of-house team member—clear, intentional and built to convert.
+      </p>
+
+      <p class="webdev-intro__body">
+        We specialise in websites for hospitality venues, lifestyle brands and local Perth businesses.
+        Every site is designed to showcase your photography, strengthen your brand and make it effortless
+        for visitors to book, buy or enquire. We can also handle
+        <a href="/perth-food-photography/">Food Photography</a>,
+        <a href="/perth-product-photography/">Product Photography</a> and
+        <a href="/perth-event-photography/">Event Photography</a> to keep your visuals and website
+        perfectly aligned.
+      </p>
+
+      <a href="#web-pricing" class="webdev-intro__cta">View Packages</a>
+    </div>
+    
+    <div class="webdev-intro__visual">
+      <Image 
+        src="/images/portfolio/portrait/corporate-business-portrait-man-laptop-perth.webp" 
+        alt="Mobile website design for a restaurant" 
+        width="600" 
+        height="800"
+        loading="eager"
+        class="hero-image"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .webdev-intro {
+    /* Added a subtle gradient for depth */
+    background: linear-gradient(135deg, #152705 0%, #1e360a 100%);
+    color: #fef8eb;
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 4rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Grain Texture Overlay */
+  .webdev-intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  .webdev-intro__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Text takes slightly more space */
+    gap: clamp(3rem, 5vw, 6rem);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .webdev-intro__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Kicker with decorative line */
+  .webdev-intro__kicker-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+  }
+
+  .webdev-intro__line {
+    width: 40px;
+    height: 1px;
+    background-color: #fadab8;
+  }
+
+  .webdev-intro__kicker {
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fadab8;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .webdev-intro__title {
+    font-family: "Abril Fatface", system-ui, serif;
+    font-size: clamp(3rem, 6vw, 4.5rem); /* Increased size slightly */
+    line-height: 1.1;
+    margin: 0 0 2rem;
+  }
+
+  .webdev-intro__lead {
+    font-family: "Darker Grotesque", system-ui, sans-serif;
+    font-size: 1.5rem; /* Larger lead text */
+    line-height: 1.3;
+    max-width: 40rem;
+    margin: 0 0 1.5rem;
+    font-weight: 500;
+    color: #fff; /* Bright white for lead */
+  }
+
+  .webdev-intro__body {
+    font-family: "Darker Grotesque", system-ui, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 38rem;
+    margin: 0 0 2.5rem;
+    opacity: 0.9;
+    color: #e3decb; /* Slightly muted cream */
+  }
+
+  /* NEW: High contrast links within text */
+  .webdev-intro__body a {
+    color: #fadab8;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 0.2s;
+  }
+  
+  .webdev-intro__body a:hover {
+    color: #fff;
+  }
+
+  .webdev-intro__cta {
+    display: inline-block;
+    background: #fadab8;
+    color: #152705;
+    padding: 1rem 2.5rem; /* Larger click area */
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .webdev-intro__cta:hover {
+    transform: translateY(-2px);
+    background: #fff;
+  }
+
+  /* Image styling - The Arch Look */
+  .webdev-intro__visual {
+    position: relative;
+  }
+
+  /* This targets the img tag generated by Astro <Image /> */
+  .webdev-intro__visual img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* THE ARCH SHAPE */
+    border-radius: 300px 300px 20px 20px; 
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.3);
+    /* Removed rotation for a cleaner, architectural look */
+    transform: none; 
+  }
+
+  @media (max-width: 900px) {
+    .webdev-intro__inner {
+      grid-template-columns: 1fr;
+      text-align: left;
+      gap: 3rem;
+    }
+    
+    .webdev-intro__visual {
+      order: -1;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    /* Make the arch slightly less tall on mobile */
+    .webdev-intro__visual img {
+       max-height: 500px;
+       border-radius: 200px 200px 20px 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .webdev-intro {
+      padding-inline: 1.25rem;
+    }
+    .webdev-intro__title {
+      font-size: 2.8rem;
+    }
+  }
+</style>

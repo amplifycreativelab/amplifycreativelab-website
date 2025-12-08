@@ -1,0 +1,271 @@
+---
+import BaseLayout from "./layouts/BaseLayout.astro";
+import WebDevIntro from "./components/perth-website-development/WebDevIntro.astro";
+import WebDevWhySection from "./components/perth-website-development/WebDevWhySection.astro";
+import WebDevPricingTiers from "./components/perth-website-development/WebDevPricingTiers.astro";
+
+const pageTitle = "Perth Website Design & Development | Amplify Creative Lab";
+const pageDescription =
+  "Custom websites for Perth hospitality, lifestyle and local businesses, with strategy-led design and fast, SEO-friendly builds.";
+
+const webDevSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://amplifycreativelab.com/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Website Design & Development",
+          item: "https://amplifycreativelab.com/website-development/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://amplifycreativelab.com/#service-website-development",
+      name: "Website Design & Development",
+      url: "https://amplifycreativelab.com/website-development/",
+      description:
+        "Website design and development for Perth hospitality venues, lifestyle brands and local businesses, with fast, SEO-friendly builds focused on bookings and enquiries.",
+      areaServed: "Perth, Western Australia",
+      provider: {
+        "@id": "https://amplifycreativelab.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What types of businesses do you build websites for?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We primarily work with hospitality venues such as restaurants, cafés and bars, as well as lifestyle brands and other local businesses in Perth that need a fast, clear and conversion-focused website."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Do you only work with hospitality clients?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Hospitality is a core focus, but we also design and build websites for other service-based and product-based businesses that like our style and strategy-led approach. If you are based in or around Perth and want a custom site, we are happy to chat."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Which platforms or technologies do you use to build websites?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We choose tools based on your needs, focusing on performance, maintainability and SEO. This can include modern frameworks, CMS options and booking integrations that make it easy for your team to update content."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Will my website be SEO-friendly?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We design with clean structure, fast loading and best-practice on-page SEO in mind so your site is well positioned to rank for local searches and to be understood by search and AI-driven platforms."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "How long does a website project usually take?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Timelines depend on the scope of your website, but most smaller sites are completed within a few weeks once content and photography are ready. Larger or more complex projects may take longer and will include a clear proposed schedule."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Do you provide hosting, domain or ongoing support?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We can advise on hosting and domain setup and connect your site to the right services. Ongoing support and optimisation can be arranged as part of a custom package if you need long-term help."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Can you use our existing branding, copy and photography?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We can work with existing assets or create new ones as needed. If you also require photography or brand refinement, we can combine website and content services into a single project."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="page-perth-website-development">
+    <WebDevIntro />
+    <WebDevWhySection />
+    <WebDevPricingTiers />
+
+    <section class="webdev-faq">
+      <div class="webdev-faq__inner">
+        <h2 class="webdev-faq__title">Website Design &amp; Development FAQs</h2>
+
+        <div class="webdev-faq__list">
+          <details class="webdev-faq__item">
+            <summary class="webdev-faq__question">
+              What types of businesses do you build websites for?
+            </summary>
+            <p class="webdev-faq__answer">
+              We work with hospitality venues like restaurants, cafés and bars,
+              as well as lifestyle brands and other local businesses that need a
+              clear, modern site that actually drives bookings and enquiries.
+            </p>
+          </details>
+
+          <details class="webdev-faq__item">
+            <summary class="webdev-faq__question">
+              Do you only work with hospitality clients?
+            </summary>
+            <p class="webdev-faq__answer">
+              Hospitality is a core part of our work, but we also build websites
+              for other service-based and product-based businesses in Perth. If
+              you like our style and approach, we&apos;re happy to see if your
+              project is a good fit.
+            </p>
+          </details>
+
+          <details class="webdev-faq__item">
+            <summary class="webdev-faq__question">
+              Will my website be SEO-friendly?
+            </summary>
+            <p class="webdev-faq__answer">
+              Yes. We focus on clean structure, fast loading and on-page SEO
+              best practices so your site can perform well in search and is
+              easy for both people and AI-driven platforms to understand.
+            </p>
+          </details>
+
+          <details class="webdev-faq__item">
+            <summary class="webdev-faq__question">
+              How long does a website project usually take?
+            </summary>
+            <p class="webdev-faq__answer">
+              Timelines vary with scope, but smaller sites are typically
+              completed within a few weeks once content is ready. Larger or more
+              custom builds may take longer, and we&apos;ll outline a clear
+              schedule before we begin.
+            </p>
+          </details>
+
+          <details class="webdev-faq__item">
+            <summary class="webdev-faq__question">
+              Do you help with hosting, domain and ongoing support?
+            </summary>
+            <p class="webdev-faq__answer">
+              We can guide you through hosting and domain setup and connect your
+              new site to reliable services. Ongoing support and optimisation
+              can also be arranged as part of a custom package.
+            </p>
+          </details>
+
+          <details class="webdev-faq__item">
+            <summary class="webdev-faq__question">
+              Can you use our existing branding, copy and photography?
+            </summary>
+            <p class="webdev-faq__answer">
+              Yes. We can work with your existing brand and assets, or we can
+              help you refresh them. If you need new photography or content, we
+              can combine website and content services into one project.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <script type="application/ld+json">
+        {JSON.stringify(webDevSchema)}
+      </script>
+    </section>
+  </main>
+
+  <style is:global>
+    .page-perth-website-development {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .webdev-faq {
+      background-color: #f5ead7;
+      padding: 60px 24px;
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid #e3d4b4;
+    }
+
+    .webdev-faq__inner {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .webdev-faq__title {
+      font-family: "Abril Fatface", serif;
+      font-size: 40px;
+      font-weight: 500;
+      margin: 0 0 24px;
+      color: #152705;
+      text-align: left;
+    }
+
+    .webdev-faq__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .webdev-faq__item {
+      border-bottom: 1px solid rgba(36, 54, 15, 0.25);
+      padding: 8px 0 12px;
+    }
+
+    .webdev-faq__question {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      color: #24360f;
+    }
+
+    .webdev-faq__answer {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-top: 6px;
+      color: #4a5e3a;
+    }
+
+    @media (max-width: 768px) {
+      .webdev-faq {
+        padding: 40px 16px;
+      }
+
+      .webdev-faq__title {
+        font-size: 32px;
+      }
+
+      .webdev-faq__question {
+        font-size: 18px;
+      }
+
+      .webdev-faq__answer {
+        font-size: 16px;
+      }
+    }
+  </style>
+</BaseLayout>

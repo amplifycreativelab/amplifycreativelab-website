@@ -5,19 +5,261 @@ import EventPhotography from "./components/perth-event-photography/EventPhotogra
 import FamilyPhotography from "./components/perth-event-photography/FamilyPhotography.astro";
 import PortraitPhotography from "./components/perth-event-photography/PortraitPhotography.astro";
 
-
-const pageTitle = "Perth Food Photographer | AmplifyCreativeLab Food Photography";
+const pageTitle =
+  "Perth Event Photographer | Amplify Creative Lab Event Photography";
 const pageDescription =
-  "Perth food photographer specializing in restaurant imagery for menus, websites & socials.";
+  "Perth event photographer capturing corporate functions, brand activations, hospitality events and private celebrations with candid, story-driven imagery.";
 
+const eventSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://amplifycreativelab.com/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Event Photography",
+          item: "https://amplifycreativelab.com/perth-event-photography/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://amplifycreativelab.com/#service-event-photography",
+      "name": "Event Photography",
+      "url": "https://amplifycreativelab.com/perth-event-photography/",
+      "description": "Perth event photography for corporate functions, hospitality venues and private celebrations, capturing candid moments for websites, social media and marketing.",
+      "areaServed": "Perth, Western Australia",
+      "provider": {
+        "@id": "https://amplifycreativelab.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What types of events do you photograph in Perth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We photograph a wide range of events across Perth, including corporate functions, conferences, brand activations, product launches, hospitality events, community gatherings and private celebrations such as milestone birthdays and small parties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you photograph both corporate events and private celebrations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our core focus is on corporate, brand and hospitality events, but we also photograph a limited number of private celebrations for clients who love our style and want their event captured in the same candid, story-driven way."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you travel outside the Perth CBD for events?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We photograph events throughout the Perth metropolitan area and can travel to surrounding regions by arrangement. Travel fees may apply for events located outside central Perth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many edited images will we receive from our event?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The number of final images depends on the length and size of your event, but most clients receive a curated gallery of candid and hero images that tell the full story of the day. We focus on quality, variety and meaningful moments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you provide images optimised for social media and websites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We deliver high-resolution files for print and web-ready files optimised for websites, email campaigns, LinkedIn, Instagram, Facebook and other social media platforms so you can start sharing your event quickly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer other types of photography such as portraits or family sessions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Event and commercial photography are our main focus, but we do take on a limited number of portrait and family photography sessions on request. If you like our style, get in touch and we can discuss availability and whether your project is a good fit."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-perth-event-photography">
-    
+    <PerthEventPhotographyIntro />
+
     <EventPhotography />
-    <PortraitPhotography></PortraitPhotography>
+    <PortraitPhotography />
     <FamilyPhotography />
-    
-    </main>
+
+    <section class="event-faq">
+      <div class="event-faq__inner">
+        <h2 class="event-faq__title">Event Photography FAQs</h2>
+
+        <div class="event-faq__list">
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
+              What types of events do you photograph in Perth?
+            </summary>
+            <p class="event-faq__answer">
+              We photograph corporate functions, conferences, brand activations,
+              product launches, hospitality events, community gatherings and
+              private celebrations across Perth.
+            </p>
+          </details>
+
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
+              Do you photograph both corporate events and private celebrations?
+            </summary>
+            <p class="event-faq__answer">
+              Yes. Our main focus is corporate, brand and hospitality events,
+              but we also capture select private celebrations for clients who
+              love our candid, story-driven style.
+            </p>
+          </details>
+
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
+              Do you travel outside the Perth CBD for events?
+            </summary>
+            <p class="event-faq__answer">
+              We travel throughout the Perth metro area and can service
+              surrounding regions by arrangement. Travel fees may apply for
+              locations outside central Perth.
+            </p>
+          </details>
+
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
+              How many edited images will we receive from our event?
+            </summary>
+            <p class="event-faq__answer">
+              The number depends on event length and coverage, but you&apos;ll
+              receive a curated gallery of edited images that highlight key
+              moments, details and atmosphere.
+            </p>
+          </details>
+
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
+              Can you provide images optimised for social media and websites?
+            </summary>
+            <p class="event-faq__answer">
+              Yes. We export files in formats suitable for websites, email
+              marketing and social media platforms like Instagram, Facebook and
+              LinkedIn so your team can start sharing quickly.
+            </p>
+          </details>
+
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
+              Do you offer other types of photography such as portraits or
+              family sessions?
+            </summary>
+            <p class="event-faq__answer">
+              Event and commercial photography are the core of what we do, but
+              we also offer a limited number of portrait and family photography
+              sessions on request. If you like our style, reach out and we can
+              see if we&apos;re a good fit.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <script type="application/ld+json">
+        {JSON.stringify(eventSchema)}
+      </script>
+    </section>
+  </main>
+
+  <style is:global>
+    .page-perth-event-photography {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .event-faq {
+      background-color: var(--e-global-color-secondary, #e8d8c3);
+      padding: 60px 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .event-faq__inner {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .event-faq__title {
+      font-family: "Abril Fatface", sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      margin: 0 0 24px;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+      text-align: left;
+    }
+
+    .event-faq__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .event-faq__item {
+      border-bottom: 1px solid rgba(74, 46, 28, 0.25);
+      padding: 8px 0 12px;
+    }
+
+    .event-faq__question {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+    }
+
+    .event-faq__answer {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-top: 6px;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+    }
+
+    @media (max-width: 768px) {
+      .event-faq {
+        padding: 40px 16px;
+      }
+
+      .event-faq__title {
+        font-size: 32px;
+      }
+
+      .event-faq__question {
+        font-size: 18px;
+      }
+
+      .event-faq__answer {
+        font-size: 16px;
+      }
+    }
+  </style>
 </BaseLayout>

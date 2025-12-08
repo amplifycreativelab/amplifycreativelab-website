@@ -1,20 +1,283 @@
 ---
 import BaseLayout from "./layouts/BaseLayout.astro";
 import PerthFoodPhotographyIntro from "./components/perth-food-photography/PerthFoodPhotographyIntro.astro";
+
 import FoodServiceRestaurant from "./components/perth-food-photography/FoodServiceRestaurant.astro";
 import FoodProductPhotography from "./components/perth-food-photography/FoodProductPhotography.astro";
 
-
-const pageTitle = "Perth Food Photographer | AmplifyCreativeLab Food Photography";
+const pageTitle =
+  "Perth Food Photographer | Amplify Creative Lab Food Photography";
 const pageDescription =
-  "Perth food photographer specializing in restaurant imagery for menus, websites & socials.";
+  "Perth food photographer specialising in premium imagery for restaurant menus, websites, social media and delivery platforms like Uber Eats, DoorDash and Deliveroo.";
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://amplifycreativelab.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Food Photography",
+          item: "https://amplifycreativelab.com/perth-food-photography/",
+        },
+      ],
+    },
+    {
+      "@type": "Service",
+      "@id": "https://amplifycreativelab.com/#service-food-photography",
+      name: "Food Photography",
+      url: "https://amplifycreativelab.com/perth-food-photography/",
+      description:
+        "Premium food photography for Perth restaurants, cafés, bars and hospitality brands, optimised for menus, websites, social media and delivery apps.",
+      areaServed: "Perth, Western Australia",
+      provider: {
+        "@id": "https://amplifycreativelab.com/#organization",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Do you shoot on location at restaurants and cafés in Perth?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We photograph on-site at restaurants, cafés, bars and hospitality venues across Perth and surrounding suburbs, bringing lighting and equipment to your venue.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How long does a typical food photography session take?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Most food photography sessions run between 2 and 6 hours depending on the number of dishes, styling requirements and whether the venue is open during the shoot.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How should we prepare for a food photography shoot?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We recommend finalising your dish list, planning kitchen timings and plating, and ensuring key menu items are ready to be photographed. We provide a pre-shoot checklist so your team knows exactly what to prepare.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can you create images optimised for Uber Eats, DoorDash and Deliveroo?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We shoot and export images specifically optimised for delivery platforms like Uber Eats, DoorDash and Deliveroo, including framing, cropping and file sizes suitable for online ordering.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How many final photos will we receive?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The number of final images depends on the scope of the shoot. Most Perth venues receive between 15 and 40 edited images from a standard food photography session.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you also photograph beverages, cocktails and desserts?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Absolutely. We can photograph your full menu including cocktails, beverages, desserts, sides and seasonal specials so your entire offer is covered.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you offer ongoing shoots for seasonal menu updates?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Many Perth restaurants and cafés book recurring sessions with us for seasonal menu changes, new dishes and promotional campaigns to keep their imagery fresh and consistent.",
+          },
+        },
+      ],
+    },
+  ],
+};
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-perth-food-photography">
-    
+   
+<PerthFoodPhotographyIntro/>
     <FoodServiceRestaurant />
     <FoodProductPhotography />
-    </main>
+
+    <section class="food-faq">
+      <div class="food-faq__inner">
+        <h2 class="food-faq__title">Food Photography FAQs</h2>
+
+        <div class="food-faq__list">
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              Do you shoot on location at restaurants and cafés in Perth?
+            </summary>
+            <p class="food-faq__answer">
+              Yes. We photograph on-site at restaurants, cafés, bars and
+              hospitality venues across Perth and surrounding suburbs, bringing
+              lighting and equipment directly to your venue.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              How long does a typical food photography session take?
+            </summary>
+            <p class="food-faq__answer">
+              Most sessions run between 2 and 6 hours depending on the number
+              of dishes, styling complexity and whether service is running at
+              the same time.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              How should we prepare for a food photography shoot?
+            </summary>
+            <p class="food-faq__answer">
+              We recommend finalising your dish list, planning kitchen timings,
+              and preparing plating that reflects how you want dishes to appear
+              on the menu and online. We provide a simple pre-shoot checklist so
+              your team knows exactly what to do.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              Can you create images optimised for Uber Eats, DoorDash and
+              Deliveroo?
+            </summary>
+            <p class="food-faq__answer">
+              Yes. We shoot with delivery platforms in mind and export images
+              that are framed, cropped and compressed for Uber Eats, DoorDash,
+              Deliveroo and other online ordering platforms.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              How many final photos will we receive?
+            </summary>
+            <p class="food-faq__answer">
+              The exact number depends on your menu and package, but most Perth
+              venues receive between 15 and 40 edited images from a standard
+              food photography session.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              Do you also photograph beverages, cocktails and desserts?
+            </summary>
+            <p class="food-faq__answer">
+              Absolutely. We can capture cocktails, beverages, desserts, sides
+              and seasonal specials so every part of your menu is covered.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              Do you offer ongoing photography for seasonal menu updates?
+            </summary>
+            <p class="food-faq__answer">
+              Yes. Many restaurants and cafés work with us on seasonal or
+              quarterly shoots to keep their menus, websites and delivery
+              platforms updated with fresh, on-brand imagery.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
+    </section>
+  </main>
+
+  <style is:global>
+    .page-perth-food-photography {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .food-faq {
+      background-color: var(--e-global-color-secondary, #e8d8c3);
+      padding: 60px 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .food-faq__inner {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .food-faq__title {
+      font-family: "Abril Fatface", sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      margin: 0 0 24px;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+      text-align: left;
+    }
+
+    .food-faq__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .food-faq__item {
+      border-bottom: 1px solid rgba(74, 46, 28, 0.25);
+      padding: 8px 0 12px;
+    }
+
+    .food-faq__question {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+    }
+
+    .food-faq__answer {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-top: 6px;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+    }
+
+    @media (max-width: 768px) {
+      .food-faq {
+        padding: 40px 16px;
+      }
+
+      .food-faq__title {
+        font-size: 32px;
+      }
+
+      .food-faq__question {
+        font-size: 18px;
+      }
+
+      .food-faq__answer {
+        font-size: 16px;
+      }
+    }
+  </style>
 </BaseLayout>

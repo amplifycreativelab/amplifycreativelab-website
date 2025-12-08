@@ -4,16 +4,282 @@ import PerthProductPhotographyIntro from "./components/perth-product-photography
 import ProductCataloguePhotography from "./components/perth-product-photography/ProductCataloguePhotography.astro";
 import ProductLifestylePhotography from "./components/perth-product-photography/ProductLifestylePhotography.astro";
 
-const pageTitle = "Perth Product Photographer | AmplifyCreativeLab Product Photography";
+const pageTitle =
+  "Perth Product Photographer | AmplifyCreativeLab Product Photography";
 const pageDescription =
-  "Perth product photographer specialising in studio and lifestyle imagery for ecommerce, menus and marketing.";
+  "Perth product photographer specialising in studio and lifestyle imagery for ecommerce, retail, food and beverage, skincare, candles and gift products.";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://amplifycreativelab.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Product Photography",
+          item: "https://amplifycreativelab.com/perth-product-photography/",
+        },
+      ],
+    },
+    {
+      "@type": "Service",
+      "@id": "https://amplifycreativelab.com/#service-product-photography",
+      name: "Product Photography",
+      url: "https://amplifycreativelab.com/perth-product-photography/",
+      description:
+        "Product photography for Perth brands including food and beverage, skincare, candles, gift hampers, homewares and other retail products, created for ecommerce, social media and marketing.",
+      areaServed: "Perth, Western Australia",
+      provider: {
+        "@id": "https://amplifycreativelab.com/#organization",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What types of products do you photograph?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We photograph a wide range of products for Perth brands, including food and beverages, wine and spirits, skincare, candles, gift hampers, packaged goods, homewares and other small to medium-sized retail products.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you work with both food and non-food brands?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. While we work with many food and beverage brands, we also photograph non-food products such as skincare, candles, lifestyle goods and gift items for ecommerce and retail clients.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can you shoot products for platforms like Shopify, WooCommerce, Amazon or Etsy?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Absolutely. We create clean, consistent product images suitable for Shopify, WooCommerce, Amazon, Etsy and other ecommerce platforms, with files sized and formatted for online stores and marketplaces.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you offer both packshots and lifestyle product photography?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We offer simple packshots on clean backgrounds for catalogues and ecommerce, as well as styled lifestyle imagery that shows your products being used, gifted or enjoyed.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How should we prepare our products for a photoshoot?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We recommend providing multiple pristine samples of each product, checking labels and packaging for marks or damage, and removing stickers or barcodes that should not appear in the final images. We will guide you through any additional preparation before the shoot.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can you shoot products on location at our store, bar or venue?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. We can photograph products on location in your store, bar, café or venue to capture them in context, or we can shoot in a studio-style setup depending on the look you want.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How are final images delivered and in what formats?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Edited images are delivered via an online gallery with high-resolution files suitable for print and web-ready versions optimised for websites, social media and ecommerce platforms.",
+          },
+        },
+      ],
+    },
+  ],
+};
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-perth-product-photography">
-   
+    <PerthProductPhotographyIntro />
+
     <ProductCataloguePhotography />
     <ProductLifestylePhotography />
-  </main>
-</BaseLayout>
 
+    <section class="product-faq">
+      <div class="product-faq__inner">
+        <h2 class="product-faq__title">Product Photography FAQs</h2>
+
+        <div class="product-faq__list">
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              What types of products do you photograph?
+            </summary>
+            <p class="product-faq__answer">
+              We work with food and beverage brands, wineries, skincare labels,
+              candle makers, gift hamper businesses, homewares brands and other
+              retail products that need professional imagery for ecommerce and
+              marketing.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              Do you work with both food and non-food brands?
+            </summary>
+            <p class="product-faq__answer">
+              Yes. While we have strong experience with food and drink, we also
+              shoot non-food products such as skincare, candles, lifestyle items
+              and other packaged goods for Perth-based brands and retailers.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              Can you shoot products for Shopify, Amazon or Etsy?
+            </summary>
+            <p class="product-faq__answer">
+              Absolutely. We create product photos that meet the visual
+              expectations of platforms like Shopify, WooCommerce, Amazon and
+              Etsy, and deliver files sized and cropped appropriately for online
+              stores and marketplaces.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              Do you offer both simple packshots and lifestyle product images?
+            </summary>
+            <p class="product-faq__answer">
+              Yes. We can create clean packshots on plain or brand-coloured
+              backgrounds for clarity, as well as styled lifestyle scenes that
+              show your products being used, poured, gifted or enjoyed.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              How should we prepare our products for the shoot?
+            </summary>
+            <p class="product-faq__answer">
+              Please provide multiple clean, undamaged samples of each product
+              and ensure packaging and labels are in perfect condition. We&apos;ll
+              advise you on any extra preparation needed for your specific
+              range.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              Can you photograph products at our location?
+            </summary>
+            <p class="product-faq__answer">
+              Yes. We can shoot on location at your store, bar, venue or
+              workspace, or in a more controlled studio-style environment
+              depending on the concept and look you&apos;re after.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              How will we receive the final images?
+            </summary>
+            <p class="product-faq__answer">
+              Final images are delivered via an online gallery with
+              high-resolution files for print and web-optimised versions ready
+              to upload to your website, social media accounts and ecommerce
+              platforms.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <script type="application/ld+json">
+        {JSON.stringify(productSchema)}
+      </script>
+    </section>
+  </main>
+
+  <style is:global>
+    .page-perth-product-photography {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .product-faq {
+      background-color: var(--e-global-color-secondary, #e8d8c3);
+      padding: 60px 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-faq__inner {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .product-faq__title {
+      font-family: "Abril Fatface", sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      margin: 0 0 24px;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+      text-align: left;
+    }
+
+    .product-faq__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .product-faq__item {
+      border-bottom: 1px solid rgba(74, 46, 28, 0.25);
+      padding: 8px 0 12px;
+    }
+
+    .product-faq__question {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+    }
+
+    .product-faq__answer {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-top: 6px;
+      color: var(--e-global-color-fadab83, #4a2e1c);
+    }
+
+    @media (max-width: 768px) {
+      .product-faq {
+        padding: 40px 16px;
+      }
+
+      .product-faq__title {
+        font-size: 32px;
+      }
+
+      .product-faq__question {
+        font-size: 18px;
+      }
+
+      .product-faq__answer {
+        font-size: 16px;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,113 +1,153 @@
 ---
-// src/components/FoodPhotographyIntro.astro
-
+// Intro section for Perth Event Photography
 const title = "Event Photography";
 ---
 
 <section class="food-intro">
   <h2 class="food-intro__title">{title}</h2>
 
-  <p class="food-intro__tagline">Capture the Extraordinary in Every Moment</p>
+  <p class="food-intro__tagline">Capture the energy, people and stories of every event.</p>
 
-  <p class="food-intro__body">
-    Capture life’s precious moments and tell your story through the art of
-    portrait photography. We specialise in Family, Personal Portrait, and
-    Wedding Photography, creating lasting keepsakes that go beyond a snapshot.
-  </p>
+  <div class="food-intro__content">
+    <p class="food-intro__body">
+      As a Perth event photographer, we capture the real moments that define corporate functions,
+      brand activations, hospitality events and private celebrations. Our focus is on genuine interactions,
+      atmosphere and detail—creating photography that helps venues, businesses and organisers tell a
+      compelling visual story.
+    </p>
 
-  
+    <p class="food-intro__body">
+      If you want cohesive visuals across your brand, you can pair your event coverage with our
+      <a href="/perth-food-photography/">Perth Food Photography</a>,
+      <a href="/perth-product-photography/">Perth Product Photography</a> or
+      <a href="/website-development/">Website Development</a> services to keep all of your content aligned.
+    </p>
+  </div>
 
-  <p class="food-intro__cta">Ready to make memories?</p>
+  <a href="/contacts" class="food-intro__cta">Ready to capture your next event?</a>
 </section>
 
 <style>
+  :root {
+    --text-color: #fef8eb;
+    /* Deep warm charcoal for high contrast against cream text */
+    --bg-color-premium: #232220; 
+  }
+
   .food-intro {
-    background-color: #93897e;
-    color: var(--e-global-color-primary, #fef8eb);
-    min-height: 30vh;
+    background-color: var(--bg-color-premium);
+    color: var(--e-global-color-primary, var(--text-color));
+    /* Added significant vertical padding for a "breathing" editorial look */
+    padding: 100px 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    gap: 30px;
     text-align: center;
   }
 
   .food-intro__title {
-    font-family: "Abril Fatface", sans-serif;
-    font-size: 50px;
+    font-family: "Abril Fatface", serif;
+    font-size: 60px; /* Increased size for impact */
     font-weight: 500;
-    line-height: 26px;
-    letter-spacing: 0;
-    word-spacing: 5px;
-    color: var(--e-global-color-primary, #fef8eb);
+    line-height: 1.1;
+    letter-spacing: 1px;
+    color: var(--e-global-color-primary, var(--text-color));
+    margin: 0 0 20px 0;
+  }
+
+  .food-intro__tagline {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 18px;
+    font-weight: 700; /* Bold to create hierarchy */
+    text-transform: uppercase; /* Differentiates it from body text */
+    letter-spacing: 2px;
+    line-height: 1.4;
+    color: var(--e-global-color-primary, var(--text-color));
+    margin: 0 auto 40px auto; /* Spacing below tagline */
+    max-width: 600px;
+    opacity: 0.9;
+  }
+
+  /* Wrapper to constrain width of all paragraphs */
+  .food-intro__content {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Consistent spacing between paragraphs */
+  }
+
+  .food-intro__body {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    /* REMOVED ITALICS for readability */
+    font-style: normal; 
+    /* Increased line-height for elegance */
+    line-height: 1.6; 
+    color: var(--e-global-color-primary, var(--text-color));
     margin: 0;
   }
 
-  /* ✅ Updated with your tagline styles */
-  .food-intro__tagline {
-    margin: 0 auto;
-
-    font-family: "Darker Grotesque", sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 1.3;
-    color: var(--e-global-color-primary, #fef8eb);
+  .food-intro__body a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 600;
+    transition: opacity 0.3s;
   }
 
-  /* ✅ Updated with your body styles */
-  .food-intro__body {
-    margin: 0 auto;
-
-    font-family: "Darker Grotesque", sans-serif;
-    font-size: 24px;
-    font-weight: 500;
-    font-style: italic;
-    line-height: 28px;
-    color: var(--e-global-color-primary, #fef8eb);
+  .food-intro__body a:hover {
+    opacity: 0.7;
   }
 
+  /* Styled as a Ghost Button */
   .food-intro__cta {
+    display: inline-block;
     font-family: "Darker Grotesque", sans-serif;
-    font-size: 28px;
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: 1px;
-    color: var(--e-global-color-primary, #fef8eb);
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--e-global-color-primary, var(--text-color));
+    text-decoration: none;
+    padding: 15px 40px;
+    border: 1px solid var(--e-global-color-primary, var(--text-color));
+    border-radius: 50px; /* Pill shape */
+    transition: all 0.3s ease;
     margin-top: 10px;
   }
 
-  @media (max-width: 1024px) {
+  .food-intro__cta:hover {
+    background-color: var(--e-global-color-primary, var(--text-color));
+    color: var(--bg-color-premium); /* Invert colors on hover */
+    transform: translateY(-2px);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
     .food-intro {
-      padding: 32px 24px;
-      gap: 24px;
+      padding: 60px 20px;
     }
 
     .food-intro__title {
       font-size: 42px;
-      line-height: 1.1;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .food-intro {
-      padding: 28px 20px;
-      min-height: auto;
-    }
-
-    .food-intro__title {
-      font-size: 34px;
     }
 
     .food-intro__tagline {
       font-size: 16px;
+      margin-bottom: 30px;
     }
 
     .food-intro__body {
-      font-size: 20px;
-      line-height: 26px;
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    .food-intro__cta {
+      font-size: 16px;
+      padding: 12px 30px;
     }
   }
 </style>
