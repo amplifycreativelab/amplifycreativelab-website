@@ -23,8 +23,10 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
           <Image
             class="service-image"
             src={foodPhoto}
-            width="768"
-            height="960"
+            width={768}
+            height={960}
+            widths={[320, 480, 640, 768]}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             alt="Food photography in Perth for restaurants and cafes"
             loading="lazy"
             decoding="async"
@@ -46,8 +48,10 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
           <Image
             class="service-image"
             src={eventPhoto}
-            width="768"
-            height="960"
+            width={768}
+            height={960}
+            widths={[320, 480, 640, 768]}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             alt="Wedding, events and portrait photography in Perth with floral background"
             loading="lazy"
             decoding="async"
@@ -69,8 +73,10 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
           <Image
             class="service-image"
             src={productPhoto}
-            width="768"
-            height="960"
+            width={768}
+            height={960}
+            widths={[320, 480, 640, 768]}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             alt="Product photography for e-commerce and Perth businesses"
             loading="lazy"
             decoding="async"
@@ -91,8 +97,10 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
           <Image
             class="service-image"
             src={webPhoto}
-            width="768"
-            height="960"
+            width={768}
+            height={960}
+            widths={[320, 480, 640, 768]}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             alt="Website design and development for Perth businesses"
             loading="lazy"
             decoding="async"
@@ -211,9 +219,7 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
   }
 
   .service-summary {
-font-size:15x;
-
-
+    font-size: 15x;
   }
 
   /* Responsive columns, same behaviour as Elementor “wrap” */
@@ -259,15 +265,14 @@ font-size:15x;
     }
 
     .service-image {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
-  .service-summary {
-    padding:0px 30px 30px 30px;
-    
-  }
+    .service-summary {
+      padding: 0px 30px 30px 30px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -295,14 +300,14 @@ font-size:15x;
 
   @media (max-width: 768px) {
     .services-container {
-      padding:0px 0px 15px 0px;
+      padding: 0px 0px 15px 0px;
     }
     .service-card {
       gap: 0px;
     }
 
-    .services-heading-bar{
-      border-bottom:none;
+    .services-heading-bar {
+      border-bottom: none;
     }
   }
 </style>

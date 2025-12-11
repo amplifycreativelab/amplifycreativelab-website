@@ -6,7 +6,6 @@ import heroSlide3Fallback from "../../../assets/images/hero/ginger-scallion-crab
 
 const slides = [
   {
-    webp: heroSlide1Fallback.src,
     fallback: heroSlide1Fallback,
     alt: "Overhead flatlay of beef ravioli in pumpkin sauce, styled and photographed by Amplify Creative Lab, Perth.",
     heading: "Commercial Food Photography",
@@ -15,7 +14,6 @@ const slides = [
     buttonHref: "/portfolio/",
   },
   {
-    webp: heroSlide2Fallback.src,
     fallback: heroSlide2Fallback,
     alt: "Elegant dark chocolate mousse dome with gold leaf, showcasing fine dining photography services in Perth, WA.",
     heading: "Elevate Your Menu With Style",
@@ -24,7 +22,6 @@ const slides = [
     buttonHref: "/portfolio/restaurant-photography/",
   },
   {
-    webp: heroSlide3Fallback.src,
     fallback: heroSlide3Fallback,
     alt: "Vibrant stir-fried crab with ginger and noodles, captured during a commercial food photography shoot in Perth.",
     heading: "Content That Converts",
@@ -48,25 +45,24 @@ const INITIAL_SLIDE_DELAY = 200;
 >
   <div class="hero-new__media">
     {slides.map((slide, index) => (
-      <picture
+      <Image
         class:list={[
           "hero-new__slide",
           index === 0 && "hero-new__slide--active",
         ]}
+        src={slide.fallback}
+        alt={slide.alt}
+        width={1920}
+        height={1080}
+        widths={[640, 960, 1280, 1600, 1920]}
+        sizes="100vw"
+        quality={80}
         data-hero-slide
         data-index={index}
-      >
-        <source srcset={slide.webp} type="image/webp" />
-        <Image
-          src={slide.fallback}
-          alt={slide.alt}
-          width={index === 0 ? 1920 : undefined}
-          height={index === 0 ? 1080 : undefined}
-          fetchpriority={index === 0 ? "high" : undefined}
-          loading={index === 0 ? "eager" : "lazy"}
-          decoding="async"
-        />
-      </picture>
+        fetchpriority={index === 0 ? "high" : undefined}
+        loading={index === 0 ? "eager" : "lazy"}
+        decoding="async"
+      />
     ))}
   </div>
 
@@ -249,13 +245,9 @@ const INITIAL_SLIDE_DELAY = 200;
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition:
-      opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
     will-change: opacity;
     pointer-events: none;
-  }
-
-  .hero-new__slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
