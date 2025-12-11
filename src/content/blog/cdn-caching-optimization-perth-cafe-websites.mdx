@@ -27,8 +27,17 @@ tags:
   - "SEO"
   - "Core Web Vitals"
 canonicalUrl: "https://amplifycreativelab.com/blog/cdn-caching-optimization-perth-cafe-websites/"
----
 
+faq:
+  - question: "Do I need a CDN if my website is already hosted in Australia?"
+    answer: "Yes. Even with Australian hosting, a CDN can improve performance by caching content at multiple edge locations within the country (e.g., Perth, Sydney, Melbourne). This reduces latency for visitors in different suburbs and provides redundancy against server outages."
+  - question: "How long does it take to implement CDN, caching and optimization?"
+    answer: "For an existing site, basic implementation can often be completed within a few hours. A comprehensive optimisation that includes image conversion, code minification and caching configuration typically takes 1–2 days. For new sites, we build these techniques into the development process from the start."
+  - question: "Will caching break my website updates?"
+    answer: "Properly configured caching includes mechanisms to invalidate the cache when content changes. We use cache‑busting techniques (like versioned file names) to ensure visitors always see the latest version of your menu, prices and promotions."
+  - question: "Can I add a CDN to my WordPress site?"
+    answer: "Absolutely. Many CDN providers offer WordPress‑specific plugins (e.g., Cloudflare, WP Rocket) that make integration straightforward. However, for optimal performance, we recommend a custom‑built Astro site where CDN, caching and optimization are deeply integrated into the architecture. (Read our comparison of <a href=\"/blog/astro-vs-wordpress-hospitality-websites-perth\">Astro vs WordPress for hospitality websites</a>.)"
+---
 import { Image } from "astro:assets";
 
 {/* Key Takeaways for AI Engines and Quick Readers */}
@@ -223,17 +232,18 @@ import { Image } from "astro:assets";
   <a href="/website-development">Test your site speed and request a mini audit</a>—if your site is in the red, we'll show you exactly how to fix it and start converting more hungry browsers into loyal customers.
 </p>
 
+
 <h2>Frequently Asked Questions</h2>
+<aside className="faq-section">
+  <h3>Do I need a CDN if my website is already hosted in Australia?</h3>
+  <p>Yes. Even with Australian hosting, a CDN can improve performance by caching content at multiple edge locations within the country (e.g., Perth, Sydney, Melbourne). This reduces latency for visitors in different suburbs and provides redundancy against server outages.</p>
 
-<p><strong>Do I need a CDN if my website is already hosted in Australia?</strong></p>
-<p>Yes. Even with Australian hosting, a CDN can improve performance by caching content at multiple edge locations within the country (e.g., Perth, Sydney, Melbourne). This reduces latency for visitors in different suburbs and provides redundancy against server outages.</p>
+  <h3>How long does it take to implement CDN, caching and optimization?</h3>
+  <p>For an existing site, basic implementation can often be completed within a few hours. A comprehensive optimisation that includes image conversion, code minification and caching configuration typically takes 1–2 days. For new sites, we build these techniques into the development process from the start.</p>
 
-<p><strong>How long does it take to implement CDN, caching and optimization?</strong></p>
-<p>For an existing site, basic implementation can often be completed within a few hours. A comprehensive optimisation that includes image conversion, code minification and caching configuration typically takes 1–2 days. For new sites, we build these techniques into the development process from the start.</p>
+  <h3>Will caching break my website updates?</h3>
+  <p>Properly configured caching includes mechanisms to invalidate the cache when content changes. We use cache‑busting techniques (like versioned file names) to ensure visitors always see the latest version of your menu, prices and promotions.</p>
 
-<p><strong>Will caching break my website updates?</strong></p>
-<p>Properly configured caching includes mechanisms to invalidate the cache when content changes. We use cache‑busting techniques (like versioned file names) to ensure visitors always see the latest version of your menu, prices and promotions.</p>
-
-<p><strong>Can I add a CDN to my WordPress site?</strong></p>
-<p>Absolutely. Many CDN providers offer WordPress‑specific plugins (e.g., Cloudflare, WP Rocket) that make integration straightforward. However, for optimal performance, we recommend a custom‑built Astro site where CDN, caching and optimization are deeply integrated into the architecture. (Read our comparison of <a href="/blog/astro-vs-wordpress-hospitality-websites-perth">Astro vs WordPress for hospitality websites</a>.)</p>
-
+  <h3>Can I add a CDN to my WordPress site?</h3>
+  <p>Absolutely. Many CDN providers offer WordPress‑specific plugins (e.g., Cloudflare, WP Rocket) that make integration straightforward. However, for optimal performance, we recommend a custom‑built Astro site where CDN, caching and optimization are deeply integrated into the architecture. (Read our comparison of <a href="/blog/astro-vs-wordpress-hospitality-websites-perth">Astro vs WordPress for hospitality websites</a>.)</p>
+</aside>

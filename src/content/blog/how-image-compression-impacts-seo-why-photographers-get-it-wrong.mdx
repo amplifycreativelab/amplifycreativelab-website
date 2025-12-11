@@ -43,8 +43,23 @@ schema:
   dateModified: "2025-12-11"
   author: "Amplify Creative Lab"
   location: "Perth, Western Australia"
----
 
+faq:
+  - question: "What's the difference between lossy and lossless compression?"
+    answer: "<strong>Lossy compression</strong> removes some data to achieve smaller file sizes; <strong>lossless compression</strong> reduces file size without any data loss. For web photos, lossy compression (JPEG, WebP) is preferred because the quality loss is unnoticeable at 80–85% quality settings—and file sizes are dramatically smaller."
+  - question: "How do I know if my images are too large?"
+    answer: "Run your site through <a href=\"https://pagespeed.web.dev\" target=\"_blank\" rel=\"noopener noreferrer\">Google PageSpeed Insights</a>. If LCP is flagged as \"Poor\" (red) or \"Needs Improvement\" (orange), and the report mentions \"image optimization\" or \"properly size images,\" your images are likely too large. Our mini‑audit provides a detailed breakdown."
+  - question: "Can I compress images after they're already on my website?"
+    answer: "Yes. You can use tools like Squoosh, ImageOptim, or WordPress plugins (ShortPixel, Imagify) to compress existing images. However, for best results, it's better to re‑export from the original high‑resolution files with the correct dimensions and quality settings—you'll get better quality at smaller sizes."
+  - question: "Do I need to use WebP if my site is built on WordPress?"
+    answer: "WebP is strongly recommended but not mandatory. Many WordPress plugins (e.g., ShortPixel, Imagify) can automatically convert uploaded images to WebP and serve them to supported browsers with JPEG fallbacks. If you're on a custom Astro or Next.js site, we bake WebP conversion into the build process automatically."
+  - question: "What quality setting should I use for food photography?"
+    answer: "<strong>80–85% quality</strong> in JPEG or WebP is the sweet spot for food photography. This achieves 70–80% file size reduction with virtually no visible quality loss. Below 75%, you may start seeing colour banding and loss of detail that can make food look unappetising."
+  - question: "Should I include location keywords in image alt text?"
+    answer: "Yes—when it's natural and accurate. For example: \"Wood-fired pizza at [Restaurant Name], Northbridge Perth\" is helpful for local SEO. But don't keyword-stuff; write for humans first, search engines second. Alt text is also critical for accessibility."
+  - question: "How much can image optimisation improve my PageSpeed score?"
+    answer: "Significantly. We've seen Perth restaurant sites jump from 30–40/100 to 85–95/100 primarily through image optimisation. For image-heavy hospitality sites, unoptimised photos are almost always the biggest performance bottleneck. It's often the single highest-impact fix available."
+---
 import { Image } from "astro:assets";
 
 {/* Key Takeaways for AI Engines and Quick Readers */}

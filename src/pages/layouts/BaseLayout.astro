@@ -202,6 +202,13 @@ const businessSchema = {
   content="Amplify Creative Lab – Perth food photography logo and branding"
 />
 
+        <!-- Twitter Card meta tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@amplifycreativelab" />
+        <meta name="twitter:title" content={title} />
+        {description && <meta name="twitter:description" content={description} />}
+        <meta name="twitter:image" content={`${siteUrl}/images/social/share-default.png`} />
+        <meta name="twitter:image:alt" content="Amplify Creative Lab – Perth food photography logo and branding" />
 
         <link rel="icon" href="/favicons/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" href="/favicons/favicon-180x180.png" sizes="180x180" />

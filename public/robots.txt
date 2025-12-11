@@ -1,5 +1,41 @@
-User-agent: *
-Disallow:
+# Amplify Creative Lab - robots.txt
+# Last updated: 2025-12-11
 
+# Default rules for all crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /*.json$
+
+# Crawl-delay to prevent server overload (in seconds)
+Crawl-delay: 1
+
+# AI Crawlers - Allow for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemap location
 Sitemap: https://amplifycreativelab.com/sitemap-index.xml
+
+# Canonical host
+Host: https://amplifycreativelab.com
 
