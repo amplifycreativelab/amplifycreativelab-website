@@ -237,17 +237,34 @@ const businessSchema = {
             {JSON.stringify(businessSchema)}
         </script>
 
-        <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        ></script>
         <script define:vars={{ GA_MEASUREMENT_ID }}>
+            // Initialize dataLayer immediately so events can be queued
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
             gtag("js", new Date());
             gtag("config", GA_MEASUREMENT_ID);
+
+            // Lazy load GTM script
+            function loadGTM() {
+                if (window.gtmLoaded) return;
+                window.gtmLoaded = true;
+
+                const script = document.createElement("script");
+                script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+                script.async = true;
+                document.head.appendChild(script);
+            }
+
+            // Load on user interaction
+            const events = ["mousedown", "mousemove", "keydown", "scroll", "touchstart"];
+            events.forEach((event) => {
+                window.addEventListener(event, loadGTM, { once: true, passive: true });
+            });
+
+            // Fallback: load after 4 seconds if no interaction
+            setTimeout(loadGTM, 4000);
         </script>
     </head>
 

@@ -32,16 +32,13 @@ const slides = [
 ];
 
 // Time each slide stays fully visible (ms)
-const SLIDE_INTERVAL = 3000;
-// Shorter delay before the very first auto-advance (ms)
-const INITIAL_SLIDE_DELAY = 200;
+const SLIDE_INTERVAL = 3300;
 ---
 
 <section
   class="hero-new"
   data-hero-new
   data-interval={SLIDE_INTERVAL}
-  data-initial-delay={INITIAL_SLIDE_DELAY}
 >
   <div class="hero-new__media">
     {slides.map((slide, index) => (
@@ -59,8 +56,8 @@ const INITIAL_SLIDE_DELAY = 200;
         quality={80}
         data-hero-slide
         data-index={index}
-        fetchpriority={index === 0 ? "high" : undefined}
-        loading={index === 0 ? "eager" : "lazy"}
+        fetchpriority={index <= 1 ? "high" : undefined}
+        loading={index <= 1 ? "eager" : "lazy"}
         decoding="async"
       />
     ))}
@@ -113,104 +110,76 @@ const INITIAL_SLIDE_DELAY = 200;
     const hero = script?.closest("[data-hero-new]");
 
     if (hero) {
-      const slides = Array.from(
-        hero.querySelectorAll("[data-hero-slide]")
-      );
-      const dots = Array.from(hero.querySelectorAll("[data-hero-dot]"));
-      const panels = Array.from(hero.querySelectorAll("[data-hero-panel]"));
+      requestAnimationFrame(() => {
+        const slides = Array.from(hero.querySelectorAll("[data-hero-slide]"));
+        const dots = Array.from(hero.querySelectorAll("[data-hero-dot]"));
+        const panels = Array.from(hero.querySelectorAll("[data-hero-panel]"));
 
-      if (slides.length > 1) {
-        const intervalMs = Number(hero.dataset.interval) || 9000;
-        const initialDelay =
-          Number(hero.dataset.initialDelay) || Math.min(intervalMs, 1000);
+        if (slides.length > 1) {
+          const intervalMs = Number(hero.dataset.interval) || 9000;
 
-        let index = 0;
-        let timer;
-        let initialTimeout;
-        let hasStarted = false;
+          let index = 0;
+          let timer;
 
-        const goToSlide = (nextIndex) => {
-          const total = slides.length;
-          const newIndex = ((nextIndex % total) + total) % total;
+          const goToSlide = (nextIndex) => {
+            const total = slides.length;
+            const newIndex = ((nextIndex % total) + total) % total;
 
-          if (newIndex === index) return;
+            if (newIndex === index) return;
 
-          slides[index].classList.remove("hero-new__slide--active");
-          dots[index]?.classList.remove("hero-new__dot--active");
-          dots[index]?.setAttribute("aria-selected", "false");
-          if (panels[index]) {
-            panels[index].classList.remove("hero-new__panel--active");
-            panels[index].setAttribute("aria-hidden", "true");
-          }
+            slides[index].classList.remove("hero-new__slide--active");
+            dots[index]?.classList.remove("hero-new__dot--active");
+            dots[index]?.setAttribute("aria-selected", "false");
+            if (panels[index]) {
+              panels[index].classList.remove("hero-new__panel--active");
+              panels[index].setAttribute("aria-hidden", "true");
+            }
 
-          index = newIndex;
+            index = newIndex;
 
-          slides[index].classList.add("hero-new__slide--active");
-          dots[index]?.classList.add("hero-new__dot--active");
-          dots[index]?.setAttribute("aria-selected", "true");
-          if (panels[index]) {
-            panels[index].classList.add("hero-new__panel--active");
-            panels[index].setAttribute("aria-hidden", "false");
-          }
-        };
+            slides[index].classList.add("hero-new__slide--active");
+            dots[index]?.classList.add("hero-new__dot--active");
+            dots[index]?.setAttribute("aria-selected", "true");
+            if (panels[index]) {
+              panels[index].classList.add("hero-new__panel--active");
+              panels[index].setAttribute("aria-hidden", "false");
+            }
+          };
 
-        const clearInitial = () => {
-          if (initialTimeout) {
-            clearTimeout(initialTimeout);
-            initialTimeout = undefined;
-          }
-        };
+          const stop = () => {
+            if (timer) {
+              clearInterval(timer);
+              timer = undefined;
+            }
+          };
 
-        const stop = () => {
-          if (timer) {
-            clearInterval(timer);
-            timer = undefined;
-          }
-        };
+          const start = () => {
+            stop();
+            timer = setInterval(() => {
+              goToSlide(index + 1);
+            }, intervalMs);
+          };
 
-        const start = () => {
-          clearInitial();
-          stop();
-          timer = setInterval(() => {
-            goToSlide(index + 1);
-          }, intervalMs);
-          hasStarted = true;
-        };
-
-        const scheduleInitial = () => {
-          if (hasStarted) {
-            start();
-            return;
-          }
-
-          clearInitial();
-          initialTimeout = setTimeout(() => {
-            goToSlide(index + 1);
-            start();
-          }, initialDelay);
-        };
-
-        dots.forEach((dot, dotIndex) => {
-          dot.addEventListener("click", () => {
-            clearInitial();
-            goToSlide(dotIndex);
-            start();
+          dots.forEach((dot, dotIndex) => {
+            dot.addEventListener("click", () => {
+              goToSlide(dotIndex);
+              start();
+            });
           });
-        });
 
-        hero.addEventListener("click", () => {
-          stop();
-          clearInitial();
-        });
+          hero.addEventListener("click", () => {
+            stop();
+          });
 
-        scheduleInitial();
-      } else {
-        // If there's only one slide, hide the dots.
-        const dotsWrapper = hero.querySelector(".hero-new__dots");
-        if (dotsWrapper) {
-          dotsWrapper.style.display = "none";
+          start();
+        } else {
+          // If there's only one slide, hide the dots.
+          const dotsWrapper = hero.querySelector(".hero-new__dots");
+          if (dotsWrapper) {
+            dotsWrapper.style.display = "none";
+          }
         }
-      }
+      });
     }
   </script>
 </section>
