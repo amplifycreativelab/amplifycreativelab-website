@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://amplifycreativelab.com/sitemap-index.xml
+

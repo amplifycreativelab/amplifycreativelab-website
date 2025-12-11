@@ -1,0 +1,147 @@
+---
+/**
+ * KeyTakeaways Component
+ *
+ * A styled aside component for displaying key takeaways at the beginning of blog posts.
+ * Optimized for LLM extraction and Featured Snippets (GEO/AEO).
+ *
+ * Usage in MDX:
+ * ```mdx
+ * import KeyTakeaways from '../../pages/layouts/KeyTakeaways.astro';
+ *
+ * <KeyTakeaways
+ *   takeaways={[
+ *     "Professional food photography increases menu conversions by up to 30%",
+ *     "Perth restaurants using WebP images load 40% faster than competitors",
+ *     "Amplify Creative Lab combines photography and web design for maximum impact"
+ *   ]}
+ * />
+ * ```
+ */
+
+export interface Props {
+    takeaways?: string[];
+    title?: string;
+}
+
+const { takeaways = [], title = "Key Takeaways" } = Astro.props as Props;
+---
+
+<aside class="key-takeaways" aria-label="Key Takeaways">
+    <h2 class="key-takeaways__title">
+        <span class="key-takeaways__icon" aria-hidden="true">🔑</span>
+        {title}
+    </h2>
+    <ul class="key-takeaways__list">
+        {
+            takeaways.map((takeaway, index) => (
+                <li class="key-takeaways__item">
+                    <span class="key-takeaways__number">{index + 1}</span>
+                    <span class="key-takeaways__text">{takeaway}</span>
+                </li>
+            ))
+        }
+    </ul>
+</aside>
+
+<style>
+    .key-takeaways {
+        background: linear-gradient(135deg, #f8f4e8 0%, #fef8eb 100%);
+        border: 2px solid #24360f;
+        border-radius: 16px;
+        padding: 1.5rem 1.75rem 1.75rem;
+        margin-bottom: 2rem;
+        box-shadow:
+            0 4px 6px -1px rgba(36, 54, 15, 0.1),
+            0 2px 4px -2px rgba(36, 54, 15, 0.1);
+    }
+
+    .key-takeaways__title {
+        font-family:
+            "Montserrat",
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #24360f;
+        margin: 0 0 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .key-takeaways__icon {
+        font-size: 1.25rem;
+    }
+
+    .key-takeaways__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .key-takeaways__item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-family:
+            "Darker Grotesque",
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.5;
+        color: #24360f;
+    }
+
+    .key-takeaways__number {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: #24360f;
+        color: #fef8eb;
+        border-radius: 50%;
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-top: 0.15rem;
+    }
+
+    .key-takeaways__text {
+        flex: 1;
+    }
+
+    /* Highlight important terms */
+    .key-takeaways__text :global(strong) {
+        color: #152705;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .key-takeaways {
+            padding: 1.25rem 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .key-takeaways__title {
+            font-size: 1rem;
+        }
+
+        .key-takeaways__item {
+            font-size: 1.05rem;
+        }
+    }
+</style>

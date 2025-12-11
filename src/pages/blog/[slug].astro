@@ -1,5 +1,6 @@
 ---
 import BlogPostLayout from "../layouts/BlogPostLayout.astro";
+import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 type BlogEntry = CollectionEntry<"blog">;
@@ -35,5 +36,5 @@ const canonicalUrl =
   tags={data.tags}
   canonicalUrl={canonicalUrl}
 >
-  <Content />
+  <Content components={{ Image }} />
 </BlogPostLayout>
