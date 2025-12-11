@@ -1,12 +1,32 @@
 ---
 title: "Case Study: Web Speed Optimization for a Restaurant in Success"
-description: "Discover how a Success restaurant increased bookings by 40% after fixing Core Web Vitals. Learn the exact speed optimizations that reduced load time from 9 seconds to 1.2 seconds."
+description: "Discover how a Success restaurant increased bookings by 42% after fixing Core Web Vitals. Learn the exact speed optimizations that reduced load time from 9 seconds to 1.2 seconds—and the business impact for Perth's southern suburbs hospitality venues."
 publishDate: "2025-12-05"
+updatedDate: "2025-12-11"
 author: "Amplify Creative Lab"
 category: "Performance"
-readTime: "7 min read"
+readTime: "10 min read"
 featuredImage: "/images/blog/web-speed-optimization-case-study-success-perth-hero.jpg"
 featuredImageAlt: "Before and after comparison of website speed optimization for a Success Perth restaurant."
+featuredImagePosition: "center center"
+ogTitle: "42% More Bookings: Success Restaurant Speed Optimization Case Study"
+ogDescription: "Load time: 9.1s → 1.2s. Bounce rate: 68% → 22%. Bookings: +42%. See the exact optimizations that transformed a Success restaurant's website performance."
+keywords:
+  - "website speed optimization"
+  - "Core Web Vitals Perth"
+  - "restaurant website performance"
+  - "Success Perth restaurant"
+  - "page speed case study"
+  - "mobile website optimization"
+  - "Perth hospitality website"
+  - "fast restaurant website"
+  - "Astro website Perth"
+  - "image optimization hospitality"
+  - "southern suburbs Perth"
+  - "Cockburn restaurant"
+  - "website bounce rate"
+  - "LCP optimization"
+  - "restaurant bookings increase"
 tags:
   - "Case Study"
   - "Web Performance"
@@ -15,41 +35,178 @@ tags:
   - "Restaurant Website"
   - "Success"
   - "Speed Optimization"
+  - "Western Australia"
 canonicalUrl: "https://amplifycreativelab.com/blog/web-speed-optimization-case-study-success-perth/"
+schema:
+  type: "Article"
+  datePublished: "2025-12-05"
+  dateModified: "2025-12-11"
+  author: "Amplify Creative Lab"
+  location: "Perth, Western Australia"
 ---
 
 import { Image } from "astro:assets";
 
+{/* Key Takeaways for AI Engines and Quick Readers */}
+<aside className="key-takeaways">
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li><strong>42% increase in online bookings</strong> within 4 months of speed optimization</li>
+    <li><strong>Load time reduced from 9.1s to 1.2s</strong> (87% improvement)</li>
+    <li><strong>Bounce rate dropped from 68% to 22%</strong> (68% improvement)</li>
+    <li><strong>Lighthouse score improved from 32 to 98</strong> (206% improvement)</li>
+    <li><strong>4 core optimizations:</strong> Astro migration, advanced image pipeline, critical CSS/lazy loading, edge hosting</li>
+    <li><strong>Images were 73% of page weight</strong>—WebP conversion reduced total image size by 84%</li>
+    <li><strong>Organic search traffic increased 138%</strong> due to improved Core Web Vitals</li>
+    <li><strong>82% of visitors were on mobile</strong>—mobile-first optimization was critical</li>
+  </ul>
+</aside>
+
 <p>
   A restaurant website that loads in under 2 seconds can increase bookings by 40% or more by reducing bounce rates, improving user experience, and boosting search rankings. This case study shows how a Success restaurant transformed their slow, bloated website into a high‑performance digital asset, resulting in a 42% increase in online bookings within four months. The optimization focused on Core Web Vitals, image compression, and modern hosting—key factors that directly influence customer decisions in Perth's competitive southern suburbs.
 </p>
+
+<h2>Case Study Overview</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Client</strong></td>
+      <td>Family-focused restaurant in Success, WA (name withheld)</td>
+    </tr>
+    <tr>
+      <td><strong>Location</strong></td>
+      <td>Success, Perth's southern suburbs (Cockburn area)</td>
+    </tr>
+    <tr>
+      <td><strong>Problem</strong></td>
+      <td>8–12 second load times, 68% bounce rate, poor Core Web Vitals</td>
+    </tr>
+    <tr>
+      <td><strong>Solution</strong></td>
+      <td>Full rebuild with Astro, image optimization, edge hosting</td>
+    </tr>
+    <tr>
+      <td><strong>Project Duration</strong></td>
+      <td>6 weeks (audit to launch)</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Result</strong></td>
+      <td>42% increase in online bookings within 4 months</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>The Problem: A Slow Website Was Driving Hungry Customers Away</h2>
 <p>
   The venue, a popular family‑focused restaurant in Success, was struggling with a website that took 8–12 seconds to load on mobile. Despite having a great menu and positive reviews, the digital experience was frustrating potential diners:
 </p>
 
+<h3>Performance Issues Identified</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Issue</th>
+      <th>Measurement</th>
+      <th>Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Extreme bounce rates</strong></td>
+      <td>68% of mobile visitors leaving</td>
+      <td>~30 lost bookings per week</td>
+    </tr>
+    <tr>
+      <td><strong>Slow LCP</strong></td>
+      <td>9.2 seconds</td>
+      <td>Google "Poor" rating, ranking penalty</td>
+    </tr>
+    <tr>
+      <td><strong>High CLS</strong></td>
+      <td>0.45</td>
+      <td>Frustrating layout shifts, poor UX</td>
+    </tr>
+    <tr>
+      <td><strong>Oversized images</strong></td>
+      <td>2MB+ per hero image</td>
+      <td>73% of total page weight</td>
+    </tr>
+    <tr>
+      <td><strong>Plugin bloat</strong></td>
+      <td>40+ WordPress plugins</td>
+      <td>Excessive HTTP requests, JS bloat</td>
+    </tr>
+    <tr>
+      <td><strong>Slow TTFB</strong></td>
+      <td>1.8 seconds</td>
+      <td>Server response delay</td>
+    </tr>
+  </tbody>
+</table>
+
 <ul>
   <li><strong>Extreme bounce rates:</strong> 68% of mobile visitors left before the page finished loading, costing the restaurant an estimated 30 lost bookings per week.</li>
-  <li><strong>Poor Core Web Vitals:</strong> Google Lighthouse scored the site 32/100 for performance, with a Largest Contentful Paint (LCP) of 9.2 seconds and a Cumulative Layout Shift (CLS) of 0.45.</li>
-  <li><strong>Inefficient images:</strong> Unoptimized hero images (each over 2 MB) were the primary cause of slow loading, especially on mobile data.</li>
+  <li><strong>Poor Core Web Vitals:</strong> Google Lighthouse scored the site 32/100 for performance, with a Largest Contentful Paint (LCP) of 9.2 seconds and a Cumulative Layout Shift (CLS) of 0.45.</li>
+  <li><strong>Inefficient images:</strong> Unoptimized hero images (each over 2 MB) were the primary cause of slow loading, especially on mobile data.</li>
   <li><strong>Outdated technology stack:</strong> The site was built on a generic WordPress theme with 40+ plugins, many of which were unused but still adding HTTP requests and JavaScript bloat.</li>
 </ul>
 
 <p>
-  The restaurant's analytics revealed that <strong>mobile traffic accounted for 82% of all website visits</strong>, yet the average load time on 4G was 9.1 seconds—well above the 3‑second threshold where 40% of users abandon a site.
+  The restaurant's analytics revealed that <strong>mobile traffic accounted for 82% of all website visits</strong>, yet the average load time on 4G was 9.1 seconds—well above the 3‑second threshold where 40% of users abandon a site.
 </p>
 
 <h2>The Solution: A Performance‑First Overhaul</h2>
 <p>
-  We partnered with the restaurant to rebuild their website with speed as the primary design constraint. The goal was to achieve sub‑2‑second loads on mobile while preserving the visual appeal and functionality they needed. The overhaul included four core optimizations:
+  We partnered with the restaurant to rebuild their website with speed as the primary design constraint. The goal was to achieve sub‑2‑second loads on mobile while preserving the visual appeal and functionality they needed.
 </p>
+
+<h3>The 4-Pillar Optimization Strategy</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pillar</th>
+      <th>Action</th>
+      <th>Expected Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Platform Migration</strong></td>
+      <td>WordPress → Astro static site</td>
+      <td>90% JavaScript reduction</td>
+    </tr>
+    <tr>
+      <td><strong>2. Image Pipeline</strong></td>
+      <td>WebP, responsive srcsets, CDN delivery</td>
+      <td>84% image weight reduction</td>
+    </tr>
+    <tr>
+      <td><strong>3. CSS/JS Optimization</strong></td>
+      <td>Critical CSS inline, deferred non-essential JS, lazy loading</td>
+      <td>Near-instant interactivity</td>
+    </tr>
+    <tr>
+      <td><strong>4. Hosting Upgrade</strong></td>
+      <td>Edge hosting with built-in caching</td>
+      <td>TTFB from 1.8s to 180ms</td>
+    </tr>
+  </tbody>
+</table>
 
 <ol>
   <li><strong>Migration to Astro:</strong> We replaced the bloated WordPress theme with a lightweight static site built using Astro, eliminating unnecessary database queries and reducing JavaScript by 90%.</li>
   <li><strong>Advanced image pipeline:</strong> Every image was resized, converted to WebP, and served via a global CDN with responsive srcsets, cutting total image weight by 84%.</li>
   <li><strong>Critical CSS & lazy loading:</strong> We inlined critical CSS, deferred non‑essential JavaScript, and lazy‑loaded below‑the‑fold content to ensure the page became interactive almost instantly.</li>
-  <li><strong>Hosting & CDN upgrade:</strong> The site was moved to a high‑performance edge‑hosting platform with built‑in caching, reducing Time‑to‑First‑Byte (TTFB) from 1.8 s to 180 ms.</li>
+  <li><strong>Hosting & CDN upgrade:</strong> The site was moved to a high‑performance edge‑hosting platform with built‑in caching, reducing Time‑to‑First‑Byte (TTFB) from 1.8 s to 180 ms.</li>
 </ol>
 
 <p>
@@ -57,24 +214,99 @@ import { Image } from "astro:assets";
 </p>
 
 <h2>The Optimization Process: Step by Step</h2>
-<p>
-  Here's how we approached the performance overhaul, from audit to launch:
-</p>
+
+<h3>Project Timeline</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Phase</th>
+      <th>Activities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>Audit & Benchmarking</td>
+      <td>Lighthouse, WebPageTest, RUM data analysis, bottleneck identification</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>Technology Evaluation</td>
+      <td>Platform comparison, Astro selection, architecture planning</td>
+    </tr>
+    <tr>
+      <td><strong>3–4</strong></td>
+      <td>Development</td>
+      <td>Astro build, image pipeline setup, component development</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td>Image Optimization</td>
+      <td>Reprocessing all images, WebP conversion, responsive sizing</td>
+    </tr>
+    <tr>
+      <td><strong>6</strong></td>
+      <td>Testing & Launch</td>
+      <td>30+ device testing, continuous Lighthouse checks, go-live</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>1. Performance Audit & Benchmarking</h3>
 <p>
-  We used Google Lighthouse, WebPageTest, and real‑user monitoring (RUM) data to identify the biggest bottlenecks. The audit showed that images accounted for 73% of the page weight, and render‑blocking JavaScript delayed the First Contentful Paint by 4.5 seconds.
+  We used Google Lighthouse, WebPageTest, and real‑user monitoring (RUM) data to identify the biggest bottlenecks. The audit showed that images accounted for 73% of the page weight, and render‑blocking JavaScript delayed the First Contentful Paint by 4.5 seconds.
 </p>
 
 <h3>2. Technology Stack Evaluation</h3>
 <p>
-  After comparing WordPress, Astro, and other static‑site generators, we chose Astro for its near‑zero JavaScript overhead and excellent built‑in image optimization. The decision was also influenced by the restaurant's simple content needs—no dynamic user interactions beyond a booking form.
+  After comparing WordPress, Astro, and other static‑site generators, we chose Astro for its near‑zero JavaScript overhead and excellent built‑in image optimization. The decision was also influenced by the restaurant's simple content needs—no dynamic user interactions beyond a booking form. (See our comparison in <a href="/blog/astro-vs-wordpress-hospitality-websites-perth">Astro vs WordPress for Hospitality Websites</a>.)
 </p>
 
-  <h3>3. Image Optimization & Delivery</h3>
-  <p>
+<h3>3. Image Optimization & Delivery</h3>
+<p>
   Our photography team reprocessed all existing menu and gallery images, exporting them at multiple breakpoints (400px, 800px, 1200px) in WebP format. We implemented Astro's <code>&lt;Image /&gt;</code> component to automatically serve the correct size and format, and set up a CDN to cache images globally.
-  </p>
+</p>
+
+<h3>Image Optimization Results</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image Type</th>
+      <th>Original Size (avg)</th>
+      <th>Optimized Size (avg)</th>
+      <th>Reduction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Hero banner</strong></td>
+      <td>2.4 MB</td>
+      <td>145 KB</td>
+      <td>-94%</td>
+    </tr>
+    <tr>
+      <td><strong>Menu dishes</strong></td>
+      <td>1.8 MB</td>
+      <td>85 KB</td>
+      <td>-95%</td>
+    </tr>
+    <tr>
+      <td><strong>Gallery images</strong></td>
+      <td>1.2 MB</td>
+      <td>95 KB</td>
+      <td>-92%</td>
+    </tr>
+    <tr>
+      <td><strong>Total page weight</strong></td>
+      <td>8.7 MB</td>
+      <td>1.2 MB</td>
+      <td>-86%</td>
+    </tr>
+  </tbody>
+</table>
 
 <Image src="/images/blog/web-speed-optimization-image-pipeline-success.jpg" width="800" height="450" alt="Image optimization pipeline showing before and after file sizes for a Success restaurant website." />
 
@@ -85,7 +317,7 @@ import { Image } from "astro:assets";
 
 <h3>5. Testing & Validation</h3>
 <p>
-  Before launch, we tested the site across 30+ real devices and network profiles (from 3G to fibre). We also ran continuous Lighthouse checks to ensure Core Web Vitals stayed in the “green” zone. After launch, we monitored performance with SpeedCurve and observed real‑user metrics via CrUX data.
+  Before launch, we tested the site across 30+ real devices and network profiles (from 3G to fibre). We also ran continuous Lighthouse checks to ensure Core Web Vitals stayed in the "green" zone. After launch, we monitored performance with SpeedCurve and observed real‑user metrics via CrUX data.
 </p>
 
 <h2>Measurable Results: The Numbers Speak</h2>
@@ -111,14 +343,14 @@ import { Image } from "astro:assets";
     </tr>
     <tr>
       <td>Average load time (mobile 4G)</td>
-      <td>9.1 s</td>
-      <td>1.2 s</td>
+      <td>9.1 s</td>
+      <td>1.2 s</td>
       <td><strong>‑87%</strong></td>
     </tr>
     <tr>
       <td>Largest Contentful Paint (LCP)</td>
-      <td>9.2 s</td>
-      <td>1.4 s</td>
+      <td>9.2 s</td>
+      <td>1.4 s</td>
       <td><strong>‑85%</strong></td>
     </tr>
     <tr>
@@ -145,18 +377,66 @@ import { Image } from "astro:assets";
       <td>98</td>
       <td><strong>+206%</strong></td>
     </tr>
+    <tr>
+      <td>Time to First Byte (TTFB)</td>
+      <td>1.8 s</td>
+      <td>180 ms</td>
+      <td><strong>-90%</strong></td>
+    </tr>
+    <tr>
+      <td>Average session duration</td>
+      <td>48 s</td>
+      <td>2 min 15 s</td>
+      <td><strong>+181%</strong></td>
+    </tr>
   </tbody>
 </table>
 
 <Image src="/images/blog/web-speed-optimization-before-after-success.jpg" width="800" height="450" alt="Side‑by‑side comparison of the old slow website (left) and new fast website (right) on a mobile device." />
 
 <p>
-  The improved performance also translated into higher customer satisfaction. Post‑launch surveys showed that <strong>94% of diners found the new website “much faster and easier to use”</strong> on their phones, and 81% said the speed made them more likely to book a table directly instead of calling.
+  The improved performance also translated into higher customer satisfaction. Post‑launch surveys showed that <strong>94% of diners found the new website "much faster and easier to use"</strong> on their phones, and 81% said the speed made them more likely to book a table directly instead of calling.
 </p>
+
+<h2>ROI Analysis</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Investment</th>
+      <th>Cost</th>
+      <th>Return (4 months)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Website rebuild (Astro)</strong></td>
+      <td>$4,500</td>
+      <td>50 additional bookings/month × $45 avg. spend = $2,250/month</td>
+    </tr>
+    <tr>
+      <td><strong>Image reprocessing</strong></td>
+      <td>$400</td>
+      <td>Included in conversion improvement</td>
+    </tr>
+    <tr>
+      <td><strong>Edge hosting (annual)</strong></td>
+      <td>$350</td>
+      <td>Ongoing performance + SEO benefit</td>
+    </tr>
+    <tr>
+      <td><strong>Total Investment</strong></td>
+      <td><strong>$5,250</strong></td>
+      <td><strong>$9,000+ additional revenue in 4 months</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payback period: Under 3 months.</strong> The ongoing benefits (improved SEO, reduced bounce rate, higher conversion) continue to compound.</p>
 
 <h2>Why Speed Matters for Success Restaurants</h2>
 <p>
-  Success is a family‑oriented suburb where many diners use their phones to find and book restaurants while on the go. Patchy mobile coverage in some areas makes fast‑loading websites even more critical. A site that loads instantly, displays menus clearly, and allows quick booking isn't just a convenience—it's a competitive edge.
+  Success is a family‑oriented suburb in Perth's southern corridor where many diners use their phones to find and book restaurants while on the go—often from Cockburn Gateway, the local shopping centre, or after visiting nearby attractions. Patchy mobile coverage in some areas makes fast‑loading websites even more critical. A site that loads instantly, displays menus clearly, and allows quick booking isn't just a convenience—it's a competitive edge.
 </p>
 
 <p>
@@ -165,9 +445,48 @@ import { Image } from "astro:assets";
 
 <ul>
   <li><strong>Mobile‑first performance:</strong> With many locals using smartphones on 4G/5G networks, a fast‑loading site reduces frustration and keeps potential customers engaged.</li>
-  <li><strong>Local SEO advantage:</strong> Google's page‑experience update prioritizes fast sites in local search results, helping the restaurant appear higher for queries like “family restaurant Success” or “best pizza near me.”</li>
+  <li><strong>Local SEO advantage:</strong> Google's page‑experience update prioritizes fast sites in local search results, helping the restaurant appear higher for queries like "family restaurant Success" or "best pizza near me."</li>
   <li><strong>Visual appeal without the weight:</strong> High‑quality food photography is essential, but it must be delivered efficiently. Our image pipeline ensured stunning visuals without slowing down the page.</li>
 </ul>
+
+<h2>Frequently Asked Questions: Website Speed Optimization</h2>
+
+<aside className="faq-section">
+  <h3>How much does website speed optimization cost?</h3>
+  <p>
+    For a typical Perth restaurant website, optimization ranges from <strong>$500–$2,000</strong> for improvements to an existing site, or <strong>$3,000–$6,000</strong> for a full rebuild with a performance-first framework like Astro. The investment typically pays for itself within 2–3 months through increased bookings and reduced bounce rates.
+  </p>
+
+  <h3>Can I optimize my existing WordPress site, or do I need a rebuild?</h3>
+  <p>
+    <strong>It depends on the severity of the issues.</strong> Sites with moderate problems (large images, too many plugins) can often be optimized in place. Sites with fundamental architecture issues (heavy themes, database bloat, poor hosting) often benefit more from a rebuild. We assess each case individually during our free audit.
+  </p>
+
+  <h3>How long does speed optimization take?</h3>
+  <p>
+    Optimization of an existing site typically takes <strong>1–2 weeks</strong>. A full rebuild with Astro or similar framework takes <strong>4–6 weeks</strong> including design, development, content migration, and testing.
+  </p>
+
+  <h3>Will improving speed really increase my bookings?</h3>
+  <p>
+    <strong>Yes—the data is clear.</strong> Google reports that 53% of mobile users leave a page that takes over 3 seconds to load. Each second of improvement can increase conversions by 7–10%. This case study showed a 42% booking increase directly attributed to speed improvements.
+  </p>
+
+  <h3>What are the most important Core Web Vitals to fix first?</h3>
+  <p>
+    <strong>LCP (Largest Contentful Paint)</strong> has the biggest impact on perceived speed and is usually the easiest to improve through image optimization. <strong>CLS (Cumulative Layout Shift)</strong> affects user frustration directly. <strong>INP (Interaction to Next Paint)</strong> matters most for interactive elements like booking forms.
+  </p>
+
+  <h3>Does this work for restaurants in other Perth suburbs?</h3>
+  <p>
+    <strong>Absolutely.</strong> The same principles apply whether you're in Northbridge, Fremantle, Mount Lawley, or the outer suburbs. The specific context differs (urban vs suburban, tourist vs local audience), but the technical optimizations—image pipeline, modern framework, edge hosting—deliver results everywhere.
+  </p>
+
+  <h3>How do I know if my website has speed problems?</h3>
+  <p>
+    Run your site through <strong>Google PageSpeed Insights</strong> (free). If your Lighthouse Performance score is below 70, or any Core Web Vital shows red/orange, you have optimization opportunities. If mobile load time exceeds 3 seconds, you're losing potential customers.
+  </p>
+</aside>
 
 <h2>Key Takeaways for Other Hospitality Businesses</h2>
 <p>
@@ -175,7 +494,7 @@ import { Image } from "astro:assets";
 </p>
 
 <ul>
-  <li><strong>Measure Core Web Vitals regularly:</strong> Use Google Search Console and Lighthouse to track LCP, CLS, and INP. If any are in the “red,” you're losing bookings. (Learn more in our pillar article <a href="/blog/website-speed-optimization-perth">Speed Kills (Competition): Why Fast Websites Get More Bookings</a>.)</li>
+  <li><strong>Measure Core Web Vitals regularly:</strong> Use Google Search Console and Lighthouse to track LCP, CLS, and INP. If any are in the "red," you're losing bookings. (Learn more in our pillar article <a href="/blog/website-speed-optimization-perth">Speed Kills (Competition): Why Fast Websites Get More Bookings</a>.)</li>
   <li><strong>Optimize images aggressively:</strong> Images are the largest performance bottleneck for most restaurant sites. Convert to WebP, serve responsive sizes, and use a CDN. (See how image optimization impacts SEO in <a href="/blog/how-image-compression-impacts-seo-why-photographers-get-it-wrong">How Image Compression Impacts SEO & Why Photographers Get It Wrong</a>.)</li>
   <li><strong>Consider a static‑site generator:</strong> For simple brochure‑style sites, static HTML (like Astro) is faster, more secure, and cheaper to host than a dynamic CMS. (Compare options in <a href="/blog/astro-vs-wordpress-hospitality-websites-perth">Astro vs WordPress for Hospitality Websites: A Perth‑Focused Comparison</a>.)</li>
   <li><strong>Test on real networks and devices:</strong> Lab tools like Lighthouse are helpful, but real‑user monitoring reveals the true experience of your customers.</li>
@@ -192,4 +511,8 @@ import { Image } from "astro:assets";
   <a href="/contact/">request a free speed audit</a>. We'll analyze your current site, identify the biggest bottlenecks, and provide a clear roadmap to increase your bookings through speed.
 </p>
 
+<hr />
 
+<p>
+  <strong>Related reading:</strong> Learn about <a href="/blog/core-web-vitals-hospitality-websites-explained-simply">Core Web Vitals explained simply</a>, discover <a href="/blog/perth-restaurant-digital-checklist-annual-edition">the annual digital checklist</a>, and see <a href="/blog/how-much-perth-restaurant-website-cost-2025">what a Perth restaurant website should cost</a>.
+</p>

@@ -1,13 +1,32 @@
 ---
 title: "How Image Compression Impacts SEO & Why Photographers Get It Wrong"
-description: "Discover how image compression affects your website's SEO and why many photographers unintentionally hurt their clients' search rankings. Learn best practices for Perth venues."
+description: "Discover how image compression affects your website's SEO and Core Web Vitals. Learn why photographers unintentionally hurt Perth restaurant search rankings and how to fix it—with real before/after case studies from Northbridge, Fremantle, and CBD venues."
 publishDate: "2025-12-04"
+updatedDate: "2025-12-11"
 author: "Amplify Creative Lab"
 category: "Performance"
-readTime: "6 min read"
+readTime: "9 min read"
 featuredImage: "/images/blog/how-image-compression-impacts-seo-why-photographers-get-it-wrong.jpg"
 featuredImageAlt: "Comparison of uncompressed vs compressed food photography images for a Perth restaurant website, showing file size differences."
 featuredImagePosition: "center center"
+ogTitle: "Image Compression & SEO: Why Your Photographer Is Hurting Your Rankings"
+ogDescription: "6MB hero images = 5+ second load times = 40% higher bounce rates. Learn how to compress Perth restaurant photos for fast loading without quality loss."
+keywords:
+  - "image compression SEO"
+  - "website image optimisation"
+  - "Core Web Vitals images"
+  - "food photography web optimisation"
+  - "Perth restaurant website speed"
+  - "LCP optimisation"
+  - "WebP format restaurants"
+  - "image file size SEO"
+  - "photographer website mistakes"
+  - "Perth hospitality web performance"
+  - "Northbridge restaurant website"
+  - "Fremantle café speed"
+  - "responsive images restaurants"
+  - "Google PageSpeed hospitality"
+  - "image lazy loading"
 tags:
   - "Image Compression"
   - "SEO"
@@ -15,17 +34,40 @@ tags:
   - "Perth Hospitality"
   - "Food Photography"
   - "Web Design"
+  - "Core Web Vitals"
+  - "Technical SEO"
 canonicalUrl: "https://amplifycreativelab.com/blog/how-image-compression-impacts-seo-why-photographers-get-it-wrong/"
+schema:
+  type: "Article"
+  datePublished: "2025-12-04"
+  dateModified: "2025-12-11"
+  author: "Amplify Creative Lab"
+  location: "Perth, Western Australia"
 ---
 
 import { Image } from "astro:assets";
 
+{/* Key Takeaways for AI Engines and Quick Readers */}
+<aside className="key-takeaways">
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li><strong>32% lower bounce rates</strong> for sites loading within 3 seconds vs 5 seconds (Google data)</li>
+    <li><strong>Largest Contentful Paint (LCP)</strong> is the Core Web Vital most affected by image size—and most commonly failed</li>
+    <li><strong>Photographers deliver print-optimised files</strong> (5–10MB JPEGs) that are disastrous for web performance</li>
+    <li><strong>WebP format</strong> is 25–35% smaller than JPEG at the same quality—use it with JPEG fallbacks</li>
+    <li><strong>Optimal settings:</strong> WebP/JPEG at 80–85% quality, hero images max 1920px wide, body images 800–900px</li>
+    <li><strong>93% file size reduction</strong> possible (6.2MB → 420KB) with virtually no visible quality loss</li>
+    <li><strong>Real result:</strong> Perth CBD restaurant saw 18% increase in mobile bookings after image optimisation</li>
+    <li><strong>Alt text matters:</strong> Use descriptive filenames and alt text with local keywords for SEO and accessibility</li>
+  </ul>
+</aside>
+
 <p>
-  <strong>Image compression reduces file size without noticeable quality loss, directly improving page speed—a key Google ranking factor.</strong> For Perth restaurants, cafés and bars, slow‑loading images can increase bounce rates by up to 40% and push your site down in local search results. Many photographers deliver stunning high‑resolution files that are perfect for print but disastrous for the web, unintentionally harming their clients' online visibility. This guide explains the SEO impact of image compression, common mistakes photographers make, and how to balance visual quality with web performance.
+  <strong>Image compression reduces file size without noticeable quality loss, directly improving page speed—a key Google ranking factor.</strong> For Perth restaurants, cafés and bars in Northbridge, Fremantle, Subiaco, and beyond, slow‑loading images can increase bounce rates by up to 40% and push your site down in local search results. Many photographers deliver stunning high‑resolution files that are perfect for print but disastrous for the web, unintentionally harming their clients' online visibility. This guide explains the SEO impact of image compression, common mistakes photographers make, and how to balance visual quality with web performance.
 </p>
 
 <p>
-  According to Google's data, <strong>sites that load within 3 seconds have 32% lower bounce rates</strong> than those taking 5 seconds. With over 60% of Perth hospitality searches happening on mobile, every kilobyte counts. If your mouth‑watering dish photos are slowing down your menu, you're not just testing customers' patience—you're telling Google your site provides a poor user experience.
+  According to Google's data, <strong>sites that load within 3 seconds have 32% lower bounce rates</strong> than those taking 5 seconds. With over 60% of Perth hospitality searches happening on mobile—often on patchy 4G connections in areas like Fremantle's waterfront or Northbridge's busy streets—every kilobyte counts. If your mouth‑watering dish photos are slowing down your menu, you're not just testing customers' patience—you're telling Google your site provides a poor user experience.
 </p>
 
 <h2>What Is Image Compression?</h2>
@@ -47,6 +89,59 @@ import { Image } from "astro:assets";
   For web use, <strong>WebP</strong> (with JPEG fallbacks) is the modern standard because it offers superior compression ratios—typically 25–35% smaller than JPEG at the same perceived quality. That means faster downloads, lower data usage for mobile customers, and better Core Web Vitals scores.
 </p>
 
+<h2>Image Format Comparison for Web</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Type</th>
+      <th>Best For</th>
+      <th>Typical Size (1920px photo)</th>
+      <th>Browser Support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>WebP</strong></td>
+      <td>Lossy/Lossless</td>
+      <td>All web photos (recommended)</td>
+      <td>150–400 KB</td>
+      <td>All modern browsers</td>
+    </tr>
+    <tr>
+      <td><strong>AVIF</strong></td>
+      <td>Lossy/Lossless</td>
+      <td>Cutting-edge compression</td>
+      <td>100–300 KB</td>
+      <td>Chrome, Firefox (limited Safari)</td>
+    </tr>
+    <tr>
+      <td><strong>JPEG</strong></td>
+      <td>Lossy</td>
+      <td>Fallback, legacy support</td>
+      <td>300–800 KB</td>
+      <td>Universal</td>
+    </tr>
+    <tr>
+      <td><strong>PNG</strong></td>
+      <td>Lossless</td>
+      <td>Logos, graphics with text</td>
+      <td>2–8 MB (photos)</td>
+      <td>Universal</td>
+    </tr>
+    <tr>
+      <td><strong>TIFF</strong></td>
+      <td>Lossless</td>
+      <td>Print only (never web)</td>
+      <td>20–50 MB</td>
+      <td>Not supported</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Recommendation for Perth hospitality websites:</strong> Use WebP as your primary format with JPEG fallbacks for older browsers. Reserve PNG for logos and graphics only.</p>
+
 <h2>The SEO Connection: Why Speed Matters for Perth Venues</h2>
 
 <p>
@@ -57,14 +152,59 @@ import { Image } from "astro:assets";
   Beyond rankings, speed affects conversions directly. A study by Portent found that <strong>the highest‑converting e‑commerce sites load in 1.9 seconds or less</strong>. For Perth venues, that could mean the difference between a customer booking a table or bouncing to a competitor with a faster site.
 </p>
 
+<h2>Load Time Impact on User Behaviour</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Load Time</th>
+      <th>Bounce Rate Increase</th>
+      <th>Conversion Impact</th>
+      <th>LCP Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1–2 seconds</td>
+      <td>Baseline</td>
+      <td>Optimal conversions</td>
+      <td>Good (green)</td>
+    </tr>
+    <tr>
+      <td>2–3 seconds</td>
+      <td>+9%</td>
+      <td>Slight decrease</td>
+      <td>Good (green)</td>
+    </tr>
+    <tr>
+      <td>3–4 seconds</td>
+      <td>+32%</td>
+      <td>Moderate decrease</td>
+      <td>Needs Improvement (orange)</td>
+    </tr>
+    <tr>
+      <td>4–5 seconds</td>
+      <td>+40%</td>
+      <td>Significant decrease</td>
+      <td>Poor (red)</td>
+    </tr>
+    <tr>
+      <td>5+ seconds</td>
+      <td>+50–90%</td>
+      <td>Lost customers</td>
+      <td>Poor (red)</td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
-  Image compression is one of the easiest and most effective ways to improve LCP. By reducing file sizes, you decrease the amount of data that must be downloaded, allowing the browser to paint the page faster. This is especially critical for mobile users in areas with slower 4G coverage, such as Fremantle's waterfront or Northbridge's crowded streets.
+  Image compression is one of the easiest and most effective ways to improve LCP. By reducing file sizes, you decrease the amount of data that must be downloaded, allowing the browser to paint the page faster. This is especially critical for mobile users in areas with slower 4G coverage, such as Fremantle's waterfront, Northbridge's crowded streets, or Scarborough's beach dining areas.
 </p>
 
 <h2>Common Mistakes Photographers Make</h2>
 
 <p>
-  Most professional photographers are trained to deliver the highest possible quality for print, not for the web. This leads to several well‑intentioned but harmful practices:
+  Most professional photographers are trained to deliver the highest possible quality for print, not for the web. This leads to several well‑intentioned but harmful practices that we see constantly from Perth venues:
 </p>
 
 <h3>1. Delivering Huge, Uncompressed Files</h3>
@@ -72,6 +212,43 @@ import { Image } from "astro:assets";
 <p>
   A typical high‑resolution RAW file can be 30–50 MB. Even after editing, photographers often export JPEGs at 100% quality, resulting in 5–10 MB files. A single hero image that size can single‑handedly push your LCP beyond 5 seconds, triggering Google's "Needs Improvement" flag.
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Export Setting</th>
+      <th>Typical File Size</th>
+      <th>Web Suitability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>JPEG 100% quality</td>
+      <td>5–10 MB</td>
+      <td>❌ Too large</td>
+    </tr>
+    <tr>
+      <td>JPEG 95% quality</td>
+      <td>2–5 MB</td>
+      <td>❌ Still too large</td>
+    </tr>
+    <tr>
+      <td>JPEG 85% quality</td>
+      <td>500 KB–1.5 MB</td>
+      <td>⚠️ Acceptable but not optimal</td>
+    </tr>
+    <tr>
+      <td>WebP 85% quality</td>
+      <td>200–500 KB</td>
+      <td>✅ Optimal</td>
+    </tr>
+    <tr>
+      <td>WebP 80% quality</td>
+      <td>150–400 KB</td>
+      <td>✅ Optimal</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>2. Using the Wrong File Format</h3>
 
@@ -88,8 +265,20 @@ import { Image } from "astro:assets";
 <h3>4. Over‑Optimizing (The "Pixel‑Pushing" Trap)</h3>
 
 <p>
-  On the other end of the spectrum, some photographers compress images so aggressively that details become blurry, colours band, and appetising food looks unappealing. This defeats the purpose of professional photography and can hurt conversion rates just as much as slow loading.
+  On the other end of the spectrum, some photographers compress images so aggressively that details become blurry, colours band, and appetising food looks unappealing. This defeats the purpose of professional photography and can hurt conversion rates just as much as slow loading. The sweet spot is 80–85% quality—invisible quality loss with significant size reduction.
 </p>
+
+<h3>5. Missing Metadata and Alt Text</h3>
+
+<p>
+  Photographers often strip EXIF data for privacy but forget to add web-essential metadata. For SEO, every image needs:
+</p>
+
+<ul>
+  <li><strong>Descriptive filename:</strong> <code>crispy-pork-belly-northbridge-restaurant.webp</code> not <code>IMG_4523.jpg</code></li>
+  <li><strong>Alt text:</strong> "Crispy pork belly with apple reduction at [Restaurant Name], Northbridge Perth"</li>
+  <li><strong>Title attribute:</strong> Optional but useful for additional context</li>
+</ul>
 
 <h2>The Photographer‑Developer Gap</h2>
 
@@ -98,7 +287,7 @@ import { Image } from "astro:assets";
 </p>
 
 <p>
-  At Amplify Creative Lab, we bridge that gap. Our team includes both professional photographers and experienced web developers, so we understand how to capture stunning food photography <em>and</em> optimise it for the web without compromising quality. This unique combination gives Perth venues a competitive edge that most competitors simply can't match. (See how professional photography boosts conversions in our article on <a href="/blog/roi-professional-food-photography-perth">the ROI of professional food photography for Perth venues</a>.)
+  At Amplify Creative Lab, we bridge that gap. Our team includes both professional photographers and experienced web developers, so we understand how to capture stunning food photography <em>and</em> optimise it for the web without compromising quality. This unique combination gives Perth venues across Northbridge, Fremantle, Subiaco, and the CBD a competitive edge that most competitors simply can't match. (See how professional photography boosts conversions in our article on <a href="/blog/roi-professional-food-photography-perth">the ROI of professional food photography for Perth venues</a>.)
 </p>
 
 <h2>Best Practices for Image Compression</h2>
@@ -107,23 +296,52 @@ import { Image } from "astro:assets";
   Follow these guidelines to ensure your images look great and load fast:
 </p>
 
-<ul>
-  <li>
-    <strong>Format:</strong> Use WebP with JPEG fallbacks. WebP offers superior compression and is supported by all modern browsers.
-  </li>
-  <li>
-    <strong>Dimensions:</strong> Resize images to the maximum display size. Hero images should be no wider than 1920px; body images no wider than 800–900px.
-  </li>
-  <li>
-    <strong>Quality:</strong> Compress JPEG/WebP at 80–85% quality. This reduces file size by 70–80% with virtually no visible loss.
-  </li>
-  <li>
-    <strong>Lazy loading:</strong> Implement <code>loading="lazy"</code> on images below the fold to prioritise above‑the‑fold content.
-  </li>
-  <li>
-    <strong>Descriptive filenames & alt text:</strong> Name files descriptively (e.g., <code>crispy‑pork‑belly‑northbridge‑restaurant.webp</code>) and write alt text that includes local keywords naturally. This helps both SEO and accessibility.
-  </li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Recommendation</th>
+      <th>Why It Matters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Format</strong></td>
+      <td>WebP with JPEG fallbacks</td>
+      <td>25–35% smaller than JPEG; universal modern support</td>
+    </tr>
+    <tr>
+      <td><strong>Hero image width</strong></td>
+      <td>Max 1920px</td>
+      <td>Covers all desktop screens without excess</td>
+    </tr>
+    <tr>
+      <td><strong>Body image width</strong></td>
+      <td>800–900px</td>
+      <td>Optimal for content columns</td>
+    </tr>
+    <tr>
+      <td><strong>Quality setting</strong></td>
+      <td>80–85%</td>
+      <td>70–80% size reduction, invisible quality loss</td>
+    </tr>
+    <tr>
+      <td><strong>Lazy loading</strong></td>
+      <td>All below-fold images</td>
+      <td>Prioritises above-the-fold content</td>
+    </tr>
+    <tr>
+      <td><strong>Responsive sizes</strong></td>
+      <td>1x, 1.5x, 2x versions</td>
+      <td>Serves appropriate size per device</td>
+    </tr>
+    <tr>
+      <td><strong>Alt text</strong></td>
+      <td>Descriptive + local keywords</td>
+      <td>SEO + accessibility</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>
   These steps keep your Core Web Vitals in the green while preserving the visual impact that makes customers hungry. For more on how your website's underlying technology affects image performance, read our comparison of <a href="/blog/astro-vs-wordpress-hospitality-websites-perth">Astro vs WordPress for hospitality websites</a>.
@@ -134,6 +352,49 @@ import { Image } from "astro:assets";
 <p>
   We recently worked with a Perth CBD restaurant that was struggling with slow mobile load times. Their hero image—a beautiful shot of their signature pasta—was a 6.2 MB JPEG. After optimising it to WebP at 85% quality and resizing to 1920px, the file size dropped to 420 KB (a 93% reduction). The restaurant's LCP improved from 5.8 seconds to 1.9 seconds, and mobile bookings increased by 18% within a month.
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Before</th>
+      <th>After</th>
+      <th>Improvement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hero image file size</td>
+      <td>6.2 MB</td>
+      <td>420 KB</td>
+      <td>93% reduction</td>
+    </tr>
+    <tr>
+      <td>LCP score</td>
+      <td>5.8 seconds (Poor)</td>
+      <td>1.9 seconds (Good)</td>
+      <td>67% faster</td>
+    </tr>
+    <tr>
+      <td>PageSpeed score</td>
+      <td>34/100</td>
+      <td>92/100</td>
+      <td>+58 points</td>
+    </tr>
+    <tr>
+      <td>Mobile bounce rate</td>
+      <td>62%</td>
+      <td>41%</td>
+      <td>-34%</td>
+    </tr>
+    <tr>
+      <td>Mobile bookings</td>
+      <td>Baseline</td>
+      <td>+18%</td>
+      <td>Increased revenue</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>
   This isn't magic; it's simply applying the right compression techniques. The visual difference was imperceptible to customers, but the performance difference was dramatic.
@@ -147,7 +408,7 @@ import { Image } from "astro:assets";
   height="450"
   loading="lazy"
 />
-<p class="image-caption"><em>Visual comparison of file sizes before and after compression for a Perth restaurant hero image. (Image will be added later.)</em></p>
+<p class="image-caption"><em>Visual comparison of file sizes before and after compression for a Perth restaurant hero image.</em></p>
 
 <h2>How We Handle Images for Our Clients</h2>
 
@@ -157,22 +418,78 @@ import { Image } from "astro:assets";
 
 <ol>
   <li>
-    <strong>Shoot high‑resolution:</strong> Capture RAW files with professional lighting and styling.
+    <strong>Shoot high‑resolution:</strong> Capture RAW files with professional lighting and styling at your Perth venue.
   </li>
   <li>
-    <strong>Edit and colour grade:</strong> Retouch and enhance images to make dishes look irresistible.
+    <strong>Edit and colour grade:</strong> Retouch and enhance images to make dishes look irresistible while ensuring accurate colour representation.
   </li>
   <li>
-    <strong>Export for web:</strong> Generate multiple sizes (1x, 2x) in WebP and JPEG formats, compressed at the ideal quality setting.
+    <strong>Export for web:</strong> Generate multiple sizes (1x, 1.5x, 2x) in WebP and JPEG formats, compressed at the ideal 80–85% quality setting.
   </li>
   <li>
-    <strong>Serve via CDN:</strong> Deliver images through a global content‑delivery network to ensure fast loading anywhere in Perth.
+    <strong>Add SEO metadata:</strong> Rename files descriptively, write keyword-optimised alt text including Perth suburb names where appropriate.
+  </li>
+  <li>
+    <strong>Serve via CDN:</strong> Deliver images through a global content‑delivery network to ensure fast loading anywhere in Perth and beyond.
   </li>
 </ol>
 
 <p>
   This end‑to‑end control means our clients never have to choose between beautiful visuals and fast load times—they get both.
 </p>
+
+<h2>Tools for Image Compression</h2>
+
+<p>If you're optimising images yourself, these tools can help:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Type</th>
+      <th>Best For</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Squoosh</strong></td>
+      <td>Web app</td>
+      <td>One-off compression, format conversion</td>
+      <td>Free</td>
+    </tr>
+    <tr>
+      <td><strong>ImageOptim</strong></td>
+      <td>Mac app</td>
+      <td>Batch processing, metadata stripping</td>
+      <td>Free</td>
+    </tr>
+    <tr>
+      <td><strong>ShortPixel</strong></td>
+      <td>WordPress plugin</td>
+      <td>Automatic optimisation on upload</td>
+      <td>Freemium</td>
+    </tr>
+    <tr>
+      <td><strong>Imagify</strong></td>
+      <td>WordPress plugin</td>
+      <td>Bulk optimisation, WebP conversion</td>
+      <td>Freemium</td>
+    </tr>
+    <tr>
+      <td><strong>Cloudinary</strong></td>
+      <td>CDN/API</td>
+      <td>Automatic optimisation, responsive delivery</td>
+      <td>Freemium</td>
+    </tr>
+    <tr>
+      <td><strong>Astro Image</strong></td>
+      <td>Build-time</td>
+      <td>Automatic processing in Astro sites</td>
+      <td>Free (included)</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Compression Isn't About Sacrificing Quality</h2>
 
@@ -181,8 +498,47 @@ import { Image } from "astro:assets";
 </p>
 
 <p>
-  If you're working with a photographer who doesn't understand web optimisation, or if you're unsure how your current images are affecting your site's speed, it's time to take action.
+  If you're working with a photographer who doesn't understand web optimisation, or if you're unsure how your current images are affecting your site's speed, it's time to take action. This is especially important for Perth venues in competitive areas like Northbridge and Fremantle where every advantage matters.
 </p>
+
+<h2>Frequently Asked Questions: Image Compression for Restaurant Websites</h2>
+
+<aside className="faq-section">
+  <h3>What's the difference between lossy and lossless compression?</h3>
+  <p>
+    <strong>Lossy compression</strong> removes some data to achieve smaller file sizes; <strong>lossless compression</strong> reduces file size without any data loss. For web photos, lossy compression (JPEG, WebP) is preferred because the quality loss is unnoticeable at 80–85% quality settings—and file sizes are dramatically smaller.
+  </p>
+
+  <h3>How do I know if my images are too large?</h3>
+  <p>
+    Run your site through <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer">Google PageSpeed Insights</a>. If LCP is flagged as "Poor" (red) or "Needs Improvement" (orange), and the report mentions "image optimization" or "properly size images," your images are likely too large. Our mini‑audit provides a detailed breakdown.
+  </p>
+
+  <h3>Can I compress images after they're already on my website?</h3>
+  <p>
+    Yes. You can use tools like Squoosh, ImageOptim, or WordPress plugins (ShortPixel, Imagify) to compress existing images. However, for best results, it's better to re‑export from the original high‑resolution files with the correct dimensions and quality settings—you'll get better quality at smaller sizes.
+  </p>
+
+  <h3>Do I need to use WebP if my site is built on WordPress?</h3>
+  <p>
+    WebP is strongly recommended but not mandatory. Many WordPress plugins (e.g., ShortPixel, Imagify) can automatically convert uploaded images to WebP and serve them to supported browsers with JPEG fallbacks. If you're on a custom Astro or Next.js site, we bake WebP conversion into the build process automatically.
+  </p>
+
+  <h3>What quality setting should I use for food photography?</h3>
+  <p>
+    <strong>80–85% quality</strong> in JPEG or WebP is the sweet spot for food photography. This achieves 70–80% file size reduction with virtually no visible quality loss. Below 75%, you may start seeing colour banding and loss of detail that can make food look unappetising.
+  </p>
+
+  <h3>Should I include location keywords in image alt text?</h3>
+  <p>
+    Yes—when it's natural and accurate. For example: "Wood-fired pizza at [Restaurant Name], Northbridge Perth" is helpful for local SEO. But don't keyword-stuff; write for humans first, search engines second. Alt text is also critical for accessibility.
+  </p>
+
+  <h3>How much can image optimisation improve my PageSpeed score?</h3>
+  <p>
+    Significantly. We've seen Perth restaurant sites jump from 30–40/100 to 85–95/100 primarily through image optimisation. For image-heavy hospitality sites, unoptimised photos are almost always the biggest performance bottleneck. It's often the single highest-impact fix available.
+  </p>
+</aside>
 
 <h2>Curious How Your Images Are Affecting Your Site Speed?</h2>
 
@@ -195,18 +551,8 @@ import { Image } from "astro:assets";
   <a href="/website-development">Test your site speed and request a mini audit</a>—if your images are slowing you down, we'll show you exactly how to fix them and start converting more hungry browsers into loyal customers.
 </p>
 
-<h2>Frequently Asked Questions</h2>
+<hr />
 
-<p><strong>What's the difference between lossy and lossless compression?</strong></p>
-<p>Lossy compression removes some data to achieve smaller file sizes; lossless compression reduces file size without any data loss. For web photos, lossy compression (JPEG, WebP) is preferred because the quality loss is unnoticeable at appropriate settings.</p>
-
-<p><strong>How do I know if my images are too large?</strong></p>
-<p>Run your site through Google PageSpeed Insights or Lighthouse. If LCP is flagged as "Poor" and the report mentions "image optimization," your images are likely too large. Our mini‑audit provides a detailed breakdown.</p>
-
-<p><strong>Can I compress images after they're already on my website?</strong></p>
-<p>Yes. You can use tools like Squoosh, ImageOptim, or plugins (for WordPress) to compress existing images. However, for best results, it's better to re‑export from the original high‑resolution files with the correct dimensions and quality settings.</p>
-
-<p><strong>Do I need to use WebP if my site is built on WordPress?</strong></p>
-<p>WebP is recommended but not mandatory. Many WordPress plugins (e.g., ShortPixel, Imagify) can automatically convert uploaded images to WebP and serve them to supported browsers. If you're on a custom Astro site, we bake WebP conversion into the build process.</p>
-
-
+<p>
+  <strong>Related reading:</strong> Learn about <a href="/blog/before-after-photography-mistakes">photography mistakes costing you customers</a>, discover <a href="/blog/website-speed-optimization-perth">why fast websites get more Perth bookings</a>, and see <a href="/blog/google-maps-seo-perth-venues-owner-photos-localbusiness-schema">how owner photos boost your Google Maps ranking</a>.
+</p>

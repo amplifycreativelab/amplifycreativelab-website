@@ -103,6 +103,18 @@ const {
           </select>  
         </div>  
 
+        <!-- Budget (optional) -->  
+        <div class="form-field form-field-half">  
+          <label class="form-label" for={`${id}-budget`}>Budget (optional)</label>  
+          <input  
+            class="form-input"  
+            id={`${id}-budget`}  
+            name="budget"  
+            type="text"  
+            placeholder="Estimated budget"  
+          />  
+        </div>  
+
         <!-- Event date (optional now) -->  
         <div class="form-field form-field-half">  
           <label class="form-label" for={`${id}-event-date`}>Event date (optional)</label>  
@@ -196,7 +208,8 @@ const {
   }
 
   .contact-intro {
-    
+    font-size:1.1rem;
+    font-weight: 500;
     color: var(--color-heading, #152705);
   }
 

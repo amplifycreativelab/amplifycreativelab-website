@@ -168,8 +168,8 @@ import webPhoto from "../../../assets/images/home/Web Development.webp";
     display: flex;
     flex-direction: column;
     /* image on top, button below */
-    justify-content: center;
-    /* center content vertically inside card */
+    justify-content: flex-start;
+    /* align content to the top of the card */
     align-items: center;
     /* center horizontally */
     gap: 50px;
@@ -243,7 +243,7 @@ font-size:15x;
 
   @media (max-width: 768px) {
     .services-container {
-      padding: 15px 0;
+      padding: 0px 0;
     }
 
     .services-title {
@@ -257,11 +257,22 @@ font-size:15x;
     .service-button {
       padding: 30px 0px 30px 0px;
     }
+
+    .service-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .service-summary {
+    padding:0px 30px 30px 30px;
+    
+  }
   }
 
   @media (max-width: 480px) {
     .services-container {
-      padding: 15px 0;
+      padding: 0px 0;
     }
 
     .service-card {
@@ -284,10 +295,14 @@ font-size:15x;
 
   @media (max-width: 768px) {
     .services-container {
-      padding: 15px 0px;
+      padding:0px 0px 15px 0px;
     }
     .service-card {
       gap: 0px;
+    }
+
+    .services-heading-bar{
+      border-bottom:none;
     }
   }
 </style>
