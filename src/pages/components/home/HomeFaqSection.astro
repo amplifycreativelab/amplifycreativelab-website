@@ -3,12 +3,17 @@ const faqs = [
   {
     question: "How much do your photography sessions cost?",
     answer:
-      "Every project is a little different, but we offer clear, upfront pricing based on the type of shoot (food, product or event), time required and deliverables. Tell us a bit about your project and we'll send you a custom quote with no surprises.",
+      "Our on-site photography sessions start from around $150 per hour, with most restaurant and product shoots running 2–4 hours. We provide a custom quote based on your specific needs, number of dishes or products, and deliverables—no hidden fees or surprises.",
   },
   {
     question: "Do you travel to restaurants, venues or client locations?",
     answer:
       "Yes. We regularly shoot on location at restaurants, cafes, commercial kitchens, studios and event venues around Perth. Travel within the Perth metro area is usually included—just share your location when you enquire.",
+  },
+  {
+    question: "Which Perth suburbs and areas do you cover?",
+    answer:
+      "We service the entire Perth metropolitan area, from Fremantle and the CBD to Joondalup, Rockingham, and the Swan Valley. For regional WA locations like Margaret River or Mandurah, travel fees may apply—just mention your location when enquiring.",
   },
   {
     question: "How long does a typical photo session take?",
@@ -39,6 +44,20 @@ const faqs = [
 
 // This logic limits the list to the first 4 items
 const topFaqs = faqs.slice(0, 4);
+
+// Generate FAQPage schema for SEO
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: topFaqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 ---
 
 <section class="faq-section" aria-labelledby="faq-heading">
@@ -47,9 +66,7 @@ const topFaqs = faqs.slice(0, 4);
       <h2 id="faq-heading" class="faq-title">FAQ</h2>
       <p class="faq-subtitle">Common questions about our process.</p>
 
-      <a href="/faq" class="faq-link">
-        View all questions &rarr;
-      </a>
+      <a href="/faq" class="faq-link"> View all questions &rarr; </a>
     </div>
 
     <div class="faq-column faq-column--questions">
@@ -59,7 +76,9 @@ const topFaqs = faqs.slice(0, 4);
             <details class="faq-item" {...(index === 0 ? { open: true } : {})}>
               <summary class="faq-question">
                 <span>{item.question}</span>
-                <span class="faq-icon" aria-hidden="true">+</span>
+                <span class="faq-icon" aria-hidden="true">
+                  +
+                </span>
               </summary>
               <div class="faq-answer-wrapper">
                 <p class="faq-answer">{item.answer}</p>
@@ -70,14 +89,21 @@ const topFaqs = faqs.slice(0, 4);
       </div>
     </div>
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </section>
 
 <style>
   .faq-section {
-    --color-bg: #152705; /*#fef8eb white */ 
-    --color-text: #fef8eb;/*#93897e gray */
-    --color-heading: #c9c4b9; /*#152705 green */ 
-    --color-border: rgba(224, 211, 197, 0.4); /* rgba(147, 137, 126, 0.3) borders */ 
+    --color-bg: #152705; /*#fef8eb white */
+    --color-text: #fef8eb; /*#93897e gray */
+    --color-heading: #c9c4b9; /*#152705 green */
+    --color-border: rgba(
+      224,
+      211,
+      197,
+      0.4
+    ); /* rgba(147, 137, 126, 0.3) borders */
 
     background-color: var(--color-bg);
     color: var(--color-text);

@@ -46,10 +46,26 @@ const eventSchema = {
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "How much does event photography cost in Perth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Event photography starts from around $150 per hour, with most corporate and hospitality events requiring 2–4 hours of coverage. We provide a custom quote based on event duration, location and deliverables."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What types of events do you photograph in Perth?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "We photograph a wide range of events across Perth, including corporate functions, conferences, brand activations, product launches, hospitality events, community gatherings and private celebrations such as milestone birthdays and small parties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Perth venues and areas do you cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We cover events throughout the Perth metro area including the CBD, Northbridge, Fremantle, South Perth, Subiaco, and northern suburbs like Joondalup. For Swan Valley, Margaret River or other regional venues, travel fees may apply."
           }
         },
         {
@@ -113,12 +129,36 @@ const eventSchema = {
         <div class="event-faq__list">
           <details class="event-faq__item">
             <summary class="event-faq__question">
+              How much does event photography cost in Perth?
+            </summary>
+            <p class="event-faq__answer">
+              Event photography starts from around <strong>$150 per hour</strong>,
+              with most corporate and hospitality events requiring 2–4 hours of
+              coverage. We provide a custom quote based on event duration, location
+              and deliverables.
+            </p>
+          </details>
+
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
               What types of events do you photograph in Perth?
             </summary>
             <p class="event-faq__answer">
               We photograph corporate functions, conferences, brand activations,
               product launches, hospitality events, community gatherings and
               private celebrations across Perth.
+            </p>
+          </details>
+
+          <details class="event-faq__item">
+            <summary class="event-faq__question">
+              Which Perth venues and areas do you cover?
+            </summary>
+            <p class="event-faq__answer">
+              We cover events throughout the Perth metro area including the CBD,
+              Northbridge, Fremantle, South Perth, Subiaco, and northern suburbs
+              like Joondalup. For Swan Valley, Margaret River or other regional
+              venues, travel fees may apply.
             </p>
           </details>
 

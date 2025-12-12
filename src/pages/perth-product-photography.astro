@@ -46,10 +46,26 @@ const productSchema = {
       mainEntity: [
         {
           "@type": "Question",
+          name: "How much does product photography cost in Perth?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Product photography starts from around $150 per hour, with most sessions running 1–3 hours depending on the number of products and complexity. We provide a custom quote based on your specific product range and deliverables.",
+          },
+        },
+        {
+          "@type": "Question",
           name: "What types of products do you photograph?",
           acceptedAnswer: {
             "@type": "Answer",
             text: "We photograph a wide range of products for Perth brands, including food and beverages, wine and spirits, skincare, candles, gift hampers, packaged goods, homewares and other small to medium-sized retail products.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I send my products to your studio instead of you coming to me?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Our North Perth studio offers a Ship and Shoot service—you mail your products to us, we photograph them, and return them safely. This is ideal for interstate brands or businesses without suitable shooting space.",
           },
         },
         {
@@ -120,6 +136,18 @@ const productSchema = {
         <div class="product-faq__list">
           <details class="product-faq__item">
             <summary class="product-faq__question">
+              How much does product photography cost in Perth?
+            </summary>
+            <p class="product-faq__answer">
+              Product photography starts from around <strong>$150 per hour</strong>,
+              with most sessions running 1–3 hours depending on the number of products
+              and complexity. We provide a custom quote based on your specific product
+              range and deliverables.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
               What types of products do you photograph?
             </summary>
             <p class="product-faq__answer">
@@ -127,6 +155,18 @@ const productSchema = {
               candle makers, gift hamper businesses, homewares brands and other
               retail products that need professional imagery for ecommerce and
               marketing.
+            </p>
+          </details>
+
+          <details class="product-faq__item">
+            <summary class="product-faq__question">
+              Can I send my products to your studio instead of you coming to me?
+            </summary>
+            <p class="product-faq__answer">
+              Yes. Our <strong>North Perth studio</strong> offers a Ship and Shoot
+              service—you mail your products to us, we photograph them, and return
+              them safely. This is ideal for interstate brands or businesses without
+              suitable shooting space.
             </p>
           </details>
 

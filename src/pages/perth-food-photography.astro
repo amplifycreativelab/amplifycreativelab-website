@@ -37,10 +37,7 @@ const faqSchema = {
       url: "https://amplifycreativelab.com/perth-food-photography/",
       description:
         "Premium food photography for Perth restaurants, cafés, bars and hospitality brands, optimised for menus, websites, social media and delivery apps.",
-      areaServed: {
-        "@type": "AdministrativeArea",
-        name: "Perth, Western Australia",
-      },
+      areaServed: "Perth, Western Australia",
       provider: {
         "@id": "https://amplifycreativelab.com/#organization",
       },
@@ -50,10 +47,26 @@ const faqSchema = {
       mainEntity: [
         {
           "@type": "Question",
+          name: "How much does food photography cost in Perth?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Our food photography sessions start from around $150 per hour. Most restaurant shoots run 2–4 hours depending on the number of dishes. We provide a custom quote after discussing your menu, goals and deliverables.",
+          },
+        },
+        {
+          "@type": "Question",
           name: "Do you shoot on location at restaurants and cafés in Perth?",
           acceptedAnswer: {
             "@type": "Answer",
             text: "Yes. We photograph on-site at restaurants, cafés, bars and hospitality venues across Perth and surrounding suburbs, bringing lighting and equipment to your venue.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Which Perth suburbs do you cover for food photography?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We cover the entire Perth metro area including the CBD, Fremantle, Northbridge, Subiaco, Leederville, Mount Lawley, Victoria Park, South Perth, and surrounding suburbs. Travel to regional areas like Margaret River or the Swan Valley is available with a travel fee.",
           },
         },
         {
@@ -124,12 +137,35 @@ const faqSchema = {
         <div class="food-faq__list">
           <details class="food-faq__item">
             <summary class="food-faq__question">
+              How much does food photography cost in Perth?
+            </summary>
+            <p class="food-faq__answer">
+              Our food photography sessions start from around <strong>$150 per hour</strong>.
+              Most restaurant shoots run 2–4 hours depending on the number of dishes.
+              We provide a custom quote after discussing your menu, goals and deliverables.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
               Do you shoot on location at restaurants and cafés in Perth?
             </summary>
             <p class="food-faq__answer">
               Yes. We photograph on-site at restaurants, cafés, bars and
               hospitality venues across Perth and surrounding suburbs, bringing
               lighting and equipment directly to your venue.
+            </p>
+          </details>
+
+          <details class="food-faq__item">
+            <summary class="food-faq__question">
+              Which Perth suburbs do you cover for food photography?
+            </summary>
+            <p class="food-faq__answer">
+              We cover the entire Perth metro area including the CBD, Fremantle,
+              Northbridge, Subiaco, Leederville, Mount Lawley, Victoria Park,
+              South Perth, and surrounding suburbs. Travel to regional areas like
+              Margaret River or the Swan Valley is available with a travel fee.
             </p>
           </details>
 
