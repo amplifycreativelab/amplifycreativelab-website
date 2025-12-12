@@ -350,19 +350,34 @@ const SLIDE_INTERVAL = 3300;
     z-index: 2;
   }
 
-  .hero-new__dot {
-    width: 3px;
-    height: 3px;
+    .hero-new__dot {
+
+    width: 12px;
+    height: 12px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     background-color: rgba(0, 0, 0, 0.25);
-    padding: 0;
+    
+    
+    padding: 0; 
+    
+   
+    position: relative; 
     cursor: pointer;
-    opacity: 0.7;
-    transition:
-      opacity 0.2s ease,
-      background-color 0.2s ease,
-      transform 0.2s ease;
+
+  }
+
+ 
+  .hero-new__dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border-radius: 50%;
   }
 
   .hero-new__dot--active {
@@ -401,9 +416,10 @@ const SLIDE_INTERVAL = 3300;
     .hero-new__dots {
       bottom: 1rem;
     }
-     .hero-new__button {
-    
-    padding: 0.3rem 0.8rem;
-    font-size: 0.4rem;
+          .hero-new__button {
+      padding: 0.8rem 1.2rem; /* Restore decent padding */
+      font-size: 0.8rem;      /* Restore readable font size */
+      min-height: 48px;       /* Enforce touch target height */
+      min-width: 48px;
   }
 </style>

@@ -5,13 +5,17 @@
         <li><a href="/">Home</a></li>
         <li><a href="/portfolio/">Portfolio</a></li>
         <li><a href="/about/">About</a></li>
-        <li><a href="/perth-food-photography/">Food Photography</a></li>
-        <li><a href="/perth-event-photography/">Event &amp; Portraits</a></li>
-        <li><a href="/perth-product-photography/">Product Photography</a></li>
-        <li><a href="/perth-website-development/">Website Development</a></li>
         <li><a href="/blog/">Blog</a></li>
+        <li><a href="/perth-food-photography/">Food<br />Photography</a></li>
+        <li><a href="/perth-event-photography/">Event<br />Photography</a></li>
+        <li>
+          <a href="/perth-product-photography/">Product<br />Photography</a>
+        </li>
+        <li>
+          <a href="/perth-website-development/">Website<br />Development</a>
+        </li>
+
         <li><a href="/faq/">FAQ</a></li>
-        <li><a href="/contact/">Contact</a></li>
       </ul>
     </nav>
 
@@ -151,15 +155,17 @@
       padding: 0;
       margin: 0;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 6px 1.5rem;
     }
 
     .nav-list a {
-      font-size: 0.6rem;
+      font-size: 0.85rem; /* Increased from 0.6rem */
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      line-height: 1.1;
+      line-height: 1.4;
+      display: block;
+      padding: 12px 0; /* Ensures tall touch target */
     }
 
     /* Contact column */
@@ -189,10 +195,12 @@
     }
 
     .email-link {
-      font-size: 0.5rem;
+      font-size: 0.85rem; /* Increased from 0.5rem */
       font-weight: 300;
       text-decoration: underline;
       text-decoration-color: rgba(255, 255, 255, 0.2);
+      display: inline-block;
+      padding: 12px; /* Touch target size */
     }
 
     /* Bottom row: 4 columns */
@@ -212,7 +220,7 @@
 
     .footer-copy {
       margin: 0;
-      font-size: 0.5rem;
+      font-size: 0.75rem; /* Increased from 0.5rem */
       grid-area: copy;
     }
 
@@ -236,16 +244,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 20px;
-      height: 20px;
+      width: 44px; /* Minimum accessible touch target */
+      height: 44px;
       border-radius: 50%;
       border: 1px solid rgba(254, 248, 235, 0.3);
       transition: all 0.2s ease;
     }
 
     .social-icons svg {
-      width: 10px;
-      height: 10px;
+      width: 14px; /* Slightly larger icon inside the button */
+      height: 14px;
     }
 
     .social-icons a:hover {
@@ -258,8 +266,13 @@
       gap: 10px;
       justify-content: flex-end;
       align-items: center;
-      font-size: 0.5rem;
+      font-size: 0.75rem; /* Increased from 0.5rem */
       grid-area: legal;
+    }
+
+    .legal-links a {
+      display: inline-block;
+      padding: 10px; /* Touch target padding */
     }
 
     /* Responsive */
@@ -277,9 +290,15 @@
       }
 
       .nav-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        justify-items: flex-start;
-        text-align: left;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        justify-items: center; /* Center items in 3-col layout for balance, or left */
+        text-align: center;
+        gap: 4px; /* Tighter gap */
+      }
+
+      .nav-list a {
+        font-size: 0.75rem; /* Slightly smaller for 3 cols, still readable */
+        padding: 10px 0; /* Midsized padding */
       }
 
       .footer-bottom {
@@ -298,7 +317,7 @@
       .footer-copy,
       .footer-email,
       .legal-links {
-        font-size: 0.45rem;
+        font-size: 0.75rem; /* Keeping readable size on mobile */
       }
 
       .footer-bottom-icons {
@@ -310,13 +329,13 @@
       }
 
       .social-icons a {
-        width: 16px;
-        height: 16px;
+        width: 44px;
+        height: 44px;
       }
 
       .social-icons svg {
-        width: 8px;
-        height: 8px;
+        width: 14px;
+        height: 14px;
       }
 
       .legal-links {
