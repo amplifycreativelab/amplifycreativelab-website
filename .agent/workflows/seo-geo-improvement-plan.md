@@ -84,7 +84,9 @@ description:
 - [ ] Optimize Google Business Profile
 
 ### Phase 4: Ongoing
-- [ ] Add Breadcrumb schema
+- [x] Add Breadcrumb schema - COMPLETED 2025-12-12 (Added to BlogPostLayout.astro for all blog posts)
+- [x] Add visible "Last Updated" dates - COMPLETED 2025-12-12 (Shows freshness signals to users)
+- [x] Create review landing page - COMPLETED 2025-12-12 (/review/ page with Google & Facebook CTAs)
 - [ ] Monitor Core Web Vitals
 - [ ] Quarterly content audits
 
