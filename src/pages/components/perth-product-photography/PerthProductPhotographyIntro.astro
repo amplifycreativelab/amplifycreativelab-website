@@ -2,155 +2,264 @@
 const title = "Product Photography";
 ---
 
-<section class="food-intro">
-  <h2 class="food-intro__title">{title}</h2>
+<section class="product-intro">
+  <div class="product-intro__inner">
+    <div class="product-intro__content">
+      <div class="product-intro__kicker-wrapper">
+        <span class="product-intro__line"></span>
+        <p class="product-intro__kicker">PERTH COMMERCIAL STUDIO</p>
+      </div>
 
-  <p class="food-intro__tagline">
-    Make your packaged products, bottles and hero items look as good online as they do on the shelf.
-  </p>
+      <h1 class="product-intro__title">{title}</h1>
 
-  <div class="food-intro__content">
-    <p class="food-intro__body">
-      As a Perth product photographer, we produce high-impact visuals for ecommerce, retail,
-      packaged goods, food and beverage brands, skincare, candles and lifestyle products. From
-      clean conversion-focused packshots to styled scenes, we help your products stand out.
-    </p>
+      <p class="product-intro__tagline">
+        Make your packaged products, bottles and hero items look as good online
+        as they do on the shelf.
+      </p>
 
-    <p class="food-intro__body">
-      If your brand also needs supporting visuals or a strong online presence, you can combine
-      this service with our
-      <a href="/perth-food-photography/">Food Photography</a> or
-      <a href="/website-development/">Website Development</a>
-      to keep your product storytelling consistent across every channel.
-    </p>
+      <div class="product-intro__text-block">
+        <p class="product-intro__body">
+          As a Perth product photographer, we produce high-impact visuals for
+          ecommerce, retail, packaged goods, food and beverage brands, skincare,
+          candles and lifestyle products. From clean conversion-focused
+          packshots to styled scenes, we help your products stand out.
+        </p>
+
+        <p class="product-intro__body">
+          If your brand also needs supporting visuals or a strong online
+          presence, you can combine this service with our
+          <a href="/perth-food-photography/">Food Photography</a> or
+          <a href="/website-development/">Website Development</a>
+          to keep your product storytelling consistent across every channel.
+        </p>
+      </div>
+
+      <a href="/contact/" class="product-intro__cta">
+        Ready to level up your photos?
+      </a>
+    </div>
+
+    <div class="product-intro__visual">
+      <img
+        src="/images/portfolio/product/australian-whisky-product-shot.webp"
+        alt="Premium Australian Whisky Product Photography Perth"
+        width="600"
+        height="800"
+        loading="lazy"
+      />
+    </div>
   </div>
-
-  <a href="/contact/" class="food-intro__cta">
-    Ready to level up your product photos?
-  </a>
 </section>
 
 <style>
-  :root {
-    --text-color: #fef8eb;
-    /* Deep warm charcoal for high contrast against cream text */
-    --bg-color-premium: #232220; 
+  .product-intro {
+    background: radial-gradient(circle at 70% 30%, #2e2d2b 0%, #232220 70%);
+    color: #fef8eb;
+    padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 4rem);
+    position: relative;
+    overflow: hidden;
   }
 
-  .food-intro {
-    background-color: var(--bg-color-premium);
-    color: var(--e-global-color-primary, var(--text-color));
-    /* Added significant vertical padding for a "breathing" editorial look */
-    padding: 100px 20px; 
-    display: flex;
-    flex-direction: column;
+  .product-intro__inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(3rem, 6vw, 6rem);
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
-  .food-intro__title {
-    font-family: "Abril Fatface", serif;
-    font-size: 60px; /* Increased size for impact */
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: 1px;
-    color: var(--e-global-color-primary, var(--text-color));
-    margin: 0 0 20px 0;
-  }
-
-  .food-intro__tagline {
-    font-family: "Darker Grotesque", sans-serif;
-    font-size: 18px;
-    font-weight: 700; /* Bold to create hierarchy */
-    text-transform: uppercase; /* Differentiates it from body text */
-    letter-spacing: 2px;
-    line-height: 1.4;
-    color: var(--e-global-color-primary, var(--text-color));
-    margin: 0 auto 40px auto; /* Spacing below tagline */
-    max-width: 600px;
-    opacity: 0.9;
-  }
-
-  /* Wrapper to constrain width of all paragraphs */
-  .food-intro__content {
-    max-width: 700px;
-    margin: 0 auto 40px auto;
+  /* --- LEFT COLUMN: CONTENT --- */
+  .product-intro__content {
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Consistent spacing between paragraphs */
+    align-items: flex-start;
+    text-align: left;
   }
 
-  .food-intro__body {
-    font-family: "Darker Grotesque", sans-serif;
-    font-size: 22px;
-    font-weight: 400;
-    /* REMOVED ITALICS for readability */
-    font-style: normal; 
-    /* Increased line-height for elegance */
-    line-height: 1.6; 
-    color: var(--e-global-color-primary, var(--text-color));
+  /* Kicker */
+  .product-intro__kicker-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+  }
+
+  .product-intro__line {
+    width: 60px;
+    height: 1px;
+    background-color: #8c8c8c;
+    opacity: 0.6;
+  }
+
+  .product-intro__kicker {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #ccc;
     margin: 0;
+    font-weight: 500;
   }
 
-  .food-intro__body a {
-    color: inherit;
+  /* Title */
+  .product-intro__title {
+    font-family: "Abril Fatface", serif;
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    margin: 0 0 1.5rem;
+    color: #fef8eb;
+  }
+
+  .product-intro__tagline {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    opacity: 1;
+    color: #fff;
+    margin: 0 0 2rem;
+    max-width: 500px;
+  }
+
+  /* Body Text Block */
+  .product-intro__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .product-intro__body {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #dcdcdc;
+    margin: 0;
+    max-width: 38rem;
+  }
+
+  .product-intro__body a {
+    color: #fff;
     text-decoration: underline;
     text-underline-offset: 4px;
-    font-weight: 600;
+    text-decoration-thickness: 1px;
     transition: opacity 0.3s;
   }
 
-  .food-intro__body a:hover {
+  .product-intro__body a:hover {
     opacity: 0.7;
   }
 
-  /* Styled as a Ghost Button */
-  .food-intro__cta {
-    display: inline-block;
-    font-family: "Darker Grotesque", sans-serif;
-    font-size: 20px;
+  /* CTA Button */
+  .product-intro__cta {
+    margin-left: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--e-global-color-primary, var(--text-color));
+    letter-spacing: 0.05em;
+    color: #232220;
+    background-color: #fef8eb;
     text-decoration: none;
-    padding: 15px 40px;
-    border: 1px solid var(--e-global-color-primary, var(--text-color));
-    border-radius: 50px; /* Pill shape */
+    padding: 1rem 2.5rem;
+    border-radius: 999px;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    border: 2px solid transparent; /* Prevent layout shift on border */
   }
 
-  .food-intro__cta:hover {
-    background-color: var(--e-global-color-primary, var(--text-color));
-    color: var(--bg-color-premium); /* Invert colors on hover */
+  .product-intro__cta:hover {
+    background-color: transparent;
+    color: #fef8eb;
+    border-color: #fef8eb;
     transform: translateY(-2px);
   }
 
-  /* Responsive Adjustments */
+  /* --- RIGHT COLUMN: VISUAL --- */
+  .product-intro__visual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 12px;
+    overflow: hidden;
+    /* Clean, minimal border for product focus */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    /* Forcing opacity to 1 immediately in case animation fails */
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+
+  .product-intro__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .product-intro__visual:hover img {
+    transform: scale(1.05);
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 900px) {
+    .product-intro__inner {
+      grid-template-columns: 1fr;
+      text-align: left;
+      gap: 3rem;
+    }
+
+    .product-intro__visual {
+      order: -1; /* Image first on mobile? Or text first? usually image first drives context */
+      max-width: 500px;
+      margin: 0 auto;
+      max-height: 500px;
+    }
+  }
+
   @media (max-width: 768px) {
-    .food-intro {
-      padding: 60px 20px;
+    .product-intro {
+      padding: 4rem 1.25rem;
     }
 
-    .food-intro__title {
-      font-size: 42px;
+    .product-intro__title {
+      font-size: 3rem;
     }
 
-    .food-intro__tagline {
-      font-size: 16px;
-      margin-bottom: 30px;
+    /* Reset left borders on mobile for cleaner stack */
+    .product-intro__text-block {
+      padding-left: 0;
+      border-left: none;
+      margin-bottom: 2rem;
     }
 
-    .food-intro__body {
-      font-size: 19px;
-      line-height: 1.5;
+    .product-intro__cta {
+      margin-left: 0;
+      width: 100%; /* Full width button on mobile */
     }
 
-    .food-intro__cta {
-      font-size: 16px;
-      padding: 12px 30px;
+    .product-intro__line {
+      display: none;
     }
   }
 </style>

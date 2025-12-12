@@ -8,7 +8,7 @@ import HomeServices from "./components/home/HomeServices.astro";
 import HomeWhyUs from "./components/home/HomeWhyUs.astro";
 
 import HeroNew from "./components/home/HeroNew.astro";
-import HomeImageCollage from "./components/home/HomeImageCollage.astro";
+import HomeBentoGrid from "./components/home/HomeBentoGrid.astro";
 
 const pageTitle = "Perth Food Photographer | AmplifyCreativeLab";
 const pageDescription =
@@ -18,14 +18,13 @@ const pageDescription =
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-home">
     <HeroNew />
-    
-    
+
     <HomeIntro />
 
     <HomeServices />
-    <HomeWhyUs></HomeWhyUs>
+    <HomeWhyUs />
 
-    <HomeImageCollage />
+    <HomeBentoGrid />
 
     <FaqSection />
 

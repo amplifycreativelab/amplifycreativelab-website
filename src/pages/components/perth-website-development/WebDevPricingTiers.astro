@@ -1,27 +1,32 @@
 ---
+
 ---
 
 <section class="webdev-pricing" id="web-pricing">
   <div class="webdev-pricing__inner">
-    
     <header class="webdev-pricing__header">
       <p class="webdev-pricing__kicker">WEBSITE PACKAGES</p>
-      <h2 class="webdev-pricing__title">Three ways to get a site that actually works</h2>
+      <h2 class="webdev-pricing__title">
+        Three ways to get a site that actually works
+      </h2>
       <p class="webdev-pricing__intro">
-        Choose the option that fits where your venue is at right now.
-        All packages can be tailored once we chat about your goals.
+        Choose the option that fits where your business is at right now. All
+        packages can be tailored once we chat about your goals.
       </p>
     </header>
 
     <div class="webdev-pricing__grid">
-      
       <article class="webdev-tier">
         <div class="webdev-tier__content">
           <div class="webdev-tier__badge">Starter</div>
-          <h3 class="webdev-tier__name">Launch Menu Site</h3>
-          <p class="webdev-tier__price">From $300</p>
+          <h3 class="webdev-tier__name">Launch Site</h3>
+          <p class="webdev-tier__price">
+            <span class="price-discount">From $400</span>
+            <span class="price-original">$800</span>
+          </p>
           <p class="webdev-tier__tagline">
-            A clean, single-page website that gives guests everything they need to visit you tonight.
+            A clean, single-page website that gives customers everything they
+            need to find and contact you fast.
           </p>
 
           <ul class="webdev-tier__features">
@@ -41,9 +46,13 @@
         <div class="webdev-tier__content">
           <div class="webdev-tier__badge">Most popular</div>
           <h3 class="webdev-tier__name">Signature Site</h3>
-          <p class="webdev-tier__price">From $600</p>
+          <p class="webdev-tier__price">
+            <span class="price-discount">From $800</span>
+            <span class="price-original">$1600</span>
+          </p>
           <p class="webdev-tier__tagline">
-            A multi-page site that pairs your food photography with a clear story and booking flow.
+            A multi-page site that pairs your brand imagery with a clear story
+            and conversion flow.
           </p>
 
           <ul class="webdev-tier__features">
@@ -66,22 +75,20 @@
           <h3 class="webdev-tier__name">Digital Flagship</h3>
           <p class="webdev-tier__price">Project Based</p>
           <p class="webdev-tier__tagline">
-            A fully bespoke site for groups, multi-venue brands or concepts that need more than a template.
+            A fully bespoke site for groups, multi-venue brands or concepts that
+            need more than a template.
           </p>
 
           <ul class="webdev-tier__features">
             <li>Discovery & UX Workshops</li>
-            <li>Advanced functionality (Ordering, Gifts)</li>
+            <li>Advanced functionality & integrations</li>
             <li>Custom page templates</li>
             <li>Ongoing optimisation support</li>
           </ul>
 
-          <a href="/contact/" class="webdev-tier__cta">
-            Chat about custom
-          </a>
+          <a href="/contact/" class="webdev-tier__cta"> Chat about custom </a>
         </div>
       </article>
-
     </div>
   </div>
 </section>
@@ -205,10 +212,35 @@
     font-size: 2.2rem;
     color: #7b5b33;
     margin: 0.5rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .price-discount {
+    color: #7b5b33;
+  }
+
+  .price-original {
+    text-decoration: line-through;
+    opacity: 0.5;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
   }
 
   .tier--highlight .webdev-tier__price {
     color: #fadab8;
+  }
+
+  .tier--highlight .webdev-tier__price .price-discount {
+    color: #fadab8;
+  }
+
+  .tier--highlight .webdev-tier__price .price-original {
+    color: #fadab8;
+    opacity: 0.6;
   }
 
   .webdev-tier__tagline {
@@ -225,7 +257,7 @@
     padding: 1.5rem 0 0 0;
     margin: 0 0 2rem 0;
     width: 100%;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -234,7 +266,7 @@
   }
 
   .tier--highlight .webdev-tier__features {
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   /* Button Styling */
@@ -277,7 +309,7 @@
       max-width: 450px;
       margin: 0 auto;
     }
-    
+
     .tier--highlight {
       transform: none; /* Remove hover effect on mobile */
     }

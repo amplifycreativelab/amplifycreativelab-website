@@ -6,7 +6,7 @@ import WebDevPricingTiers from "./components/perth-website-development/WebDevPri
 
 const pageTitle = "Perth Website Design & Development | Amplify Creative Lab";
 const pageDescription =
-  "Custom websites for Perth hospitality, lifestyle and local businesses, with strategy-led design and fast, SEO-friendly builds.";
+  "Custom websites for Perth businesses, sole traders and lifestyle brands. Strategy-led design and fast, SEO-friendly builds.";
 
 const webDevSchema = {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@ const webDevSchema = {
           name: "What types of businesses do you build websites for?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We primarily work with hospitality venues such as restaurants, cafés and bars, as well as lifestyle brands and other local businesses in Perth that need a fast, clear and conversion-focused website."
+            text: "We work with a wide range of Perth businesses—from sole traders and creatives to hospitality venues and professional services. If you need a clear, modern site that drives enquiries, we can help."
           }
         },
         {
@@ -56,7 +56,7 @@ const webDevSchema = {
           name: "Do you only work with hospitality clients?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Hospitality is a core focus, but we also design and build websites for other service-based and product-based businesses that like our style and strategy-led approach. If you are based in or around Perth and want a custom site, we are happy to chat."
+            text: "No. While we have deep experience in hospitality, we apply the same high standards of design and strategy to all our clients. We love working with anyone who values quality."
           }
         },
         {
@@ -73,6 +73,14 @@ const webDevSchema = {
           acceptedAnswer: {
             "@type": "Answer",
             text: "Yes. We design with clean structure, fast loading and best-practice on-page SEO in mind so your site is well positioned to rank for local searches and to be understood by search and AI-driven platforms."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Why do you use Astro.js instead of WordPress?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We prefer building with Astro.js because it is incredibly performant, secure, and lightweight compared to WordPress. While WordPress is a popular option, it often relies on heavy plugins that slow down sites. Astro gives us full control to build a faster, more efficient website that ranks better."
           }
         },
         {
@@ -121,9 +129,9 @@ const webDevSchema = {
               What types of businesses do you build websites for?
             </summary>
             <p class="webdev-faq__answer">
-              We work with hospitality venues like restaurants, cafés and bars,
-              as well as lifestyle brands and other local businesses that need a
-              clear, modern site that actually drives bookings and enquiries.
+              We work with a wide range of Perth businesses—from sole traders and
+              creatives to hospitality venues and professional services. If you need
+              a clear, modern site that drives enquiries, we can help.
             </p>
           </details>
 
@@ -132,10 +140,24 @@ const webDevSchema = {
               Do you only work with hospitality clients?
             </summary>
             <p class="webdev-faq__answer">
-              Hospitality is a core part of our work, but we also build websites
-              for other service-based and product-based businesses in Perth. If
-              you like our style and approach, we&apos;re happy to see if your
-              project is a good fit.
+              No. While we have deep experience in hospitality, we apply the same
+              high standards of design and strategy to all our clients. We love working
+              with anyone who values quality, whether you're a builder, a consultant,
+              or a boutique brand.
+            </p>
+          </details>
+
+
+          <details class="webdev-faq__item">
+            <summary class="webdev-faq__question">
+              Why do you use Astro.js instead of WordPress?
+            </summary>
+            <p class="webdev-faq__answer">
+              We prefer <strong>Astro.js</strong> because it creates websites that are significantly faster, more secure, and easier to maintain than standard WordPress sites.
+              <br /><br />
+              While we can use WordPress if requested, we find it often becomes bloated with plugins that hurt performance. Astro allows us to deliver a top-tier, high-performance site that Google loves.
+              <br /><br />
+              <a href="/blog/astro-vs-wordpress-hospitality-websites-perth/" class="webdev-faq__link">Read our full comparison: Astro vs WordPress &rarr;</a>
             </p>
           </details>
 
@@ -147,6 +169,8 @@ const webDevSchema = {
               Yes. We focus on clean structure, fast loading and on-page SEO
               best practices so your site can perform well in search and is
               easy for both people and AI-driven platforms to understand.
+              <br /><br />
+              <a href="/blog/perth-hospitality-seo-how-to-rank-your-cafe-or-restaurant/" class="webdev-faq__link">Learn more about our SEO approach &rarr;</a>
             </p>
           </details>
 
@@ -182,6 +206,8 @@ const webDevSchema = {
               Yes. We can work with your existing brand and assets, or we can
               help you refresh them. If you need new photography or content, we
               can combine website and content services into one project.
+              <br /><br />
+              <a href="/blog/roi-professional-food-photography-perth/" class="webdev-faq__link">See why professional visuals matter &rarr;</a>
             </p>
           </details>
         </div>
@@ -267,6 +293,18 @@ const webDevSchema = {
       .webdev-faq__answer {
         font-size: 16px;
       }
+    }
+
+    .webdev-faq__link {
+      color: #7b5b33;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      transition: color 0.2s;
+    }
+
+    .webdev-faq__link:hover {
+      color: #152705;
     }
   </style>
 </BaseLayout>

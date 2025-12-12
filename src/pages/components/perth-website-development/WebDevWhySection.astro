@@ -1,48 +1,55 @@
 ---
+
 ---
 
 <section class="webdev-why">
   <div class="webdev-why__inner">
     <div class="webdev-why__header">
-      <h2 class="webdev-why__title">Built around how guests actually find you</h2>
+      <h2 class="webdev-why__title">
+        Built around how customers actually find you
+      </h2>
       <p class="webdev-why__subtitle">
-        A beautiful website is great. A beautiful website that loads fast, is easy
-        to update and is built around bookings is even better.
+        A beautiful website is great. A beautiful website that loads fast, is
+        easy to update and is built around conversions is even better.
       </p>
     </div>
 
     <div class="webdev-why__grid">
-      
       <div class="webdev-why__card">
-        
         <h3 class="card-title">Optimised for mobile</h3>
         <p class="card-body">
-          Most diners discover you on their phone. We design from a mobile-first
-          perspective so key actions like booking, calling and viewing the menu
-          are always one tap away.
+          Most customers discover you on their phone. We design from a
+          mobile-first perspective so key actions like booking, calling, or
+          buying are always one tap away.
         </p>
       </div>
 
       <div class="webdev-why__card">
-        
         <h3 class="card-title">SEO-ready structure</h3>
         <p class="card-body">
           Clean page structure, fast loading and thoughtful copy placeholders
-          help you rank for local searches like “best Italian in Perth” or
-          “rooftop cocktail bar”.
+          help you rank for local searches and be discovered by the right
+          clients.
         </p>
       </div>
 
       <div class="webdev-why__card">
-    
         <h3 class="card-title">Easy to update</h3>
         <p class="card-body">
-          We build with a simple, repeatable page structure so you can keep menus,
-          events and photography galleries up to date without needing a developer
+          We build with a simple, repeatable page structure so you can keep
+          content, projects and galleries up to date without needing a developer
           for every change.
         </p>
       </div>
 
+      <div class="webdev-why__card">
+        <h3 class="card-title">Built with Astro.js</h3>
+        <p class="card-body">
+          We prefer Astro over WordPress because it's lighter, faster, and more
+          secure. It delivers a better experience for your users and scores
+          higher with Google Core Web Vitals straight out of the box.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -86,8 +93,11 @@
   /* Grid Layout */
   .webdev-why__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Equal Columns */
-    gap: 2rem;
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* 4 Equal Columns for inline layout */
+    gap: 1.5rem;
   }
 
   /* Individual Card Style */
@@ -107,7 +117,6 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(21, 39, 5, 0.08);
   }
-
 
   /* Card Typography */
   .card-title {

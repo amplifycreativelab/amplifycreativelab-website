@@ -107,15 +107,17 @@ const galleryItems = [
 
   /* --- HEADER --- */
   .gallery-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
   }
 
   .header-content {
-    max-width: 600px;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
   .eyebrow {
@@ -214,11 +216,7 @@ const galleryItems = [
 
   /* --- MOBILE (The "Instagram" Grid) --- */
   @media (max-width: 600px) {
-    .gallery-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
+    /* .gallery-header alignment handled by base styles now */
 
     .bento-grid {
       display: grid;

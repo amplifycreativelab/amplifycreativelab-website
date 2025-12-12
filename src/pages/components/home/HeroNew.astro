@@ -89,21 +89,51 @@ const SLIDE_INTERVAL = 3300;
     </div>
   </div>
 
-  <div class="hero-new__dots" aria-label="Change hero background" role="tablist">
-    {slides.map((_, index) => (
+  {slides.length > 1 && (
+    <>
       <button
         type="button"
-        class:list={[
-          "hero-new__dot",
-          index === 0 && "hero-new__dot--active",
-        ]}
-        data-hero-dot
-        role="tab"
-        aria-label={`Go to slide ${index + 1}`}
-        aria-selected={index === 0}
-      />
-    ))}
-  </div>
+        class="hero-new__arrow hero-new__arrow--prev"
+        aria-label="Previous slide"
+        data-hero-arrow-prev
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="hero-new__arrow hero-new__arrow--next"
+        aria-label="Next slide"
+        data-hero-arrow-next
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </button>
+    </>
+  )}
 
   <script is:inline>
     const script = document.currentScript;
@@ -112,8 +142,9 @@ const SLIDE_INTERVAL = 3300;
     if (hero) {
       requestAnimationFrame(() => {
         const slides = Array.from(hero.querySelectorAll("[data-hero-slide]"));
-        const dots = Array.from(hero.querySelectorAll("[data-hero-dot]"));
         const panels = Array.from(hero.querySelectorAll("[data-hero-panel]"));
+        const prevArrow = hero.querySelector("[data-hero-arrow-prev]");
+        const nextArrow = hero.querySelector("[data-hero-arrow-next]");
 
         if (slides.length > 1) {
           const intervalMs = Number(hero.dataset.interval) || 9000;
@@ -128,8 +159,6 @@ const SLIDE_INTERVAL = 3300;
             if (newIndex === index) return;
 
             slides[index].classList.remove("hero-new__slide--active");
-            dots[index]?.classList.remove("hero-new__dot--active");
-            dots[index]?.setAttribute("aria-selected", "false");
             if (panels[index]) {
               panels[index].classList.remove("hero-new__panel--active");
               panels[index].setAttribute("aria-hidden", "true");
@@ -138,8 +167,6 @@ const SLIDE_INTERVAL = 3300;
             index = newIndex;
 
             slides[index].classList.add("hero-new__slide--active");
-            dots[index]?.classList.add("hero-new__dot--active");
-            dots[index]?.setAttribute("aria-selected", "true");
             if (panels[index]) {
               panels[index].classList.add("hero-new__panel--active");
               panels[index].setAttribute("aria-hidden", "false");
@@ -160,24 +187,27 @@ const SLIDE_INTERVAL = 3300;
             }, intervalMs);
           };
 
-          dots.forEach((dot, dotIndex) => {
-            dot.addEventListener("click", () => {
-              goToSlide(dotIndex);
+          if (prevArrow) {
+            prevArrow.addEventListener("click", (e) => {
+              e.stopPropagation();
+              goToSlide(index - 1);
               start();
             });
-          });
+          }
+
+          if (nextArrow) {
+            nextArrow.addEventListener("click", (e) => {
+              e.stopPropagation();
+              goToSlide(index + 1);
+              start();
+            });
+          }
 
           hero.addEventListener("click", () => {
             stop();
           });
 
           start();
-        } else {
-          // If there's only one slide, hide the dots.
-          const dotsWrapper = hero.querySelector(".hero-new__dots");
-          if (dotsWrapper) {
-            dotsWrapper.style.display = "none";
-          }
         }
       });
     }
@@ -231,13 +261,14 @@ const SLIDE_INTERVAL = 3300;
   .hero-new__overlay {
     position: absolute;
     inset: 0;
+    /* Directional scrim: darker at bottom for text readability */
     background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.35),
-        rgba(0, 0, 0, 0.15)
-      );
-    mix-blend-mode: multiply;
-    opacity: 0.85;
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,      /* Subtle top shade for nav */
+      rgba(0, 0, 0, 0.1) 30%,     /* Clear mid-section */
+      rgba(0, 0, 0, 0.6) 80%,     /* Darkens behind text */
+      rgba(0, 0, 0, 0.85) 100%    /* Strong contrast at very bottom */
+    );
     z-index: -1;
     pointer-events: none;
   }
@@ -312,15 +343,15 @@ const SLIDE_INTERVAL = 3300;
     justify-content: center;
     padding: 0.9rem 2.6rem;
     border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.94);
-    color: #111;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.9rem;
     font-weight: 500;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition:
       background-color 0.2s ease,
       color 0.2s ease,
@@ -332,7 +363,7 @@ const SLIDE_INTERVAL = 3300;
     background-color: #ffffff;
     color: #111;
     transform: translateY(-1px);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
   .hero-new__button:focus-visible {
@@ -391,6 +422,47 @@ const SLIDE_INTERVAL = 3300;
     outline-offset: 2px;
   }
 
+  .hero-new__arrow {
+    position: absolute;
+    bottom: 2rem;
+    z-index: 2;
+    background-color: transparent;
+    color: #fff; /* Pure white */
+    border: none;
+    width: 4rem; /* Bigger on desktop */
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+  }
+  
+  .hero-new__arrow svg {
+    width: 32px; /* Bigger icon on desktop */
+    height: 32px;
+  }
+
+  .hero-new__arrow:hover {
+    background-color: transparent;
+    color: #fff;
+    transform: scale(1.15);
+  }
+
+  .hero-new__arrow:focus-visible {
+    outline: 2px solid var(--color-accent, #24360f);
+    outline-offset: 2px;
+  }
+
+  .hero-new__arrow--prev {
+    left: clamp(20px, 6vw, 80px);
+  }
+
+  .hero-new__arrow--next {
+    right: clamp(20px, 6vw, 80px);
+  }
+
   @media (max-width: 768px) {
     .hero-new {
       min-height: 70vh;
@@ -413,13 +485,26 @@ const SLIDE_INTERVAL = 3300;
       margin-top: 1rem;
     }
 
-    .hero-new__dots {
-      bottom: 1rem;
+    .hero-new__arrow {
+      bottom: 0.3rem;
+      width: 44px;
+      height: 44px;
     }
-          .hero-new__button {
-      padding: 0.8rem 1.2rem; /* Restore decent padding */
-      font-size: 0.8rem;      /* Restore readable font size */
-      min-height: 48px;       /* Enforce touch target height */
-      min-width: 48px;
-  }
+    
+    .hero-new__arrow svg {
+      width: 24px;
+      height: 24px;
+    }
+    .hero-new__arrow--prev {
+      left: 5px; /* Closer to edge */
+    }
+    .hero-new__arrow--next {
+      right: 5px; /* Closer to edge */
+    }
+    .hero-new__button {
+      padding: 0.7rem 1.1rem;
+      font-size: 0.75rem; 
+      min-height: 44px;      /* Minimum accessible size */
+      min-width: 44px;
+    }
 </style>

@@ -9,34 +9,36 @@ const title = "Website Design & Development";
     <div class="webdev-intro__content">
       <div class="webdev-intro__kicker-wrapper">
         <span class="webdev-intro__line"></span>
-        <p class="webdev-intro__kicker">FOR RESTAURANTS, CAFÉS & FOOD BRANDS</p>
+        <p class="webdev-intro__kicker">
+          FOR BUSINESSES, BRANDS & SOLE TRADERS
+        </p>
       </div>
-      
+
       <h1 class="webdev-intro__title">{title}</h1>
-      
+
       <p class="webdev-intro__lead">
-        As a Perth website designer and developer, we build fast, search-friendly websites that feel as
-        welcoming as your best front-of-house team member—clear, intentional and built to convert.
+        As a Perth website designer and developer, we build fast,
+        search-friendly websites that feel as welcoming as your best
+        front-of-house team member—clear, intentional and built to convert.
       </p>
 
       <p class="webdev-intro__body">
-        We specialise in websites for hospitality venues, lifestyle brands and local Perth businesses.
-        Every site is designed to showcase your photography, strengthen your brand and make it effortless
-        for visitors to book, buy or enquire. We can also handle
-        <a href="/perth-food-photography/">Food Photography</a>,
-        <a href="/perth-product-photography/">Product Photography</a> and
-        <a href="/perth-event-photography/">Event Photography</a> to keep your visuals and website
-        perfectly aligned.
+        We build high-converting websites for service businesses, sole traders,
+        lifestyle brands and hospitality venues in Perth. Every site is designed
+        to showcase your brand, tell your story and make it effortless for
+        visitors to book, buy or enquire. We can also handle tailored
+        <a href="/perth-food-photography/">Photography</a> and content creation to
+        keep your visuals and website perfectly aligned.
       </p>
 
       <a href="#web-pricing" class="webdev-intro__cta">View Packages</a>
     </div>
-    
+
     <div class="webdev-intro__visual">
-      <Image 
-        src="/images/portfolio/portrait/corporate-business-portrait-man-laptop-perth.webp" 
-        alt="Mobile website design for a restaurant" 
-        width="600" 
+      <Image
+        src="/images/portfolio/portrait/corporate-business-portrait-man-laptop-perth.webp"
+        alt="Mobile website design for a restaurant"
+        width="600"
         height="800"
         loading="eager"
         class="hero-image"
@@ -47,10 +49,10 @@ const title = "Website Design & Development";
 
 <style>
   .webdev-intro {
-    /* Added a subtle gradient for depth */
-    background: linear-gradient(135deg, #152705 0%, #1e360a 100%);
+    /* Richer background with radial spotlight */
+    background: radial-gradient(circle at 80% 20%, #2a4410 0%, #152705 60%);
     color: #fef8eb;
-    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 4rem);
+    padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 4rem);
     position: relative;
     overflow: hidden;
   }
@@ -60,20 +62,22 @@ const title = "Website Design & Development";
     content: "";
     position: absolute;
     top: 0;
-    left: 0; width: 100%; height: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     pointer-events: none;
     mix-blend-mode: overlay;
-    opacity: 0.4;
+    opacity: 0.3;
     z-index: 0;
   }
 
   .webdev-intro__inner {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr; /* Text takes slightly more space */
-    gap: clamp(3rem, 5vw, 6rem);
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 8rem);
     align-items: center;
     position: relative;
     z-index: 1;
@@ -90,53 +94,59 @@ const title = "Website Design & Development";
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .webdev-intro__line {
-    width: 40px;
+    width: 60px;
     height: 1px;
     background-color: #fadab8;
+    opacity: 0.6;
   }
 
   .webdev-intro__kicker {
     font-family: "Montserrat", system-ui, sans-serif;
     font-size: 0.85rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: #fadab8;
     margin: 0;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .webdev-intro__title {
     font-family: "Abril Fatface", system-ui, serif;
-    font-size: clamp(3rem, 6vw, 4.5rem); /* Increased size slightly */
-    line-height: 1.1;
-    margin: 0 0 2rem;
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    margin: 0 0 2.5rem;
+    position: relative;
   }
 
+  /* Decorative hanging line for paragraphs */
   .webdev-intro__lead {
     font-family: "Darker Grotesque", system-ui, sans-serif;
-    font-size: 1.5rem; /* Larger lead text */
+    font-size: 1.6rem;
     line-height: 1.3;
-    max-width: 40rem;
+    max-width: 38rem;
     margin: 0 0 1.5rem;
     font-weight: 500;
-    color: #fff; /* Bright white for lead */
+    color: #fff;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(250, 218, 184, 0.3);
   }
 
   .webdev-intro__body {
     font-family: "Darker Grotesque", system-ui, sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     line-height: 1.6;
-    max-width: 38rem;
-    margin: 0 0 2.5rem;
+    max-width: 36rem;
+    margin: 0 0 3rem;
+    padding-left: 1.5rem; /* Align with lead */
     opacity: 0.9;
-    color: #e3decb; /* Slightly muted cream */
+    color: #e3decb;
+    border-left: 1px solid transparent; /* Keeps alignment */
   }
 
-  /* NEW: High contrast links within text */
   .webdev-intro__body a {
     color: #fadab8;
     text-decoration: underline;
@@ -144,47 +154,83 @@ const title = "Website Design & Development";
     text-underline-offset: 4px;
     transition: color 0.2s;
   }
-  
+
   .webdev-intro__body a:hover {
     color: #fff;
   }
 
   .webdev-intro__cta {
-    display: inline-block;
-    background: #fadab8;
-    color: #152705;
-    padding: 1rem 2.5rem; /* Larger click area */
+    margin-left: 1.5rem; /* Align with text block */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: #fadab8;
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(250, 218, 184, 0.3);
     border-radius: 999px;
     text-decoration: none;
     font-family: "Montserrat", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: all 0.3s ease;
   }
 
   .webdev-intro__cta:hover {
+    background: #fadab8;
+    color: #152705;
+    border-color: #fadab8;
     transform: translateY(-2px);
-    background: #fff;
   }
 
-  /* Image styling - The Arch Look */
+  /* --- ARCH VISUAL CONTAINER --- */
   .webdev-intro__visual {
     position: relative;
+    /* Create the Arch Shape on the container */
+    border-radius: 300px 300px 20px 20px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    width: 100%;
+    /* Strong gold border to make the shape pop */
+    border: 1px solid #fadab8;
+    /* Deep shadow for depth */
+    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6);
+    transform: translateZ(0);
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+    animation-delay: 0.2s;
   }
 
-  /* This targets the img tag generated by Astro <Image /> */
   .webdev-intro__visual img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    /* THE ARCH SHAPE */
-    border-radius: 300px 300px 20px 20px; 
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 20px 20px 60px rgba(0,0,0,0.3);
-    /* Removed rotation for a cleaner, architectural look */
-    transform: none; 
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Parallax/Zoom effect on hover */
+  .webdev-intro__visual:hover img {
+    transform: scale(1.05);
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .webdev-intro__title {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+    }
   }
 
   @media (max-width: 900px) {
@@ -193,17 +239,12 @@ const title = "Website Design & Development";
       text-align: left;
       gap: 3rem;
     }
-    
+
     .webdev-intro__visual {
       order: -1;
-      max-width: 100%;
+      max-height: 600px;
       margin: 0 auto;
-    }
-    
-    /* Make the arch slightly less tall on mobile */
-    .webdev-intro__visual img {
-       max-height: 500px;
-       border-radius: 200px 200px 20px 20px;
+      max-width: 500px;
     }
   }
 
@@ -211,8 +252,21 @@ const title = "Website Design & Development";
     .webdev-intro {
       padding-inline: 1.25rem;
     }
-    .webdev-intro__title {
-      font-size: 2.8rem;
+    .webdev-intro__lead,
+    .webdev-intro__body {
+      padding-left: 0;
+      border-left: none;
+      margin-left: 0;
+    }
+    .webdev-intro__line {
+      display: none; /* Hide decorative line on mobile */
+    }
+    .webdev-intro__kicker-wrapper {
+      margin-bottom: 1rem;
+    }
+    .webdev-intro__cta {
+      border-left: none;
+      margin-left: 0;
     }
   }
 </style>
