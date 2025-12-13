@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from "astro:assets";
+import { getImage } from "astro:assets";
 
 interface PortfolioItem {
   src: string;
@@ -7,6 +7,9 @@ interface PortfolioItem {
   title: string;
   category: string;
   image?: any;
+  thumbSrc?: string;
+  thumbWidth?: number;
+  thumbHeight?: number;
   fullSrc?: string;
   fullWidth?: number;
   fullHeight?: number;
@@ -41,11 +44,33 @@ async function createPortfolioItems(
     const image = getPortfolioImage(folder, file);
     const src = (image && image.src) || `/images/portfolio/${folder}/${file}`;
 
+    let thumbSrc = src;
+    let thumbWidth = 0;
+    let thumbHeight = 0;
+
     let fullSrc = src;
     let fullWidth = 0;
     let fullHeight = 0;
 
     if (image) {
+      try {
+        const thumb = await getImage({
+          src: image,
+          width: 600,
+          height: 600,
+          fit: "cover",
+          format: "webp",
+          quality: 35,
+        });
+        thumbSrc = thumb.src;
+        thumbWidth = thumb.attributes.width ? Number(thumb.attributes.width) : 0;
+        thumbHeight = thumb.attributes.height
+          ? Number(thumb.attributes.height)
+          : 0;
+      } catch (e) {
+        console.error(`Failed to optimize thumbnail: ${file}`, e);
+      }
+
       try {
         const optimized = await getImage({
           src: image,
@@ -71,6 +96,9 @@ async function createPortfolioItems(
       title,
       category,
       image,
+      thumbSrc,
+      thumbWidth,
+      thumbHeight,
       fullSrc,
       fullWidth,
       fullHeight,
@@ -592,50 +620,86 @@ const portraitAlts: Record<string, string> = {
     "A sports portrait of a male tennis player carrying a Wilson equipment bag over his shoulder.",
 };
 
-const portfolioItemsArrays = await Promise.all([
-  createPortfolioItems(
-    "food",
-    "food",
-    foodFiles,
-    foodAlts,
-    "Food Photography",
-    "Food photography in Perth",
-  ),
-  createPortfolioItems(
-    "event",
-    "events",
-    eventFiles,
-    eventAlts,
-    "Event Photography",
-    "Event photography in Perth",
-  ),
-  createPortfolioItems(
-    "family",
-    "family",
-    familyFiles,
-    familyAlts,
-    "Family Photography",
-    "Family photography in Perth",
-  ),
-  createPortfolioItems(
-    "product",
-    "product",
-    productFiles,
-    productAlts,
-    "Product Photography",
-    "Product photography in Perth",
-  ),
-  createPortfolioItems(
-    "portrait",
-    "portrait",
-    portraitFiles,
-    portraitAlts,
-    "Portrait Photography",
-    "Portrait photography in Perth",
-  ),
-]);
+const BATCH_SIZE = 12;
+const initialCategory = "food";
 
-const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
+const [foodItems, eventItems, familyItems, productItems, portraitItems] =
+  await Promise.all([
+    createPortfolioItems(
+      "food",
+      "food",
+      foodFiles,
+      foodAlts,
+      "Food Photography",
+      "Food photography in Perth",
+    ),
+    createPortfolioItems(
+      "event",
+      "events",
+      eventFiles,
+      eventAlts,
+      "Event Photography",
+      "Event photography in Perth",
+    ),
+    createPortfolioItems(
+      "family",
+      "family",
+      familyFiles,
+      familyAlts,
+      "Family Photography",
+      "Family photography in Perth",
+    ),
+    createPortfolioItems(
+      "product",
+      "product",
+      productFiles,
+      productAlts,
+      "Product Photography",
+      "Product photography in Perth",
+    ),
+    createPortfolioItems(
+      "portrait",
+      "portrait",
+      portraitFiles,
+      portraitAlts,
+      "Portrait Photography",
+      "Portrait photography in Perth",
+    ),
+  ]);
+
+const portfolioItemsByCategory: Record<string, PortfolioItem[]> = {
+  food: foodItems,
+  events: eventItems,
+  family: familyItems,
+  product: productItems,
+  portrait: portraitItems,
+};
+
+const initialItems = portfolioItemsByCategory[initialCategory].slice(
+  0,
+  BATCH_SIZE,
+);
+const hasMoreInitial =
+  portfolioItemsByCategory[initialCategory].length > BATCH_SIZE;
+
+const portfolioDataForClient = Object.fromEntries(
+  Object.entries(portfolioItemsByCategory).map(([category, items]) => [
+    category,
+    items.map((item) => ({
+      alt: item.alt,
+      title: item.title,
+      thumbSrc: item.thumbSrc ?? item.src,
+      fullSrc: item.fullSrc ?? item.src,
+      fullWidth: item.fullWidth || null,
+      fullHeight: item.fullHeight || null,
+    })),
+  ]),
+);
+
+const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
+  /</g,
+  "\\u003c",
+);
 ---
 
 <section class="portfolio-section" aria-label="Photography portfolio gallery">
@@ -653,19 +717,32 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
         class="portfolio-filter-select"
         aria-label="Filter portfolio by category"
       >
-        <option value="food">Food</option>
-        <option value="events">Events</option>
-        <option value="family">Family</option>
-        <option value="product">Product</option>
-        <option value="portrait">Portrait</option>
+        <option value="food" selected={initialCategory === "food"}>Food</option>
+        <option value="events" selected={initialCategory === "events"}>
+          Events
+        </option>
+        <option value="family" selected={initialCategory === "family"}>
+          Family
+        </option>
+        <option value="product" selected={initialCategory === "product"}>
+          Product
+        </option>
+        <option value="portrait" selected={initialCategory === "portrait"}>
+          Portrait
+        </option>
       </select>
     </div>
-    <div class="portfolio-grid">
+    <div
+      id="portfolio-grid"
+      class="portfolio-grid"
+      data-initial-category={initialCategory}
+      data-batch-size={BATCH_SIZE}
+    >
       {
-        portfolioItems.map((item, index) => (
+        initialItems.map((item, index) => (
           <a
             class="portfolio-item"
-            href="#"
+            href={item.fullSrc || item.src}
             data-index={index}
             data-alt={item.alt}
             data-title={item.title}
@@ -675,13 +752,12 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
             data-full-height={item.fullHeight || undefined}
           >
             <figure class="portfolio-item-figure">
-              <Image
-                src={item.image ?? item.src}
+              <img
+                src={item.thumbSrc || item.src}
+                width={item.thumbWidth || 600}
+                height={item.thumbHeight || 600}
                 alt={item.alt}
-                width={600}
-                widths={[300, 600, 800]}
-                sizes="(max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                loading={index < 12 ? "eager" : "lazy"}
+                loading="eager"
                 decoding="async"
                 class="portfolio-item-image"
               />
@@ -695,8 +771,9 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
       }
     </div>
 
-    <div class="portfolio-load-more-wrapper">
+    <div class="portfolio-load-more-wrapper" hidden={!hasMoreInitial}>
       <button
+        id="portfolio-load-more"
         type="button"
         class="portfolio-load-more portfolio-filter-select"
         data-action="load-more"
@@ -715,19 +792,23 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
     <button
       class="portfolio-lightbox__close"
       type="button"
-      aria-label="Close image">X</button
+      aria-label="Close image"
     >
+      X
+    </button>
 
     <button
       class="portfolio-lightbox__nav portfolio-lightbox__nav--prev"
       type="button"
-      aria-label="Previous image">&lt;</button
+      aria-label="Previous image"
     >
+      &lt;
+    </button>
 
     <figure class="portfolio-lightbox__figure">
       <img
         class="portfolio-lightbox__image"
-        loading="lazy"
+        loading="eager"
         decoding="async"
         width="1200"
         height="800"
@@ -742,10 +823,218 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
     <button
       class="portfolio-lightbox__nav portfolio-lightbox__nav--next"
       type="button"
-      aria-label="Next image">&gt;</button
+      aria-label="Next image"
     >
+      &gt;
+    </button>
   </div>
 </section>
+
+<script type="application/json" id="portfolio-data">{portfolioDataJson}</script>
+
+<script>
+  const grid = document.getElementById("portfolio-grid");
+  const filterSelect = document.getElementById("portfolio-filter-select");
+  const loadMoreButton = document.getElementById("portfolio-load-more");
+  const dataEl = document.getElementById("portfolio-data");
+  const lightbox = document.querySelector(".portfolio-lightbox");
+  const lightboxImage = document.querySelector(".portfolio-lightbox__image");
+  const lightboxTitle = document.querySelector(".portfolio-lightbox__title");
+  const lightboxIndex = document.querySelector(".portfolio-lightbox__index");
+  const closeButton = document.querySelector(".portfolio-lightbox__close");
+  const prevButton = document.querySelector(".portfolio-lightbox__nav--prev");
+  const nextButton = document.querySelector(".portfolio-lightbox__nav--next");
+
+  if (
+    !grid ||
+    !filterSelect ||
+    !loadMoreButton ||
+    !dataEl ||
+    !lightbox ||
+    !lightboxImage ||
+    !lightboxTitle ||
+    !lightboxIndex ||
+    !closeButton ||
+    !prevButton ||
+    !nextButton
+  ) {
+    console.warn("Portfolio gallery: required elements not found.");
+  } else {
+    /** @type {Record<string, Array<{alt:string,title:string,thumbSrc:string,fullSrc:string,fullWidth:number|null,fullHeight:number|null}>>} */
+    const portfolioData = JSON.parse(dataEl.textContent || "{}");
+
+    const batchSize = Number(grid.dataset.batchSize || "12");
+    let currentCategory = grid.dataset.initialCategory || "food";
+    let visibleCount = Math.min(
+      batchSize,
+      (portfolioData[currentCategory] || []).length,
+    );
+
+    let activeIndex = -1;
+
+    function updateLoadMoreVisibility() {
+      const total = (portfolioData[currentCategory] || []).length;
+      const wrapper = loadMoreButton.closest(".portfolio-load-more-wrapper");
+      if (!wrapper) return;
+      wrapper.hidden = visibleCount >= total;
+    }
+
+    function makeItemElement(item, index) {
+      const link = document.createElement("a");
+      link.className = "portfolio-item";
+      link.href = item.fullSrc;
+      link.dataset.index = String(index);
+      link.dataset.alt = item.alt;
+      link.dataset.title = item.title;
+      link.dataset.category = currentCategory;
+      link.dataset.full = item.fullSrc;
+      if (item.fullWidth) link.dataset.fullWidth = String(item.fullWidth);
+      if (item.fullHeight) link.dataset.fullHeight = String(item.fullHeight);
+
+      const figure = document.createElement("figure");
+      figure.className = "portfolio-item-figure";
+
+      const img = document.createElement("img");
+      img.className = "portfolio-item-image";
+      img.src = item.thumbSrc;
+      img.alt = item.alt;
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.width = 600;
+      img.height = 600;
+
+      const caption = document.createElement("figcaption");
+      caption.className = "portfolio-item-overlay";
+
+      const title = document.createElement("span");
+      title.className = "portfolio-item-title";
+      title.textContent = item.title;
+
+      const label = document.createElement("span");
+      label.className = "portfolio-item-label";
+      label.textContent = "- view -";
+
+      caption.appendChild(title);
+      caption.appendChild(label);
+
+      figure.appendChild(img);
+      figure.appendChild(caption);
+      link.appendChild(figure);
+
+      return link;
+    }
+
+    function clearGrid() {
+      while (grid.firstChild) grid.removeChild(grid.firstChild);
+    }
+
+    function renderInitialBatch() {
+      clearGrid();
+      const items = portfolioData[currentCategory] || [];
+      visibleCount = Math.min(batchSize, items.length);
+      for (let i = 0; i < visibleCount; i += 1) {
+        grid.appendChild(makeItemElement(items[i], i));
+      }
+      updateLoadMoreVisibility();
+    }
+
+    function appendNextBatch() {
+      const items = portfolioData[currentCategory] || [];
+      const nextCount = Math.min(visibleCount + batchSize, items.length);
+      for (let i = visibleCount; i < nextCount; i += 1) {
+        grid.appendChild(makeItemElement(items[i], i));
+      }
+      visibleCount = nextCount;
+      updateLoadMoreVisibility();
+    }
+
+    function setLightboxContent(index) {
+      const items = portfolioData[currentCategory] || [];
+      const item = items[index];
+      if (!item) return;
+
+      lightboxImage.alt = item.alt;
+      lightboxImage.src = item.fullSrc;
+      if (item.fullWidth) lightboxImage.width = item.fullWidth;
+      if (item.fullHeight) lightboxImage.height = item.fullHeight;
+      lightboxTitle.textContent = item.title;
+      lightboxIndex.textContent = `${index + 1} / ${items.length}`;
+    }
+
+    function openLightbox(index) {
+      const items = portfolioData[currentCategory] || [];
+      if (!items.length) return;
+      activeIndex = Math.max(0, Math.min(index, items.length - 1));
+
+      lightbox.classList.add("is-active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      setLightboxContent(activeIndex);
+      closeButton.focus();
+    }
+
+    function closeLightbox() {
+      activeIndex = -1;
+      lightbox.classList.remove("is-active");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      lightboxImage.removeAttribute("src");
+    }
+
+    function showPrev() {
+      const items = portfolioData[currentCategory] || [];
+      if (!items.length) return;
+      activeIndex = (activeIndex - 1 + items.length) % items.length;
+      setLightboxContent(activeIndex);
+    }
+
+    function showNext() {
+      const items = portfolioData[currentCategory] || [];
+      if (!items.length) return;
+      activeIndex = (activeIndex + 1) % items.length;
+      setLightboxContent(activeIndex);
+    }
+
+    filterSelect.addEventListener("change", () => {
+      const nextCategory = filterSelect.value;
+      if (!portfolioData[nextCategory]) return;
+      currentCategory = nextCategory;
+      closeLightbox();
+      renderInitialBatch();
+    });
+
+    loadMoreButton.addEventListener("click", () => {
+      appendNextBatch();
+    });
+
+    grid.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const link = target ? target.closest(".portfolio-item") : null;
+      if (!link) return;
+      event.preventDefault();
+      const idx = Number(link.getAttribute("data-index") || "-1");
+      if (Number.isNaN(idx) || idx < 0) return;
+      openLightbox(idx);
+    });
+
+    closeButton.addEventListener("click", () => closeLightbox());
+    prevButton.addEventListener("click", () => showPrev());
+    nextButton.addEventListener("click", () => showNext());
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("is-active")) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showPrev();
+      if (event.key === "ArrowRight") showNext();
+    });
+
+    updateLoadMoreVisibility();
+  }
+</script>
 
 <style>
   .portfolio-section {
