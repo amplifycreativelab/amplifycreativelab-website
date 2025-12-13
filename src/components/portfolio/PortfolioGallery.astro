@@ -8,12 +8,15 @@ interface PortfolioItem {
   category: string;
   image?: any;
   thumbSrc?: string;
+  thumbSrcSet?: string;
   thumbWidth?: number;
   thumbHeight?: number;
   fullSrc?: string;
   fullWidth?: number;
   fullHeight?: number;
 }
+
+type PortfolioCategory = "food" | "events" | "family" | "product" | "portrait";
 
 // Eagerly import all portfolio images from src/assets so Astro can
 // optimize them while still letting us group them by category.
@@ -45,6 +48,7 @@ async function createPortfolioItems(
     const src = (image && image.src) || `/images/portfolio/${folder}/${file}`;
 
     let thumbSrc = src;
+    let thumbSrcSet = "";
     let thumbWidth = 0;
     let thumbHeight = 0;
 
@@ -58,11 +62,13 @@ async function createPortfolioItems(
           src: image,
           width: 600,
           height: 600,
+          widths: [160, 240, 320, 480, 600],
           fit: "cover",
           format: "webp",
           quality: 35,
         });
         thumbSrc = thumb.src;
+        thumbSrcSet = thumb.srcSet.attribute;
         thumbWidth = thumb.attributes.width ? Number(thumb.attributes.width) : 0;
         thumbHeight = thumb.attributes.height
           ? Number(thumb.attributes.height)
@@ -97,6 +103,7 @@ async function createPortfolioItems(
       category,
       image,
       thumbSrc,
+      thumbSrcSet,
       thumbWidth,
       thumbHeight,
       fullSrc,
@@ -621,7 +628,17 @@ const portraitAlts: Record<string, string> = {
 };
 
 const BATCH_SIZE = 12;
-const initialCategory = "food";
+const initialCategory: PortfolioCategory = "food";
+const THUMB_SIZES =
+  "(max-width: 1024px) 33vw, (max-width: 1490px) 25vw, 372px";
+
+const categoryOptions: Array<{ value: PortfolioCategory; label: string }> = [
+  { value: "food", label: "Food" },
+  { value: "events", label: "Events" },
+  { value: "family", label: "Family" },
+  { value: "product", label: "Product" },
+  { value: "portrait", label: "Portrait" },
+];
 
 const [foodItems, eventItems, familyItems, productItems, portraitItems] =
   await Promise.all([
@@ -667,7 +684,7 @@ const [foodItems, eventItems, familyItems, productItems, portraitItems] =
     ),
   ]);
 
-const portfolioItemsByCategory: Record<string, PortfolioItem[]> = {
+const portfolioItemsByCategory: Record<PortfolioCategory, PortfolioItem[]> = {
   food: foodItems,
   events: eventItems,
   family: familyItems,
@@ -689,6 +706,7 @@ const portfolioDataForClient = Object.fromEntries(
       alt: item.alt,
       title: item.title,
       thumbSrc: item.thumbSrc ?? item.src,
+      thumbSrcSet: item.thumbSrcSet ?? "",
       fullSrc: item.fullSrc ?? item.src,
       fullWidth: item.fullWidth || null,
       fullHeight: item.fullHeight || null,
@@ -717,19 +735,11 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
         class="portfolio-filter-select"
         aria-label="Filter portfolio by category"
       >
-        <option value="food" selected={initialCategory === "food"}>Food</option>
-        <option value="events" selected={initialCategory === "events"}>
-          Events
-        </option>
-        <option value="family" selected={initialCategory === "family"}>
-          Family
-        </option>
-        <option value="product" selected={initialCategory === "product"}>
-          Product
-        </option>
-        <option value="portrait" selected={initialCategory === "portrait"}>
-          Portrait
-        </option>
+        {categoryOptions.map((option) => (
+          <option value={option.value} selected={option.value === initialCategory}>
+            {option.label}
+          </option>
+        ))}
       </select>
     </div>
     <div
@@ -737,6 +747,7 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       class="portfolio-grid"
       data-initial-category={initialCategory}
       data-batch-size={BATCH_SIZE}
+      data-thumb-sizes={THUMB_SIZES}
     >
       {
         initialItems.map((item, index) => (
@@ -754,10 +765,13 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
             <figure class="portfolio-item-figure">
               <img
                 src={item.thumbSrc || item.src}
+                srcset={item.thumbSrcSet || undefined}
+                sizes={THUMB_SIZES}
                 width={item.thumbWidth || 600}
                 height={item.thumbHeight || 600}
                 alt={item.alt}
-                loading="eager"
+                loading={index < 6 ? "eager" : "lazy"}
+                fetchpriority={index === 0 ? "high" : "auto"}
                 decoding="async"
                 class="portfolio-item-image"
               />
@@ -830,41 +844,112 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
   </div>
 </section>
 
-<script type="application/json" id="portfolio-data">{portfolioDataJson}</script>
+<script
+  type="application/json"
+  id="portfolio-data"
+  set:html={portfolioDataJson}
+></script>
 
 <script>
-  const grid = document.getElementById("portfolio-grid");
-  const filterSelect = document.getElementById("portfolio-filter-select");
-  const loadMoreButton = document.getElementById("portfolio-load-more");
-  const dataEl = document.getElementById("portfolio-data");
-  const lightbox = document.querySelector(".portfolio-lightbox");
-  const lightboxImage = document.querySelector(".portfolio-lightbox__image");
-  const lightboxTitle = document.querySelector(".portfolio-lightbox__title");
-  const lightboxIndex = document.querySelector(".portfolio-lightbox__index");
-  const closeButton = document.querySelector(".portfolio-lightbox__close");
-  const prevButton = document.querySelector(".portfolio-lightbox__nav--prev");
-  const nextButton = document.querySelector(".portfolio-lightbox__nav--next");
+  (() => {
+    const grid = document.getElementById("portfolio-grid");
+    const filterSelect = document.getElementById("portfolio-filter-select");
+    const loadMoreButton = document.getElementById("portfolio-load-more");
+    const dataEl = document.getElementById("portfolio-data");
+    const lightbox = document.querySelector(".portfolio-lightbox");
+    const lightboxImage = document.querySelector(".portfolio-lightbox__image");
+    const lightboxTitle = document.querySelector(".portfolio-lightbox__title");
+    const lightboxIndex = document.querySelector(".portfolio-lightbox__index");
+    const closeButton = document.querySelector(".portfolio-lightbox__close");
+    const prevButton = document.querySelector(".portfolio-lightbox__nav--prev");
+    const nextButton = document.querySelector(".portfolio-lightbox__nav--next");
 
-  if (
-    !grid ||
-    !filterSelect ||
-    !loadMoreButton ||
-    !dataEl ||
-    !lightbox ||
-    !lightboxImage ||
-    !lightboxTitle ||
-    !lightboxIndex ||
-    !closeButton ||
-    !prevButton ||
-    !nextButton
-  ) {
-    console.warn("Portfolio gallery: required elements not found.");
-  } else {
-    /** @type {Record<string, Array<{alt:string,title:string,thumbSrc:string,fullSrc:string,fullWidth:number|null,fullHeight:number|null}>>} */
-    const portfolioData = JSON.parse(dataEl.textContent || "{}");
+    if (!(grid instanceof HTMLElement)) {
+      console.warn("Portfolio gallery: missing #portfolio-grid.");
+      return;
+    }
+    if (!(filterSelect instanceof HTMLSelectElement)) {
+      console.warn("Portfolio gallery: missing #portfolio-filter-select.");
+      return;
+    }
+    if (!(loadMoreButton instanceof HTMLButtonElement)) {
+      console.warn("Portfolio gallery: missing #portfolio-load-more.");
+      return;
+    }
+    if (!(dataEl instanceof HTMLScriptElement)) {
+      console.warn("Portfolio gallery: missing #portfolio-data.");
+      return;
+    }
+    if (!(lightbox instanceof HTMLElement)) {
+      console.warn("Portfolio gallery: missing .portfolio-lightbox.");
+      return;
+    }
+    if (!(lightboxImage instanceof HTMLImageElement)) {
+      console.warn("Portfolio gallery: missing .portfolio-lightbox__image.");
+      return;
+    }
+    if (!(lightboxTitle instanceof HTMLElement)) {
+      console.warn("Portfolio gallery: missing .portfolio-lightbox__title.");
+      return;
+    }
+    if (!(lightboxIndex instanceof HTMLElement)) {
+      console.warn("Portfolio gallery: missing .portfolio-lightbox__index.");
+      return;
+    }
+    if (!(closeButton instanceof HTMLButtonElement)) {
+      console.warn("Portfolio gallery: missing .portfolio-lightbox__close.");
+      return;
+    }
+    if (!(prevButton instanceof HTMLButtonElement)) {
+      console.warn("Portfolio gallery: missing .portfolio-lightbox__nav--prev.");
+      return;
+    }
+    if (!(nextButton instanceof HTMLButtonElement)) {
+      console.warn("Portfolio gallery: missing .portfolio-lightbox__nav--next.");
+      return;
+    }
 
-    const batchSize = Number(grid.dataset.batchSize || "12");
-    let currentCategory = grid.dataset.initialCategory || "food";
+    const gridEl = grid;
+    const filterSelectEl = filterSelect;
+    const loadMoreButtonEl = loadMoreButton;
+    const dataElScript = dataEl;
+    const lightboxEl = lightbox;
+    const lightboxImageEl = lightboxImage;
+    const lightboxTitleEl = lightboxTitle;
+    const lightboxIndexEl = lightboxIndex;
+    const closeButtonEl = closeButton;
+    const prevButtonEl = prevButton;
+    const nextButtonEl = nextButton;
+
+    type PortfolioClientItem = {
+      alt: string;
+      title: string;
+      thumbSrc: string;
+      thumbSrcSet: string;
+      fullSrc: string;
+      fullWidth: number | null;
+      fullHeight: number | null;
+    };
+    type PortfolioData = Record<string, PortfolioClientItem[]>;
+
+    let portfolioData: PortfolioData = {};
+    try {
+      const raw = (dataElScript.textContent || "{}").trim();
+      portfolioData = JSON.parse(raw) as PortfolioData;
+    } catch (e) {
+      console.error("Portfolio gallery: failed to parse JSON data.", e);
+      console.error(
+        "Portfolio gallery: JSON starts with:",
+        (dataElScript.textContent || "").slice(0, 80),
+      );
+      return;
+    }
+
+    const batchSize = Number(gridEl.dataset.batchSize || "12");
+    let currentCategory = gridEl.dataset.initialCategory || "food";
+    const thumbSizes =
+      gridEl.dataset.thumbSizes ||
+      "(max-width: 1024px) 33vw, (max-width: 1490px) 25vw, 372px";
     let visibleCount = Math.min(
       batchSize,
       (portfolioData[currentCategory] || []).length,
@@ -874,12 +959,12 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
 
     function updateLoadMoreVisibility() {
       const total = (portfolioData[currentCategory] || []).length;
-      const wrapper = loadMoreButton.closest(".portfolio-load-more-wrapper");
-      if (!wrapper) return;
+      const wrapper = loadMoreButtonEl.closest(".portfolio-load-more-wrapper");
+      if (!(wrapper instanceof HTMLElement)) return;
       wrapper.hidden = visibleCount >= total;
     }
 
-    function makeItemElement(item, index) {
+    function makeItemElement(item: PortfolioClientItem, index: number) {
       const link = document.createElement("a");
       link.className = "portfolio-item";
       link.href = item.fullSrc;
@@ -897,6 +982,8 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       const img = document.createElement("img");
       img.className = "portfolio-item-image";
       img.src = item.thumbSrc;
+      if (item.thumbSrcSet) img.srcset = item.thumbSrcSet;
+      img.sizes = thumbSizes;
       img.alt = item.alt;
       img.loading = "lazy";
       img.decoding = "async";
@@ -925,7 +1012,7 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
     }
 
     function clearGrid() {
-      while (grid.firstChild) grid.removeChild(grid.firstChild);
+      while (gridEl.firstChild) gridEl.removeChild(gridEl.firstChild);
     }
 
     function renderInitialBatch() {
@@ -933,7 +1020,7 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       const items = portfolioData[currentCategory] || [];
       visibleCount = Math.min(batchSize, items.length);
       for (let i = 0; i < visibleCount; i += 1) {
-        grid.appendChild(makeItemElement(items[i], i));
+        gridEl.appendChild(makeItemElement(items[i], i));
       }
       updateLoadMoreVisibility();
     }
@@ -942,43 +1029,43 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       const items = portfolioData[currentCategory] || [];
       const nextCount = Math.min(visibleCount + batchSize, items.length);
       for (let i = visibleCount; i < nextCount; i += 1) {
-        grid.appendChild(makeItemElement(items[i], i));
+        gridEl.appendChild(makeItemElement(items[i], i));
       }
       visibleCount = nextCount;
       updateLoadMoreVisibility();
     }
 
-    function setLightboxContent(index) {
+    function setLightboxContent(index: number) {
       const items = portfolioData[currentCategory] || [];
       const item = items[index];
       if (!item) return;
 
-      lightboxImage.alt = item.alt;
-      lightboxImage.src = item.fullSrc;
-      if (item.fullWidth) lightboxImage.width = item.fullWidth;
-      if (item.fullHeight) lightboxImage.height = item.fullHeight;
-      lightboxTitle.textContent = item.title;
-      lightboxIndex.textContent = `${index + 1} / ${items.length}`;
+      lightboxImageEl.alt = item.alt;
+      lightboxImageEl.src = item.fullSrc;
+      if (item.fullWidth) lightboxImageEl.width = item.fullWidth;
+      if (item.fullHeight) lightboxImageEl.height = item.fullHeight;
+      lightboxTitleEl.textContent = item.title;
+      lightboxIndexEl.textContent = `${index + 1} / ${items.length}`;
     }
 
-    function openLightbox(index) {
+    function openLightbox(index: number) {
       const items = portfolioData[currentCategory] || [];
       if (!items.length) return;
       activeIndex = Math.max(0, Math.min(index, items.length - 1));
 
-      lightbox.classList.add("is-active");
-      lightbox.setAttribute("aria-hidden", "false");
+      lightboxEl.classList.add("is-active");
+      lightboxEl.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       setLightboxContent(activeIndex);
-      closeButton.focus();
+      closeButtonEl.focus();
     }
 
     function closeLightbox() {
       activeIndex = -1;
-      lightbox.classList.remove("is-active");
-      lightbox.setAttribute("aria-hidden", "true");
+      lightboxEl.classList.remove("is-active");
+      lightboxEl.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-      lightboxImage.removeAttribute("src");
+      lightboxImageEl.removeAttribute("src");
     }
 
     function showPrev() {
@@ -995,19 +1082,19 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       setLightboxContent(activeIndex);
     }
 
-    filterSelect.addEventListener("change", () => {
-      const nextCategory = filterSelect.value;
+    filterSelectEl.addEventListener("change", () => {
+      const nextCategory = filterSelectEl.value;
       if (!portfolioData[nextCategory]) return;
       currentCategory = nextCategory;
       closeLightbox();
       renderInitialBatch();
     });
 
-    loadMoreButton.addEventListener("click", () => {
+    loadMoreButtonEl.addEventListener("click", () => {
       appendNextBatch();
     });
 
-    grid.addEventListener("click", (event) => {
+    gridEl.addEventListener("click", (event) => {
       const target = event.target instanceof Element ? event.target : null;
       const link = target ? target.closest(".portfolio-item") : null;
       if (!link) return;
@@ -1017,26 +1104,26 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       openLightbox(idx);
     });
 
-    closeButton.addEventListener("click", () => closeLightbox());
-    prevButton.addEventListener("click", () => showPrev());
-    nextButton.addEventListener("click", () => showNext());
+    closeButtonEl.addEventListener("click", () => closeLightbox());
+    prevButtonEl.addEventListener("click", () => showPrev());
+    nextButtonEl.addEventListener("click", () => showNext());
 
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) closeLightbox();
+    lightboxEl.addEventListener("click", (event) => {
+      if (event.target === lightboxEl) closeLightbox();
     });
 
     document.addEventListener("keydown", (event) => {
-      if (!lightbox.classList.contains("is-active")) return;
+      if (!lightboxEl.classList.contains("is-active")) return;
       if (event.key === "Escape") closeLightbox();
       if (event.key === "ArrowLeft") showPrev();
       if (event.key === "ArrowRight") showNext();
     });
 
     updateLoadMoreVisibility();
-  }
+  })();
 </script>
 
-<style>
+<style is:global>
   .portfolio-section {
     background-color: #000000;
     padding-block: 3rem;
