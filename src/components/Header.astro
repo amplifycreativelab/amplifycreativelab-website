@@ -574,44 +574,67 @@ const rightMenu: MenuItem[] = [
     });
 
     // Hide header on scroll down, show on scroll up
+    // Hide header on scroll down, show on scroll up
     let lastScrollY = window.scrollY;
     const SCROLL_THRESHOLD = 80; // px before behavior kicks in
     let ticking = false;
 
     function updateHeader() {
-      if (!header) return;
-
+      // 1. READ phase (Get geometric values)
       const currentY = window.scrollY;
       const scrolledPastThreshold = currentY > SCROLL_THRESHOLD;
-
-      // Add solid background once we've scrolled past the threshold
-      header.classList.toggle("is-scrolled", scrolledPastThreshold);
-
-      // If mobile nav is open, don't hide header
       const mobileNavOpen = panel?.classList.contains("is-open");
+
+      // Determine what state we WANT to be in
+      let shouldBeScrolled = false;
+      let shouldBeHidden = false;
+
+      if (scrolledPastThreshold) {
+        shouldBeScrolled = true;
+      }
+
       if (mobileNavOpen) {
-        header.classList.remove("is-hidden");
-        lastScrollY = currentY;
-        return;
-      }
-
-      if (currentY > lastScrollY && scrolledPastThreshold) {
-        // scrolling down
-        header.classList.add("is-hidden");
+        // If nav is open, force visible
+        shouldBeHidden = false;
+      } else if (currentY > lastScrollY && scrolledPastThreshold) {
+        // Scrolling down & past threshold -> Hide
+        shouldBeHidden = true;
       } else {
-        // scrolling up OR near top
-        header.classList.remove("is-hidden");
+        // Scrolling up or at top -> Show
+        shouldBeHidden = false;
       }
 
+      // Update state for next tick
       lastScrollY = currentY;
       ticking = false;
+
+      // 2. WRITE phase (Mutate DOM based on calculated state)
+      // We do this inside the same rAF callback, but after all reads are done.
+      if (!header) return;
+
+      if (shouldBeScrolled) {
+        header.classList.add("is-scrolled");
+      } else {
+        header.classList.remove("is-scrolled");
+      }
+
+      if (shouldBeHidden) {
+        header.classList.add("is-hidden");
+      } else {
+        header.classList.remove("is-hidden");
+      }
     }
 
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateHeader);
-        ticking = true;
-      }
-    });
+    window.addEventListener(
+      "scroll",
+      () => {
+        // Throttle to requestAnimationFrame to align with browser repaint
+        if (!ticking) {
+          window.requestAnimationFrame(updateHeader);
+          ticking = true;
+        }
+      },
+      { passive: true },
+    ); // Mark listener as passive for better scroll performance
   </script>
 </header>
