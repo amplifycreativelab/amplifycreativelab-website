@@ -35,106 +35,82 @@ const slides = [
 const SLIDE_INTERVAL = 3000;
 ---
 
-<section
-  class="hero-new"
-  data-hero-new
-  data-interval={SLIDE_INTERVAL}
->
+<section class="hero-new" data-hero-new data-interval={SLIDE_INTERVAL}>
   <div class="hero-new__media">
-    {slides.map((slide, index) => (
-      <Image
-        class:list={[
-          "hero-new__slide",
-          index === 0 && "hero-new__slide--active",
-        ]}
-        src={slide.fallback}
-        alt={slide.alt}
-        width={1920}
-        height={1080}
-        widths={[640, 960, 1280, 1600, 1920]}
-        sizes="100vw"
-        quality={80}
-        data-hero-slide
-        data-index={index}
-        fetchpriority={index <= 1 ? "high" : undefined}
-        loading={index <= 1 ? "eager" : "lazy"}
-        decoding="async"
-      />
-    ))}
+    {
+      slides.map((slide, index) => (
+        <Image
+          class:list={[
+            "hero-new__slide",
+            index === 0 && "hero-new__slide--active",
+          ]}
+          src={slide.fallback}
+          alt={slide.alt}
+          width={1920}
+          height={1080}
+          widths={[640, 960, 1280, 1600, 1920]}
+          sizes="100vw"
+          quality={80}
+          data-hero-slide
+          data-index={index}
+          fetchpriority={index <= 1 ? "high" : undefined}
+          loading={index <= 1 ? "eager" : "lazy"}
+          decoding="async"
+        />
+      ))
+    }
   </div>
 
   <div class="hero-new__overlay"></div>
 
   <div class="hero-new__inner">
+    <p class="sr-only">
+      Amplify Creative Lab provides commercial photography and website
+      development in Perth, Western Australia for hospitality, retail and
+      e-commerce brands.
+    </p>
     <div class="hero-new__content">
-      {slides.map((slide, index) => (
-        <div
-          class:list={[
-            "hero-new__panel",
-            index === 0 && "hero-new__panel--active",
-          ]}
-          data-hero-panel
-          data-index={index}
-          aria-hidden={index === 0 ? "false" : "true"}
-        >
-          <p class="hero-new__heading">{slide.heading}</p>
-          <p class="hero-new__subheading">{slide.subheading}</p>
-          <div class="hero-new__cta">
-            <a href={slide.buttonHref} class="hero-new__button">
-              {slide.buttonLabel}
-            </a>
+      {
+        slides.map((slide, index) => (
+          <div
+            class:list={[
+              "hero-new__panel",
+              index === 0 && "hero-new__panel--active",
+            ]}
+            data-hero-panel
+            data-index={index}
+            aria-hidden={index === 0 ? "false" : "true"}
+          >
+            <p class="hero-new__heading">{slide.heading}</p>
+            <p class="hero-new__subheading">{slide.subheading}</p>
+            <div class="hero-new__cta">
+              <a href={slide.buttonHref} class="hero-new__button">
+                {slide.buttonLabel}
+              </a>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
+    {
+      slides.length > 1 && (
+        <div class="hero-new__dots">
+          {slides.map((_, index) => (
+            <button
+              type="button"
+              class:list={[
+                "hero-new__dot",
+                index === 0 && "hero-new__dot--active",
+              ]}
+              aria-label={`Go to slide ${index + 1}`}
+              data-hero-dot
+              data-index={index}
+            />
+          ))}
+        </div>
+      )
+    }
   </div>
-
-  {slides.length > 1 && (
-    <>
-      <button
-        type="button"
-        class="hero-new__arrow hero-new__arrow--prev"
-        aria-label="Previous slide"
-        data-hero-arrow-prev
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-        </svg>
-      </button>
-
-      <button
-        type="button"
-        class="hero-new__arrow hero-new__arrow--next"
-        aria-label="Next slide"
-        data-hero-arrow-next
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </button>
-    </>
-  )}
-
   <script is:inline>
     const script = document.currentScript;
     const hero = script?.closest("[data-hero-new]");
@@ -143,8 +119,7 @@ const SLIDE_INTERVAL = 3000;
       requestAnimationFrame(() => {
         const slides = Array.from(hero.querySelectorAll("[data-hero-slide]"));
         const panels = Array.from(hero.querySelectorAll("[data-hero-panel]"));
-        const prevArrow = hero.querySelector("[data-hero-arrow-prev]");
-        const nextArrow = hero.querySelector("[data-hero-arrow-next]");
+        const dots = Array.from(hero.querySelectorAll("[data-hero-dot]"));
 
         if (slides.length > 1) {
           const intervalMs = Number(hero.dataset.interval) || 9000;
@@ -163,6 +138,9 @@ const SLIDE_INTERVAL = 3000;
               panels[index].classList.remove("hero-new__panel--active");
               panels[index].setAttribute("aria-hidden", "true");
             }
+            if (dots[index]) {
+              dots[index].classList.remove("hero-new__dot--active");
+            }
 
             index = newIndex;
 
@@ -170,6 +148,9 @@ const SLIDE_INTERVAL = 3000;
             if (panels[index]) {
               panels[index].classList.add("hero-new__panel--active");
               panels[index].setAttribute("aria-hidden", "false");
+            }
+            if (dots[index]) {
+              dots[index].classList.add("hero-new__dot--active");
             }
           };
 
@@ -187,21 +168,13 @@ const SLIDE_INTERVAL = 3000;
             }, intervalMs);
           };
 
-          if (prevArrow) {
-            prevArrow.addEventListener("click", (e) => {
+          dots.forEach((dot, dotIndex) => {
+            dot.addEventListener("click", (e) => {
               e.stopPropagation();
-              goToSlide(index - 1);
+              goToSlide(dotIndex);
               start();
             });
-          }
-
-          if (nextArrow) {
-            nextArrow.addEventListener("click", (e) => {
-              e.stopPropagation();
-              goToSlide(index + 1);
-              start();
-            });
-          }
+          });
 
           hero.addEventListener("click", () => {
             stop();
@@ -264,10 +237,11 @@ const SLIDE_INTERVAL = 3000;
     /* Directional scrim: darker at bottom for text readability */
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.3) 0%,      /* Subtle top shade for nav */
-      rgba(0, 0, 0, 0.1) 30%,     /* Clear mid-section */
-      rgba(0, 0, 0, 0.6) 80%,     /* Darkens behind text */
-      rgba(0, 0, 0, 0.85) 100%    /* Strong contrast at very bottom */
+      rgba(0, 0, 0, 0.3) 0%,
+      /* Subtle top shade for nav */ rgba(0, 0, 0, 0.1) 30%,
+      /* Clear mid-section */ rgba(0, 0, 0, 0.6) 80%,
+      /* Darkens behind text */ rgba(0, 0, 0, 0.85) 100%
+        /* Strong contrast at very bottom */
     );
     z-index: -1;
     pointer-events: none;
@@ -278,8 +252,9 @@ const SLIDE_INTERVAL = 3000;
     z-index: 1;
     width: 100%;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
     padding-inline: clamp(20px, 6vw, 80px);
     padding-bottom: clamp(2rem, 7vh, 4rem);
   }
@@ -301,12 +276,12 @@ const SLIDE_INTERVAL = 3000;
   }
 
   .hero-new__heading {
-    font-family: var(--font-heading, var(--font-body));
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: clamp(2.1rem, 3vw + 1rem, 3.4rem);
-    line-height: 1;
+    line-height: 1.2;
     margin: 0 0 0rem;
     position: relative;
     display: inline-block;
@@ -372,35 +347,28 @@ const SLIDE_INTERVAL = 3000;
   }
 
   .hero-new__dots {
-    position: absolute;
-    left: 50%;
-    bottom: 1.8rem;
-    transform: translateX(-50%);
+    position: relative;
     display: flex;
     gap: 0.45rem;
     z-index: 2;
+    margin-top: 2rem;
   }
 
-    .hero-new__dot {
-
+  .hero-new__dot {
     width: 12px;
     height: 12px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     background-color: rgba(0, 0, 0, 0.25);
-    
-    
-    padding: 0; 
-    
-   
-    position: relative; 
-    cursor: pointer;
 
+    padding: 0;
+
+    position: relative;
+    cursor: pointer;
   }
 
- 
   .hero-new__dot::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -421,48 +389,6 @@ const SLIDE_INTERVAL = 3000;
     outline: 2px solid var(--color-accent, #24360f);
     outline-offset: 2px;
   }
-
-  .hero-new__arrow {
-    position: absolute;
-    bottom: 2rem;
-    z-index: 2;
-    background-color: transparent;
-    color: #fff; /* Pure white */
-    border: none;
-    width: 4rem; /* Bigger on desktop */
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    padding: 0;
-  }
-  
-  .hero-new__arrow svg {
-    width: 32px; /* Bigger icon on desktop */
-    height: 32px;
-  }
-
-  .hero-new__arrow:hover {
-    background-color: transparent;
-    color: #fff;
-    transform: scale(1.15);
-  }
-
-  .hero-new__arrow:focus-visible {
-    outline: 2px solid var(--color-accent, #24360f);
-    outline-offset: 2px;
-  }
-
-  .hero-new__arrow--prev {
-    left: clamp(20px, 6vw, 80px);
-  }
-
-  .hero-new__arrow--next {
-    right: clamp(20px, 6vw, 80px);
-  }
-
   @media (max-width: 768px) {
     .hero-new {
       min-height: 70vh;
@@ -485,26 +411,23 @@ const SLIDE_INTERVAL = 3000;
       margin-top: 1rem;
     }
 
-    .hero-new__arrow {
-      bottom: 0.3rem;
-      width: 44px;
-      height: 44px;
-    }
-    
-    .hero-new__arrow svg {
-      width: 24px;
-      height: 24px;
-    }
-    .hero-new__arrow--prev {
-      left: 5px; /* Closer to edge */
-    }
-    .hero-new__arrow--next {
-      right: 5px; /* Closer to edge */
-    }
     .hero-new__button {
       padding: 0.7rem 1.1rem;
-      font-size: 0.75rem; 
-      min-height: 44px;      /* Minimum accessible size */
+      font-size: 0.75rem;
+      min-height: 44px; /* Minimum accessible size */
       min-width: 44px;
     }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 </style>

@@ -1,169 +1,175 @@
----  
-interface Props {  
-  id?: string;  
-  heading?: string;  
-  formName?: string;  
-  action?: string;  
-  sectionClass?: string;  
+---
+interface Props {
+  id?: string;
+  heading?: string;
+  formName?: string;
+  action?: string;
+  sectionClass?: string;
 }
 
-const {  
-  id = "work-with-us",  
-  heading = "GET IN TOUCH",  
-  formName = "contact",  
-  action = "/thank-you",  
-  sectionClass = "",  
-} = Astro.props;  
----  
+const {
+  id = "work-with-us",
+  heading = "GET IN TOUCH",
+  formName = "contact",
+  action = "/thank-you",
+  sectionClass = "",
+} = Astro.props;
+---
 
-<section class={`contact-section ${sectionClass}`} id={id}>  
-  <div class="contact-inner">  
-    <h2 class="contact-heading">{heading}</h2>  
-    <p class="contact-intro">  
-      Tell us about your project — food photography, product shoots, website design,  
-      or full brand content packages. We respond within 24 hours.  
-    </p>  
+<section class={`contact-section ${sectionClass}`} id={id}>
+  <div class="contact-inner">
+    <h2 class="contact-heading">{heading}</h2>
+    <p class="contact-intro">
+      Tell us about your project — food photography, product shoots, website
+      design, or full brand content packages. We respond within 24 hours.
+    </p>
 
-    <form  
-      class="contact-form"  
-      name={formName}  
-      method="POST"  
-      data-netlify="true"  
-      netlify-honeypot="bot-field"  
-      action={action}  
-      aria-label={heading}  
-    >  
-      <!-- Netlify form name -->  
-      <input type="hidden" name="form-name" value={formName} />  
+    <form
+      class="contact-form"
+      name={formName}
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action={action}
+      aria-label={heading}
+    >
+      <!-- Netlify form name -->
+      <input type="hidden" name="form-name" value={formName} />
 
-      <!-- Honeypot field (spam protection) -->  
-      <p class="contact-form-honeypot">  
-        <label>  
-          Don’t fill this out if you're human:  
-          <input name="bot-field" />  
-        </label>  
-      </p>  
+      <!-- Honeypot field (spam protection) -->
+      <p class="contact-form-honeypot">
+        <label>
+          Don’t fill this out if you're human:
+          <input name="bot-field" />
+        </label>
+      </p>
 
-      <div class="contact-form-grid">  
-        <!-- Name -->  
-        <div class="form-field form-field-half">  
-          <label class="form-label" for={`${id}-name`}>Name</label>  
-          <input  
-            class="form-input"  
-            id={`${id}-name`}  
-            name="name"  
-            type="text"  
-            placeholder="Enter your name"  
-            required  
-          />  
-        </div>  
+      <div class="contact-form-grid">
+        <!-- Name -->
+        <div class="form-field form-field-half">
+          <label class="form-label" for={`${id}-name`}>Name</label>
+          <input
+            class="form-input"
+            id={`${id}-name`}
+            name="name"
+            type="text"
+            placeholder="Enter your name"
+            required
+            autocomplete="name"
+          />
+        </div>
 
-        <!-- Email -->  
-        <div class="form-field form-field-half">  
-          <label class="form-label" for={`${id}-email`}>Email</label>  
-          <input  
-            class="form-input"  
-            id={`${id}-email`}  
-            name="email"  
-            type="email"  
-            placeholder="Enter your email"  
-            required  
-          />  
-        </div>  
+        <!-- Email -->
+        <div class="form-field form-field-half">
+          <label class="form-label" for={`${id}-email`}>Email</label>
+          <input
+            class="form-input"
+            id={`${id}-email`}
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+            required
+            autocomplete="email"
+          />
+        </div>
 
-        <!-- Phone -->  
-        <div class="form-field form-field-half">  
-          <label class="form-label" for={`${id}-phone`}>Phone number</label>  
-          <input  
-            class="form-input"  
-            id={`${id}-phone`}  
-            name="phone"  
-            type="tel"  
-            placeholder="Enter your phone number"  
-            required  
-            pattern="[0-9()#&+*-=.]+"  
-            title="Only numbers and phone characters (#, -, *, etc) are accepted."  
-          />  
-        </div>  
+        <!-- Phone -->
+        <div class="form-field form-field-half">
+          <label class="form-label" for={`${id}-phone`}>Phone number</label>
+          <input
+            class="form-input"
+            id={`${id}-phone`}
+            name="phone"
+            type="tel"
+            placeholder="Enter your phone number"
+            required
+            pattern="[0-9()#&+*-=.]+"
+            title="Only numbers and phone characters (#, -, *, etc) are accepted."
+            autocomplete="tel"
+          />
+        </div>
 
-        <!-- Service dropdown (new) -->  
-        <div class="form-field form-field-half">  
-          <label class="form-label" for={`${id}-service`}>What service are you looking for?</label>  
-          <select  
-            class="form-input"  
-            id={`${id}-service`}  
-            name="service"  
-          >  
-            <option value="" selected disabled hidden>Select a service</option>  
-            <option value="event photography">Event Photography</option>  
-            <option value="food photography">Food Photography</option>  
-            <option value="product photography">Product Photography</option>  
-            <option value="portrait photography">Portrait Photography</option>  
-            <option value="website development">Website Development</option>  
-          </select>  
-        </div>  
+        <!-- Service dropdown (new) -->
+        <div class="form-field form-field-half">
+          <label class="form-label" for={`${id}-service`}
+            >What service are you looking for?</label
+          >
+          <select class="form-input" id={`${id}-service`} name="service">
+            <option value="" selected disabled hidden>Select a service</option>
+            <option value="event photography">Event Photography</option>
+            <option value="food photography">Food Photography</option>
+            <option value="product photography">Product Photography</option>
+            <option value="portrait photography">Portrait Photography</option>
+            <option value="website development">Website Development</option>
+          </select>
+        </div>
 
-        <!-- Budget (optional) -->  
-        <div class="form-field form-field-half">  
-          <label class="form-label" for={`${id}-budget`}>Budget (optional)</label>  
-          <input  
-            class="form-input"  
-            id={`${id}-budget`}  
-            name="budget"  
-            type="text"  
-            placeholder="Estimated budget"  
-          />  
-        </div>  
+        <!-- Budget (optional) -->
+        <div class="form-field form-field-half">
+          <label class="form-label" for={`${id}-budget`}
+            >Budget (optional)</label
+          >
+          <input
+            class="form-input"
+            id={`${id}-budget`}
+            name="budget"
+            type="text"
+            placeholder="Estimated budget"
+          />
+        </div>
 
-        <!-- Event date (optional now) -->  
-        <div class="form-field form-field-half">  
-          <label class="form-label" for={`${id}-event-date`}>Event date (optional)</label>  
-          <input  
-            class="form-input"  
-            id={`${id}-event-date`}  
-            name="event_date"  
-            type="date"  
-            placeholder="Enter event date"  
-          />  
-        </div>  
+        <!-- Event date (optional now) -->
+        <div class="form-field form-field-half">
+          <label class="form-label" for={`${id}-event-date`}
+            >Event date (optional)</label
+          >
+          <input
+            class="form-input"
+            id={`${id}-event-date`}
+            name="event_date"
+            type="date"
+            placeholder="Enter event date"
+          />
+        </div>
 
-        <!-- Message -->  
-        <div class="form-field form-field-full">  
-          <label class="form-label" for={`${id}-message`}>How can we help you?</label>  
-          <textarea  
-            class="form-textarea"  
-            id={`${id}-message`}  
-            name="message"  
-            rows="4"  
-            placeholder="How can we help you?"  
-          ></textarea>  
-        </div>  
+        <!-- Message -->
+        <div class="form-field form-field-full">
+          <label class="form-label" for={`${id}-message`}
+            >How can we help you?</label
+          >
+          <textarea
+            class="form-textarea"
+            id={`${id}-message`}
+            name="message"
+            rows="4"
+            placeholder="How can we help you?"></textarea>
+        </div>
 
-        <!-- Optional extra fields slot -->  
-        <slot />  
-      </div>  
+        <!-- Optional extra fields slot -->
+        <slot />
+      </div>
 
-      <!-- Submit -->  
-      <div class="form-actions">  
-        <button class="form-button" type="submit">  
-          <span class="form-button-inner">  
-            <span class="form-button-icon" aria-hidden="true">  
-              <svg  
-                class="form-button-svg"  
-                viewBox="0 0 512 512"  
-                xmlns="http://www.w3.org/2000/svg"  
-              >  
-                <path  
-                  d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"  
-                />  
-              </svg>  
-            </span>  
-            <span class="form-button-text">Submit Form</span>  
-          </span>  
-        </button>  
-      </div>  
-    </form>  
-  </div>  
+      <!-- Submit -->
+      <div class="form-actions">
+        <button class="form-button" type="submit">
+          <span class="form-button-inner">
+            <span class="form-button-icon" aria-hidden="true">
+              <svg
+                class="form-button-svg"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"
+                ></path>
+              </svg>
+            </span>
+            <span class="form-button-text">Submit Form</span>
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
 </section>
 
 <style>
@@ -174,8 +180,7 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:0;
-    
+    padding: 0;
 
     /* Background image */
     background-image: url("https://amplifycreativelab.com/wp-content/uploads/2024/06/07-Get-in-touch-scaled.jpg");
@@ -208,7 +213,7 @@ const {
   }
 
   .contact-intro {
-    font-size:1.1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: var(--color-heading, #152705);
   }
@@ -247,9 +252,10 @@ const {
   }
 
   .form-label {
-    font-family: var(--e-global-typography-text-font-family, "Roboto"), sans-serif;
+    font-family:
+      var(--e-global-typography-text-font-family, "Roboto"), sans-serif;
     font-size: 0.9rem;
-    color: var(--e-global-color-primary, #FEF8EB);
+    color: var(--e-global-color-primary, #fef8eb);
   }
 
   .form-input,
@@ -267,7 +273,9 @@ const {
     background-color: rgba(254, 248, 235, 0.9);
     /* #FEF8EB with a touch of transparency */
     outline: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
       background-color 0.15s ease;
   }
 
@@ -313,7 +321,7 @@ const {
     /* Visuals */
     background-color: transparent;
     /* #24360F00 */
-    color: var(--e-global-color-fadab83, #4A2E1C);
+    color: var(--e-global-color-fadab83, #4a2e1c);
     border: none;
     border-radius: 0;
     padding: 0;
@@ -321,11 +329,13 @@ const {
 
     cursor: pointer;
     box-shadow: none;
-    transition: color 0.15s ease, transform 0.12s ease;
+    transition:
+      color 0.15s ease,
+      transform 0.12s ease;
   }
 
   .form-button:hover {
-    color: var(--e-global-color-fadab83, #4A2E1C);
+    color: var(--e-global-color-fadab83, #4a2e1c);
     transform: translateY(-1px);
   }
 
@@ -348,189 +358,193 @@ const {
 
   /* FORM SECTION*/
 
+  /* Contact section wrapper (replaces .elementor-element-63c7e2a) */
+  .contact-section {
+    /* Layout */
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
 
-/* Contact section wrapper (replaces .elementor-element-63c7e2a) */
-.contact-section {
-  /* Layout */
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 0;
+    /* Background image */
+    background-image: url("https://amplifycreativelab.com/wp-content/uploads/2024/06/07-Get-in-touch-scaled.jpg");
+    /* Or your local copy, e.g.: background-image: url("/images/home/get-in-touch.jpg"); */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-  /* Background image */
-  background-image: url("https://amplifycreativelab.com/wp-content/uploads/2024/06/07-Get-in-touch-scaled.jpg");
-  /* Or your local copy, e.g.: background-image: url("/images/home/get-in-touch.jpg"); */
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+  /* Inner container (mimics Elementor container max-width + edge padding) */
+  .contact-inner {
+    width: min(100%, 1490px);
+    margin: 0 auto;
+    padding-inline: clamp(24px, 6vw, 130px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-/* Inner container (mimics Elementor container max-width + edge padding) */
-.contact-inner {
-  width: min(100%, 1490px);
-  margin: 0 auto;
-  padding-inline: clamp(24px, 6vw, 130px);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+  .contact-heading {
+    font-family: "Abril Fatface", Sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 32px;
 
-.contact-heading {
-  font-family: "Abril Fatface", Sans-serif;
-  font-size: 28px;
-  font-weight: 300;
-  font-style: normal;
-  line-height: 32px;
+    letter-spacing: 2.5px;
+    padding: 0px;
+    color: var(--color-heading, #152705);
+  }
 
-  letter-spacing: 2.5px;
-  padding: 0px;
-  color: var(--color-heading, #152705);
-}
+  .contact-form {
+    width: 100%;
+  }
 
-.contact-form {
-  width: 100%;
-}
-
-.contact-form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
-/* Half-width fields (name, email, phone, date) */
-.form-field-half {
-  width: 100%;
-}
-
-/* Full-width fields (message, extra slot fields if needed) */
-.form-field-full {
-  grid-column: 1 / -1;
-}
-
-/* Mobile: stack everything in one column */
-@media (max-width: 768px) {
   .contact-form-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  /* Half-width fields (name, email, phone, date) */
+  .form-field-half {
+    width: 100%;
+  }
+
+  /* Full-width fields (message, extra slot fields if needed) */
+  .form-field-full {
+    grid-column: 1 / -1;
+  }
+
+  /* Mobile: stack everything in one column */
+  @media (max-width: 768px) {
+    .contact-form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-input[type="date"] {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .form-label {
+    font-family:
+      var(--e-global-typography-text-font-family, "Roboto"), sans-serif;
+    font-size: 0.9rem;
+    color: var(--e-global-color-primary, #fef8eb);
+  }
+
+  .form-input,
+  .form-textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #24360f;
+    background-color: rgba(254, 248, 235, 0.9);
+    /* #FEF8EB with a touch of transparency */
+    outline: none;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.15s ease;
   }
 
   .form-input[type="date"] {
-    width: 100%;
-    max-width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
     min-width: 0;
   }
-}
 
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
-}
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: var(--theme-palette-color-1, #2872fa);
+    box-shadow: 0 0 0 2px rgba(40, 114, 250, 0.25);
+    background-color: #ffffff;
+  }
 
-.form-label {
-  font-family: var(--e-global-typography-text-font-family, "Roboto"), sans-serif;
-  font-size: 0.9rem;
-  color: var(--e-global-color-primary, #FEF8EB);
-}
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
 
-.form-input,
-.form-textarea {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 10px 12px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  font-family: inherit;
-  font-size: 0.95rem;
-  color: #24360f;
-  background-color: rgba(254, 248, 235, 0.9);
-  /* #FEF8EB with a touch of transparency */
-  outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
-}
+  /* Honeypot: keep it invisible but in the DOM */
+  .contact-form-honeypot {
+    display: none;
+  }
 
-.form-input[type="date"] {
-  -webkit-appearance: none;
-  appearance: none;
-  min-width: 0;
-}
+  .form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    /* or center / flex-start */
+  }
 
-.form-input:focus,
-.form-textarea:focus {
-  border-color: var(--theme-palette-color-1, #2872fa);
-  box-shadow: 0 0 0 2px rgba(40, 114, 250, 0.25);
-  background-color: #ffffff;
-}
+  /* Match Elementor button look */
+  .form-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
+    /* Typography */
+    font-family: "Abril Fatface", sans-serif;
+    font-size: 17px;
+    font-weight: 100;
+    line-height: 12px;
+    text-transform: none;
+    letter-spacing: 0;
 
-/* Honeypot: keep it invisible but in the DOM */
-.contact-form-honeypot {
-  display: none;
-}
+    /* Visuals */
+    background-color: transparent;
+    /* #24360F00 */
+    color: var(--e-global-color-fadab83, #4a2e1c);
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    /* matches the Elementor kit overrides */
 
-.form-actions {
-  margin-top: 20px;
- display: flex;
-  justify-content: flex-end;
-  /* or center / flex-start */
-}
+    cursor: pointer;
+    box-shadow: none;
+    transition:
+      color 0.15s ease,
+      transform 0.12s ease;
+  }
 
-/* Match Elementor button look */
-.form-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  .form-button:hover {
+    color: var(--e-global-color-fadab83, #fef8eb);
+    transform: translateY(-1px);
+  }
 
-  /* Typography */
-  font-family: "Abril Fatface", sans-serif;
-  font-size: 17px;
-  font-weight: 100;
-  line-height: 12px;
-  text-transform: none;
-  letter-spacing: 0;
+  .form-button:active {
+    transform: translateY(0);
+  }
 
-  /* Visuals */
-  background-color: transparent;
-  /* #24360F00 */
-  color: var(--e-global-color-fadab83, #4A2E1C);
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  /* matches the Elementor kit overrides */
+  .form-button-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
 
-  cursor: pointer;
-  box-shadow: none;
-  transition: color 0.15s ease, transform 0.12s ease;
-}
-
-.form-button:hover {
-  color: var(--e-global-color-fadab83, #FEF8EB);
-  transform: translateY(-1px);
-}
-
-.form-button:active {
-  transform: translateY(0);
-}
-
-.form-button-inner {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top:18px;
-}
-
-.form-button-svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
+  .form-button-svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
 </style>

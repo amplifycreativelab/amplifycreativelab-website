@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 
 interface PortfolioItem {
   src: string;
@@ -7,6 +7,9 @@ interface PortfolioItem {
   title: string;
   category: string;
   image?: any;
+  fullSrc?: string;
+  fullWidth?: number;
+  fullHeight?: number;
 }
 
 // Eagerly import all portfolio images from src/assets so Astro can
@@ -26,17 +29,41 @@ function getPortfolioImage(folder: string, file: string) {
   return mod.default ?? mod;
 }
 
-function createPortfolioItems(
+async function createPortfolioItems(
   folder: string,
   category: string,
   files: string[],
   alts: Record<string, string>,
   title: string,
   altPrefix: string,
-): PortfolioItem[] {
-  return files.map((file, index) => {
+): Promise<PortfolioItem[]> {
+  const items = files.map(async (file, index) => {
     const image = getPortfolioImage(folder, file);
     const src = (image && image.src) || `/images/portfolio/${folder}/${file}`;
+
+    let fullSrc = src;
+    let fullWidth = 0;
+    let fullHeight = 0;
+
+    if (image) {
+      try {
+        const optimized = await getImage({
+          src: image,
+          width: 1920,
+          format: "webp",
+          quality: 90,
+        });
+        fullSrc = optimized.src;
+        fullWidth = optimized.attributes.width
+          ? Number(optimized.attributes.width)
+          : 0;
+        fullHeight = optimized.attributes.height
+          ? Number(optimized.attributes.height)
+          : 0;
+      } catch (e) {
+        console.error(`Failed to optimize image: ${file}`, e);
+      }
+    }
 
     return {
       src,
@@ -44,8 +71,13 @@ function createPortfolioItems(
       title,
       category,
       image,
+      fullSrc,
+      fullWidth,
+      fullHeight,
     };
   });
+
+  return Promise.all(items);
 }
 
 const foodFiles = [
@@ -150,7 +182,7 @@ const familyFiles = [
   "group-champagne-toast-beach-party-perth.webp",
   "fun-family-poses-sunset-beach-perth.webp",
   "mother-kissing-daughter-beach-deck-perth.webp",
-  
+
   "group-beach-portrait-golden-hour-perth.webp",
   "couple-silhouette-flowing-dress-sunset-perth.webp",
   "bridal-portrait-veil-bougainvillea-perth.webp",
@@ -167,7 +199,7 @@ const familyFiles = [
   "family-portrait-autumn-leaves-outdoor-perth.webp",
   "bride-groom-kissing-bubbles-wedding-perth.webp",
   "mother-baby-candid-autumn-flowers-perth.webp",
-  
+
   "kids-eating-cake-icing-tiger-face-paint-perth.webp",
   "candid-birthday-girl-eating-cake-messy-face.webp",
   "family-birthday-cake-celebration-home-perth.webp",
@@ -176,7 +208,7 @@ const familyFiles = [
   "kids-pinata-party-game-action-shot-perth.webp",
   "romantic-couple-close-up-beach-sunset-perth.webp",
   "childrens-party-entertainer-giant-bubbles-perth.webp",
-  "toddler-making-giant-bubbles-with-entertainer.webp"
+  "toddler-making-giant-bubbles-with-entertainer.webp",
 ];
 
 const portraitFiles = [
@@ -219,7 +251,7 @@ const productFiles = [
   "open-white-magnetic-box-matte-two-compartments.webp",
   "whipper-snapper-distillery-box-display.webp",
   "closed-green-rectangular-box-matte.webp",
-  
+
   "closed-black-rectangular-box-matte-clean-minimal.webp",
   "red-gift-box-studio-lighting.webp",
   "roam-whisky-box-open-front.webp",
@@ -470,7 +502,7 @@ const familyAlts: Record<string, string> = {
     "Children's party entertainer fascinating kids with giant bubbles at a celebration in Perth.",
   "toddler-making-giant-bubbles-with-entertainer.webp":
     "Toddler learning to make giant bubbles with guidance from a party entertainer in Perth.",
-    "couple-pouring-sand-jar-beach-ceremony-perth.webp":
+  "couple-pouring-sand-jar-beach-ceremony-perth.webp":
     "Close-up detail of a couple's hands pouring sand into a glass jar during a symbolic beach ceremony at sunset in Perth.",
 };
 const productAlts: Record<string, string> = {
@@ -558,10 +590,10 @@ const portraitAlts: Record<string, string> = {
     "A classic studio portrait of a man with a beard wearing a black button-up shirt against a grey background.",
   "sports-portrait-tennis-player-wilson-bag-perth.webp":
     "A sports portrait of a male tennis player carrying a Wilson equipment bag over his shoulder.",
-  };
+};
 
-const portfolioItems: PortfolioItem[] = [
-  ...createPortfolioItems(
+const portfolioItemsArrays = await Promise.all([
+  createPortfolioItems(
     "food",
     "food",
     foodFiles,
@@ -569,7 +601,7 @@ const portfolioItems: PortfolioItem[] = [
     "Food Photography",
     "Food photography in Perth",
   ),
-  ...createPortfolioItems(
+  createPortfolioItems(
     "event",
     "events",
     eventFiles,
@@ -577,7 +609,7 @@ const portfolioItems: PortfolioItem[] = [
     "Event Photography",
     "Event photography in Perth",
   ),
-  ...createPortfolioItems(
+  createPortfolioItems(
     "family",
     "family",
     familyFiles,
@@ -585,7 +617,7 @@ const portfolioItems: PortfolioItem[] = [
     "Family Photography",
     "Family photography in Perth",
   ),
-  ...createPortfolioItems(
+  createPortfolioItems(
     "product",
     "product",
     productFiles,
@@ -593,7 +625,7 @@ const portfolioItems: PortfolioItem[] = [
     "Product Photography",
     "Product photography in Perth",
   ),
-  ...createPortfolioItems(
+  createPortfolioItems(
     "portrait",
     "portrait",
     portraitFiles,
@@ -601,7 +633,9 @@ const portfolioItems: PortfolioItem[] = [
     "Portrait Photography",
     "Portrait photography in Perth",
   ),
-];
+]);
+
+const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
 ---
 
 <section class="portfolio-section" aria-label="Photography portfolio gallery">
@@ -619,34 +653,34 @@ const portfolioItems: PortfolioItem[] = [
         <option value="portrait">Portrait</option>
       </select>
     </div>
-      <div class="portfolio-grid">
-        {
-          portfolioItems.map((item, index) => (
-            <a
-              class="portfolio-item"
-              href="#"
-              data-index={index}
-              data-alt={item.alt}
-              data-title={item.title}
-              data-category={item.category}
-              data-full={item.image?.src || item.src}
-            >
-              <figure class="portfolio-item-figure">
-                <Image
-                  src={item.image ?? item.src}
-                  alt={item.alt}
-                  width={800}
-                  height={800}
-                  loading="lazy"
-                  decoding="async"
-                  class="portfolio-item-image"
-                  sizes="(max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                />
-                <figcaption class="portfolio-item-overlay">
-                  <span class="portfolio-item-title">{item.title}</span>
-                  <span class="portfolio-item-label">- view -</span>
-                </figcaption>
-              </figure>
+    <div class="portfolio-grid">
+      {
+        portfolioItems.map((item, index) => (
+          <a
+            class="portfolio-item"
+            href="#"
+            data-index={index}
+            data-alt={item.alt}
+            data-title={item.title}
+            data-category={item.category}
+            data-full={item.fullSrc || item.src}
+          >
+            <figure class="portfolio-item-figure">
+              <Image
+                src={item.image ?? item.src}
+                alt={item.alt}
+                width={600}
+                widths={[300, 600, 800]}
+                sizes="(max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                loading={index < 12 ? "eager" : "lazy"}
+                decoding="async"
+                class="portfolio-item-image"
+              />
+              <figcaption class="portfolio-item-overlay">
+                <span class="portfolio-item-title">{item.title}</span>
+                <span class="portfolio-item-label">- view -</span>
+              </figcaption>
+            </figure>
           </a>
         ))
       }
@@ -678,8 +712,8 @@ const portfolioItems: PortfolioItem[] = [
     <button
       class="portfolio-lightbox__nav portfolio-lightbox__nav--prev"
       type="button"
-      aria-label="Previous image"
-    >&lt;</button>
+      aria-label="Previous image">&lt;</button
+    >
 
     <figure class="portfolio-lightbox__figure">
       <img
@@ -697,8 +731,8 @@ const portfolioItems: PortfolioItem[] = [
     <button
       class="portfolio-lightbox__nav portfolio-lightbox__nav--next"
       type="button"
-      aria-label="Next image"
-    >&gt;</button>
+      aria-label="Next image">&gt;</button
+    >
   </div>
 </section>
 
@@ -964,7 +998,7 @@ const portfolioItems: PortfolioItem[] = [
     text-transform: uppercase;
     letter-spacing: 0.12em;
     border-radius: 999px;
-    border: solid 2px #fef8eb;
+    border: solid 1px #fef8eb;
     background-color: transparent;
     color: #fef8eb;
     -webkit-text-fill-color: #fef8eb;
@@ -972,7 +1006,6 @@ const portfolioItems: PortfolioItem[] = [
     transition: all 0.3s ease;
   }
 
-  
   .portfolio-filter-select:hover,
   .portfolio-filter-select:focus-visible {
     background-color: #152705;
@@ -1194,19 +1227,19 @@ const portfolioItems: PortfolioItem[] = [
     }
   }
 
-@media (min-width: 769px) {
-  select.portfolio-filter-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    
-    /* Encoded SVG Chevron */
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23fef8eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    
-    background-repeat: no-repeat;
-    background-position: right 1rem center; /* Adjusts distance from right edge */
-    background-size: 1.5em; /* Adjusts size of the arrow */
-    padding-right: 3.5rem; /* Ensures text doesn't overlap arrow */
+  @media (min-width: 769px) {
+    select.portfolio-filter-select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      /* Encoded SVG Chevron */
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23fef8eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+
+      background-repeat: no-repeat;
+      background-position: right 1rem center; /* Adjusts distance from right edge */
+      background-size: 1.5em; /* Adjusts size of the arrow */
+      padding-right: 3.5rem; /* Ensures text doesn't overlap arrow */
+    }
   }
-}
 </style>

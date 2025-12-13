@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 // Images
 import foodVertical from "../../../assets/images/home/Product-Black-Box_02.webp";
@@ -9,6 +10,29 @@ import musselsWide from "../../../assets/images/home/mussels-2560x1025.jpg";
 import orecchietteWide from "../../../assets/images/home/Product-Black-Box_02.webp";
 import weddingWide from "../../../assets/images/home/wedding-2560x1025.jpg";
 import eventWide from "../../../assets/images/perth-event-photography/event.jpg";
+
+type Layout = "tall" | "wide" | "full";
+
+const imageLayoutConfig: Record<Layout, { widths: number[]; sizes: string }> = {
+  tall: {
+    widths: [320, 480, 640, 800, 960, 1200],
+    sizes: "(max-width: 600px) 50vw, (max-width: 900px) 50vw, 33vw",
+  },
+  wide: {
+    widths: [480, 768, 1024, 1280, 1600, 2000],
+    sizes: "(max-width: 600px) 50vw, (max-width: 900px) 100vw, 66vw",
+  },
+  full: {
+    widths: [640, 960, 1280, 1600, 2000, 2400],
+    sizes: "100vw",
+  },
+};
+
+type GalleryItem = {
+  src: ImageMetadata;
+  alt: string;
+  layout: Layout;
+};
 
 const galleryItems = [
   // ROW 1
@@ -53,7 +77,7 @@ const galleryItems = [
     alt: "Guests mingling at a styled event",
     layout: "full",
   },
-];
+] satisfies GalleryItem[];
 ---
 
 <section class="gallery-section">
@@ -74,17 +98,23 @@ const galleryItems = [
 
     <div class="bento-grid">
       {
-        galleryItems.map((item) => (
-          <figure class={`bento-item type-${item.layout}`}>
-            <Image
-              src={item.src}
-              alt={item.alt}
-              widths={[400, 800, 1200]}
-              sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 33vw"
-              class="bento-image"
-            />
-          </figure>
-        ))
+        galleryItems.map((item) => {
+          const config = imageLayoutConfig[item.layout];
+
+          return (
+            <figure class={`bento-item type-${item.layout}`}>
+              <Image
+                src={item.src}
+                alt={item.alt}
+                widths={config.widths}
+                sizes={config.sizes}
+                class="bento-image"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          );
+        })
       }
     </div>
 
@@ -102,6 +132,7 @@ const galleryItems = [
   }
 
   .gallery-inner {
+    width: min(100%, var(--container-max, 1490px));
     margin: 0 auto;
   }
 
@@ -162,8 +193,9 @@ const galleryItems = [
   /* --- DESKTOP GRID --- */
   .bento-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 400px; /* Large, luxurious rows on desktop */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    grid-auto-rows: 400px; /* fixed tracks prevent masonry-like vertical holes */
     gap: 16px;
     grid-auto-flow: dense;
   }
@@ -174,6 +206,7 @@ const galleryItems = [
     border-radius: 12px;
     overflow: hidden;
     background: #e0e0e0;
+    height: auto;
   }
 
   .bento-image {
@@ -202,15 +235,13 @@ const galleryItems = [
   /* --- TABLET (Simplifying) --- */
   @media (max-width: 900px) {
     .bento-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-auto-rows: 300px;
     }
+
     .type-wide,
-    .type-tall {
-      grid-column: span 1;
-    }
     .type-full {
-      grid-column: span 2;
+      grid-column: 1 / -1;
     }
   }
 
@@ -219,9 +250,8 @@ const galleryItems = [
     /* .gallery-header alignment handled by base styles now */
 
     .bento-grid {
-      display: grid;
       grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
-      grid-auto-rows: 160px; /* Thumbnail height */
+      grid-auto-rows: auto; /* allow square/feature ratios below */
       gap: 10px;
       padding-bottom: 0;
     }
@@ -230,12 +260,13 @@ const galleryItems = [
     .type-wide,
     .type-tall {
       grid-column: span 1;
+      aspect-ratio: 1 / 1;
     }
 
     /* Keep the feature image full width */
     .type-full {
       grid-column: 1 / -1;
-      height: 220px;
+      aspect-ratio: 16 / 9;
     }
 
     .bento-item {

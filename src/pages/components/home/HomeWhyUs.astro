@@ -4,177 +4,179 @@
 
     <div class="why-us-wrapper">
       <div class="why-us-card">
-         <h3>10+ Years Experience</h3>
+        <h3>10+ Years Experience</h3>
         <p>Over a decade of trusted experience in commercial photography.</p>
       </div>
 
       <div class="why-us-card">
-       
         <h3>Creative Expertise</h3>
-        <p>Specialized in food styling, lighting, and crafting unique brand identities.</p>
+        <p>
+          Specialized in food styling, lighting, and crafting unique brand
+          identities.
+        </p>
       </div>
 
       <div class="why-us-card">
-        
         <h3>Streamlined Workflow</h3>
         <p>Efficient content production workflows designed to save you time.</p>
       </div>
 
       <div class="why-us-card">
-        
         <h3>Web-Optimized</h3>
-        <p>High-resolution imagery perfectly optimised for web and social media.</p>
+        <p>
+          High-resolution imagery perfectly optimised for web and social media.
+        </p>
       </div>
 
       <div class="why-us-card">
-        
         <h3>Local Support</h3>
-        <p>A dedicated Perth-based studio proudly supporting local businesses.</p>
+        <p>
+          A dedicated Perth-based studio proudly supporting local businesses.
+        </p>
       </div>
     </div>
 
     <div class="why-us-fact">
-      <span class="fact-highlight">Did you know?</span> 
-      Professional photography can increase conversion rates by <strong>30–60%</strong> in hospitality and e-commerce markets.
+      <span class="fact-highlight">Did you know?</span>
+      High-quality photography can improve engagement and conversions for hospitality
+      and e-commerce brands.
     </div>
   </div>
 </section>
 
 <style>
-/* Section Base */
-.why-us {
-  background-color: #152705;
-  color: #fef8eb;
-  padding: 80px 20px; /* Increased padding for breathing room */
-}
+  /* Section Base */
+  .why-us {
+    background-color: #152705;
+    color: #fef8eb;
+    padding: 80px 20px; /* Increased padding for breathing room */
+  }
 
-.why-us-container {
-  width: 100%;
-  max-width: 1900px;
-  margin: 0 auto;
-}
+  .why-us-container {
+    width: 100%;
+    max-width: 1900px;
+    margin: 0 auto;
+  }
 
-.why-us-title {
-  font-family: "Abril Fatface", cursive; /* Assuming generic fallback */
-  font-size: 3rem; /* Made bigger for impact */
-  letter-spacing: 1px;
-  color: #fef8eb;
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-/* The Card Wrapper */
-/* Using Flexbox allows the items to center nicely even if there are 5 */
-.why-us-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 60px;
-}
-
-/* Individual Cards */
-.why-us-card {
-  flex: 1 1 300px; /* Grows, shrinks, basis of 300px */
-  max-width: 320px; /* Prevents them from getting too wide */
-  background: rgba(254, 248, 235, 0.05); /* Very subtle overlay */
-  border: 1px solid rgba(201, 196, 185, 0.2);
-  border-radius: 12px;
-  padding: 30px 24px;
-  text-align: center;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.why-us-card:hover {
-  transform: translateY(-5px); /* Subtle lift effect */
-  border-color: #c9c4b9;
-  background: rgba(254, 248, 235, 0.08);
-}
-
-
-
-/* Headlines inside cards */
-.why-us-card h3 {
-  font-family: "Abril Fatface", serif;
-  font-size: 1.25rem;
-  color: #fef8eb;
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
-}
-
-/* Body text inside cards */
-.why-us-card p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #c9c4b9; /* Slightly muted text for hierarchy */
-  margin: 0;
-}
-
-/* The Fact Box */
-.why-us-fact {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  text-align: center;
-  color: #152705;
-  background-color: #ccc7bd; /* Changed to the Gold/Grey for contrast */
-  border-radius: 8px; /* Less pill-shaped, more structural */
-  padding: 24px 30px;
-  max-width: 700px;
-  margin: 0 auto;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.fact-highlight {
-  display: block;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  opacity: 0.8;
-}
-
-.why-us-fact strong {
-  color: #152705;
-  font-weight: 800;
-  border-bottom: 2px solid #152705; /* Underline emphasis */
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
   .why-us-title {
-    font-size: 1.6rem;
+    font-family: "Abril Fatface", cursive; /* Assuming generic fallback */
+    font-size: 3rem; /* Made bigger for impact */
+    letter-spacing: 1px;
+    color: #fef8eb;
+    text-align: center;
+    margin-bottom: 50px;
   }
 
+  /* The Card Wrapper */
+  /* Using Flexbox allows the items to center nicely even if there are 5 */
+  .why-us-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  /* Individual Cards */
   .why-us-card {
-    padding: 15px 10px;
+    flex: 1 1 300px; /* Grows, shrinks, basis of 300px */
+    max-width: 320px; /* Prevents them from getting too wide */
+    background: rgba(254, 248, 235, 0.05); /* Very subtle overlay */
+    border: 1px solid rgba(201, 196, 185, 0.2);
+    border-radius: 12px;
+    padding: 30px 24px;
+    text-align: center;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
   }
 
+  .why-us-card:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    border-color: #c9c4b9;
+    background: rgba(254, 248, 235, 0.08);
+  }
+
+  /* Headlines inside cards */
   .why-us-card h3 {
-    font-size: 1rem;
+    font-family: "Abril Fatface", serif;
+    font-size: 1.25rem;
+    color: #fef8eb;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
   }
 
+  /* Body text inside cards */
   .why-us-card p {
-    font-size: 0.8rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #c9c4b9; /* Slightly muted text for hierarchy */
+    margin: 0;
+  }
+
+  /* The Fact Box */
+  .why-us-fact {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    color: #152705;
+    background-color: #ccc7bd; /* Changed to the Gold/Grey for contrast */
+    border-radius: 8px; /* Less pill-shaped, more structural */
+    padding: 24px 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
   .fact-highlight {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
     font-size: 0.7rem;
-    letter-spacing: 0.8px;
-    margin-bottom: 4px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    opacity: 0.8;
   }
 
-  .why-us-fact  {
-  font-size:0.65rem;
-}
+  .why-us-fact strong {
+    color: #152705;
+    font-weight: 800;
+    border-bottom: 2px solid #152705; /* Underline emphasis */
+  }
 
-.why-us {
-  
-  padding: 30px 20px; 
-}
+  /* Mobile Responsiveness */
+  @media (max-width: 600px) {
+    .why-us-title {
+      font-size: 1.6rem;
+    }
 
-}
+    .why-us-card {
+      padding: 15px 10px;
+    }
+
+    .why-us-card h3 {
+      font-size: 1rem;
+    }
+
+    .why-us-card p {
+      font-size: 0.8rem;
+    }
+
+    .fact-highlight {
+      font-size: 0.7rem;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .why-us-fact {
+      font-size: 0.65rem;
+    }
+
+    .why-us {
+      padding: 30px 20px;
+    }
+  }
 </style>
