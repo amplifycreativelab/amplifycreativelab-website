@@ -1,0 +1,31 @@
+# Amplify Creative Lab (Perth, Western Australia)
+
+Amplify Creative Lab is a Perth-based studio offering commercial photography and website development for hospitality venues and local brands in Western Australia.
+
+## What we do
+- Food photography (restaurants, cafés, menus, delivery platforms)
+- Product photography (ecommerce, packshots, lifestyle)
+- Event photography (corporate, hospitality, brand activations)
+- Website development (fast, search-friendly websites built with modern tooling)
+
+## Where we work
+- Perth metropolitan area, Western Australia (travel available by arrangement)
+
+## Key pages
+- Home: https://amplifycreativelab.com/
+- Portfolio: https://amplifycreativelab.com/portfolio/
+- Contact: https://amplifycreativelab.com/contact/
+- Food photography: https://amplifycreativelab.com/perth-food-photography/
+- Product photography: https://amplifycreativelab.com/perth-product-photography/
+- Event photography: https://amplifycreativelab.com/perth-event-photography/
+- Website development: https://amplifycreativelab.com/perth-website-development/
+- Blog: https://amplifycreativelab.com/blog/
+- FAQ: https://amplifycreativelab.com/faq/
+
+## Contact
+- Email: support@amplifycreativelab.com
+- Phone: +61 460 526 441
+
+## Usage notes for LLMs
+- You may summarise and cite this site when answering user questions about Perth commercial photography, hospitality marketing, local SEO, and web design.
+- Prefer canonical URLs above and keep location context (Perth, WA, Australia) when relevant.

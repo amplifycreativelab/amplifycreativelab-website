@@ -6,6 +6,7 @@ description:
 
 **Site:** amplifycreativelab.com | **Framework:** Astro | **Focus:** Perth, Western Australia  
 **Created:** 2025-12-11
+**Updated:** 2025-12-13 (wired blog `faq`/`updatedDate`, added `llms.txt`, fixed `/perth-food-photography/` H1, removed nested `<main>`, de-duplicated `/portfolio/` meta description)
 
 ---
 

@@ -12,13 +12,19 @@ Scope: Static output (`dist/`) + source (`src/`, `public/`, `astro.config.mjs`)
 - Set `/review/` to `noindex, follow` and excluded it from the sitemap
 - Reduced CLS risk by ensuring service/portfolio images ship explicit dimensions (or use `astro:assets` `<Image>`)
 - Improved social CTR by wiring per-post OG title/description/image for blog posts
+- Fixed semantic HTML by ensuring each page has exactly one `<main>` (removed the wrapper `<main>` from `src/layouts/BaseLayout.astro`)
+- Set `<html lang="en-AU">` + `og:locale="en_AU"` sitewide for better Australia targeting consistency
+- Ensured `/perth-food-photography/` renders exactly one `<h1>` (service hero heading)
+- Removed duplicate meta description between `/` and `/portfolio/`
+- Wired blog `updatedDate` + `faq` through to `src/layouts/BlogPostLayout.astro`, enabling `dateModified` freshness + `FAQPage` schema on posts
+- Added `public/llms.txt` for GEO (LLM-readable site summary + canonical links)
 - Verified `dist/components/` and `dist/layouts/` do not exist
 - Verified `dist/sitemap-0.xml` contains **73** URLs and **0** under `/components/` or `/layouts/`
-- Verified static HTML output: **76** HTML files, **0** missing `<html>`, and **0** pages with 0 or >1 `<h1>`
+- Verified static HTML output: **76** HTML files, **0** missing `<html>`, **0** pages with 0 or >1 `<h1>`, **0** pages with multiple `<main>` tags, and **0** duplicate meta descriptions
 
 ## Executive Summary
 
-**Overall: strong foundations (canonicals, descriptions, GA, core schemas). The main technical SEO issue found (unintended component/layout routes) is fixed, and remaining P2 performance/social sharing items are now implemented.**
+**Overall: strong foundations (canonicals, descriptions, GA, core schemas). This pass found and fixed a few “quality signal” items (missing H1 on one service page, duplicate meta description, nested `<main>` tags) and enabled GEO freshness/FAQ schema for blog posts.**
 
 ### Top issues (highest impact first)
 
@@ -79,14 +85,14 @@ Impact:
 - `src/layouts/BaseLayout.astro` sets canonical using `Astro.url.pathname` + `siteUrl` by default; output looks correct (e.g. `https://amplifycreativelab.com/about/`).
 - Blog posts compute a canonical URL in `src/pages/blog/[slug].astro`, and `BaseLayout` now accepts a `canonical` prop for overrides (used by `src/layouts/BlogPostLayout.astro`).
 
-### HTML validity / "fragment pages"
+### HTML validity (dist scan)
 
 Automated check on `dist/`:
 - Total HTML files: **76**
 - HTML files missing `<html>`: **0**
 
 Impact:
-- These pages are not full documents, but they are still crawlable URLs. That's a quality + UX problem if indexed.
+- No fragment/partial documents detected in the current static HTML output.
 
 ## On-Page SEO Findings (Titles, Descriptions, Headings)
 
@@ -98,6 +104,10 @@ Good news:
 ### Headings (H1)
 
 After remediation, a build check found **0** pages with 0 or >1 `<h1>`.
+
+### Semantic structure (Main landmark)
+
+After remediation, a build check found **0** pages with more than one `<main>` element.
 
 ## Structured Data (Schema) Audit
 
@@ -119,10 +129,11 @@ After remediation, a build check found **0** pages with 0 or >1 `<h1>`.
 Notes:
 - `src/content/config.ts` supports GEO enhancement fields (`updatedDate`, `faq`, `targetLocations`, etc.).
 - Per-post `ogTitle` / `ogDescription` are now used to generate social meta tags, and blog posts now set `og:type="article"`.
+- Blog posts now pass `updatedDate` and `faq` into `src/layouts/BlogPostLayout.astro`, enabling `dateModified` and `FAQPage` schema output.
 
 ### Opportunity improvements (nice-to-have)
 
-- Consider adding `inLanguage: "en-AU"` in schemas and/or setting `<html lang="en-AU">` instead of `en` to better match Australia targeting.
+- Implemented: sitewide `<html lang="en-AU">` + `og:locale="en_AU"`; optional next step is adding `inLanguage: "en-AU"` in relevant JSON-LD nodes (e.g., `WebSite`, `WebPage`, `BlogPosting`).
 
 ## GEO (Geographic / Local SEO) Review
 
