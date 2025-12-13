@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "./layouts/BaseLayout.astro";
-import PerthFoodPhotographyIntro from "./components/perth-food-photography/PerthFoodPhotographyIntro.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PerthFoodPhotographyIntro from "../components/perth-food-photography/PerthFoodPhotographyIntro.astro";
 
-import FoodServiceRestaurant from "./components/perth-food-photography/FoodServiceRestaurant.astro";
-import FoodProductPhotography from "./components/perth-food-photography/FoodProductPhotography.astro";
+import FoodServiceRestaurant from "../components/perth-food-photography/FoodServiceRestaurant.astro";
+import FoodProductPhotography from "../components/perth-food-photography/FoodProductPhotography.astro";
 
 const pageTitle =
   "Perth Food Photographer | Amplify Creative Lab Food Photography";
@@ -125,10 +125,10 @@ const faqSchema = {
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-perth-food-photography">
-   
+    
 
     <FoodServiceRestaurant />
-    <FoodProductPhotography />
+    
 
     <section class="food-faq">
       <div class="food-faq__inner">

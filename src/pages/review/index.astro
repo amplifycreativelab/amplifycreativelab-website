@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const pageTitle = "Leave Us a Review | Amplify Creative Lab Perth";
 const pageDescription =
@@ -10,7 +10,7 @@ const googleReviewUrl =
     "https://search.google.com/local/writereview?placeid=ChIJHfjae113B4ERu5hAgY2Nfms";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} noIndex={true}>
     <main class="review-page">
         <section class="review-hero">
             <div class="review-hero__inner">

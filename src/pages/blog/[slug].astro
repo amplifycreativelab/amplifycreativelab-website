@@ -1,5 +1,5 @@
 ---
-import BlogPostLayout from "../layouts/BlogPostLayout.astro";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 
@@ -33,6 +33,8 @@ const canonicalUrl =
   featuredImage={data.featuredImage}
   featuredImageAlt={data.featuredImageAlt}
   featuredImagePosition={data.featuredImagePosition}
+  ogTitle={data.ogTitle}
+  ogDescription={data.ogDescription}
   tags={data.tags}
   canonicalUrl={canonicalUrl}
 >

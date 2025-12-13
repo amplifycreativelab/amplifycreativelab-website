@@ -18,6 +18,8 @@ export interface BlogPost {
   // Supports both local image imports (ImageMetadata) and URL strings
   featuredImage?: ImageMetadata | string;
   featuredImageAlt?: string;
+  ogTitle?: string;
+  ogDescription?: string;
   tags?: string[];
   canonicalUrl?: string;
   featuredImagePosition?: string;
@@ -37,10 +39,16 @@ const {
   tags = [],
   canonicalUrl = "https://amplifycreativelab.com",
   featuredImagePosition = "center center",
+  ogTitle,
+  ogDescription,
   // GEO Enhancement Fields
   updatedDate,
   faq,
 } = Astro.props as BlogPost;
+
+const socialImage =
+  featuredImage &&
+  (typeof featuredImage === "string" ? featuredImage : featuredImage.src);
 
 const blogSchema = {
   "@context": "https://schema.org",
@@ -114,7 +122,16 @@ const encodedUrl = encodeURIComponent(canonicalUrl);
 const encodedTitle = encodeURIComponent(title);
 ---
 
-<BaseLayout title={title} description={description} canonical={canonicalUrl}>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl}
+  ogType="article"
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  ogImage={socialImage || undefined}
+  ogImageAlt={Astro.props.featuredImageAlt ?? title}
+>
   <main class="blog-page">
     <article
       class="blog-article"

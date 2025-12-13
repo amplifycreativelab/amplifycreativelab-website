@@ -15,12 +15,12 @@ interface PortfolioItem {
 // Eagerly import all portfolio images from src/assets so Astro can
 // optimize them while still letting us group them by category.
 const portfolioImageModules = import.meta.glob(
-  "../../../assets/images/portfolio/**/*.{webp,avif,jpg,jpeg,png}",
+  "../../assets/images/portfolio/**/*.{webp,avif,jpg,jpeg,png}",
   { eager: true },
 );
 
 function getPortfolioImage(folder: string, file: string) {
-  const key = `../../../assets/images/portfolio/${folder}/${file}`;
+  const key = `../../assets/images/portfolio/${folder}/${file}`;
   const mod = (portfolioImageModules as Record<string, any>)[key];
 
   if (!mod) return undefined;
@@ -640,6 +640,13 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
 
 <section class="portfolio-section" aria-label="Photography portfolio gallery">
   <div class="portfolio-inner">
+    <header class="portfolio-header">
+      <h1 class="portfolio-title">Portfolio</h1>
+      <p class="portfolio-lead">
+        Food, product, event and portrait photography across Perth.
+      </p>
+    </header>
+
     <div class="portfolio-filters" aria-label="Filter portfolio by category">
       <select
         id="portfolio-filter-select"
@@ -664,6 +671,8 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
             data-title={item.title}
             data-category={item.category}
             data-full={item.fullSrc || item.src}
+            data-full-width={item.fullWidth || undefined}
+            data-full-height={item.fullHeight || undefined}
           >
             <figure class="portfolio-item-figure">
               <Image
@@ -720,6 +729,8 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
         class="portfolio-lightbox__image"
         loading="lazy"
         decoding="async"
+        width="1200"
+        height="800"
         alt="Selected portfolio photograph from the gallery"
       />
       <figcaption class="portfolio-lightbox__caption">
@@ -733,234 +744,8 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
       type="button"
       aria-label="Next image">&gt;</button
     >
-  </div>
+</div>
 </section>
-
-<script>
-  // @ts-nocheck
-  const ITEMS_PER_BATCH = 12;
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("DOMContentLoaded", () => {
-      /** @type {HTMLElement | null} */
-      const grid = document.querySelector(".portfolio-grid");
-      const filterSelect = /** @type {HTMLSelectElement | null} */ (
-        document.querySelector("#portfolio-filter-select")
-      );
-      const filterButtons = Array.from(
-        /** @type {NodeListOf<HTMLElement>} */ (
-          document.querySelectorAll(".portfolio-filter[data-filter]")
-        ),
-      );
-      /** @type {HTMLElement | null} */
-      const loadMoreButton = document.querySelector(".portfolio-load-more");
-      /** @type {HTMLElement[]} */
-      const items = grid
-        ? Array.from(
-            /** @type {NodeListOf<HTMLElement>} */ (
-              grid.querySelectorAll(".portfolio-item")
-            ),
-          )
-        : [];
-
-      let currentFilter = "food";
-
-      if (filterSelect && filterSelect.value) {
-        currentFilter = filterSelect.value;
-      } else if (filterButtons[0] && filterButtons[0].dataset.filter) {
-        currentFilter = filterButtons[0].dataset.filter || "food";
-      }
-
-      let visibleCount = ITEMS_PER_BATCH;
-
-      /**
-       * @param {string} filter
-       * @returns {HTMLElement[]}
-       */
-      function getItemsForFilter(filter) {
-        if (filter === "all") return items;
-        return items.filter((item) => item.dataset.category === filter);
-      }
-
-      function updateVisibility() {
-        const visibleItems = getItemsForFilter(currentFilter);
-
-        items.forEach((item) => {
-          item.style.display = "none";
-        });
-
-        visibleItems.forEach((item, index) => {
-          if (index < visibleCount) {
-            item.style.display = "block";
-          }
-        });
-
-        if (loadMoreButton) {
-          loadMoreButton.style.display =
-            visibleCount >= visibleItems.length ? "none" : "inline-block";
-        }
-      }
-
-      if (filterSelect) {
-        filterSelect.addEventListener("change", () => {
-          currentFilter = filterSelect.value || "food";
-          visibleCount = ITEMS_PER_BATCH;
-          updateVisibility();
-        });
-      }
-
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const filter = button.dataset.filter || "all";
-          currentFilter = filter;
-          visibleCount = ITEMS_PER_BATCH;
-
-          filterButtons.forEach((btn) => {
-            if (btn === button) {
-              btn.classList.add("is-active");
-            } else {
-              btn.classList.remove("is-active");
-            }
-          });
-
-          updateVisibility();
-        });
-      });
-
-      if (loadMoreButton) {
-        loadMoreButton.addEventListener("click", () => {
-          visibleCount += ITEMS_PER_BATCH;
-          updateVisibility();
-        });
-      }
-
-      updateVisibility();
-
-      // Lightbox behavior
-      /** @type {HTMLElement | null} */
-      const lightbox = document.querySelector(".portfolio-lightbox");
-      const lightboxImage = /** @type {HTMLImageElement | null} */ (
-        lightbox && lightbox.querySelector(".portfolio-lightbox__image")
-      );
-      const lightboxTitle =
-        lightbox && lightbox.querySelector(".portfolio-lightbox__title");
-      const lightboxIndex =
-        lightbox && lightbox.querySelector(".portfolio-lightbox__index");
-      const closeButton =
-        lightbox && lightbox.querySelector(".portfolio-lightbox__close");
-      const prevButton =
-        lightbox && lightbox.querySelector(".portfolio-lightbox__nav--prev");
-      const nextButton =
-        lightbox && lightbox.querySelector(".portfolio-lightbox__nav--next");
-
-      let currentIndex = 0;
-
-      /**
-       * @param {number} index
-       */
-      function openLightbox(index) {
-        if (!lightbox || !lightboxImage) return;
-
-        const item = items[index];
-        if (!item) return;
-
-        currentIndex = index;
-
-        const fullSrc = item.dataset.full;
-        const alt = item.dataset.alt || "";
-
-        if (!fullSrc) return;
-
-        lightboxImage.style.opacity = "0";
-        lightboxImage.onload = () => {
-          lightboxImage.style.opacity = "1";
-        };
-
-        lightboxImage.src = fullSrc;
-        lightboxImage.alt = alt;
-
-        const title =
-          item.dataset.title || item.getAttribute("data-title") || alt || "";
-
-        if (lightboxTitle) {
-          lightboxTitle.textContent = title;
-        }
-
-        if (lightboxIndex) {
-          lightboxIndex.textContent = `${index + 1} / ${items.length}`;
-        }
-
-        lightbox.classList.add("is-active");
-        lightbox.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeLightbox() {
-        if (!lightbox) return;
-        lightbox.classList.remove("is-active");
-        lightbox.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
-
-      function showNext() {
-        if (!items.length) return;
-        currentIndex = (currentIndex + 1) % items.length;
-        openLightbox(currentIndex);
-      }
-
-      function showPrev() {
-        if (!items.length) return;
-        currentIndex = (currentIndex - 1 + items.length) % items.length;
-        openLightbox(currentIndex);
-      }
-
-      items.forEach((item, index) => {
-        item.addEventListener("click", (event) => {
-          event.preventDefault();
-          openLightbox(index);
-        });
-      });
-
-      if (closeButton) {
-        closeButton.addEventListener("click", () => {
-          closeLightbox();
-        });
-      }
-
-      if (nextButton) {
-        nextButton.addEventListener("click", () => {
-          showNext();
-        });
-      }
-
-      if (prevButton) {
-        prevButton.addEventListener("click", () => {
-          showPrev();
-        });
-      }
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeLightbox();
-        }
-        if (event.key === "ArrowRight") {
-          showNext();
-        }
-        if (event.key === "ArrowLeft") {
-          showPrev();
-        }
-      });
-
-      if (lightbox) {
-        lightbox.addEventListener("click", (event) => {
-          if (event.target === lightbox) {
-            closeLightbox();
-          }
-        });
-      }
-    });
-  }
-</script>
 
 <style>
   .portfolio-section {
@@ -972,6 +757,28 @@ const portfolioItems: PortfolioItem[] = portfolioItemsArrays.flat();
   .portfolio-inner {
     width: min(1490px, 100% - 2 * 1.5rem);
     margin-inline: auto;
+  }
+
+  .portfolio-header {
+    margin-bottom: 1.5rem;
+    color: #fef8eb;
+  }
+
+  .portfolio-title {
+    margin: 0;
+    font-family: "Abril Fatface", serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .portfolio-lead {
+    margin: 0.5rem 0 0;
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    max-width: 70ch;
+    opacity: 0.9;
   }
 
   .portfolio-filters {

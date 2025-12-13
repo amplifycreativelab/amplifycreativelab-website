@@ -1,12 +1,17 @@
 ---
-import BaseLayout from "./layouts/BaseLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Thank you | AmplifyCreativeLab";
 const pageDescription =
   "Thanks for getting in touch with Amplify Creative Lab. We’ll reply as soon as we can.";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  noIndex={true}
+  noFollow={true}
+>
   <main class="thankyou-page">
     <section class="thankyou-hero">
       <div class="thankyou-inner">

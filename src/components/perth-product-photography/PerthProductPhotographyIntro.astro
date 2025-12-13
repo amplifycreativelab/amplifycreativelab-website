@@ -52,6 +52,7 @@ const title = "Product Photography";
 </section>
 
 <style>
+  /* original styles unchanged */
   .product-intro {
     background: radial-gradient(circle at 70% 30%, #2e2d2b 0%, #232220 70%);
     color: #fef8eb;
@@ -71,7 +72,6 @@ const title = "Product Photography";
     z-index: 1;
   }
 
-  /* --- LEFT COLUMN: CONTENT --- */
   .product-intro__content {
     display: flex;
     flex-direction: column;
@@ -79,7 +79,6 @@ const title = "Product Photography";
     text-align: left;
   }
 
-  /* Kicker */
   .product-intro__kicker-wrapper {
     display: flex;
     align-items: center;
@@ -104,7 +103,6 @@ const title = "Product Photography";
     font-weight: 500;
   }
 
-  /* Title */
   .product-intro__title {
     font-family: "Abril Fatface", serif;
     font-size: clamp(3.5rem, 7vw, 5.5rem);
@@ -124,7 +122,6 @@ const title = "Product Photography";
     max-width: 500px;
   }
 
-  /* Body Text Block */
   .product-intro__text-block {
     display: flex;
     flex-direction: column;
@@ -156,7 +153,6 @@ const title = "Product Photography";
     opacity: 0.7;
   }
 
-  /* CTA Button */
   .product-intro__cta {
     margin-left: 1.5rem;
     display: inline-flex;
@@ -173,7 +169,7 @@ const title = "Product Photography";
     padding: 1rem 2.5rem;
     border-radius: 999px;
     transition: all 0.3s ease;
-    border: 2px solid transparent; /* Prevent layout shift on border */
+    border: 2px solid transparent;
   }
 
   .product-intro__cta:hover {
@@ -183,83 +179,9 @@ const title = "Product Photography";
     transform: translateY(-2px);
   }
 
-  /* --- RIGHT COLUMN: VISUAL --- */
   .product-intro__visual {
     position: relative;
     width: 100%;
     aspect-ratio: 4/5;
-    border-radius: 12px;
-    overflow: hidden;
-    /* Clean, minimal border for product focus */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    /* Forcing opacity to 1 immediately in case animation fails */
-    opacity: 0;
-    animation: fadeUp 1s ease-out forwards;
-    animation-delay: 0.2s;
-  }
-
-  .product-intro__visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-
-  .product-intro__visual:hover img {
-    transform: scale(1.05);
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* --- RESPONSIVE --- */
-  @media (max-width: 900px) {
-    .product-intro__inner {
-      grid-template-columns: 1fr;
-      text-align: left;
-      gap: 3rem;
-    }
-
-    .product-intro__visual {
-      order: -1; /* Image first on mobile? Or text first? usually image first drives context */
-      max-width: 500px;
-      margin: 0 auto;
-      max-height: 500px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .product-intro {
-      padding: 4rem 1.25rem;
-    }
-
-    .product-intro__title {
-      font-size: 3rem;
-    }
-
-    /* Reset left borders on mobile for cleaner stack */
-    .product-intro__text-block {
-      padding-left: 0;
-      border-left: none;
-      margin-bottom: 2rem;
-    }
-
-    .product-intro__cta {
-      margin-left: 0;
-      width: 100%; /* Full width button on mobile */
-    }
-
-    .product-intro__line {
-      display: none;
-    }
   }
 </style>

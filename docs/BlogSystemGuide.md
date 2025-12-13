@@ -6,7 +6,7 @@ website.
 
 The blog system is built around:
 
-- A **shared blog layout**: `src/pages/layouts/BlogPostLayout.astro`
+- A **shared blog layout**: `src/layouts/BlogPostLayout.astro`
 - An Astro **content collection** of `.mdx` posts: `src/content/blog/*.mdx`
 - A **dynamic post route**: `src/pages/blog/[slug].astro`
 - A **blog index page**: `src/pages/blog/index.astro`
@@ -34,7 +34,7 @@ These articles are already implemented and live:
 
 ### Layout (`BlogPostLayout.astro`)
 
-- `src/pages/layouts/BlogPostLayout.astro`  
+- `src/layouts/BlogPostLayout.astro`  
   Shared layout used by all blog posts. It handles:
   - Page `<title>` and meta description (via `BaseLayout.astro`)
   - Canonical URL (passed in from `[slug].astro`)
@@ -226,13 +226,13 @@ Recommended hero image size:
 
 To change styling or the bottom CTA for all posts, edit:
 
-    src/pages/layouts/BlogPostLayout.astro
+    src/layouts/BlogPostLayout.astro
 
 Any change here updates **all blog posts automatically**.
 
 For global SEO/meta defaults, see:
 
-    src/pages/layouts/BaseLayout.astro
+    src/layouts/BaseLayout.astro
 
 ------------------------------------------------------------------------
 
@@ -259,4 +259,3 @@ Examples (slug → URL):
 
 Done! New posts will automatically match the site's design, layout and
 SEO defaults.
-

@@ -1,8 +1,7 @@
 ---
-import BaseLayout from "./layouts/BaseLayout.astro";
-import PerthProductPhotographyIntro from "./components/perth-product-photography/PerthProductPhotographyIntro.astro";
-import ProductCataloguePhotography from "./components/perth-product-photography/ProductCataloguePhotography.astro";
-import ProductLifestylePhotography from "./components/perth-product-photography/ProductLifestylePhotography.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductCataloguePhotography from "../components/perth-product-photography/ProductCataloguePhotography.astro";
+import ProductLifestylePhotography from "../components/perth-product-photography/ProductLifestylePhotography.astro";
 
 const pageTitle =
   "Perth Product Photographer | AmplifyCreativeLab Product Photography";
@@ -124,127 +123,14 @@ const productSchema = {
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-perth-product-photography">
-    <PerthProductPhotographyIntro />
-
+    <!-- Only the two sections you want -->
     <ProductCataloguePhotography />
     <ProductLifestylePhotography />
 
-    <section class="product-faq">
-      <div class="product-faq__inner">
-        <h2 class="product-faq__title">Product Photography FAQs</h2>
-
-        <div class="product-faq__list">
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              How much does product photography cost in Perth?
-            </summary>
-            <p class="product-faq__answer">
-              Product photography starts from around <strong>$150 per hour</strong>,
-              with most sessions running 1–3 hours depending on the number of products
-              and complexity. We provide a custom quote based on your specific product
-              range and deliverables.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              What types of products do you photograph?
-            </summary>
-            <p class="product-faq__answer">
-              We work with food and beverage brands, wineries, skincare labels,
-              candle makers, gift hamper businesses, homewares brands and other
-              retail products that need professional imagery for ecommerce and
-              marketing.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              Can I send my products to your studio instead of you coming to me?
-            </summary>
-            <p class="product-faq__answer">
-              Yes. Our <strong>North Perth studio</strong> offers a Ship and Shoot
-              service—you mail your products to us, we photograph them, and return
-              them safely. This is ideal for interstate brands or businesses without
-              suitable shooting space.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              Do you work with both food and non-food brands?
-            </summary>
-            <p class="product-faq__answer">
-              Yes. While we have strong experience with food and drink, we also
-              shoot non-food products such as skincare, candles, lifestyle items
-              and other packaged goods for Perth-based brands and retailers.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              Can you shoot products for Shopify, Amazon or Etsy?
-            </summary>
-            <p class="product-faq__answer">
-              Absolutely. We create product photos that meet the visual
-              expectations of platforms like Shopify, WooCommerce, Amazon and
-              Etsy, and deliver files sized and cropped appropriately for online
-              stores and marketplaces.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              Do you offer both simple packshots and lifestyle product images?
-            </summary>
-            <p class="product-faq__answer">
-              Yes. We can create clean packshots on plain or brand-coloured
-              backgrounds for clarity, as well as styled lifestyle scenes that
-              show your products being used, poured, gifted or enjoyed.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              How should we prepare our products for the shoot?
-            </summary>
-            <p class="product-faq__answer">
-              Please provide multiple clean, undamaged samples of each product
-              and ensure packaging and labels are in perfect condition. We&apos;ll
-              advise you on any extra preparation needed for your specific
-              range.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              Can you photograph products at our location?
-            </summary>
-            <p class="product-faq__answer">
-              Yes. We can shoot on location at your store, bar, venue or
-              workspace, or in a more controlled studio-style environment
-              depending on the concept and look you&apos;re after.
-            </p>
-          </details>
-
-          <details class="product-faq__item">
-            <summary class="product-faq__question">
-              How will we receive the final images?
-            </summary>
-            <p class="product-faq__answer">
-              Final images are delivered via an online gallery with
-              high-resolution files for print and web-optimised versions ready
-              to upload to your website, social media accounts and ecommerce
-              platforms.
-            </p>
-          </details>
-        </div>
-      </div>
-
-      <script type="application/ld+json">
-        {JSON.stringify(productSchema)}
-      </script>
-    </section>
+    <!-- Keep schema for SEO/GEO without adding a visible section -->
+    <script type="application/ld+json">
+      {JSON.stringify(productSchema)}
+    </script>
   </main>
 
   <style is:global>
@@ -252,74 +138,6 @@ const productSchema = {
       display: flex;
       flex-direction: column;
       gap: 0;
-    }
-
-    .product-faq {
-      background-color: var(--e-global-color-secondary, #e8d8c3);
-      padding: 60px 24px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .product-faq__inner {
-      width: 100%;
-      max-width: 1100px;
-    }
-
-    .product-faq__title {
-      font-family: "Abril Fatface", sans-serif;
-      font-size: 40px;
-      font-weight: 500;
-      margin: 0 0 24px;
-      color: var(--e-global-color-fadab83, #4a2e1c);
-      text-align: left;
-    }
-
-    .product-faq__list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .product-faq__item {
-      border-bottom: 1px solid rgba(74, 46, 28, 0.25);
-      padding: 8px 0 12px;
-    }
-
-    .product-faq__question {
-      font-family: "Darker Grotesque", sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      cursor: pointer;
-      list-style: none;
-      color: var(--e-global-color-fadab83, #4a2e1c);
-    }
-
-    .product-faq__answer {
-      font-family: "Darker Grotesque", sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.4;
-      margin-top: 6px;
-      color: var(--e-global-color-fadab83, #4a2e1c);
-    }
-
-    @media (max-width: 768px) {
-      .product-faq {
-        padding: 40px 16px;
-      }
-
-      .product-faq__title {
-        font-size: 32px;
-      }
-
-      .product-faq__question {
-        font-size: 18px;
-      }
-
-      .product-faq__answer {
-        font-size: 16px;
-      }
     }
   </style>
 </BaseLayout>

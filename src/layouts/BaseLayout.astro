@@ -2,11 +2,11 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CookieConsent from "../components/CookieConsent.astro";
-import logoAsset from "../../assets/images/logo/amplify-creative-lab-logo-perth-WA.svg";
-import "../../styles/main.css";
+import logoAsset from "../assets/images/logo/amplify-creative-lab-logo-perth-WA.svg";
+import "../styles/main.css";
 
 // Fonts
-import "../../styles/fonts.css";
+import "../styles/fonts.css";
 
 
 const businessDescription =
@@ -16,13 +16,36 @@ const {
     title = "Perth Food Photographer | AmplifyCreativeLab",
     description = businessDescription,
     noIndex = false,
+    noFollow = false,
+    canonical: canonicalProp,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    ogImageAlt,
+    ogType,
 } = Astro.props;
 
 const siteUrl = "https://amplifycreativelab.com";
-const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const canonical = canonicalProp ?? new URL(Astro.url.pathname, siteUrl).toString();
 const GA_MEASUREMENT_ID = "G-4KRYBTPCTN";
 
 const logoUrl = new URL(logoAsset.src, siteUrl).toString();
+
+const toAbsoluteUrl = (value: string) => {
+    try {
+        return new URL(value, siteUrl).toString();
+    } catch {
+        return value;
+    }
+};
+
+const resolvedOgType = ogType ?? "website";
+const resolvedOgTitle = ogTitle ?? title;
+const resolvedOgDescription = ogDescription ?? description;
+const defaultSocialImage = `${siteUrl}/images/social/share-default.png`;
+const resolvedOgImage = toAbsoluteUrl(ogImage ?? defaultSocialImage);
+const resolvedOgImageAlt =
+    ogImageAlt ?? "Amplify Creative Lab – Perth food photography logo and branding";
 
 const businessSchema = {
     "@context": "https://schema.org",
@@ -189,29 +212,35 @@ const businessSchema = {
         <title>{title}</title>
         {description && <meta name="description" content={description} />}
 
-       {
-  noIndex ? (
-    <meta name="robots" content="noindex, nofollow" />
-  ) : (
-    <meta
-      name="robots"
-      content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
-    />
-  )
-}
+        {
+            noIndex ? (
+                <meta
+                    name="robots"
+                    content={`noindex, ${noFollow ? "nofollow" : "follow"}`}
+                />
+            ) : (
+                <meta
+                    name="robots"
+                    content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+                />
+            )
+        }
 
 
         <link rel="canonical" href={canonical} />
 
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={resolvedOgType} />
         <meta property="og:site_name" content="AmplifyCreativeLab" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={resolvedOgTitle} />
         {
-            description && (
-                <meta property="og:description" content={description} />
+            resolvedOgDescription && (
+                <meta property="og:description" content={resolvedOgDescription} />
             )
         }
         <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={resolvedOgImage} />
+        <meta property="og:image:alt" content={resolvedOgImageAlt} />
+        <!--
     <meta
   property="og:image"
   content={`${siteUrl}/images/social/share-default.png`}
@@ -220,14 +249,22 @@ const businessSchema = {
   property="og:image:alt"
   content="Amplify Creative Lab – Perth food photography logo and branding"
 />
+        -->
 
         <!-- Twitter Card meta tags -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@amplifycreativelab" />
-        <meta name="twitter:title" content={title} />
-        {description && <meta name="twitter:description" content={description} />}
+        <meta name="twitter:title" content={resolvedOgTitle} />
+        {resolvedOgDescription && (
+            <meta name="twitter:description" content={resolvedOgDescription} />
+        )}
+        <meta name="twitter:image" content={resolvedOgImage} />
+        <meta name="twitter:image:alt" content={resolvedOgImageAlt} />
+        <!--
         <meta name="twitter:image" content={`${siteUrl}/images/social/share-default.png`} />
         <meta name="twitter:image:alt" content="Amplify Creative Lab – Perth food photography logo and branding" />
+
+        -->
 
         <link rel="icon" href="/favicons/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" href="/favicons/favicon-180x180.png" sizes="180x180" />

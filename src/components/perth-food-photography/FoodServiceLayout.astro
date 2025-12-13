@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 const {
   imageSrc,
   imageAlt,
@@ -6,15 +9,29 @@ const {
   sectionBackground,
   contentBackground,
   contentTextColor,
+  imageWidth,
+  imageHeight,
 } = Astro.props;
 
-// Support both optimized asset imports (objects from src/assets)
-// and plain string paths by resolving to a string URL.
-// @ts-ignore - runtime check is sufficient here
+// Support both string URLs and optimized asset imports from src/assets
+// by resolving to a final string src for the <img>.
+// @ts-ignore - runtime type narrowing is sufficient here
 const resolvedImageSrc: string =
   typeof imageSrc === "string" ? imageSrc : imageSrc?.src ?? "";
 
-const innerClass = `event-service__inner${reverse ? " event-service__inner--reverse" : ""}`;
+const isImageMetadata = (value: unknown): value is ImageMetadata =>
+  !!value &&
+  typeof value === "object" &&
+  "src" in value &&
+  "width" in value &&
+  "height" in value;
+
+const resolvedWidth =
+  (isImageMetadata(imageSrc) ? imageSrc.width : Number(imageWidth)) || 1200;
+const resolvedHeight =
+  (isImageMetadata(imageSrc) ? imageSrc.height : Number(imageHeight)) || 800;
+
+const innerClass = `food-service__inner${reverse ? " food-service__inner--reverse" : ""}`;
 const sectionStyle = sectionBackground ? `background-color: ${sectionBackground};` : "";
 
 const contentStyleParts: string[] = [];
@@ -23,28 +40,46 @@ if (contentTextColor) contentStyleParts.push(`color: ${contentTextColor};`);
 const contentStyle = contentStyleParts.join(" ");
 ---
 
-<section class="event-service" style={sectionStyle}>
+<section class="food-service" style={sectionStyle}>
   <div class={innerClass}>
     <!-- Image -->
-    <figure class="event-service__media">
-      <img
-        src={resolvedImageSrc}
-        alt={imageAlt}
-        loading="lazy"
-        decoding="async"
-        class="event-service__image"
-      />
+    <figure class="food-service__media">
+      {
+        isImageMetadata(imageSrc) ? (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={resolvedWidth}
+            height={resolvedHeight}
+            widths={[480, 768, 1024, 1280]}
+            sizes="(max-width: 900px) 100vw, 50vw"
+            loading="lazy"
+            decoding="async"
+            class="food-service__image"
+          />
+        ) : (
+          <img
+            src={resolvedImageSrc}
+            alt={imageAlt}
+            width={resolvedWidth}
+            height={resolvedHeight}
+            loading="lazy"
+            decoding="async"
+            class="food-service__image"
+          />
+        )
+      }
     </figure>
 
     <!-- Content -->
-    <div class="event-service__content" style={contentStyle}>
+    <div class="food-service__content" style={contentStyle}>
       <slot />
     </div>
   </div>
 </section>
 
 <style is:global>
-  .event-service {
+  .food-service {
     background-color: var(--e-global-color-secondary, #e8d8c3);
     min-height: 50vh;
     display: flex;
@@ -52,35 +87,37 @@ const contentStyle = contentStyleParts.join(" ");
     align-items: center;
   }
 
-  .event-service__inner {
+  .food-service__inner {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
     gap: 0;
+    min-height: 50vh;
   }
 
-  .event-service__inner--reverse {
+  .food-service__inner--reverse {
     flex-direction: row-reverse;
   }
 
   /* IMAGE SIDE */
-  .event-service__media {
+  .food-service__media {
     margin: 0;
     flex: 1 1 50%;
     max-width: 50%;
+    
   }
 
-  .event-service__image {
+  .food-service__image {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
   }
 
   /* TEXT SIDE */
-  .event-service__content {
+  .food-service__content {
     flex: 1 1 50%;
     max-width: 50%;
     padding: 60px;
@@ -92,7 +129,7 @@ const contentStyle = contentStyleParts.join(" ");
     color: var(--e-global-color-fadab83, #4a2e1c);
   }
 
-  .event-service__heading {
+  .food-service__heading {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -101,7 +138,7 @@ const contentStyle = contentStyleParts.join(" ");
   }
 
   /* Eyebrow */
-  .event-service__eyebrow {
+  .food-service__eyebrow {
     font-family: "Darker Grotesque", sans-serif;
     font-size: 12px;
     font-weight: 600;
@@ -113,7 +150,7 @@ const contentStyle = contentStyleParts.join(" ");
   }
 
   /* Main heading */
-  .event-service__title {
+  .food-service__title {
     font-family: "Abril Fatface", sans-serif;
     font-size: 40px;
     font-weight: 600;
@@ -122,11 +159,10 @@ const contentStyle = contentStyleParts.join(" ");
     letter-spacing: 1.5px;
     word-spacing: 5px;
     margin: 0 0 12px;
-    text-transform: uppercase;
   }
 
   /* Body text */
-  .event-service__copy p {
+  .food-service__copy p {
     margin: 0 0 0.75rem;
     font-family: "Darker Grotesque", sans-serif;
     font-size: 18px;
@@ -135,12 +171,12 @@ const contentStyle = contentStyleParts.join(" ");
     line-height: 22px;
   }
 
-  .event-service__copy p:last-child {
+  .food-service__copy p:last-child {
     margin-bottom: 0;
   }
 
   /* Button */
-  .event-service__button {
+  .food-service__button {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 24px;
@@ -157,61 +193,68 @@ const contentStyle = contentStyleParts.join(" ");
     transition: all 0.3s ease;
   }
 
-  .event-service__button:hover {
+  .food-service__button:hover {
     background-color: #4a2e1c;
     color: #ffffff;
   }
 
-  .event-service__button--light {
+  .food-service__button--light {
     border-color: #E8D8C3;
     color: #E8D8C3;
   }
 
-  .event-service__button--light:hover {
+  .food-service__button--light:hover {
     background-color: #E8D8C3;
     color: #4a2e1c;
   }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .event-service {
-      padding: 50px 16px;
+    .food-service {
+      padding: 0px 0px;
     }
 
-    .event-service__inner {
+    .food-service__inner {
       flex-direction: column;
-      padding:0px 0px 0px 0px;
     }
 
-    .event-service__media,
-    .event-service__content {
+    .food-service__media,
+    .food-service__content {
       max-width: 100%;
       flex-basis: 100%;
-      padding-left: 0;
+      
     }
 
-    .event-service__content {
-     padding:30px 10px 30px 10px;
+    .food-service__content {
+
+      padding:30px 16px;
     }
 
-    .event-service__title {
+    .food-service__title {
       font-size: 34px;
       line-height: 1.1;
     }
   }
 
   @media (max-width: 600px) {
-    .event-service {
+    .food-service {
       padding: 0px 0px;
     }
 
-    .event-service__title {
+    .food-service__title {
       font-size: 30px;
     }
 
-    .event-service__copy p {
+    .food-service__copy p {
       font-size: 16px;
       line-height: 22px;
     }
+
+     .food-service__content {
+    
+      padding-bottom:20px
+    }
   }
+
+  
 </style>

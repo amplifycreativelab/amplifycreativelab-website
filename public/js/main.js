@@ -2,12 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const gallerySection = document.querySelector(".portfolio-section");
   if (!gallerySection) return;
 
-  const allItems = Array.from(
-    gallerySection.querySelectorAll(".portfolio-item")
-  );
+  const grid = gallerySection.querySelector(".portfolio-grid");
+  const filterSelect = gallerySection.querySelector("#portfolio-filter-select");
+  const loadMoreBtn = gallerySection.querySelector(".portfolio-load-more");
   const lightbox = gallerySection.querySelector(".portfolio-lightbox");
 
-  if (!allItems.length || !lightbox) return;
+  if (!grid || !(filterSelect instanceof HTMLSelectElement) || !lightbox) return;
+
+  const allItems = Array.from(grid.querySelectorAll(".portfolio-item"));
+  if (!allItems.length) return;
 
   const imgEl = lightbox.querySelector(".portfolio-lightbox__image");
   const titleEl = lightbox.querySelector(".portfolio-lightbox__title");
@@ -16,15 +19,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = lightbox.querySelector(".portfolio-lightbox__nav--next");
   const closeBtn = lightbox.querySelector(".portfolio-lightbox__close");
 
-  if (!imgEl || !titleEl || !indexEl || !prevBtn || !nextBtn || !closeBtn) {
+  if (
+    !(imgEl instanceof HTMLImageElement) ||
+    !titleEl ||
+    !indexEl ||
+    !prevBtn ||
+    !nextBtn ||
+    !closeBtn
+  ) {
     return;
   }
 
+  const ITEMS_PER_BATCH = 12;
+  let currentFilter = filterSelect.value || "food";
+  let visibleCount = ITEMS_PER_BATCH;
+
+  let items = [];
   let currentIndex = 0;
   let lastFocused = null;
-  let items = allItems.slice();
 
-  function rebuildItemsFromFilter() {
+  function getItemsForFilter(filter) {
+    if (filter === "all") return allItems;
+    return allItems.filter((item) => (item.dataset.category || "") === filter);
+  }
+
+  function rebuildVisibleItems() {
     items = allItems.filter((item) => item.style.display !== "none");
 
     if (!items.length && lightbox.classList.contains("is-active")) {
@@ -37,18 +56,71 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function updateVisibility() {
+    const filtered = getItemsForFilter(currentFilter);
+
+    allItems.forEach((item) => {
+      item.style.display = "none";
+    });
+
+    filtered.forEach((item, index) => {
+      if (index < visibleCount) {
+        item.style.display = "block";
+      }
+    });
+
+    if (loadMoreBtn) {
+      loadMoreBtn.style.display =
+        visibleCount >= filtered.length ? "none" : "inline-block";
+    }
+
+    rebuildVisibleItems();
+  }
+
+  function getFullSrc(item) {
+    const full = item.dataset.full || "";
+    if (full) return full;
+    const src = item.dataset.src || "";
+    if (src) return src;
+    const href = item.getAttribute("href") || "";
+    return href && href !== "#" ? href : "";
+  }
+
   function openAt(index) {
     if (!items.length) return;
 
     const total = items.length;
     const clampedIndex = ((index % total) + total) % total;
     const item = items[clampedIndex];
+    if (!item) return;
 
-    const src = item.dataset.src || item.getAttribute("href") || "";
+    const src = getFullSrc(item);
+    if (!src) return;
+
     const alt = item.dataset.alt || "";
-    const title = item.dataset.title || "";
+    const title = item.dataset.title || alt || "";
+    const fullWidth = Number(item.dataset.fullWidth);
+    const fullHeight = Number(item.dataset.fullHeight);
 
     currentIndex = clampedIndex;
+
+    imgEl.style.opacity = "0";
+    imgEl.onload = () => {
+      imgEl.style.opacity = "1";
+    };
+
+    if (
+      Number.isFinite(fullWidth) &&
+      fullWidth > 0 &&
+      Number.isFinite(fullHeight) &&
+      fullHeight > 0
+    ) {
+      imgEl.width = fullWidth;
+      imgEl.height = fullHeight;
+    } else {
+      imgEl.width = 1200;
+      imgEl.height = 800;
+    }
 
     imgEl.src = src;
     imgEl.alt = alt;
@@ -77,24 +149,37 @@ document.addEventListener("DOMContentLoaded", () => {
     openAt(currentIndex + delta);
   }
 
-  allItems.forEach((item) => {
-    item.addEventListener("click", (event) => {
+  grid.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const item = target.closest(".portfolio-item");
+    if (!(item instanceof HTMLElement)) return;
+
+    event.preventDefault();
+    rebuildVisibleItems();
+
+    const index = items.indexOf(item);
+    if (index !== -1) {
+      openAt(index);
+    }
+  });
+
+  grid.addEventListener("keydown", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const item = target.closest(".portfolio-item");
+    if (!(item instanceof HTMLElement)) return;
+
+    if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
+      rebuildVisibleItems();
       const index = items.indexOf(item);
       if (index !== -1) {
         openAt(index);
       }
-    });
-
-    item.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        const index = items.indexOf(item);
-        if (index !== -1) {
-          openAt(index);
-        }
-      }
-    });
+    }
   });
 
   prevBtn.addEventListener("click", () => showNext(-1));
@@ -122,49 +207,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Filtering logic
-  const filtersContainer = gallerySection.querySelector(".portfolio-filters");
+  filterSelect.addEventListener("change", () => {
+    currentFilter = filterSelect.value || "food";
+    visibleCount = ITEMS_PER_BATCH;
+    updateVisibility();
+  });
 
-  if (filtersContainer) {
-    const filterButtons = Array.from(
-      filtersContainer.querySelectorAll(".portfolio-filter")
-    );
-
-    function applyFilter(filter) {
-      allItems.forEach((item) => {
-        const category = item.dataset.category || "";
-        const matches = filter === "all" || category === filter;
-
-        item.style.display = matches ? "" : "none";
-      });
-
-      rebuildItemsFromFilter();
-    }
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter || "all";
-
-        filterButtons.forEach((btn) => {
-          btn.classList.toggle("is-active", btn === button);
-        });
-
-        applyFilter(filter);
-      });
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", () => {
+      visibleCount += ITEMS_PER_BATCH;
+      updateVisibility();
     });
-
-    const activeButton =
-      filtersContainer.querySelector(".portfolio-filter.is-active") ||
-      filterButtons[0];
-
-    if (activeButton) {
-      const initialFilter = activeButton.dataset.filter || "all";
-      applyFilter(initialFilter);
-    } else {
-      rebuildItemsFromFilter();
-    }
-  } else {
-    rebuildItemsFromFilter();
   }
-});
 
+  updateVisibility();
+});

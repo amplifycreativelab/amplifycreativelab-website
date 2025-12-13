@@ -3,13 +3,13 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 // Images
-import foodVertical from "../../../assets/images/home/Product-Black-Box_02.webp";
-import contentVertical from "../../../assets/images/home/Product-Black-Box_02.webp";
-import portraitVertical from "../../../assets/images/home/portrait-photography-perth-768.jpg";
-import musselsWide from "../../../assets/images/home/mussels-2560x1025.jpg";
-import orecchietteWide from "../../../assets/images/home/Product-Black-Box_02.webp";
-import weddingWide from "../../../assets/images/home/wedding-2560x1025.jpg";
-import eventWide from "../../../assets/images/perth-event-photography/event.jpg";
+import eventCandid from "../../assets/images/home/event-photography-perth-corporate-party-candid.webp";
+import steakDetail from "../../assets/images/home/food-photography-perth-gourmet-steak-detail.webp";
+import distilleryProduct from "../../assets/images/home/product-photography-perth-luxury-packaging-distillery.webp";
+import saucePour from "../../assets/images/home/commercial-food-styling-sauce-pour-action-shot.webp";
+import platedDessert from "../../assets/images/home/fine-dining-photography-perth-plated-dessert.webp";
+import bagelPrep from "../../assets/images/home/lifestyle-food-photography-salmon-bagel-preparation.webp";
+import kitchenCouple from "../../assets/images/home/branding-photography-perth-lifestyle-kitchen-couple.webp";
 
 type Layout = "tall" | "wide" | "full";
 
@@ -32,49 +32,52 @@ type GalleryItem = {
   src: ImageMetadata;
   alt: string;
   layout: Layout;
+  className?: string; // Optional class for layout fixes
 };
 
 const galleryItems = [
   // ROW 1
   {
-    src: foodVertical,
-    alt: "Hero food photography of a plated dish",
+    src: eventCandid,
+    alt: "Candid event photography of a woman laughing with a glass of champagne at a function in Perth.",
     layout: "tall",
   },
   {
-    src: musselsWide,
-    alt: "Overhead shot of mussels in a rustic pan",
+    src: distilleryProduct,
+    alt: "High-end product photography showing black and gold foil packaging for Whipper Snapper Distillery.",
     layout: "wide",
   },
 
   // ROW 2 (Wide then Tall)
   {
-    src: weddingWide,
-    alt: "Candid moment from a wedding reception",
+    src: platedDessert,
+    alt: "Artistic top-down shot of a gourmet yellow banana dessert and chocolate tuile for fine dining web design.",
     layout: "wide",
   },
+
   {
-    src: contentVertical,
-    alt: "Product and packaging photography",
+    src: saucePour,
+    alt: "Action food photography of sauce being poured over a steak and broccolini dish, professionally styled.",
     layout: "tall",
   },
 
   // ROW 3
   {
-    src: portraitVertical,
-    alt: "Portrait photography with soft light",
+    src: bagelPrep,
+    alt: "Bright lifestyle photography showing hands spreading cream cheese on a smoked salmon bagel.",
     layout: "tall",
+    className: "tablet-full",
   },
   {
-    src: orecchietteWide,
-    alt: "Close-up of orecchiette pasta",
+    src: kitchenCouple,
+    alt: "Commercial lifestyle shot of a couple preparing food in a modern kitchen, ideal for brand web design.",
     layout: "wide",
   },
 
   // ROW 4
   {
-    src: eventWide,
-    alt: "Guests mingling at a styled event",
+    src: steakDetail,
+    alt: "Close-up macro shot of sliced steak, roasted potatoes, and garnishes for a restaurant menu.",
     layout: "full",
   },
 ] satisfies GalleryItem[];
@@ -102,7 +105,9 @@ const galleryItems = [
           const config = imageLayoutConfig[item.layout];
 
           return (
-            <figure class={`bento-item type-${item.layout}`}>
+            <figure
+              class={`bento-item type-${item.layout} ${item.className || ""}`}
+            >
               <Image
                 src={item.src}
                 alt={item.alt}
@@ -242,6 +247,14 @@ const galleryItems = [
     .type-wide,
     .type-full {
       grid-column: 1 / -1;
+    }
+  }
+
+  /* --- TABLET SPECIFIC FIXES (601px - 900px) --- */
+  @media (min-width: 601px) and (max-width: 900px) {
+    /* Fix for orphaned tall item in row 4 causing layout gap */
+    .tablet-full {
+      grid-column: span 2 !important;
     }
   }
 

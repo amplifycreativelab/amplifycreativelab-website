@@ -6,7 +6,12 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://amplifycreativelab.com',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/thank-you/') && !page.includes('/review/'),
+    }),
+  ],
   build: {
     inlineStylesheets: 'always',
   },
