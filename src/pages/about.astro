@@ -44,8 +44,11 @@ const aboutPageSchema = {
       <div class="about-section__inner about-section__inner--split">
         <div class="about-section__content">
           <h2 class="about-section__heading">
-            Meet Jojo &mdash; Perth food, product &amp; event photographer
+            "We create images that actually help you sell more."
           </h2>
+          <p class="about-section__subtitle">
+             <strong>Meet Jojo</strong> &mdash; Perth food, product &amp; event photographer
+          </p>
           <p>
             Jojo is the photographer behind Amplify Creative Lab. Based in North Perth,
             she specialises in food, product and event photography for restaurants,
@@ -74,8 +77,8 @@ const aboutPageSchema = {
           <Image
             src={jojoImage}
             alt="Portrait of Jojo, lead photographer and creative director, smiling confidently for a Perth creative agency profile."
-            width={600}
-            height={750}
+            width={610}
+            height={760}
             loading="lazy"
             decoding="async"
           />
@@ -87,8 +90,11 @@ const aboutPageSchema = {
       <div class="about-section__inner about-section__inner--split">
         <div class="about-section__content">
           <h2 class="about-section__heading">
-            Meet Stefano &mdash; web developer &amp; technical strategist
+            "Your website should be as welcoming as your best staff."
           </h2>
+          <p class="about-section__subtitle">
+            <strong>Meet Stefano</strong> &mdash; web developer &amp; technical strategist
+          </p>
           <p>
             Stefano is the web developer at Amplify Creative Lab. He plans, designs
             and builds the websites that Jojo&apos;s photography lives on, with a
@@ -117,8 +123,8 @@ const aboutPageSchema = {
           <Image
             src={stefanoImage}
             alt="Stefano, lead web developer in Perth holding a laptop, specializing in high-performance Astro and custom-coded websites."
-            width={600}
-            height={750}
+            width={610}
+            height={760}
             loading="lazy"
             decoding="async"
           />
@@ -228,72 +234,172 @@ const aboutPageSchema = {
     }
 
     .about-section__inner {
-      max-width: 900px;
+      max-width: 100%; /* Full width */
       margin-inline: auto;
     }
 
     .about-section__inner--split {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: clamp(2rem, 4vw, 3rem);
+      /* Editorial Grid: Text 40% | Image 60% */
+      grid-template-columns: 0.4fr 0.6fr;
+      gap: clamp(2rem, 4vw, 5rem);
       align-items: center;
+      position: relative;
     }
 
+    /* --- EDITORIAL GRAPHIC COLUMN --- */
+    .about-section__visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-top: 40px; 
+      isolation: isolate;
+    }
+
+    /* Primary Organic Background */
+    .about-section__visual::before {
+      content: "";
+      position: absolute;
+      top: 50%; /* Center relative to container */
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-5deg);
+      width: 90%;
+      aspect-ratio: 0.9;
+      background: var(--color-accent, #4a2e1c);
+      opacity: 0.1;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      z-index: -1;
+      transition: all 0.8s ease;
+    }
+    
+    .about-section__visual:hover::before {
+       border-radius: 50%;
+       transform: translate(-50%, -50%) rotate(0deg) scale(1.02);
+    }
+
+    .about-section__visual img {
+      width: 100%;
+      max-width: 700px; /* Allow image to grow larger */
+      height: auto;
+      border-radius: 0;
+      border: none;
+      filter: drop-shadow(0 15px 35px rgba(50, 42, 25, 0.15));
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      margin: 0; /* Reset margins */
+      transition: transform 0.4s ease-out;
+      /* Soften the bottom edge to hide the hard cut */
+      -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    }
+
+    .about-section__visual:hover img {
+       transform: translateY(-6px);
+    }
+    
+    /* Secondary Accent Shape */
+    .about-section__visual::after {
+      content: "";
+      position: absolute;
+      bottom: 5%;
+      right: 15%;
+      width: 25%;
+      aspect-ratio: 1;
+      background: var(--color-heading);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    /* --- EDITORIAL CONTENT COLUMN --- */
+    .about-section__content {
+      padding-top: 2rem;
+    }
+
+    /* Large "Pull Quote" Typography for the Heading */
     .about-section__heading {
-      font-family: "Montserrat", system-ui, sans-serif;
-      font-size: 1.6rem;
-      font-weight: 600;
+      font-family: "Abril Fatface", serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      font-weight: 400;
       color: var(--color-heading);
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      position: relative;
+      /* Decorative "Quote" dash */
+      padding-left: 0;
     }
-
+    
     .about-section__content p {
       font-family: "Darker Grotesque", system-ui, sans-serif;
-      font-size: 1.15rem;
-      line-height: 1.7;
+      font-size: 1.25rem;
+      line-height: 1.6;
       color: #24360f;
-      margin-bottom: 0.9rem;
+      margin-bottom: 1.2rem;
+      max-width: 55ch; /* Optimal reading width */
     }
 
     .about-section__content a {
       text-decoration: underline;
       text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
-      font-weight: 500;
+      text-underline-offset: 0.25em;
+      font-weight: 600;
+      color: var(--color-heading);
     }
 
-    .about-section__visual {
-      position: relative;
-      /* Ensure the offset border doesn't cause overflow issues if tight */
-      margin-bottom: 20px; 
-      margin-right: 20px;
+    /* Alternate Layout for Stefano: Image Left (60%), Text Right (40%) */
+    .about-section--alt .about-section__inner--split {
+      grid-template-columns: 0.6fr 0.4fr; 
+    }
+    
+    .about-section--alt .about-section__visual {
+       order: 1; /* Visual First */
+    }
+    
+    .about-section--alt .about-section__content {
+       order: 2; /* Content Second */
+    }
+    
+    /* Shapes for the alt section (Stefano) */
+    .about-section--alt .about-section__visual::before {
+       background: #152705; /* Darker green */
+       opacity: 0.08;
+       border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+       transform: translate(-50%, -50%) rotate(5deg);
+    }
+    
+    .about-section--alt .about-section__visual:hover::before {
+       transform: translate(-50%, -50%) rotate(0deg) scale(1.02);
+       border-radius: 45%;
     }
 
-    .about-section__visual img {
-      width: 100%;
-      height: auto;
-      border-radius: 2px; /* Sharper, more editorial look */
-      /* Removed box-shadow as requested */
-      border: 1px solid rgba(21, 39, 5, 0.05);
-      object-fit: cover;
-      position: relative;
-      z-index: 2;
-      background: var(--color-bg); /* Ensure transparency doesn't show border behind */
+    .about-section--alt .about-section__visual::after {
+       right: auto;
+       left: 15%;
     }
 
-    /* New "Editorial" Style: Subtle offset frame */
-    .about-section__visual::after {
-      content: "";
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100%;
-      height: 100%;
-      border: 1px solid #7b5b33; /* Brand accent color */
-      border-radius: 2px;
-      opacity: 0.4;
-      z-index: 1;
-      pointer-events: none;
+    @media (max-width: 900px) {
+      .about-section__inner--split,
+      .about-section--alt .about-section__inner--split {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .about-section__visual {
+        max-width: 400px;
+        margin: 0 auto;
+        order: -1; /* Image first on mobile */
+      }
+      
+      .about-section--alt .about-section__visual {
+        order: -1;
+      }
+      
+      .about-section__content {
+        padding-top: 0;
+      }
     }
 
     @media (max-width: 768px) {
