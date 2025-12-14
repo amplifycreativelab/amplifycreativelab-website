@@ -50,12 +50,11 @@ const pageDescription =
 
         <!-- RIGHT: image / visual -->
         <aside class="thankyou-visual" aria-hidden="true">
-          
           <div class="thankyou-visual-inner">
-            <p class="thankyou-visual-kicker">Perth food & product photography</p>
+            <p class="thankyou-visual-kicker">Photography + Web Design</p>
             <p class="thankyou-visual-text">
-              While you wait, explore how we’ve helped cafés, restaurants and
-              brands tell their story with scroll-stopping visuals.
+              We help Perth hospitality and lifestyle brands stand out with
+              world-class photography and high-performance websites.
             </p>
           </div>
         </aside>
@@ -75,12 +74,10 @@ const pageDescription =
 
   .thankyou-hero {
     width: 100%;
-    
   }
 
   .thankyou-inner {
     max-width: 1900px;
-    height:60vh;
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -98,7 +95,6 @@ const pageDescription =
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-   
   }
 
   .thankyou-badge {
@@ -108,7 +104,6 @@ const pageDescription =
     padding: 0.3rem 0.9rem;
     border-radius: 999px;
     background: rgba(36, 54, 15, 0.04);
-   
   }
 
   .thankyou-badge-icon {
@@ -134,7 +129,6 @@ const pageDescription =
     font-family: var(--font-heading);
     font-size: clamp(2rem, 3.2vw, 2.6rem);
     color: var(--color-heading);
-   
   }
 
   .thankyou-text {
@@ -196,8 +190,12 @@ const pageDescription =
     text-transform: uppercase;
     letter-spacing: 0.12em;
     text-decoration: none;
-    transition: transform 0.12s ease, box-shadow 0.12s ease,
-      background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.12s ease,
+      background-color 0.12s ease,
+      color 0.12s ease,
+      border-color 0.12s ease;
     white-space: nowrap;
   }
 
@@ -236,7 +234,14 @@ const pageDescription =
     background-position: center;
   }
 
-  
+  /* Dark Overlay */
+  .thankyou-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    z-index: 0;
+  }
 
   .thankyou-visual-inner {
     position: relative;
@@ -253,18 +258,20 @@ const pageDescription =
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    opacity: 0.85;
+    opacity: 0.9;
     margin-bottom: 0.5rem;
-    color: black;
+    color: #fff;
     font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .thankyou-visual-text {
     font-size: 0.95rem;
     line-height: 1.7;
     max-width: 22rem;
-     color: black;
-     font-weight: bold;
+    color: #fff;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   /* RESPONSIVE */
@@ -279,7 +286,8 @@ const pageDescription =
     }
 
     .thankyou-visual {
-      min-height: 200px;
+      min-height: 300px;
+      height: 300px; /* Enforce specific height for mobile */
     }
 
     .thankyou-actions {
