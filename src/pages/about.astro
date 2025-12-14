@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
+import jojoImage from "../assets/images/about/jojo-lead-photographer-creative-director-perth.webp";
+import stefanoImage from "../assets/images/about/stefano-web-developer-astro-expert-perth.webp";
 
 const pageTitle = "About Amplify Creative Lab | Jojo & Stefano";
 const pageDescription =
@@ -70,10 +72,10 @@ const aboutPageSchema = {
 
         <div class="about-section__visual">
           <Image
-            src="/images/portfolio/portrait/female-chef-professional-headshot-perth.webp"
-            alt="Jojo, Perth food, product and event photographer at Amplify Creative Lab"
-            width="600"
-            height="750"
+            src={jojoImage}
+            alt="Portrait of Jojo, lead photographer and creative director, smiling confidently for a Perth creative agency profile."
+            width={600}
+            height={750}
             loading="lazy"
             decoding="async"
           />
@@ -113,10 +115,10 @@ const aboutPageSchema = {
 
         <div class="about-section__visual">
           <Image
-            src="/images/portfolio/portrait/corporate-business-portrait-man-laptop-perth.webp"
-            alt="Stefano, web developer at Amplify Creative Lab, working on a laptop in Perth"
-            width="600"
-            height="750"
+            src={stefanoImage}
+            alt="Stefano, lead web developer in Perth holding a laptop, specializing in high-performance Astro and custom-coded websites."
+            width={600}
+            height={750}
             loading="lazy"
             decoding="async"
           />

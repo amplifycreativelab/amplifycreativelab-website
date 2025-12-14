@@ -57,6 +57,9 @@ faq:
   - question: "What ROI should I expect from a new restaurant website?"
     answer: "Most Perth restaurants we work with see payback periods of <strong>3-6 months</strong> when upgrading from a slow or outdated site. A $6,000 website generating just 5 extra bookings per week (at $50 average cover) adds $13,000+ in annual revenue—a 200%+ first-year return."
 ---
+import { Image } from "astro:assets";
+import costCompare from "../../assets/images/blog/perth-restaurant-website-cost-comparison.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -259,7 +262,7 @@ faq:
   <strong>Additional value:</strong> You receive a complete asset library (50-200+ images) that can fuel your marketing for 6-12 months: social media posts, Google Business Profile updates, email campaigns, printed menus, and delivery app listings—all from a single investment. Learn more in our article on <a href="/blog/event-photography-90-day-content-strategy-perth-venues-overlook">turning photography into a 90-day content strategy</a>.
 </p>
 
-<Image src="/images/blog/perth-restaurant-website-cost-comparison.jpg" width="800" height="450" alt="Comparison chart showing Perth restaurant website pricing from $300 DIY to $15,000+ full-service packages with features at each tier." />
+<Image src={costCompare} width="800" height="450" alt="Comparison chart showing Perth restaurant website pricing from $300 DIY to $15,000+ full-service packages with features at each tier." />
 <p><em>Perth restaurant website pricing comparison: what you get at each tier, from DIY builders to full-service custom development with photography.</em></p>
 
 <h2>What Drives the Price Up (or Down)?</h2>

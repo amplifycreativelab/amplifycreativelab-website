@@ -58,6 +58,10 @@ faq:
   - question: "How important is mobile design for restaurants?"
     answer: "Critical. Over <strong>73% of Perth diners</strong> research restaurants on their mobile phones, often while already out and making dining decisions. If your site isn't mobile-optimised, you're invisible to the majority of potential customers. Google also uses mobile-first indexing, meaning your mobile site determines your search rankings—not your desktop version."
 ---
+import { Image } from "astro:assets";
+import goodSites from "../../assets/images/blog/good-restaurant-website-examples-perth.webp";
+import badSites from "../../assets/images/blog/bad-restaurant-website-examples-perth.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -233,7 +237,7 @@ faq:
   <strong>Key takeaway:</strong> Visual storytelling combined with a frictionless booking process encourages impulse reservations, especially from tourists and locals searching for scenic waterfront dining experiences.
 </p>
 
-<Image src="/images/blog/good-restaurant-website-examples-perth.jpg" width="800" height="450" alt="Collage showing mobile and desktop views of high-performing Perth restaurant websites from Fremantle, Northbridge, and Cottesloe featuring fast load times and clear booking buttons." />
+<Image src={goodSites} width="800" height="450" alt="Collage showing mobile and desktop views of high-performing Perth restaurant websites from Fremantle, Northbridge, and Cottesloe featuring fast load times and clear booking buttons." />
 <p><em>Examples of Perth restaurant websites that demonstrate best practices: fast loading, mobile-responsive design, prominent booking CTAs, and professional photography.</em></p>
 
 <h2>5 Bad Examples: Common Mistakes Perth Restaurants Should Avoid</h2>
@@ -337,7 +341,7 @@ faq:
   <strong>Key lesson:</strong> Over‑engineering and outdated technologies (Flash, heavy animations, auto-playing audio) create exclusionary experiences and damage both performance and brand perception. The fine-dining audience, in particular, expects sophistication expressed through restraint and usability—not technical complications. Simplicity and accessibility should always come first.
 </p>
 
-<Image src="/images/blog/bad-restaurant-website-examples-perth.jpg" width="800" height="450" alt="Examples of common Perth restaurant website problems including slow loading, broken mobile layouts, PDF menus, and missing booking buttons." />
+<Image src={badSites} width="800" height="450" alt="Examples of common Perth restaurant website problems including slow loading, broken mobile layouts, PDF menus, and missing booking buttons." />
 <p><em>Common website problems we see when auditing Perth restaurant sites: slow loading times, broken mobile layouts, PDF menus, and buried booking functionality.</em></p>
 
 <h2>How to Turn a Bad Website into a Good One: Action Checklist</h2>

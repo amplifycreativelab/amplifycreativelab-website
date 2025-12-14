@@ -34,6 +34,8 @@ faq:
   - question: "Can I improve Core Web Vitals without rebuilding my entire site?"
     answer: "Yes! Many improvements—like image optimization, caching, and reducing third‑party scripts—can be implemented on your existing site. Our mini‑audit will identify the quickest wins for your specific situation."
 ---
+import cwvReport from "../../assets/images/blog/core-web-vitals-lighthouse-report-perth.webp";
+
 import { Image } from "astro:assets";
 
 {/* Key Takeaways for AI Engines and Quick Readers */}
@@ -107,7 +109,7 @@ import { Image } from "astro:assets";
 </p>
 {/* Image placeholder: Google Lighthouse report for a [Perth hospitality website](/blog/web-design-checklist-new-restaurants-wa) */}
 <Image
-  src="/images/blog/core-web-vitals-lighthouse-report-perth.jpg"
+  src={cwvReport}
   alt="Google Lighthouse performance report showing Core Web Vitals scores for a Perth restaurant website."
   width="800"
   height="450"

@@ -57,6 +57,9 @@ faq:
   - question: "What's the best way to get a direct link to my Google review page?"
     answer: "Log into your Google Business Profile, click \"Get more reviews\" in the dashboard, and copy the provided link. This link takes users directly to the review interface without requiring them to search for your business. Shorten it using Bitly or a similar service for cleaner presentation on printed materials."
 ---
+import { Image } from "astro:assets";
+import reviewQr from "../../assets/images/blog/ethical-review-generation-perth.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -229,7 +232,7 @@ faq:
   <li>Keep incentives modest (a dessert, a coffee, a small discount—not significant cash value)</li>
 </ul>
 
-<Image src="/images/blog/ethical-review-generation-perth.jpg" width="800" height="450" alt="QR code on table tent at Perth restaurant prompting customers to leave a Google review, with smartphone scanning demonstration." />
+<Image src={reviewQr} width="800" height="450" alt="QR code on table tent at Perth restaurant prompting customers to leave a Google review, with smartphone scanning demonstration." />
 <p><em>QR codes on table tents make leaving reviews frictionless—customers can scan and review while still at the table.</em></p>
 
 <h2>What NOT to Do: Common Ethical Pitfalls</h2>

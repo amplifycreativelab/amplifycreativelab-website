@@ -57,6 +57,9 @@ faq:
   - question: "Are Facebook/Instagram ads or Google Ads better for restaurants?"
     answer: "Google Ads capture <strong>intent</strong>—people actively searching for \"dinner Northbridge tonight.\" Facebook/Instagram create <strong>awareness</strong>—putting your venue in front of people who might be interested. Both have value. Google typically drives more immediate bookings; social drives discovery and retargeting. Budget permitting, use both."
 ---
+import { Image } from "astro:assets";
+import seoRoi from "../../assets/images/blog/seo-vs-paid-ads-roi-graph.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -287,7 +290,7 @@ faq:
   <strong>The verdict:</strong> SEO delivers significantly more bookings over a 2-3 year horizon, while paid ads can provide a quick boost when needed. The key is understanding what you need and when.
 </p>
 
-<Image src="/images/blog/seo-vs-paid-ads-roi-graph.jpg" width="800" height="450" alt="Graph showing cumulative bookings over 24 months comparing SEO investment versus ongoing paid advertising, with SEO overtaking ads after month 8." />
+<Image src={seoRoi} width="800" height="450" alt="Graph showing cumulative bookings over 24 months comparing SEO investment versus ongoing paid advertising, with SEO overtaking ads after month 8." />
 <p><em>Cumulative bookings over time: SEO requires patience in months 1-6, but delivers significantly more value by month 12 and beyond.</em></p>
 
 <h2>Local SEO: The Perth Advantage</h2>

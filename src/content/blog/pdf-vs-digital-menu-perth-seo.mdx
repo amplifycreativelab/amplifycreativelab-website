@@ -57,6 +57,9 @@ faq:
   - question: "What's the SEO impact timeline?"
     answer: "Most restaurants start seeing improvements in local search rankings within 4-8 weeks of launching an HTML menu. Dish-specific keyword rankings often appear within 2-3 months as Google indexes and associates your new content with relevant searches."
 ---
+import { Image } from "astro:assets";
+import pdfProblems from "../../assets/images/blog/pdf-menu-mobile-problems.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -208,7 +211,7 @@ faq:
   The fundamental problem is simple: <strong>You're making hungry people work too hard to give you money.</strong> In Perth's competitive hospitality market, with new restaurants opening every week, that's a luxury you can't afford.
 </p>
 
-<Image src="/images/blog/pdf-menu-mobile-problems.jpg" width="800" height="450" alt="Side-by-side comparison showing a PDF menu requiring multiple pinch-zoom gestures versus a responsive HTML menu displaying perfectly on a mobile phone." />
+<Image src={pdfProblems} width="800" height="450" alt="Side-by-side comparison showing a PDF menu requiring multiple pinch-zoom gestures versus a responsive HTML menu displaying perfectly on a mobile phone." />
 <p><em>Left: The PDF experience—tiny text requiring pinch-zoom, no way to filter or search. Right: A responsive HTML menu that's instantly readable and actionable.</em></p>
 
 <h2>The Solution: HTML Responsive Menus</h2>

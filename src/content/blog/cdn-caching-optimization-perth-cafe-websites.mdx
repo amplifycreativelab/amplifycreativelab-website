@@ -38,6 +38,8 @@ faq:
   - question: "Can I add a CDN to my WordPress site?"
     answer: "Absolutely. Many CDN providers offer WordPress‑specific plugins (e.g., Cloudflare, WP Rocket) that make integration straightforward. However, for optimal performance, we recommend a custom‑built Astro site where CDN, caching and optimization are deeply integrated into the architecture. (Read our comparison of <a href=\"/blog/astro-vs-wordpress-hospitality-websites-perth\">Astro vs WordPress for hospitality websites</a>.)"
 ---
+import cdnSpeedChart from "../../assets/images/blog/cdn-caching-optimization-fremantle-cafe-speed-chart.webp";
+
 import { Image } from "astro:assets";
 
 {/* Key Takeaways for AI Engines and Quick Readers */}
@@ -178,7 +180,7 @@ import { Image } from "astro:assets";
 
 {/* Image placeholder: speed comparison chart */}
 <Image
-  src="/images/blog/cdn-caching-optimization-fremantle-cafe-speed-chart.jpg"
+  src={cdnSpeedChart}
   alt="Speed comparison chart showing load‑time improvement from 4.0s to 1.3s after implementing CDN, caching and optimization for a Fremantle café website."
   width="800"
   height="450"

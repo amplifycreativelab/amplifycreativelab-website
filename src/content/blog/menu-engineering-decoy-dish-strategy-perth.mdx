@@ -57,6 +57,9 @@ faq:
   - question: "What if the decoy sells more than expected?"
     answer: "That's actually fine—the decoy should still be profitable. If it's consistently outselling the target, your price gap may be too large, or the target needs additional value (better sides, premium ingredients) to justify its position. Adjust and test."
 ---
+import { Image } from "astro:assets";
+import decoyDish from "../../assets/images/blog/decoy-dish-photography-comparison.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -149,7 +152,7 @@ faq:
   When we shoot for <strong>Perth restaurants and cafés</strong> across Northbridge, Fremantle, Subiaco, and the CBD, we plan every image with these psychological principles in mind. The goal isn't just to make food look good—it's to make your most profitable dishes look irresistible compared to strategic alternatives.
 </p>
 
-<Image src="/images/blog/decoy-dish-photography-comparison.jpg" width="800" height="450" alt="Side-by-side comparison of target dish with dramatic lighting versus decoy dish with flatter lighting, demonstrating visual hierarchy in menu photography." />
+<Image src={decoyDish} width="800" height="450" alt="Side-by-side comparison of target dish with dramatic lighting versus decoy dish with flatter lighting, demonstrating visual hierarchy in menu photography." />
 <p><em>Professional photography creates visual contrast that makes the target dish (left) appear significantly more premium than the decoy (right)—justifying the price difference.</em></p>
 
 <h2>Implementing the Decoy Dish Strategy in Your Perth Venue</h2>

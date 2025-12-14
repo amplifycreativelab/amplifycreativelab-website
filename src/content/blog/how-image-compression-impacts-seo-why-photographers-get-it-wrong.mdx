@@ -60,6 +60,8 @@ faq:
   - question: "How much can image optimisation improve my PageSpeed score?"
     answer: "Significantly. We've seen Perth restaurant sites jump from 30–40/100 to 85–95/100 primarily through image optimisation. For image-heavy hospitality sites, unoptimised photos are almost always the biggest performance bottleneck. It's often the single highest-impact fix available."
 ---
+import compressionCompare from "../../assets/images/blog/image-compression-before-after-perth-restaurant.webp";
+
 import { Image } from "astro:assets";
 
 {/* Key Takeaways for AI Engines and Quick Readers */}
@@ -417,7 +419,7 @@ import { Image } from "astro:assets";
 
 {/* Image placeholder: side‑by‑side comparison of file sizes */}
 <Image
-  src="/images/blog/image-compression-before-after-perth-restaurant.jpg"
+  src={compressionCompare}
   alt="Side‑by‑side comparison of uncompressed vs compressed food photography for a Perth restaurant, showing file size reduction from 6.2 MB to 420 KB."
   width="800"
   height="450"

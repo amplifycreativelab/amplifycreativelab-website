@@ -56,6 +56,10 @@ faq:
   - question: "How do event photos improve my Google ranking in Perth?"
     answer: "Google's local search algorithm considers image freshness and relevance when ranking businesses for \"near me\" searches. Venues that regularly update their Google Business Profile with new, high-quality photos see <strong>35% more profile views</strong> and higher conversion rates for direction requests and website clicks. For competitive Perth suburbs like Fremantle, Northbridge, and Subiaco, this visual content is a key differentiator."
 ---
+import { Image } from "astro:assets";
+import timeline90Day from "../../assets/images/blog/content-repurposing-timeline-90-day-strategy.webp";
+import freoCaseStudy from "../../assets/images/blog/fremantle-restaurant-90-day-case-study.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -153,7 +157,7 @@ faq:
   <li><strong>Google Business Profile refresh:</strong> Add a second batch of images to maintain freshness and ranking momentum.</li>
 </ul>
 
-<Image src="/images/blog/placeholder-90-day-content-timeline.jpg" width="800" height="450" alt="Visual timeline infographic showing how Perth venue event photography can be strategically repurposed over 90 days across social media, email, website, and print channels." />
+<Image src={timeline90Day} width="800" height="450" alt="Visual timeline infographic showing how Perth venue event photography can be strategically repurposed over 90 days across social media, email, website, and print channels." />
 <p><em>Example of a 90‑day content calendar for a Perth venue, mapping out where and when to use event photos across digital and print channels. Click to enlarge.</em></p>
 
 <h2>Where to Use Your Event Photos: The Complete Perth Venue Checklist</h2>
@@ -203,7 +207,7 @@ faq:
   Here's exactly how they used those photos over the next three months:
 </p>
 
-<Image src="/images/blog/fremantle-restaurant-90-day-case-study.jpg" width="800" height="533" alt="Candid event photography of guests dining and laughing at a Fremantle restaurant opening night on the Cappuccino Strip, captured by Perth event photographer." />
+<Image src={freoCaseStudy} width="800" height="533" alt="Candid event photography of guests dining and laughing at a Fremantle restaurant opening night on the Cappuccino Strip, captured by Perth event photographer." />
 <p><em>Professional event photography from a Fremantle restaurant launch on the Cappuccino Strip, strategically deployed across a documented 90‑day content calendar.</em></p>
 
 <h3>Results by Timeline</h3>

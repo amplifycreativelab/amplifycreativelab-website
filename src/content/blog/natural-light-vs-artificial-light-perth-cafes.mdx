@@ -57,6 +57,9 @@ faq:
   - question: "What equipment do I need for basic in-house food photography?"
     answer: "At minimum: a smartphone with a good camera, a tripod or phone mount, and a white foam board for bouncing light. To step up: add a portable LED panel ($100-$300) and a simple backdrop. For professional results, work with a dedicated food photographer who brings their own equipment."
 ---
+import { Image } from "astro:assets";
+import hybridLight from "../../assets/images/blog/hybrid-lighting-food-photography-perth.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -265,7 +268,7 @@ faq:
   For more on styling and visual trends that complement these lighting techniques, see our <a href="/blog/perth-food-photography-style-guide-2025-trends">Perth [Food Photography Style Guide](/blog/perth-food-photography-style-guide-2025-trends) for 2025</a>.
 </p>
 
-<Image src="/images/blog/hybrid-lighting-food-photography-perth.jpg" width="800" height="450" alt="Behind-the-scenes photo showing a Perth café food photography setup with window light and LED fill panel creating the hybrid lighting approach." />
+<Image src={hybridLight} width="800" height="450" alt="Behind-the-scenes photo showing a Perth café food photography setup with window light and LED fill panel creating the hybrid lighting approach." />
 <p><em>Hybrid lighting in action: natural window light provides the base, while a small LED panel on the right fills shadows for a balanced, appetising result.</em></p>
 
 <h2>Lighting Recommendations by Perth Venue Type</h2>

@@ -55,6 +55,10 @@ faq:
   - question: "Can this work for small cafés or takeaway spots?"
     answer: "Absolutely. The same principles apply whether you're a fine-dining restaurant or a neighbourhood café. In fact, mobile-friendly menus are even more critical for takeaway-focused venues where customers are often ordering on the go."
 ---
+import { Image } from "astro:assets";
+import proFoodMenu from "../../assets/images/blog/professional-food-photography-perth-menu.webp";
+import menuRedesign from "../../assets/images/blog/menu-redesign-before-after-perth.webp";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -185,7 +189,7 @@ faq:
   Each image was edited for colour accuracy (matching what diners would actually see), cropped to multiple aspect ratios for different placements, and optimised for web delivery at multiple resolutions.
 </p>
 
-<Image src="/images/blog/professional-food-photography-perth-menu.jpg" width="800" height="533" alt="Professional food photography of a signature pasta dish with truffle shavings, shot for a Northbridge restaurant's redesigned digital menu." />
+<Image src={proFoodMenu} width="800" height="533" alt="Professional food photography of a signature pasta dish with truffle shavings, shot for a Northbridge restaurant's redesigned digital menu." />
 <p><em>Professional food photography captures the texture, colour, and appeal of dishes in a way smartphone photos cannot—directly influencing ordering decisions.</em></p>
 
 <h3>Week 4: Development & Integration</h3>
@@ -273,7 +277,7 @@ faq:
   </tbody>
 </table>
 
-<Image src="/images/blog/menu-redesign-before-after-perth.jpg" width="800" height="450" alt="Side-by-side comparison of the old PDF menu (left) showing pinch-zoom requirement and new responsive HTML menu (right) showing clean mobile layout on a smartphone." />
+<Image src={menuRedesign} width="800" height="450" alt="Side-by-side comparison of the old PDF menu (left) showing pinch-zoom requirement and new responsive HTML menu (right) showing clean mobile layout on a smartphone." />
 <p><em>The difference is immediately visible: the old PDF required zooming to read anything, while the new HTML menu is designed for thumb-friendly browsing on any device.</em></p>
 
 <p>
