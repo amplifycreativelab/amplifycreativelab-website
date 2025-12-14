@@ -47,6 +47,10 @@ async function createPortfolioItems(
     const image = getPortfolioImage(folder, file);
     const src = (image && image.src) || `/images/portfolio/${folder}/${file}`;
 
+    if (!image) {
+      console.warn(`[Portfolio] Image module not found for: ${folder}/${file}`);
+    }
+
     let thumbSrc = src;
     let thumbSrcSet = "";
     let thumbWidth = 0;
@@ -60,8 +64,10 @@ async function createPortfolioItems(
       try {
         const thumb = await getImage({
           src: image,
-          width: 600,
-          height: 600,
+          // Keep the default thumbnail `src` small so Lighthouse doesn't flag
+          // oversized downloads when a browser falls back to `src`.
+          width: 240,
+          height: 240,
           widths: [160, 240, 320, 480, 600],
           fit: "cover",
           format: "webp",
@@ -69,7 +75,9 @@ async function createPortfolioItems(
         });
         thumbSrc = thumb.src;
         thumbSrcSet = thumb.srcSet.attribute;
-        thumbWidth = thumb.attributes.width ? Number(thumb.attributes.width) : 0;
+        thumbWidth = thumb.attributes.width
+          ? Number(thumb.attributes.width)
+          : 0;
         thumbHeight = thumb.attributes.height
           ? Number(thumb.attributes.height)
           : 0;
@@ -159,139 +167,149 @@ const foodFiles = [
 ];
 
 const eventFiles = [
-  "champagne-toast-celebration-party-perth.webp",
-  "formal-gala-dinner-candid-guests-perth.webp",
-  "group-kids-cultural-performance-costumes-perth.webp",
-  "outdoor-event-guests-hugging-perth.webp",
-  "boys-modern-dance-performance-suits-sunglasses-perth.webp",
-  "senior-couple-dancing-gala-night-perth.webp",
-  "young-umbrella-dancer-face-paint-portrait-perth.webp",
-  "live-band-entertainment-dance-floor-perth.webp",
-  "child-performer-gold-costume-cultural-festival.webp",
-  "energetic-crowded-dance-floor-party-perth.webp",
-  "audience-watching-outdoor-cultural-performance-perth.webp",
-  "christmas-event-catering-dessert-station-perth.webp",
-  "child-performer-traditional-costume-portrait-perth.webp",
-  "children-cultural-dance-green-dress-perth.webp",
-  "traditional-blue-costume-dance-performance-perth.webp",
-  "close-up-cultural-dancers-makeup-costume-perth.webp",
-  "cultural-dance-troupe-procession-outdoors-perth.webp",
-  "young-girl-fan-dance-performance-outdoors-perth.webp",
-  "traditional-fan-dancer-pose-perth-park.webp",
-  "child-dancer-yellow-sequin-costume-perth.webp",
-  "elegant-traditional-dance-pose-pink-costume-perth.webp",
-  "acrobatic-dance-performance-flexibility-perth.webp",
-  "young-performers-resting-candid-moment-perth.webp",
-  "child-performers-break-time-snacks-perth.webp",
-  "blue-white-fan-dance-performance-perth.webp",
-  "large-ballroom-corporate-dinner-venue-perth.webp",
-  "live-music-duo-keyboard-performance-perth.webp",
-  "cute-performer-yellow-dress-candid-perth.webp",
-  "gala-dinner-ballroom-setup-black-gold-perth.webp",
-  "young-girl-traditional-dress-perth-cultural-event.webp",
-  "young-performer-traditional-blue-white-costume-perth.webp",
-  "energetic-fan-dance-performance-red-ribbons-perth.webp",
-  "young-pianist-performance-outdoor-event-perth.webp",
-  "folk-dance-troupe-green-costumes-perth.webp",
-  "child-portrait-gold-headpiece-yellow-costume-perth.webp",
-  "candid-children-laughing-festival-balloon-stall-perth.webp",
-  "event-bar-service-cocktails-perth.webp",
-  "traditional-umbrella-dance-group-pose-perth.webp",
-  "solo-dancer-green-dress-outdoor-stage-perth.webp",
-  "cultural-ribbon-dance-group-performance-perth.webp",
+  "dramatic-cultural-dance-performance-perth.webp",
+  "chinese-fan-dance-performance-kids.webp",
+  "traditional-duo-dance-performance.webp",
+  "group-cultural-dance-festival-perth.webp",
+  "casual-business-consultation-lifestyle.webp",
+  "kids-traditional-tambourine-dance.webp",
+  "solo-cultural-dancer-portrait.webp",
+  "lion-dance-gala-event-guest.webp",
+  "atmospheric-stage-lighting-silhouette.webp",
+  "lifestyle-branding-team-meeting.webp",
+  "formal-gala-couple-dancing-perth.webp",
+  "candid-lifestyle-couple-eating-cake.webp",
+  "fresh-salad-serving-food-styling.webp",
+  "lifestyle-branding-women-sharing-food.webp",
+  "child-cultural-performer-portrait-yellow.webp",
+  "new-years-eve-gala-guests-perth.webp",
+  "candid-party-laughter-champagne.webp",
+  "man-smiling-lifestyle-portrait.webp",
+  "woman-slicing-cake-food-lifestyle.webp",
+  "outdoor-group-lunch-lifestyle-perth.webp",
+  "formal-gala-dinner-service-perth.webp",
+  "corporate-event-photobooth-fun.webp",
+  "outdoor-cultural-fan-dance-performance.webp",
+  "duxton-hotel-new-years-eve-gala-perth.webp",
+  "young-cultural-dancer-yellow-fan.webp",
+  "traditional-hanfu-child-performance.webp",
+  "cultural-dance-troupe-red-ribbons.webp",
+  "live-band-party-celebration-guest.webp",
+  "corporate-event-bar-service-setup.webp",
+  "christmas-event-catering-dessert-buffet.webp",
+  "kids-frozen-theme-stage-performance.webp",
+  "office-christmas-party-fun-candid.webp",
+  "formal-gala-guest-red-dress-champagne.webp",
+  "outdoor-group-dance-performance-teal.webp",
+  "corporate-team-lunch-wine-dining.webp",
+  "candid-event-guest-laughing-natural.webp",
+  "corporate-event-buffet-catering-service.webp",
+  "group-toast-celebration-drinks-perth.webp",
+  "christmas-function-host-speaker.webp",
+  "casual-dining-christmas-decor-couple.webp",
+  "kids-traditional-group-dance-blue.webp",
+  "live-cover-band-party-perth.webp",
+  "keyboardist-singer-stage-lighting.webp",
+  "solo-fan-dance-digital-backdrop.webp",
+  "corporate-gala-guest-duxton-hotel.webp",
+  "senior-couple-dancing-formal-gala.webp",
+  "professional-bartender-service-event.webp",
+  "female-vocalist-performance-close-up.webp",
 ];
 
 const familyFiles = [
-  "family-beach-lookout-sunset-portrait-perth.webp",
-  "couple-heart-hands-sunset-silhouette-perth.webp",
-  "toddler-painting-activity-yellow-smock.webp",
-  "three-generations-women-perth-skyline-view.webp",
-  "baby-playing-vintage-piano-outdoors-perth.webp",
-  "mother-daughter-portrait-south-perth-foreshore.webp",
-  "playful-girl-pink-dress-funny-face.webp",
-  "daughters-kissing-mother-cheek-perth-skyline.webp",
-  "women-family-portrait-sunset-river-perth.webp",
-  "toddler-reaching-cupcakes-birthday-party-perth.webp",
-  "woman-profile-golden-hour-beach-perth.webp",
-  "couple-champagne-celebration-sunset-beach-perth.webp",
-  "group-champagne-toast-beach-party-perth.webp",
-  "fun-family-poses-sunset-beach-perth.webp",
-  "mother-kissing-daughter-beach-deck-perth.webp",
-
-  "group-beach-portrait-golden-hour-perth.webp",
-  "couple-silhouette-flowing-dress-sunset-perth.webp",
-  "bridal-portrait-veil-bougainvillea-perth.webp",
-  "groom-lifting-bride-veil-candid-perth.webp",
-  "romantic-wedding-couple-garden-perth.webp",
-  "couple-pouring-sand-jar-beach-ceremony-perth.webp",
-  "sisters-park-picnic-family-photography-perth.webp",
-  "mother-daughter-outdoor-portrait-perth.webp",
-  "wedding-cake-cutting-native-flowers-perth.webp",
-  "father-daughter-lifestyle-photography-perth.webp",
-  "bride-groom-kissing-blue-boat-house-perth.webp",
-  "candid-bride-grazing-food-reception-perth.webp",
-  "young-family-portrait-outdoors-perth.webp",
-  "family-portrait-autumn-leaves-outdoor-perth.webp",
-  "bride-groom-kissing-bubbles-wedding-perth.webp",
-  "mother-baby-candid-autumn-flowers-perth.webp",
-
-  "kids-eating-cake-icing-tiger-face-paint-perth.webp",
-  "candid-birthday-girl-eating-cake-messy-face.webp",
-  "family-birthday-cake-celebration-home-perth.webp",
-  "girls-butterfly-face-paint-balloons-party-perth.webp",
-  "champagne-toast-beach-celebration-close-up.webp",
-  "kids-pinata-party-game-action-shot-perth.webp",
-  "romantic-couple-close-up-beach-sunset-perth.webp",
-  "childrens-party-entertainer-giant-bubbles-perth.webp",
-  "toddler-making-giant-bubbles-with-entertainer.webp",
+  "playful-girl-veil-portrait.webp",
+  "kids-birthday-party-cupcake.webp",
+  "family-beach-sunset-toast.webp",
+  "romantic-couple-beach-portrait.webp",
+  "playful-family-beach-sunset.webp",
+  "pink-birthday-cake-detail.webp",
+  "child-painting-activity-party.webp",
+  "girl-playing-balloons-pink.webp",
+  "family-affection-sunset-portrait.webp",
+  "child-reaching-cupcake-stand.webp",
+  "baby-kissing-father-cheek-candid.webp",
+  "mother-daughter-park-picnic.webp",
+  "family-birthday-cake-celebration.webp",
+  "bride-adjusting-groom-bowtie-wedding.webp",
+  "kids-party-giant-bubbles-entertainment.webp",
+  "wedding-guest-canapes-candid.webp",
+  "girl-rocking-horse-birthday-party.webp",
+  "babies-picnic-blanket-playdate.webp",
+  "emotional-wedding-guest-hug.webp",
+  "father-daughter-relaxed-outdoor-portrait.webp",
+  "wedding-couple-kissing-blue-background.webp",
+  "wedding-cake-cutting-ceremony.webp",
+  "groom-lifting-bridal-veil-moment.webp",
+  "artistic-bride-portrait-veil-flowers.webp",
+  "candid-wedding-couple-laughing-green-wall.webp",
+  "family-portrait-orchard-autumn-leaves.webp",
+  "cute-baby-peeking-car-window.webp",
+  "mother-baby-portrait-autumn-decor.webp",
+  "baby-playing-piano-outdoor-portrait.webp",
+  "family-portrait-autumn-floral-arch.webp",
+  "group-female-friends-city-skyline.webp",
+  "laughing-women-garden-city-view.webp",
+  "friends-bench-river-view-sunset.webp",
+  "lifestyle-portrait-women-bench.webp",
+  "wedding-couple-kiss-bubbles.webp",
+  "beach-vow-renewal-ceremony.webp",
 ];
 
 const portraitFiles = [
-  "female-chef-professional-headshot-perth.webp",
-  "cultural-performer-child-portrait-gold-costume.webp",
-  "hospitality-staff-portrait-black-uniform-perth.webp",
-  "male-chef-studio-portrait-black-apron-perth.webp",
-  "black-and-white-actor-headshot-moody-perth.webp",
-  "corporate-business-portrait-man-laptop-perth.webp",
-  "candid-child-portrait-messy-eating-cake.webp",
-  "male-model-studio-portrait-grey-background-perth.webp",
-  "sports-portrait-tennis-player-wilson-bag-perth.webp",
+  "candid-kids-event-portrait.webp",
+  "lifestyle-couple-kitchen-photography.webp",
+  "natural-light-candid-portrait.webp",
+  "creative-male-studio-headshot.webp",
+  "female-chef-staff-portrait.webp",
+  "professional-chef-portrait-studio.webp",
+  "male-chef-headshot-dark-background.webp",
+  "hospitality-staff-photography-female.webp",
+  "kids-birthday-party-photography.webp",
+  "close-up-studio-portrait-duo.webp",
+  "male-tennis-player-studio-portrait.webp",
+  "casual-male-studio-portrait-jeans.webp",
+  "athlete-tennis-portrait-white-kit.webp",
+  "black-and-white-moody-male-portrait.webp",
+  "musician-portrait-acoustic-guitar.webp",
+  "serious-male-headshot-black-shirt.webp",
+  "lifestyle-kitchen-couple-cooking.webp",
+  "female-photographer-side-profile-autumn.webp",
+  "creative-outdoor-portrait-photographer.webp",
+  "photographer-aiming-camera-portrait.webp",
+  "lifestyle-kitchen-cooking-oats.webp",
+  "tech-professional-male-laptop.webp",
+  "casual-business-meeting-lifestyle.webp",
+  "work-from-home-woman-window.webp",
+  "candid-man-eating-cake-outdoors.webp",
+  "corporate-headshot-female-purple-shirt.webp",
+  "lifestyle-portrait-author-book.webp",
+  "healthy-food-prep-action-shot.webp",
+  "smiling-woman-cooking-kitchen.webp",
+  "professional-corporate-headshot-woman-perth.webp",
 ];
 
 const productFiles = [
-  "premium-red-gift-box-dark-red-background.webp",
-  "black-luxury-boxes-textured-background.webp",
-  "gourmet-gift-hamper-open-black-box.webp",
-  "premium-gift-hamper-display.webp",
-  "gift-hamper-box-with-logo.webp",
-  "white-gift-hamper-box-open-styled.webp",
-  "premium-whisky-display-open-box.webp",
-  "red-gift-box-clean-background.webp",
-  "red-luxe-gift-box-opened.webp",
-  "roam-distillery-box-detail-shot.webp",
-  "simple-white-closed-box-matte-lift-lid.webp",
-  "closed-rose-gold-rectangular-box-metallic.webp",
-  "white-gift-box-minimal-studio-shot.webp",
-  "white-gift-box-open-lid-studio.webp",
-  "eco-friendly-packaging-boxes-natural-look.webp",
-  "whisky-in-open-display-box.webp",
-  "open-green-magnetic-box-matte-two-compartments.webp",
-  "closed-white-rectangular-gift-box-matte.webp",
-  "printed-box-inner-lid-flatlay.webp",
-  "red-gift-box-closed-flat-lid.webp",
-  "kraft-box-tab-closure-detail.webp",
-  "natural-packaging-box-lid-message-closeup.webp",
-  "open-rose-gold-magnetic-box-metallic-two-compartments.webp",
-  "minimalist-red-box-product-shot.webp",
-  "open-white-magnetic-box-matte-two-compartments.webp",
-  "whipper-snapper-distillery-box-display.webp",
-  "closed-green-rectangular-box-matte.webp",
-
-  "closed-black-rectangular-box-matte-clean-minimal.webp",
-  "red-gift-box-studio-lighting.webp",
-  "roam-whisky-box-open-front.webp",
-  "black-whiskey-gift-boxes-whipper-snapper.webp",
-  "red-gift-box-open-studio-shot.webp",
+  "italian-wine-bottle-product-photography.webp",
+  "fresh-scallops-seafood-styling-perth.webp",
+  "beer-pouring-action-shot-commercial.webp",
+  "gourmet-pizza-red-wine-pairing.webp",
+  "raw-fish-fillet-food-styling-ingredients.webp",
+  "sparkling-cocktail-pour-motion-capture.webp",
+  "creative-wine-bottle-group-lighting.webp",
+  "rustic-wine-cheese-product-styling.webp",
+  "flatlay-wine-bottle-glass-blue.webp",
+  "creative-hand-holding-wine-bottle-concept.webp",
+  "cullen-wines-cabernet-merlot-label.webp",
+  "frangelico-affogato-cocktail-styling.webp",
+  "moss-wood-cabernet-sauvignon-premium.webp",
+  "pouring-salad-dressing-action-shot.webp",
+  "zesting-lemon-baking-lifestyle.webp",
+  "aquilani-white-wine-bottle-glass.webp",
+  "tossing-fresh-salad-wooden-utensils.webp",
+  "eco-packaging-branding-open-box.webp",
+  "sustainable-shipping-box-design-detail.webp",
+  "cardboard-packaging-tear-strip-detail.webp",
 ];
 
 const foodAlts: Record<string, string> = {
@@ -377,260 +395,285 @@ const foodAlts: Record<string, string> = {
     "Tiramisu cups dusted with cocoa and coffee beans, cafe lifestyle photography for Perth coffee shop website and social media.",
 };
 const eventAlts: Record<string, string> = {
-  "young-girl-traditional-dress-perth-cultural-event.webp":
-    "Portrait of a young girl wearing a traditional white and red floral dress at an outdoor cultural event in Perth.",
-  "formal-gala-dinner-candid-guests-perth.webp":
-    "Candid photography of guests laughing at a formal gala dinner in a Perth hotel venue.",
-  "champagne-toast-celebration-party-perth.webp":
-    "A woman in formal attire holding a glass of champagne and laughing at a lively Perth celebration event.",
-  "event-bar-service-cocktails-perth.webp":
-    "Bartender serving drinks to a guest at an elegant indoor function bar in Perth.",
-  "outdoor-event-guests-hugging-perth.webp":
-    "Two guests sharing an emotional hug and congratulating each other at an outdoor Perth event.",
-  "senior-couple-dancing-gala-night-perth.webp":
-    "An older couple dancing joyfully in formal sequins and suits at a Perth gala night function.",
-  "large-ballroom-corporate-dinner-venue-perth.webp":
-    "Wide-angle shot of a large ballroom setup for a corporate dinner with round tables and stage entertainment in Perth.",
-  "live-band-entertainment-dance-floor-perth.webp":
-    "Guests dancing in front of a live band performing on stage with purple party lighting at a Perth event.",
-  "child-performer-gold-costume-cultural-festival.webp":
-    "Close-up of a child performer wearing a yellow sequin costume and gold headpiece at a Perth cultural festival.",
-  "energetic-crowded-dance-floor-party-perth.webp":
-    "A crowded, high-energy dance floor with guests raising their hands and celebrating at a Perth party.",
-  "audience-watching-outdoor-cultural-performance-perth.webp":
-    "A young girl sitting on a stool watching a cultural dance troupe perform on an outdoor stage at a Perth park event.",
-  "christmas-event-catering-dessert-station-perth.webp":
-    "A festive Christmas dessert station featuring reindeer decorations and gourmet treats at a Perth corporate event.",
-  "gala-dinner-ballroom-setup-black-gold-perth.webp":
-    "An elegant ballroom venue in Perth set up for a gala dinner with black chair covers and gold sashes.",
-  "child-performer-traditional-costume-portrait-perth.webp":
-    "A close-up portrait of a young girl in traditional cultural dress looking through pillars at a Perth outdoor festival.",
-  "children-cultural-dance-green-dress-perth.webp":
-    "Two young dancers wearing green traditional dresses performing a choreographed routine on stools at a Perth event.",
-  "traditional-blue-costume-dance-performance-perth.webp":
-    "Three young dancers in vibrant blue traditional costumes performing an expressive cultural dance outdoors in Perth.",
-  "group-kids-cultural-performance-costumes-perth.webp":
-    "A group of young girls in matching red and green traditional costumes posing during a cultural performance in Perth.",
-  "boys-modern-dance-performance-suits-sunglasses-perth.webp":
-    "Three young boys wearing black suits and sunglasses performing a cool modern dance routine at a Perth community event.",
-  "close-up-cultural-dancers-makeup-costume-perth.webp":
-    "A detailed close-up of young performers in traditional dress with stage makeup during a Perth cultural festival.",
-  "cultural-dance-troupe-procession-outdoors-perth.webp":
-    "A line of young dancers in traditional red and green robes walking in profile across an outdoor stage in Perth.",
-  "young-girl-fan-dance-performance-outdoors-perth.webp":
-    "Young dancer performing a traditional fan dance wearing a blue top and yellow pants at an outdoor Perth festival.",
-  "traditional-fan-dancer-pose-perth-park.webp":
-    "A young performer posing with a hand fan overhead during a cultural dance routine at a park in Perth.",
-  "child-dancer-yellow-sequin-costume-perth.webp":
-    "A young child performer wearing a bright yellow sequin costume and gold headpiece standing on stage at a Perth event.",
-  "elegant-traditional-dance-pose-pink-costume-perth.webp":
-    "A young dancer in a pink traditional outfit performing elegant hand movements during a cultural show in Perth.",
-  "acrobatic-dance-performance-flexibility-perth.webp":
-    "A young dancer demonstrating flexibility with an acrobatic floor pose in a pink costume at a Perth cultural event.",
-  "young-performers-resting-candid-moment-perth.webp":
-    "A group of young dancers in colorful costumes sitting together and chatting backstage at an outdoor Perth event.",
-  "child-performers-break-time-snacks-perth.webp":
-    "Two young performers in yellow costumes taking a break and eating ice blocks at a Perth community festival.",
-  "blue-white-fan-dance-performance-perth.webp":
-    "A dancer performing with a large blue and white fan wearing a traditional flowing dress on a Perth outdoor stage.",
-  "live-music-duo-keyboard-performance-perth.webp":
-    "A musical duo preparing for a live keyboard and vocal performance at an outdoor venue in Perth.",
-  "cute-performer-yellow-dress-candid-perth.webp":
-    "Candid close-up of a child dancer in a yellow sequin dress enjoying a treat during a break at a Perth event.",
-  "young-performer-traditional-blue-white-costume-perth.webp":
-    "Profile portrait of a young female performer wearing a traditional white and blue embroidered costume at a Perth event.",
-  "energetic-fan-dance-performance-red-ribbons-perth.webp":
-    "Dancers in traditional white and blue costumes performing an energetic routine with red fans at a Perth event.",
-  "young-pianist-performance-outdoor-event-perth.webp":
-    "Young girl in a traditional floral dress playing the keyboard at an outdoor music event in Perth.",
-  "folk-dance-troupe-green-costumes-perth.webp":
-    "Young dancers wearing green and yellow outfits performing with circular props on an outdoor stage in Perth.",
-  "child-portrait-gold-headpiece-yellow-costume-perth.webp":
-    "Close-up profile of a young girl wearing a yellow costume and intricate gold headpiece at a Perth cultural celebration.",
-  "candid-children-laughing-festival-balloon-stall-perth.webp":
-    "Two young girls laughing and chatting next to a balloon twisting stall at a Perth community festival.",
-  "traditional-umbrella-dance-group-pose-perth.webp":
-    "A group of young performers in pastel traditional dresses posing with white paper umbrellas at a Perth cultural show.",
-  "solo-dancer-green-dress-outdoor-stage-perth.webp":
-    "A solo dancer in a green and yellow gradient dress performing for a seated audience at an outdoor Perth festival.",
-  "young-umbrella-dancer-face-paint-portrait-perth.webp":
-    "Portrait of a smiling young dancer with face paint holding a decorative umbrella at a Perth cultural festival.",
-  "cultural-ribbon-dance-group-performance-perth.webp":
-    "A group of young dancers in white and blue traditional costumes performing a ribbon dance on an outdoor stage in Perth.",
+  "dramatic-cultural-dance-performance-perth.webp":
+    "A dancer in a dramatic black costume and wide-brimmed hat bathed in red stage lighting during a Perth cultural event.",
+  "chinese-fan-dance-performance-kids.webp":
+    "Young girl performing a traditional Chinese fan dance in a purple costume on stage.",
+  "traditional-duo-dance-performance.webp":
+    "Two young dancers in vibrant orange and teal traditional costumes performing a synchronized routine.",
+  "group-cultural-dance-festival-perth.webp":
+    "A group of five dancers in matching traditional attire performing at a cultural festival in Perth.",
+  "casual-business-consultation-lifestyle.webp":
+    "Two professional women having a casual business consultation with a laptop in a modern living room setting.",
+  "kids-traditional-tambourine-dance.webp":
+    "Child performer in an elaborate gold and white costume holding a tambourine during a stage performance.",
+  "solo-cultural-dancer-portrait.webp":
+    "Solo portrait of a young dancer in traditional dress striking an expressive pose on stage.",
+  "lion-dance-gala-event-guest.webp":
+    "A guest smiling and interacting with a traditional yellow Chinese Lion Dance performer at a corporate gala event.",
+  "atmospheric-stage-lighting-silhouette.webp":
+    "Artistic silhouettes of dancers with red illuminated hats performing on a dark stage with Chinese calligraphy background.",
+  "lifestyle-branding-team-meeting.webp":
+    "A candid lifestyle shot of a team meeting in a bright interior, featuring product placement and natural laughter.",
+  "formal-gala-couple-dancing-perth.webp":
+    "A couple in formal attire dancing closely during a black-tie gala event in Perth.",
+  "candid-lifestyle-couple-eating-cake.webp":
+    "A fun, candid moment of a couple eating cake outdoors, capturing natural expressions and laughter.",
+  "fresh-salad-serving-food-styling.webp":
+    "Close-up detail shot of serving fresh green salad with wooden utensils, showcasing food styling textures.",
+  "lifestyle-branding-women-sharing-food.webp":
+    "Two women smiling and sharing a slice of cake during a sunny outdoor lifestyle branding shoot.",
+  "child-cultural-performer-portrait-yellow.webp":
+    "A close-up portrait of a young performer wearing a traditional yellow sequined costume and gold headpiece.",
+  "new-years-eve-gala-guests-perth.webp":
+    "Two happy guests posing and waving at a New Year's Eve corporate function, one wearing a 2023 headband.",
+  "candid-party-laughter-champagne.webp":
+    "A candid capture of a woman laughing joyfully while holding a glass of champagne at a celebration.",
+  "man-smiling-lifestyle-portrait.webp":
+    "A smiling man interacting with friends and receiving food at a casual outdoor social gathering.",
+  "woman-slicing-cake-food-lifestyle.webp":
+    "A woman standing at a table slicing a glazed loaf cake, suitable for food product photography.",
+  "outdoor-group-lunch-lifestyle-perth.webp":
+    "A group of friends gathering around a table for lunch outdoors, featuring natural interaction and food placement.",
+  "formal-gala-dinner-service-perth.webp":
+    "Waitstaff serving a plated meal to a guest in formal evening wear at a corporate gala dinner.",
+  "corporate-event-photobooth-fun.webp":
+    "Two women wearing sequins and hats holding funny props and smiling at a corporate event photobooth.",
+  "outdoor-cultural-fan-dance-performance.webp":
+    "A dancer performing with a blue gradient fan against a clear sky, wearing traditional Chinese attire.",
+  "duxton-hotel-new-years-eve-gala-perth.webp":
+    "Guests seated at round tables during the Duxton New Year Eve Gala in Perth with a projection screen in the background.",
+  "young-cultural-dancer-yellow-fan.webp":
+    "Young girl holding a yellow fan and looking back while performing a traditional dance outdoors.",
+  "traditional-hanfu-child-performance.webp":
+    "A young child wearing a green and red traditional Hanfu dress performing on an outdoor stage.",
+  "cultural-dance-troupe-red-ribbons.webp":
+    "A group of young dancers in white and blue costumes performing a synchronized routine with red ribbons.",
+  "live-band-party-celebration-guest.webp":
+    "Rear view of a party guest wearing a gold hat recording a live band performance on her phone.",
+  "corporate-event-bar-service-setup.webp":
+    "A bartender preparing drinks at a stocked bar station during a formal event at a hotel venue.",
+  "christmas-event-catering-dessert-buffet.webp":
+    "Festive dessert buffet station featuring reindeer decorations and carrot-shaped pastries for a Christmas event.",
+  "kids-frozen-theme-stage-performance.webp":
+    "Young girls in light-up princess costumes performing a Frozen-themed dance on stage with a castle background.",
+  "office-christmas-party-fun-candid.webp":
+    "A bearded man wearing festive novelty glasses and a paper crown enjoying a corporate Christmas lunch.",
+  "formal-gala-guest-red-dress-champagne.webp":
+    "A woman in an elegant red dress holding a glass of champagne and smiling at a partner during a formal ball.",
+  "outdoor-group-dance-performance-teal.webp":
+    "Four young dancers in matching teal traditional costumes jumping in unison during an outdoor performance.",
+  "corporate-team-lunch-wine-dining.webp":
+    "Professional women enjoying red wine and laughter during a corporate team lunch at a Perth restaurant.",
+  "candid-event-guest-laughing-natural.webp":
+    "A young man in a white shirt laughing naturally at a dinner table with Christmas decorations in the foreground.",
+  "corporate-event-buffet-catering-service.webp":
+    "Guests in formal attire serving themselves fresh food from a high-end buffet catering station.",
+  "group-toast-celebration-drinks-perth.webp":
+    "A group of older friends or colleagues raising their glasses for a beer toast at a celebratory lunch.",
+  "christmas-function-host-speaker.webp":
+    "A woman wearing a festive Christmas headband and black dress holding a clutch or microphone at an event.",
+  "casual-dining-christmas-decor-couple.webp":
+    "A young couple chatting at a restaurant table with red Christmas bauble decorations in the background.",
+  "kids-traditional-group-dance-blue.webp":
+    "Three young dancers in matching light blue traditional Chinese costumes performing a synchronized stage routine.",
+  "live-cover-band-party-perth.webp":
+    "A female vocalist performing with a live band under purple stage lights while the crowd dances at a Perth event.",
+  "keyboardist-singer-stage-lighting.webp":
+    "A male musician playing keyboards and singing, wearing sunglasses under dramatic red and blue stage lighting.",
+  "solo-fan-dance-digital-backdrop.webp":
+    "A young girl in a red and black outfit performing a traditional fan dance in front of a digital mountain landscape screen.",
+  "corporate-gala-guest-duxton-hotel.webp":
+    'A guest smiling at a dinner table with the "2024 Duxton New Year Eve Gala" projection screen visible in the background.',
+  "senior-couple-dancing-formal-gala.webp":
+    "An elegant woman in a silver sequin dress dancing joyfully with a partner at a formal black-tie event.",
+  "professional-bartender-service-event.webp":
+    "A professional bartender scooping ice at a stocked mobile bar station during a corporate function.",
+  "female-vocalist-performance-close-up.webp":
+    "Profile view of a female singer performing passionately into a microphone with pink stage lighting effects.",
 };
 const familyAlts: Record<string, string> = {
-  "family-beach-lookout-sunset-portrait-perth.webp":
-    "A family standing on a wooden beach lookout deck watching the ocean view at sunset in Perth.",
-  "couple-heart-hands-sunset-silhouette-perth.webp":
-    "A romantic couple making a heart shape with their hands around the setting sun on a Perth beach.",
-  "woman-profile-golden-hour-beach-perth.webp":
-    "Profile portrait of a woman glowing in the golden hour light while looking out at the ocean on a Perth beach.",
-  "couple-champagne-celebration-sunset-beach-perth.webp":
-    "A stylish couple holding a champagne glass and gazing affectionately at each other during a Perth beach sunset.",
-  "group-champagne-toast-beach-party-perth.webp":
-    "A group of friends and family clinking champagne glasses together during a beach celebration in Perth.",
-  "fun-family-poses-sunset-beach-perth.webp":
-    "A happy family striking silly and fun poses on the sand during a sunset photography session in Perth.",
-  "mother-kissing-daughter-beach-deck-perth.webp":
-    "A mother gently kissing her daughter on the forehead while standing on a wooden beach deck at sunset.",
-  "romantic-couple-close-up-beach-sunset-perth.webp":
-    "Close-up portrait of a smiling woman looking into her partner's eyes during a sunset beach shoot in Perth.",
-  "group-beach-portrait-golden-hour-perth.webp":
-    "A wide group shot of family and friends standing on the sand and raising a toast during a Perth sunset.",
-  "couple-silhouette-flowing-dress-sunset-perth.webp":
-    "An artistic silhouette of a couple standing on rocks with the woman's dress flowing in the wind against a Perth sunset.",
-  "bridal-portrait-veil-bougainvillea-perth.webp":
-    "Elegant bridal portrait of a bride in white veil and gown amidst bougainvillea flowers in a Perth garden setting.",
-  "groom-lifting-bride-veil-candid-perth.webp":
-    "Candid moment of a groom lifting his bride's veil during their wedding ceremony in Perth.",
-  "romantic-wedding-couple-garden-perth.webp":
-    "A newlywed couple sharing a romantic embrace in a beautiful garden setting during their Perth wedding day.",
-  "sisters-park-picnic-family-photography-perth.webp":
-    "Two sisters enjoying a picnic together on a sunny afternoon in a Perth park.",
-  "mother-daughter-outdoor-portrait-perth.webp":
-    "Heartwarming portrait of a mother and daughter spending quality time together outdoors in Perth.",
-  "wedding-cake-cutting-native-flowers-perth.webp":
-    "A couple cutting their wedding cake decorated with native Australian flowers at their Perth wedding reception.",
-  "father-daughter-lifestyle-photography-perth.webp":
-    "A father and daughter sharing a special moment together during a lifestyle photography session in Perth.",
-  "bride-groom-kissing-blue-boat-house-perth.webp":
-    "Romantic kiss between bride and groom in front of the iconic Blue Boat House on Perth's Matilda Bay.",
-  "candid-bride-grazing-food-reception-perth.webp":
-    "Candid moment of a bride enjoying appetizers at her wedding reception in Perth.",
-  "young-family-portrait-outdoors-perth.webp":
-    "A young family posing together outdoors during a professional family photography session in Perth.",
-  "family-portrait-autumn-leaves-outdoor-perth.webp":
-    "Beautiful family portrait surrounded by colorful autumn leaves during an outdoor photoshoot in Perth.",
-  "bride-groom-kissing-bubbles-wedding-perth.webp":
-    "Romantic wedding moment with bride and groom kissing surrounded by floating bubbles at their Perth celebration.",
-  "mother-baby-candid-autumn-flowers-perth.webp":
-    "Candid lifestyle shot of a mother with her baby surrounded by autumn flowers in Perth.",
-  "toddler-painting-activity-yellow-smock.webp":
-    "A creative toddler engaged in painting activities while wearing a bright yellow art smock.",
-  "three-generations-women-perth-skyline-view.webp":
-    "Three generations of women - grandmother, mother, and daughter - with Perth city skyline in the background.",
-  "baby-playing-vintage-piano-outdoors-perth.webp":
-    "Adorable baby exploring a vintage piano during an outdoor family photography session in Perth.",
-  "mother-daughter-portrait-south-perth-foreshore.webp":
-    "Beautiful mother and daughter portrait taken at the scenic South Perth foreshore during golden hour.",
-  "playful-girl-pink-dress-funny-face.webp":
-    "A happy little girl in a pink dress making a funny face during her portrait photography session.",
-  "daughters-kissing-mother-cheek-perth-skyline.webp":
-    "Two loving daughters giving their mother kisses on the cheek with Perth skyline in the background.",
-  "women-family-portrait-sunset-river-perth.webp":
-    "Multi-generational family portrait of women during golden hour sunset by the river in Perth.",
-  "toddler-reaching-cupcakes-birthday-party-perth.webp":
-    "Excited toddler reaching for colorful cupcakes at a birthday party celebration in Perth.",
-  "kids-eating-cake-icing-tiger-face-paint-perth.webp":
-    "Children enjoying birthday cake with tiger face paint at a fun birthday party in Perth.",
-  "candid-birthday-girl-eating-cake-messy-face.webp":
-    "Adorable candid shot of a birthday girl enjoying her cake with icing on her face.",
-  "family-birthday-cake-celebration-home-perth.webp":
-    "Happy family celebrating together around a birthday cake at home in Perth.",
-  "girls-butterfly-face-paint-balloons-party-perth.webp":
-    "Girls with butterfly face paint enjoying balloons at a colorful birthday party in Perth.",
-  "champagne-toast-beach-celebration-close-up.webp":
-    "Close-up of hands clinking champagne glasses during a beach celebration in Perth.",
-  "kids-pinata-party-game-action-shot-perth.webp":
-    "Action shot of kids hitting a piñata during an exciting birthday party game in Perth.",
-  "childrens-party-entertainer-giant-bubbles-perth.webp":
-    "Children's party entertainer fascinating kids with giant bubbles at a celebration in Perth.",
-  "toddler-making-giant-bubbles-with-entertainer.webp":
-    "Toddler learning to make giant bubbles with guidance from a party entertainer in Perth.",
-  "couple-pouring-sand-jar-beach-ceremony-perth.webp":
-    "Close-up detail of a couple's hands pouring sand into a glass jar during a symbolic beach ceremony at sunset in Perth.",
+  "playful-girl-veil-portrait.webp":
+    "Candid portrait of a laughing little girl playing with a white veil over her head.",
+  "kids-birthday-party-cupcake.webp":
+    "Happy child with face paint eating a cupcake at a birthday party.",
+  "family-beach-sunset-toast.webp":
+    "Happy family group standing on the beach at sunset raising glasses for a toast.",
+  "romantic-couple-beach-portrait.webp":
+    "Close-up romantic portrait of a couple looking into each other's eyes at sunset.",
+  "playful-family-beach-sunset.webp":
+    "Fun family photo of parents and child making playful poses on the beach during sunset.",
+  "pink-birthday-cake-detail.webp":
+    "Close-up detail shot of a pink birthday cake with sprinkles and a character topper.",
+  "child-painting-activity-party.webp":
+    "Side profile of a focused little girl with face paint painting on a canvas at a party.",
+  "girl-playing-balloons-pink.webp":
+    "Cute portrait of a little girl in a pink dress playing among white and pink balloons.",
+  "family-affection-sunset-portrait.webp":
+    "Warm family portrait of parents and daughter hugging on the beach with golden sunset light.",
+  "child-reaching-cupcake-stand.webp":
+    "Rear view of a child with face paint reaching for a treat on a tiered cupcake stand.",
+  "baby-kissing-father-cheek-candid.webp":
+    "Adorable candid moment of a baby girl kissing her father on the cheek during a park picnic.",
+  "mother-daughter-park-picnic.webp":
+    "Smiling baby girl sitting on a picnic blanket with her mother in a sunlit park.",
+  "family-birthday-cake-celebration.webp":
+    "Happy family group portrait behind a pink birthday cake and balloon arch.",
+  "bride-adjusting-groom-bowtie-wedding.webp":
+    "Intimate wedding detail shot of a bride adjusting the groom's bowtie outdoors.",
+  "kids-party-giant-bubbles-entertainment.webp":
+    "Child watching an entertainer make giant soap bubbles at an outdoor birthday party.",
+  "wedding-guest-canapes-candid.webp":
+    "Excited wedding guest holding a plate of appetizers and a bouquet during the reception.",
+  "girl-rocking-horse-birthday-party.webp":
+    "Joyful little girl riding a white rocking horse in front of a pink balloon display.",
+  "babies-picnic-blanket-playdate.webp":
+    "Three toddlers sitting together on a patterned picnic blanket during an outdoor playdate.",
+  "emotional-wedding-guest-hug.webp":
+    "Candid emotional photography of a bride hugging a happy guest at the wedding reception.",
+  "father-daughter-relaxed-outdoor-portrait.webp":
+    "Relaxed father lying on a picnic blanket next to his baby daughter looking away from the camera.",
+  "wedding-couple-kissing-blue-background.webp":
+    "Romantic wedding portrait of a groom kissing the bride against a blue wooden building.",
+  "wedding-cake-cutting-ceremony.webp":
+    "Joyful bride and groom cutting a light green wedding cake decorated with native flowers.",
+  "groom-lifting-bridal-veil-moment.webp":
+    "Emotional moment of a groom lifting the bride's veil during the wedding ceremony.",
+  "artistic-bride-portrait-veil-flowers.webp":
+    "Artistic bridal portrait of a woman under a veil standing among white bougainvillea flowers.",
+  "candid-wedding-couple-laughing-green-wall.webp":
+    "Candid photography of a bride and groom laughing together against a textured green wall.",
+  "family-portrait-orchard-autumn-leaves.webp":
+    "Happy family portrait of parents and baby posing in an autumn orchard.",
+  "cute-baby-peeking-car-window.webp":
+    "Adorable baby smiling while leaning out the window of a vintage orange car.",
+  "mother-baby-portrait-autumn-decor.webp":
+    "Mother holding her baby sitting on a ladder decorated with vibrant autumn leaves.",
+  "baby-playing-piano-outdoor-portrait.webp":
+    "Cute baby looking back while playing on a vintage piano outdoors.",
+  "family-portrait-autumn-floral-arch.webp":
+    "Family sitting together in front of a stunning autumn floral arch decoration.",
+  "group-female-friends-city-skyline.webp":
+    "Playful group portrait of three women laughing and kissing cheeks with a city skyline in the background.",
+  "laughing-women-garden-city-view.webp":
+    "Two happy women leaning over a garden hedge laughing together with a city view behind them.",
+  "friends-bench-river-view-sunset.webp":
+    "Rear view of three female friends sitting on a bench looking out at the river and city skyline at sunset.",
+  "lifestyle-portrait-women-bench.webp":
+    "Portrait of three smiling women sitting together on a park bench during golden hour.",
+  "wedding-couple-kiss-bubbles.webp":
+    "Romantic wedding photography of a bride and groom kissing outdoors surrounded by floating bubbles.",
+  "beach-vow-renewal-ceremony.webp":
+    "Candid photography of a couple exchanging vows on the beach during a casual outdoor ceremony.",
 };
 const productAlts: Record<string, string> = {
-  "premium-red-gift-box-dark-red-background.webp":
-    "Luxury red gift box photographed on a dramatic dark red background – product photography in Perth.",
-  "black-luxury-boxes-textured-background.webp":
-    "Luxury black product boxes on neutral textured backdrop – professional product photography in Perth.",
-  "gourmet-gift-hamper-open-black-box.webp":
-    "Open black gift hamper box with champagne, gourmet snacks and premium packaging – Perth product photographer.",
-  "premium-gift-hamper-display.webp":
-    "Premium gift hamper items displayed with champagne bottle and artisan products – high-end product photography Perth.",
-  "gift-hamper-box-with-logo.webp":
-    "Black gift hamper box with gold logo surrounded by curated gourmet items – Perth studio product photography.",
-  "white-gift-hamper-box-open-styled.webp":
-    "Open white gift hamper box styled with champagne, skincare and luxury products – Perth product photography.",
-  "premium-whisky-display-open-box.webp":
-    "Premium whisky bottle positioned inside open ROAM Distillery display box on dark surface – high-end product photography Perth.",
-  "red-gift-box-clean-background.webp":
-    "Glossy red gift box on white background – minimalist studio product photography Perth.",
-  "red-luxe-gift-box-opened.webp":
-    "Luxury red gift box open with lid raised, photographed on white background – Perth product photographer.",
-  "roam-distillery-box-detail-shot.webp":
-    "Close-up detail of ROAM Distillery box texture and gold embossed 'Australian Single Cask Whisky' typography – Perth product photography.",
-  "simple-white-closed-box-matte-lift-lid.webp":
-    "Simple closed white gift box with lift-off lid – clean minimal studio product photography Perth.",
-  "closed-rose-gold-rectangular-box-metallic.webp":
-    "Closed rose gold rectangular gift box with reflective metallic finish – premium product photography Perth.",
-  "white-gift-box-minimal-studio-shot.webp":
-    "Minimalist white gift box on clean white background – premium packaging photography Perth.",
-  "white-gift-box-open-lid-studio.webp":
-    "Open white gift box with upright lid on plain white backdrop – clean studio product photography in Perth.",
-  "eco-friendly-packaging-boxes-natural-look.webp":
-    "Eco-friendly cardboard packaging boxes with printed teal interior and branding – sustainable product photography Perth.",
-  "whisky-in-open-display-box.webp":
-    "Australian whisky bottle showcased inside open ROAM Distillery presentation box – Perth studio product photographer.",
-  "open-green-magnetic-box-matte-two-compartments.webp":
-    "Open green magnetic box with matching interior and two compartments – matte studio product photography Perth.",
-  "closed-white-rectangular-gift-box-matte.webp":
-    "Closed rectangular white gift box with magnetic flap lid – minimalist studio product photography Perth.",
-  "printed-box-inner-lid-flatlay.webp":
-    "Flatlay of teal inner lid showing printed message inside eco-friendly cardboard box – premium packaging photography Perth.",
-  "red-gift-box-closed-flat-lid.webp":
-    "Closed glossy red gift box photographed on clean white background – commercial product photography Perth.",
-  "kraft-box-tab-closure-detail.webp":
-    "Detail shot of kraft cardboard box showing tab closure and construction – packaging product photography in Perth.",
-  "natural-packaging-box-lid-message-closeup.webp":
-    "Close-up of eco packaging box interior with 'Hey, natural looks good on you' printed message – Perth studio product photography.",
-  "open-rose-gold-magnetic-box-metallic-two-compartments.webp":
-    "Open rose gold magnetic box with two compartments and metallic interior – premium studio product photography Perth.",
-  "minimalist-red-box-product-shot.webp":
-    "Minimalist red product box on deep red background with studio lighting – Perth product photographer.",
-  "open-white-magnetic-box-matte-two-compartments.webp":
-    "Open white magnetic box with two compartments and visible divider – matte studio product photography Perth.",
-  "whipper-snapper-distillery-box-display.webp":
-    "Whipper Snapper Distillery premium gift box displayed with multiple black boxes – Perth commercial photography.",
-  "closed-green-rectangular-box-matte.webp":
-    "Closed green rectangular gift box with solid matte finish – clean studio product photography Perth.",
-  "closed-black-rectangular-box-matte-clean-minimal.webp":
-    "Closed black rectangular gift box with matte finish – clean and minimal studio product photography Perth.",
-  "red-gift-box-studio-lighting.webp":
-    "Red gift box with reflection on glossy surface, photographed with cinematic studio lighting in Perth.",
-  "roam-whisky-box-open-front.webp":
-    "ROAM Distillery Australian Single Cask Whisky displayed in open black presentation box – luxury product photography Perth.",
-  "black-whiskey-gift-boxes-whipper-snapper.webp":
-    "Black Whipper Snapper Distillery gift boxes arranged against textured brown background – product photography Perth.",
-  "red-gift-box-open-studio-shot.webp":
-    "Open red presentation box styled on white backdrop – premium packaging product photography Perth.",
+  "italian-wine-bottle-product-photography.webp":
+    "Two bottles of Aquilani Italian wine styled with cheese and wine glasses on a dark elegant background.",
+  "fresh-scallops-seafood-styling-perth.webp":
+    "Top-down view of fresh scallops in shells on ice with lemon slices, showcasing fresh seafood styling.",
+  "beer-pouring-action-shot-commercial.webp":
+    "High-speed action shot of Birra Moretti beer being poured into a glass with perfect foam head against black.",
+  "gourmet-pizza-red-wine-pairing.webp":
+    "A commercial shot of a gourmet pizza paired with a bottle of Poggio Anima red wine and a filled glass.",
+  "raw-fish-fillet-food-styling-ingredients.webp":
+    "Minimalist food styling of a raw white fish fillet with lemon slices and rosemary on a textured stone surface.",
+  "sparkling-cocktail-pour-motion-capture.webp":
+    "A dynamic motion capture of sparkling wine being poured into a cocktail glass with lemon garnish.",
+  "creative-wine-bottle-group-lighting.webp":
+    "Three bottles of Poggio Anima wine arranged with dramatic warm backlighting for a premium commercial look.",
+  "rustic-wine-cheese-product-styling.webp":
+    "Rustic product styling featuring red wine bottles, vintage books, and a cheese block on a pink surface.",
+  "flatlay-wine-bottle-glass-blue.webp":
+    "A bright, modern flatlay of a red wine bottle and glass on a textured blue background.",
+  "creative-hand-holding-wine-bottle-concept.webp":
+    "An artistic concept shot of a hand holding a wine bottle and glass upside down against a white wall with shadows.",
+  "cullen-wines-cabernet-merlot-label.webp":
+    "Close-up of hands holding a bottle of Cullen Wines Cabernet Merlot, highlighting the artistic label design.",
+  "frangelico-affogato-cocktail-styling.webp":
+    "A styled Frangelico bottle behind a crystal coupe glass filled with espresso and ice cream (affogato).",
+  "moss-wood-cabernet-sauvignon-premium.webp":
+    "A bottle of Moss Wood Ribbon Vale Cabernet Sauvignon lying on its side next to a glass of red wine.",
+  "pouring-salad-dressing-action-shot.webp":
+    "A hand pouring golden dressing from a glass bottle onto a fresh green salad in a wooden bowl.",
+  "zesting-lemon-baking-lifestyle.webp":
+    "Close-up action shot of hands zesting a fresh lemon over a glazed loaf cake, capturing fine culinary details.",
+  "aquilani-white-wine-bottle-glass.webp":
+    "A bottle of Aquilani Pinot Grigio lying on a black surface next to a glass of white wine with reflections.",
+  "tossing-fresh-salad-wooden-utensils.webp":
+    "Hands using wooden salad servers to toss a fresh rocket and pumpkin salad in a rustic wooden bowl.",
+  "eco-packaging-branding-open-box.webp":
+    'Top-down view of an open "One Fine Secret" branding box showing teal interior and "Clean Beauty" text.',
+  "sustainable-shipping-box-design-detail.webp":
+    'Close-up of a cardboard shipping box with "Hey, natural looks good on you" branding on the inside flap.',
+  "cardboard-packaging-tear-strip-detail.webp":
+    "Macro detail shot of a cardboard packaging box featuring an easy-open tear strip mechanism.",
 };
 const portraitAlts: Record<string, string> = {
-  "female-chef-professional-headshot-perth.webp":
-    "Studio portrait of a smiling female chef wearing a white uniform and green apron against a black background.",
-  "cultural-performer-child-portrait-gold-costume.webp":
-    "A portrait of a young girl with a serious expression wearing a yellow sequin costume and gold headpiece.",
-  "hospitality-staff-portrait-black-uniform-perth.webp":
-    "Professional headshot of a female hospitality worker in a black chef's uniform with red piping posing with crossed arms.",
-  "male-chef-studio-portrait-black-apron-perth.webp":
-    "A smiling male chef wearing a white shirt and black apron posing confidently for a professional profile photo.",
-  "black-and-white-actor-headshot-moody-perth.webp":
-    "Artistic black and white portrait of a bearded man in a black shirt looking intensely at the camera.",
-  "corporate-business-portrait-man-laptop-perth.webp":
-    "Professional corporate headshot of a man in a grey sweater holding a laptop against a white background.",
-  "candid-child-portrait-messy-eating-cake.webp":
-    "A candid and funny portrait of a young girl with face paint laughing while eating cake with her hands.",
-  "male-model-studio-portrait-grey-background-perth.webp":
-    "A classic studio portrait of a man with a beard wearing a black button-up shirt against a grey background.",
-  "sports-portrait-tennis-player-wilson-bag-perth.webp":
-    "A sports portrait of a male tennis player carrying a Wilson equipment bag over his shoulder.",
+  "candid-kids-event-portrait.webp":
+    "Playful candid portrait of a young girl in a pink dress sticking her tongue out at a party.",
+  "lifestyle-couple-kitchen-photography.webp":
+    "Lifestyle photography of a smiling couple looking at each other in a bright kitchen with fresh ingredients.",
+  "natural-light-candid-portrait.webp":
+    "Two women sitting at a table laughing together in a natural light lifestyle portrait.",
+  "creative-male-studio-headshot.webp":
+    "Professional studio headshot of a young man with a mustache smiling against a black background.",
+  "female-chef-staff-portrait.webp":
+    "Professional staff portrait of a female chef in a black uniform with arms crossed.",
+  "professional-chef-portrait-studio.webp":
+    "Studio portrait of a smiling male chef in a white uniform and black apron.",
+  "male-chef-headshot-dark-background.webp":
+    "Professional headshot of a bearded chef in uniform looking confident against a dark background.",
+  "hospitality-staff-photography-female.webp":
+    "Smiling female hospitality staff member in a white shirt and green apron, studio lighting.",
+  "kids-birthday-party-photography.webp":
+    "Candid event photography of a child with face paint enjoying cake at a birthday party.",
+  "close-up-studio-portrait-duo.webp":
+    "Warm, close-up studio portrait of two women smiling with heads together.",
+  "male-tennis-player-studio-portrait.webp":
+    "Studio portrait of a male tennis player looking over his shoulder carrying a Wilson gear bag.",
+  "casual-male-studio-portrait-jeans.webp":
+    "Casual studio portrait of a smiling man in a white long-sleeve shirt and blue jeans.",
+  "athlete-tennis-portrait-white-kit.webp":
+    "Professional sports portrait of a tennis player in white kit holding a racket ready to play.",
+  "black-and-white-moody-male-portrait.webp":
+    "Black and white moody portrait of a bearded man with hand on chin looking serious.",
+  "musician-portrait-acoustic-guitar.webp":
+    "Creative studio portrait of a musician resting his chin on an acoustic guitar.",
+  "serious-male-headshot-black-shirt.webp":
+    "Professional studio headshot of a man in a black shirt with a neutral expression.",
+  "lifestyle-kitchen-couple-cooking.webp":
+    "Lifestyle photography of a man cutting fruit in a modern kitchen while chatting with a woman.",
+  "female-photographer-side-profile-autumn.webp":
+    "Side profile of a female photographer taking a picture outdoors with autumn foliage background.",
+  "creative-outdoor-portrait-photographer.webp":
+    "Outdoor portrait of a smiling woman holding a camera on her shoulder against autumn trees.",
+  "photographer-aiming-camera-portrait.webp":
+    "Engaging portrait of a female photographer aiming her camera lens directly at the viewer.",
+  "lifestyle-kitchen-cooking-oats.webp":
+    "Lifestyle photography of a woman pouring oats into a pot while cooking breakfast in a modern kitchen.",
+  "tech-professional-male-laptop.webp":
+    "Studio portrait of a bald man in a grey sweater holding a laptop, suitable for web developer branding.",
+  "casual-business-meeting-lifestyle.webp":
+    "Candid lifestyle shot of a woman using a laptop during a casual meeting on a sofa.",
+  "work-from-home-woman-window.webp":
+    "Woman sitting cross-legged on a window seat working on a laptop, illustrating a remote work lifestyle.",
+  "candid-man-eating-cake-outdoors.webp":
+    "Candid portrait of a tattooed man laughing while eating cake in an outdoor setting.",
+  "corporate-headshot-female-purple-shirt.webp":
+    "Professional studio headshot of an Asian woman in a purple satin shirt smiling with arms crossed.",
+  "lifestyle-portrait-author-book.webp":
+    "Portrait of a smiling woman sitting in a chair holding the book Plant Trip.",
+  "healthy-food-prep-action-shot.webp":
+    "Action shot of a woman chopping kale and preparing fresh vegetables in a wooden kitchen.",
+  "smiling-woman-cooking-kitchen.webp":
+    "Portrait of a happy woman chopping vegetables in a kitchen looking directly at the camera.",
+  "professional-corporate-headshot-woman-perth.webp":
+    "Professional corporate headshot of a smiling woman with arms crossed against a white background, taken in a Perth photography studio.",
 };
 
 const BATCH_SIZE = 12;
 const initialCategory: PortfolioCategory = "food";
-const THUMB_SIZES =
-  "(max-width: 1024px) 33vw, (max-width: 1490px) 25vw, 372px";
+const THUMB_SIZES = "(max-width: 1024px) 33vw, (max-width: 1490px) 25vw, 372px";
 
 const categoryOptions: Array<{ value: PortfolioCategory; label: string }> = [
   { value: "food", label: "Food" },
@@ -696,8 +739,14 @@ const initialItems = portfolioItemsByCategory[initialCategory].slice(
   0,
   BATCH_SIZE,
 );
-const hasMoreInitial =
-  portfolioItemsByCategory[initialCategory].length > BATCH_SIZE;
+const fileCountsByCategory: Record<PortfolioCategory, number> = {
+  food: foodFiles.length,
+  events: eventFiles.length,
+  family: familyFiles.length,
+  product: productFiles.length,
+  portrait: portraitFiles.length,
+};
+const hasMoreInitial = fileCountsByCategory[initialCategory] > BATCH_SIZE;
 
 const portfolioDataForClient = Object.fromEntries(
   Object.entries(portfolioItemsByCategory).map(([category, items]) => [
@@ -707,6 +756,8 @@ const portfolioDataForClient = Object.fromEntries(
       title: item.title,
       thumbSrc: item.thumbSrc ?? item.src,
       thumbSrcSet: item.thumbSrcSet ?? "",
+      thumbWidth: item.thumbWidth || null,
+      thumbHeight: item.thumbHeight || null,
       fullSrc: item.fullSrc ?? item.src,
       fullWidth: item.fullWidth || null,
       fullHeight: item.fullHeight || null,
@@ -735,11 +786,16 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
         class="portfolio-filter-select"
         aria-label="Filter portfolio by category"
       >
-        {categoryOptions.map((option) => (
-          <option value={option.value} selected={option.value === initialCategory}>
-            {option.label}
-          </option>
-        ))}
+        {
+          categoryOptions.map((option) => (
+            <option
+              value={option.value}
+              selected={option.value === initialCategory}
+            >
+              {option.label}
+            </option>
+          ))
+        }
       </select>
     </div>
     <div
@@ -848,7 +904,7 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
   type="application/json"
   id="portfolio-data"
   set:html={portfolioDataJson}
-></script>
+/>
 
 <script>
   (() => {
@@ -872,14 +928,6 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       console.warn("Portfolio gallery: missing #portfolio-filter-select.");
       return;
     }
-    if (!(loadMoreButton instanceof HTMLButtonElement)) {
-      console.warn("Portfolio gallery: missing #portfolio-load-more.");
-      return;
-    }
-    if (!(dataEl instanceof HTMLScriptElement)) {
-      console.warn("Portfolio gallery: missing #portfolio-data.");
-      return;
-    }
     if (!(lightbox instanceof HTMLElement)) {
       console.warn("Portfolio gallery: missing .portfolio-lightbox.");
       return;
@@ -901,18 +949,23 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       return;
     }
     if (!(prevButton instanceof HTMLButtonElement)) {
-      console.warn("Portfolio gallery: missing .portfolio-lightbox__nav--prev.");
+      console.warn(
+        "Portfolio gallery: missing .portfolio-lightbox__nav--prev.",
+      );
       return;
     }
     if (!(nextButton instanceof HTMLButtonElement)) {
-      console.warn("Portfolio gallery: missing .portfolio-lightbox__nav--next.");
+      console.warn(
+        "Portfolio gallery: missing .portfolio-lightbox__nav--next.",
+      );
       return;
     }
 
     const gridEl = grid;
     const filterSelectEl = filterSelect;
-    const loadMoreButtonEl = loadMoreButton;
-    const dataElScript = dataEl;
+    const loadMoreButtonEl =
+      loadMoreButton instanceof HTMLButtonElement ? loadMoreButton : null;
+    const dataElScript = dataEl instanceof HTMLScriptElement ? dataEl : null;
     const lightboxEl = lightbox;
     const lightboxImageEl = lightboxImage;
     const lightboxTitleEl = lightboxTitle;
@@ -921,47 +974,107 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
     const prevButtonEl = prevButton;
     const nextButtonEl = nextButton;
 
+    const categories = [
+      "food",
+      "events",
+      "family",
+      "product",
+      "portrait",
+    ] as const;
+    type PortfolioCategory = (typeof categories)[number];
     type PortfolioClientItem = {
       alt: string;
       title: string;
       thumbSrc: string;
       thumbSrcSet: string;
+      thumbWidth: number | null;
+      thumbHeight: number | null;
       fullSrc: string;
       fullWidth: number | null;
       fullHeight: number | null;
     };
-    type PortfolioData = Record<string, PortfolioClientItem[]>;
+    type PortfolioData = Record<PortfolioCategory, PortfolioClientItem[]>;
 
-    let portfolioData: PortfolioData = {};
+    function isPortfolioCategory(value: string): value is PortfolioCategory {
+      return (categories as readonly string[]).includes(value);
+    }
+
+    const emptyData = (): PortfolioData => ({
+      food: [],
+      events: [],
+      family: [],
+      product: [],
+      portrait: [],
+    });
+
+    let portfolioData: PortfolioData = emptyData();
+    let hasPortfolioData = false;
     try {
-      const raw = (dataElScript.textContent || "{}").trim();
-      portfolioData = JSON.parse(raw) as PortfolioData;
+      const raw = (dataElScript?.textContent || "{}").trim();
+      const parsed = JSON.parse(raw) as Partial<
+        Record<PortfolioCategory, PortfolioClientItem[]>
+      >;
+      portfolioData = {
+        food: parsed.food ?? [],
+        events: parsed.events ?? [],
+        family: parsed.family ?? [],
+        product: parsed.product ?? [],
+        portrait: parsed.portrait ?? [],
+      };
+      hasPortfolioData = categories.some((c) => portfolioData[c].length > 0);
+      // DEBUG: Log portfolio data
+      console.log("[Portfolio DEBUG] hasPortfolioData:", hasPortfolioData);
+      console.log("[Portfolio DEBUG] Category counts:", {
+        food: portfolioData.food.length,
+        events: portfolioData.events.length,
+        family: portfolioData.family.length,
+        product: portfolioData.product.length,
+        portrait: portfolioData.portrait.length,
+      });
     } catch (e) {
       console.error("Portfolio gallery: failed to parse JSON data.", e);
       console.error(
         "Portfolio gallery: JSON starts with:",
-        (dataElScript.textContent || "").slice(0, 80),
+        (dataElScript?.textContent || "").slice(0, 80),
       );
-      return;
     }
 
     const batchSize = Number(gridEl.dataset.batchSize || "12");
-    let currentCategory = gridEl.dataset.initialCategory || "food";
+    const initialCategoryValue = gridEl.dataset.initialCategory || "food";
+    let currentCategory: PortfolioCategory = isPortfolioCategory(
+      initialCategoryValue,
+    )
+      ? initialCategoryValue
+      : "food";
     const thumbSizes =
       gridEl.dataset.thumbSizes ||
       "(max-width: 1024px) 33vw, (max-width: 1490px) 25vw, 372px";
-    let visibleCount = Math.min(
-      batchSize,
-      (portfolioData[currentCategory] || []).length,
-    );
+    let visibleCount = gridEl.querySelectorAll(".portfolio-item").length;
+    if (!visibleCount) {
+      visibleCount = Math.min(
+        batchSize,
+        (portfolioData[currentCategory] || []).length,
+      );
+    }
 
     let activeIndex = -1;
 
     function updateLoadMoreVisibility() {
+      console.log("[Portfolio DEBUG] updateLoadMoreVisibility called", {
+        hasPortfolioData,
+        loadMoreButtonEl: !!loadMoreButtonEl,
+        currentCategory,
+        visibleCount,
+        totalItems: (portfolioData[currentCategory] || []).length,
+      });
+      if (!hasPortfolioData) return;
+      if (!loadMoreButtonEl) return;
       const total = (portfolioData[currentCategory] || []).length;
       const wrapper = loadMoreButtonEl.closest(".portfolio-load-more-wrapper");
       if (!(wrapper instanceof HTMLElement)) return;
-      wrapper.hidden = visibleCount >= total;
+      const shouldHide = total === 0 || visibleCount >= total;
+      console.log("[Portfolio DEBUG] Load more button hidden:", shouldHide);
+      wrapper.hidden = shouldHide;
     }
 
     function makeItemElement(item: PortfolioClientItem, index: number) {
@@ -987,8 +1100,8 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       img.alt = item.alt;
       img.loading = "lazy";
       img.decoding = "async";
-      img.width = 600;
-      img.height = 600;
+      img.width = item.thumbWidth || 240;
+      img.height = item.thumbHeight || 240;
 
       const caption = document.createElement("figcaption");
       caption.className = "portfolio-item-overlay";
@@ -1050,7 +1163,6 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
 
     function openLightbox(index: number) {
       const items = portfolioData[currentCategory] || [];
-      if (!items.length) return;
       activeIndex = Math.max(0, Math.min(index, items.length - 1));
 
       lightboxEl.classList.add("is-active");
@@ -1083,16 +1195,20 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
     }
 
     filterSelectEl.addEventListener("change", () => {
+      if (!hasPortfolioData) return;
       const nextCategory = filterSelectEl.value;
-      if (!portfolioData[nextCategory]) return;
+      if (!isPortfolioCategory(nextCategory)) return;
       currentCategory = nextCategory;
       closeLightbox();
       renderInitialBatch();
     });
 
-    loadMoreButtonEl.addEventListener("click", () => {
-      appendNextBatch();
-    });
+    if (loadMoreButtonEl) {
+      loadMoreButtonEl.addEventListener("click", () => {
+        if (!hasPortfolioData) return;
+        appendNextBatch();
+      });
+    }
 
     gridEl.addEventListener("click", (event) => {
       const target = event.target instanceof Element ? event.target : null;
@@ -1100,8 +1216,47 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
       if (!link) return;
       event.preventDefault();
       const idx = Number(link.getAttribute("data-index") || "-1");
+      console.log("[Portfolio DEBUG] Click handler:", {
+        idx,
+        currentCategory,
+        hasPortfolioData,
+        itemsLength: (portfolioData[currentCategory] || []).length,
+        itemAtIdx: !!(portfolioData[currentCategory] || [])[idx],
+      });
       if (Number.isNaN(idx) || idx < 0) return;
-      openLightbox(idx);
+      const items = portfolioData[currentCategory] || [];
+      if (hasPortfolioData && items[idx]) {
+        openLightbox(idx);
+        return;
+      }
+
+      const fallbackSrc =
+        link.getAttribute("data-full") || link.getAttribute("href") || "";
+      const fallbackAlt =
+        link.getAttribute("data-alt") ||
+        "Selected portfolio photograph from the gallery";
+      const fallbackTitle = link.getAttribute("data-title") || "";
+      const fallbackFullWidth = Number(
+        link.getAttribute("data-full-width") || "",
+      );
+      const fallbackFullHeight = Number(
+        link.getAttribute("data-full-height") || "",
+      );
+
+      lightboxImageEl.alt = fallbackAlt;
+      if (fallbackSrc) lightboxImageEl.src = fallbackSrc;
+      if (!Number.isNaN(fallbackFullWidth) && fallbackFullWidth > 0) {
+        lightboxImageEl.width = fallbackFullWidth;
+      }
+      if (!Number.isNaN(fallbackFullHeight) && fallbackFullHeight > 0) {
+        lightboxImageEl.height = fallbackFullHeight;
+      }
+      lightboxTitleEl.textContent = fallbackTitle;
+      lightboxIndexEl.textContent = "";
+      lightboxEl.classList.add("is-active");
+      lightboxEl.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeButtonEl.focus();
     });
 
     closeButtonEl.addEventListener("click", () => closeLightbox());
@@ -1320,7 +1475,7 @@ const portfolioDataJson = JSON.stringify(portfolioDataForClient).replace(
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 10000;
   }
 
   .portfolio-lightbox.is-active {
