@@ -1,8 +1,77 @@
+---
+description: SEO & GEO Content Strategy Plan for Amplify Creative Lab - blog expansion, content clusters, and topic pillars
+---
+
 # SEO & GEO Content Strategy Plan
 
 A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.com through strategic blog expansion, content clusters, and topic pillars.
 
-**Last Updated:** 2025-12-13
+**Last Updated:** 2025-12-14
+
+---
+
+## ⚠️ Image Generation Guidelines (CRITICAL)
+
+When generating featured images for blog posts, follow these brand guidelines carefully:
+
+### Brand Identity
+
+| Element | Value | Notes |
+|---------|-------|-------|
+| **Brand Name** | Amplify Creative Lab | Use full name or "Amplify" |
+| **Primary Color** | `#24360f` (Deep Forest Green) | Buttons, primary accents |
+| **Secondary Color** | `#152705` (Dark Green) | Headings |
+| **Accent/Hover** | `#7a6753` (Warm Brown) | Secondary accents |
+| **Background** | `#fef8eb` (Warm Cream) | Light, warm background |
+| **Text Color** | `#544F49` (Warm Grey) | Body text |
+| **Heading Font** | Abril Fatface | Serif, elegant display |
+| **Body Font** | Montserrat | Clean sans-serif |
+
+### Image Generation Rules
+
+**✅ DO include brand elements when:**
+- Creating infographic-style images
+- Designing abstract/conceptual graphics
+- Making illustrations or diagrams
+- Creating images with text overlays
+
+**❌ DO NOT include brand elements when:**
+- Generating realistic photography (food shots, product photos, venues)
+- Creating lifestyle imagery
+- Making images that should appear as genuine photography
+
+### Prompt Guidelines
+
+**For branded/graphic images, include in prompt:**
+```
+"Include subtle branding with deep forest green (#24360f) and warm cream (#fef8eb) color palette. 
+Modern, elegant aesthetic matching Amplify Creative Lab brand identity."
+```
+
+**For realistic photography, include in prompt:**
+```
+"Professional photography style, natural lighting, authentic Perth/Western Australian setting.
+Warm, inviting aesthetic with earthy tones."
+```
+
+### Image Technical Requirements
+
+| Requirement | Specification |
+|-------------|---------------|
+| Output Format | WebP (convert from PNG) |
+| Quality | 85% WebP compression |
+| Location | `src/assets/images/blog/` |
+| Naming | `kebab-case-descriptive-name.webp` |
+| Alt Text | Descriptive, keyword-rich, under 125 characters |
+
+### Conversion Command
+
+After generating images, convert to WebP using:
+```javascript
+// Create convert-images.cjs with sharp conversion
+const sharp = require('sharp');
+await sharp(inputPath).webp({ quality: 85 }).toFile(outputPath);
+```
 
 ---
 
@@ -10,13 +79,13 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 
 | Cluster | Planned | Completed | Status |
 |---------|---------|-----------|--------|
-| Local SEO | 7 | 3 | In Progress |
-| Event Photography | 6 | 2 | In Progress |
-| Food Photography | 5 | 1 | In Progress |
-| Website Development | 4 | 1 | In Progress |
-| Product Photography | 5 | 1 | In Progress |
+| Local SEO | 7 | 4 | In Progress |
+| Event Photography | 6 | 3 | In Progress |
+| Food Photography | 5 | 2 | In Progress |
+| Website Development | 4 | 4 | ✅ Complete |
+| Product Photography | 5 | 5 | ✅ Complete |
 | Suburb-Specific | 8 | 1 | In Progress |
-| **Total** | **35** | **9** | **26% Complete** |
+| **Total** | **35** | **19** | **54% Complete** |
 
 ---
 
@@ -53,7 +122,7 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 
 | # | Title | Status | File |
 |---|-------|--------|------|
-| 1 | Food Photography for Perth Food Trucks & Pop-Ups | ⬜ Pending | |
+| 1 | Food Photography for Perth Food Trucks & Pop-Ups | ✅ **DONE** | `food-photography-perth-food-trucks-popups.mdx` |
 | 2 | Wine & Beverage Photography for Swan Valley Wineries | ⬜ Pending | |
 | 3 | Dark & Moody Food Photography for Perth Bars | ⬜ Pending | |
 | 4 | Breakfast & Brunch Photography for Perth Cafés | ✅ **DONE** | `breakfast-brunch-photography-perth-cafes.mdx` |
@@ -69,16 +138,16 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 
 | # | Title | Status | File |
 |---|-------|--------|------|
-| 1 | Single Page vs Multi-Page Websites for Perth Small Businesses | ⬜ Pending | |
-| 2 | Website Redesign Checklist for Perth Cafés Moving from WordPress | ⬜ Pending | |
-| 3 | E-commerce for Perth Food Producers | ⬜ Pending | |
+| 1 | Single Page vs Multi-Page Websites for Perth Small Businesses | ✅ **DONE** | `single-page-vs-multipage-websites-perth.mdx` |
+| 2 | Website Redesign Checklist for Perth Cafés Moving from WordPress | ✅ **DONE** | `website-redesign-checklist-perth-cafes-wordpress-migration.mdx` |
+| 3 | E-commerce for Perth Food Producers | ✅ **DONE** | `ecommerce-perth-food-producers.mdx` |
 | 4 | QR Code Menus Done Right: Best Practices for Perth Venues | ✅ **DONE** | `qr-code-menus-best-practices-perth-venues.mdx` |
 
 ---
 
 ### Pillar 3: Perth Local SEO & Google Maps (HIGH PRIORITY)
 
-**Current State**: 2 → 3 posts (1 cornerstone added)
+**Current State**: 2 → 4 posts (new: How Perth Suburbs Search Differently)
 
 **New Blog Posts Needed** (7 recommended):
 
@@ -87,7 +156,7 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 | 1 | Complete Google Business Profile Setup for Perth Restaurants ⭐ | ✅ **DONE** | `google-business-profile-setup-perth-restaurants.mdx` |
 | 2 | Local Citation Building for Perth Hospitality | ✅ **DONE** | `local-citation-building-perth-hospitality.mdx` |
 | 3 | Voice Search Optimization for Perth Restaurants | ✅ **DONE** | `voice-search-optimization-perth-restaurants.mdx` |
-| 4 | How Perth Suburbs Search Differently | ⬜ Pending | |
+| 4 | How Perth Suburbs Search Differently | ✅ **DONE** | `how-perth-suburbs-search-differently.mdx` |
 | 5 | Competitor Analysis for Perth Cafés | ⬜ Pending | |
 | 6 | Perth Restaurant Review Strategy | ⬜ Pending | |
 | 7 | Local Landing Pages for Perth Restaurants | ⬜ Pending | |
@@ -98,7 +167,7 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 
 **Pillar Page**: `/perth-event-photography` ✓ Exists
 
-**Current State**: 2 → 3 posts (1 added)
+**Current State**: 2 → 3 posts (new: Festival & Markets)
 
 **New Blog Posts Needed** (6 recommended):
 
@@ -107,7 +176,7 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 | 1 | Corporate Event Photography Perth: What to Expect | ✅ **DONE** | `corporate-event-photography-perth-guide.mdx` |
 | 2 | Brand Launch Photography: Capturing Your Perth Product Debut | ✅ **DONE** | `brand-launch-photography-perth-product-debut.mdx` |
 | 3 | Charity Event Photography in Perth | ⬜ Pending | |
-| 4 | Festival & Activation Photography for Perth Markets | ⬜ Pending | |
+| 4 | Festival & Activation Photography for Perth Markets | ✅ **DONE** | `festival-activation-photography-perth-markets.mdx` |
 | 5 | Team Retreats & Staff Events Photography | ⬜ Pending | |
 | 6 | Wedding & Private Celebration Photography | ⬜ Pending | |
 
@@ -122,10 +191,10 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 | # | Title | Status | File |
 |---|-------|--------|------|
 | 1 | Skincare & Beauty Product Photography Perth | ✅ **DONE** | `skincare-beauty-product-photography-perth.mdx` |
-| 2 | Candles & Homewares Photography for Perth Makers | ⬜ Pending | |
-| 3 | Gift Hamper Photography | ⬜ Pending | |
-| 4 | Flat Lay Photography for Perth Ecommerce | ⬜ Pending | |
-| 5 | 360° Product Photography & Video | ⬜ Pending | |
+| 2 | Candles & Homewares Photography for Perth Makers | ✅ **DONE** | `candles-homewares-photography-perth-makers.mdx` |
+| 3 | Gift Hamper Photography | ✅ **DONE** | `gift-hamper-photography-perth-premium-product-images.mdx` |
+| 4 | Flat Lay Photography for Perth Ecommerce | ✅ **DONE** | `flat-lay-photography-perth-ecommerce.mdx` |
+| 5 | 360° Product Photography & Video | ✅ **DONE** | `360-product-photography-video-perth.mdx` |
 
 ---
 
@@ -156,16 +225,26 @@ A comprehensive content strategy to improve SEO and GEO for amplifycreativelab.c
 7. ~~Brand launch photography~~ ✅
 8. ~~QR code menus guide~~ ✅
 9. ~~Skincare product photography~~ ✅
+10. ~~Single page vs multi-page websites~~ ✅
+11. ~~Candles & homewares photography~~ ✅
 
-### Next Up (Priority 2 - Short-term)
-10. Single page vs multi-page websites
-11. Candles & homewares photography
+### ✅ Recently Completed (Priority 2)
+12. ~~Website redesign checklist for WordPress migration~~ ✅
+13. ~~Gift hamper photography~~ ✅
+14. ~~Flat lay photography for Perth ecommerce~~ ✅
+15. ~~E-commerce for Perth food producers~~ ✅
 
-### Priority 3: Medium-term (Month 5-6)
-10. Suburb search differences
-11. Festival photography
-12. Single vs multi-page websites
-13. Gift hamper photography
+### ✅ Recently Completed (Priority 3)
+16. ~~360° Product Photography & Video~~ ✅
+17. ~~How Perth Suburbs Search Differently~~ ✅
+18. ~~Festival & Activation Photography for Perth Markets~~ ✅
+19. ~~Food Photography for Perth Food Trucks & Pop-Ups~~ ✅
+
+### Next Up (Priority 3 - Medium-term)
+20. Wine & Beverage Photography for Swan Valley Wineries
+21. Charity event photography Perth
+22. Competitor analysis for Perth cafés
+23. Team Retreats & Staff Events Photography
 
 ### Ongoing: Location Content
 - 1 suburb-focused post per month for remaining 7 suburbs
