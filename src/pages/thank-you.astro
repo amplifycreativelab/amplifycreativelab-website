@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import thankYouHero from "../assets/images/thank-you/thank-you-hero.webp";
 
 const pageTitle = "Thank you | AmplifyCreativeLab";
 const pageDescription =
@@ -50,6 +52,13 @@ const pageDescription =
 
         <!-- RIGHT: image / visual -->
         <aside class="thankyou-visual" aria-hidden="true">
+          <Image
+            src={thankYouHero}
+            alt=""
+            class="thankyou-hero-img"
+            width={800}
+            height={1000}
+          />
           <div class="thankyou-visual-inner">
             <p class="thankyou-visual-kicker">Photography + Web Design</p>
             <p class="thankyou-visual-text">
@@ -229,9 +238,16 @@ const pageDescription =
     position: relative;
     overflow: hidden;
     min-height: 260px;
-    background-image: url("/images/thank-you/thank-you-hero.jpg"); /* swap with real image */
-    background-size: cover;
-    background-position: center;
+    /* Removed background-image */
+  }
+
+  .thankyou-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
 
   /* Dark Overlay */
@@ -240,12 +256,12 @@ const pageDescription =
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
-    z-index: 0;
+    z-index: 1; /* higher than image */
   }
 
   .thankyou-visual-inner {
     position: relative;
-    z-index: 1;
+    z-index: 2; /* higher than overlay */
     height: 100%;
     padding: 2.2rem 2.4rem;
     display: flex;
