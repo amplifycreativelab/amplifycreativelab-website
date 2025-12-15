@@ -291,8 +291,15 @@ const galleryItems = [
       border-radius: 8px;
     }
 
+    /* Hide the header button on mobile */
+    .gallery-header .view-all-link {
+      display: none;
+    }
+
     .view-all-link--mobile {
       display: inline-block;
+      font-size: 0.85rem; /* Slightly smaller */
+      margin-top: 2rem;
     }
   }
 </style>

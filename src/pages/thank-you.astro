@@ -19,11 +19,6 @@ const pageDescription =
       <div class="thankyou-inner">
         <!-- LEFT: text / content -->
         <div class="thankyou-content">
-          <div class="thankyou-badge">
-            <span class="thankyou-badge-icon">✓</span>
-            <span class="thankyou-badge-text">Enquiry received</span>
-          </div>
-
           <h1 class="thankyou-title">Thank you for your message!</h1>
 
           <p class="thankyou-text">
@@ -56,7 +51,7 @@ const pageDescription =
             src={thankYouHero}
             alt=""
             class="thankyou-hero-img"
-            width={800}
+            width={1000}
             height={1000}
           />
           <div class="thankyou-visual-inner">
@@ -74,11 +69,17 @@ const pageDescription =
 
 <style>
   .thankyou-page {
-    min-height: 70vh;
+    min-height: 50vh;
     display: flex;
     align-items: center;
-    padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
+    padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3rem) 0; /* Remove bottom padding */
     background-color: var(--color-bg, #fef8eb);
+  }
+
+  @media (max-width: 768px) {
+    .thankyou-page {
+      padding: 0;
+    }
   }
 
   .thankyou-hero {
@@ -86,10 +87,10 @@ const pageDescription =
   }
 
   .thankyou-inner {
-    max-width: 1900px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: clamp(2rem, 4vw, 3rem);
     border-radius: 18px;
     overflow: hidden;
@@ -103,7 +104,8 @@ const pageDescription =
     padding: clamp(2.25rem, 4vw, 2.75rem);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 2rem;
   }
 
   .thankyou-badge {
@@ -136,7 +138,7 @@ const pageDescription =
 
   .thankyou-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    font-size: clamp(2rem, 3.2vw, 4rem);
     color: var(--color-heading);
   }
 
@@ -238,6 +240,7 @@ const pageDescription =
     position: relative;
     overflow: hidden;
     min-height: 260px;
+    aspect-ratio: 1 / 1; /* Force square */
     /* Removed background-image */
   }
 
@@ -250,12 +253,17 @@ const pageDescription =
     z-index: 0;
   }
 
-  /* Dark Overlay */
+  /* Dark Overlay - Now reduced to a bottom mask */
   .thankyou-visual::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    inset: auto 0 0 0; /* Bottom only */
+    height: 60%; /* Cover bottom part */
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
     z-index: 1; /* higher than image */
   }
 
@@ -294,16 +302,31 @@ const pageDescription =
 
   @media (max-width: 768px) {
     .thankyou-inner {
-      grid-template-columns: minmax(0, 1fr);
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .thankyou-visual-kicker {
+      font-size: 0.7rem; /* Smaller kicker on mobile */
+    }
+
+    .thankyou-visual-text {
+      font-size: 0.85rem; /* Smaller text on mobile */
+      line-height: 1.5;
     }
 
     .thankyou-content {
       padding: 2rem 1.6rem 2.25rem;
+      gap: 1.5rem; /* Reduced gap from 5rem */
     }
 
     .thankyou-visual {
-      min-height: 300px;
-      height: 300px; /* Enforce specific height for mobile */
+      min-height: 400px;
+      height: 400px; /* Enforce specific height for mobile */
+    }
+
+    .thankyou-visual-inner {
+      padding: 0 1.5rem 1.5rem; /* Remove top padding, keep sides/bottom */
     }
 
     .thankyou-actions {
