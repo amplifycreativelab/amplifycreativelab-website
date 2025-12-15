@@ -697,10 +697,12 @@ const aboutPageSchema = {
     }
 
     .jojo-img {
-      width: 100%;
+      width: 120%;
+      max-width: none;
       height: auto;
       display: block;
       filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+      transform: translateX(-15%);
     }
 
     /* Column 3: Content */
@@ -800,6 +802,12 @@ const aboutPageSchema = {
          max-width: 100%;
       }
 
+      .jojo-img {
+        width: 100%;
+        max-width: 100%;
+        transform: none;
+      }
+
       .jojo-col-content {
         grid-area: content;
         padding: 4rem 3rem;
@@ -852,6 +860,12 @@ const aboutPageSchema = {
          width: 100%;
          position: relative;
          z-index: 10; 
+       }
+
+       .jojo-img {
+         width: 100%;
+         max-width: 100%;
+         transform: none;
        }
 
       .jojo-col-content {
