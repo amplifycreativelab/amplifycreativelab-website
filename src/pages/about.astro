@@ -54,40 +54,55 @@ const aboutPageSchema = {
       </div>
     </section>
 
-    <section id="jojo" class="person person--jojo" aria-label="About Jojo">
-      <div class="person__inner">
-        <div class="person__content">
-          <p class="person__kicker">CREATIVE DIRECTOR</p>
-          <h2 class="person__title">Jojo</h2>
-          <p class="person__quote">“We create images that help you sell more.”</p>
-          <p class="person__text">
-            Jojo is the photographer behind Amplify Creative Lab. Based in North Perth, she specialises in food,
-            product and event photography for restaurants, cafés, bars and consumer brands across Western Australia.
-          </p>
-          <p class="person__text">
-            With a background in hospitality and years spent shooting in real kitchens, she knows how to work around
-            service and make venues feel warm and inviting. From Uber Eats hero images to full rebrands, her focus is
-            simple: create images that look beautiful and drive sales.
-          </p>
-          <a href="/portfolio/" class="person__link">See Jojo’s portfolio →</a>
+    <section id="jojo" class="jojo-section" aria-label="About Jojo">
+      <div class="jojo-container">
+        <!-- 1. Left Headline -->
+        <div class="jojo-col-headline">
+          <h2>CAPTURING<br> THE SOUL BEHIND<br> YOUR FOOD,<br> MOMENTS AND<br> BRAND.</h2>
         </div>
 
-        <div class="person__visual">
-          <div class="person__frame">
+        <!-- 2. Center Image -->
+        <div class="jojo-col-image">
+          <div class="jojo-image-wrapper">
             <Image
               src={jojoImage}
               alt="Portrait of Jojo, lead photographer and creative director."
-              width={520}
-              height={640}
+              width={800}
+              height={1000}
               loading="lazy"
               decoding="async"
-              class="person__img"
+              class="jojo-img"
             />
           </div>
-          <p class="person__meta">
-            <span class="person__metaName">Jojo</span>
-            <span class="person__metaRole">Food, product &amp; event photographer</span>
+        </div>
+
+        <!-- 3. Right Content -->
+        <div class="jojo-col-content">
+          <h3>Hi, I’m Jojo,</h3>
+          <p>
+            The photographer behind Amplify Creative Lab, <strong>based in Perth</strong>. I specialise in <strong
+              >food, product and event photography</strong
+            > for restaurants, cafés and hospitality brands across Western Australia.
           </p>
+          <p>
+            With a strong background in hospitality and years spent shooting in real kitchens, I understand how service
+            flows, how food behaves under pressure, and how to capture dishes at their best – without disrupting your
+            team. From Uber Eats hero images to full restaurant rebrands, <strong
+              >my focus is simple: create visuals that feel authentic, look beautiful, and help you sell more.</strong
+            >
+          </p>
+          <p>
+            More than just content creation, I work from your customer’s perspective. I pay close attention to people,
+            atmosphere and storytelling, capturing not only what your food looks like, but <strong
+              >the soul behind your brand.</strong
+            >
+          </p>
+          <p>
+            Whether you need clean packshots, lifestyle imagery in-venue, or content designed for social media and
+            online campaigns, <strong>every shoot is tailored to your menu, brand and marketing goals</strong>. Let’s
+            create visual content that connects, converts, and makes your brand stand out.
+          </p>
+          <a href="/portfolio/" class="jojo-btn">See Jojo’s Portfolio</a>
         </div>
       </div>
     </section>
@@ -115,8 +130,8 @@ const aboutPageSchema = {
             <Image
               src={stefanoImage}
               alt="Portrait of Stefano, lead web developer."
-              width={520}
-              height={640}
+              width={800}
+              height={1000}
               loading="lazy"
               decoding="async"
               class="person__img"
@@ -574,6 +589,237 @@ const aboutPageSchema = {
       .poster__shape--mark {
         opacity: 0.16;
         inset: auto auto -52% -34%;
+      }
+    }
+
+
+    /* New Jojo Section Styles */
+    .jojo-section {
+      width: 100%;
+      background: #fff; /* Restored white background */
+      padding: 0;
+      overflow: hidden;
+      
+    }
+
+    .jojo-container {
+      display: grid;
+      width: 100%;
+      /* Remove max-width and margin auto for full width */
+      max-width: none;
+      margin: 0;
+      /* Mobile Layout: Stacked */
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding-bottom: 0;
+    }
+
+    /* Column 1: Headline */
+    .jojo-col-headline {
+      padding: 3rem 1.5rem; /* Increased side padding for alignment breathing room */
+      text-align: left;
+      background: #fff; /* First section White */
+      position: relative;
+      z-index: 2;
+    }
+
+    .jojo-col-headline h2 {
+      font-family: var(--font-heading), serif;
+      font-weight: 700;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: #000;
+      margin: 0;
+    }
+
+    /* Column 2: Image */
+    .jojo-col-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0;
+      min-height: 400px;
+      /* Background handled by accent to allow overlap/extension logic if needed, 
+         but for mobile stack, we can just set bg here or let accent fill it. */
+    }
+
+    .jojo-image-accent {
+      position: absolute;
+      background-color: #e0e0e0; /* Second section Grey */
+      /* Fill container */
+      inset: 0; 
+      z-index: 0;
+    }
+
+    .jojo-image-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .jojo-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+    }
+
+    /* Column 3: Content */
+    .jojo-col-content {
+      background-color: #1f2a15; /* Third section Green */
+      color: #fff;
+      padding: 2rem 1.25rem; /* Reduced padding for mobile */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 2rem; /* Reduced gap */
+    }
+
+    .jojo-col-content h3 {
+      font-family: var(--font-heading), serif;
+      font-size: 1.5rem; /* Reduced font size */
+      margin: 0;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    .jojo-col-content p {
+      font-family: var(--font-body), sans-serif;
+      font-size: 0.9rem; /* Reduced font size */
+      line-height: 1.55;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+    }
+
+    .jojo-col-content strong {
+      font-weight: 700;
+      color: #fff;
+    }
+    
+    .jojo-btn {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .jojo-btn:hover {
+      background: #fff;
+      color: #1f2a15;
+      border-color: #fff;
+    }
+
+    /* Tablet Layout (768px - 1199px) */
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .jojo-container {
+        display: grid;
+        grid-template-columns: 4fr 6fr; /* 40% Slogan, 60% Image */
+        grid-template-areas: 
+          "headline image"
+          "content content";
+        gap: 0;
+      }
+
+      .jojo-col-headline {
+        grid-area: headline;
+        padding: 4rem 3rem; /* Reduced side padding */
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        background: #fff;
+        z-index: 1;
+      }
+      
+      .jojo-col-headline h2 {
+         margin-left: auto;
+         font-size: 3rem; /* Increased for tablet */
+      }
+
+      .jojo-col-image {
+        grid-area: image;
+        padding: 0;
+        justify-content: flex-end;
+        align-items: flex-end;
+        background-color: #e0e0e0; /* Matches image BG */
+        min-height: auto; /* Allow it to shrink/grow with headline */
+      }
+      
+      .jojo-image-wrapper {
+         width: 100%;
+         max-width: 100%;
+      }
+
+      .jojo-col-content {
+        grid-area: content;
+        padding: 4rem 3rem;
+      }
+    }
+
+    /* Desktop (1200px+) */
+    @media (min-width: 1200px) {
+      .jojo-container {
+        /* Grid Layout: Adjusted to reduce image height relative to text */
+        grid-template-columns: 28fr 44fr 28fr;
+        align-items: stretch;
+      }
+
+      .jojo-col-headline {
+        /* Align self center to create the "Box" effect vs full height strip */
+        align-self: center;
+        /* Extend width to overlap into the next column */
+        width: 120%; /* Reduced slightly to overlap less */
+        padding: 4rem 3rem;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-end;
+        background: #fff;
+        position: relative;
+        z-index: 2; /* On top of Grey BG */
+        /* Optional: subtle shadow for the box */
+        
+      }
+      
+      .jojo-col-headline h2 {
+        max-width: 100%;
+        margin-left: auto;
+        font-size: clamp(2.2rem, 3.2vw, 4rem);
+        line-height: 1.9; 
+      }
+
+      .jojo-col-image {
+        padding: 0; 
+        align-items: flex-end;
+        position: relative;
+        z-index: 1; 
+      }
+
+       .jojo-image-wrapper {
+         /* Reset transforms as image is now pre-composed */
+         transform: none; 
+         max-width: 100%;
+         width: 100%;
+         position: relative;
+         z-index: 10; 
+       }
+
+      .jojo-col-content {
+        padding: 8rem 4rem 3rem 4rem;
       }
     }
   </style>

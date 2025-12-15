@@ -17,7 +17,7 @@ const {
 // by resolving to a final string src for the <img>.
 // @ts-ignore - runtime type narrowing is sufficient here
 const resolvedImageSrc: string =
-  typeof imageSrc === "string" ? imageSrc : imageSrc?.src ?? "";
+  typeof imageSrc === "string" ? imageSrc : (imageSrc?.src ?? "");
 
 const isImageMetadata = (value: unknown): value is ImageMetadata =>
   !!value &&
@@ -32,10 +32,13 @@ const resolvedHeight =
   (isImageMetadata(imageSrc) ? imageSrc.height : Number(imageHeight)) || 800;
 
 const innerClass = `food-service__inner${reverse ? " food-service__inner--reverse" : ""}`;
-const sectionStyle = sectionBackground ? `background-color: ${sectionBackground};` : "";
+const sectionStyle = sectionBackground
+  ? `background-color: ${sectionBackground};`
+  : "";
 
 const contentStyleParts: string[] = [];
-if (contentBackground) contentStyleParts.push(`background-color: ${contentBackground};`);
+if (contentBackground)
+  contentStyleParts.push(`background-color: ${contentBackground};`);
 if (contentTextColor) contentStyleParts.push(`color: ${contentTextColor};`);
 const contentStyle = contentStyleParts.join(" ");
 ---
@@ -106,7 +109,6 @@ const contentStyle = contentStyleParts.join(" ");
     margin: 0;
     flex: 1 1 50%;
     max-width: 50%;
-    
   }
 
   .food-service__image {
@@ -199,12 +201,12 @@ const contentStyle = contentStyleParts.join(" ");
   }
 
   .food-service__button--light {
-    border-color: #E8D8C3;
-    color: #E8D8C3;
+    border-color: #e8d8c3;
+    color: #e8d8c3;
   }
 
   .food-service__button--light:hover {
-    background-color: #E8D8C3;
+    background-color: #e8d8c3;
     color: #4a2e1c;
   }
 
@@ -222,12 +224,10 @@ const contentStyle = contentStyleParts.join(" ");
     .food-service__content {
       max-width: 100%;
       flex-basis: 100%;
-      
     }
 
     .food-service__content {
-
-      padding:30px 16px;
+      padding: 30px 16px;
     }
 
     .food-service__title {
@@ -250,11 +250,8 @@ const contentStyle = contentStyleParts.join(" ");
       line-height: 22px;
     }
 
-     .food-service__content {
-    
-      padding-bottom:20px
+    .food-service__content {
+      padding-bottom: 20px;
     }
   }
-
-  
 </style>
