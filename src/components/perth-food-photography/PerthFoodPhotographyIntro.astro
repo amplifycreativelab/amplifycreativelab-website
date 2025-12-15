@@ -56,15 +56,12 @@ const images = [
 
 <section class="food-intro">
   <div class="food-intro__text-container">
-    <span class="food-intro__subtitle">PERTH FOOD PHOTOGRAPHY</span>
-    <h2 class="food-intro__title">
-      Food Photography & Video Content in Perth, WA
-    </h2>
+    <h2 class="food-intro__title">Food Photography in Perth, WA</h2>
 
     <div class="food-intro__description">
       <p class="food-intro__text-highlight">
         Stand out in Perth’s hospitality scene with scroll-stopping food images
-        and short-form video that make people want to book a table and order.
+        that make people want to book a table and order.
       </p>
 
       <p class="food-intro__text">
@@ -109,7 +106,7 @@ const images = [
   .food-intro {
     background-color: var(--bg-color-dark);
     color: var(--text-color);
-    padding: 80px 0 0 0;
+    padding: 60px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,9 +115,7 @@ const images = [
   }
 
   .food-intro__text-container {
-    max-width: 1000px;
-    padding: 0 20px 60px 20px;
-    margin: 0 auto;
+    padding: 0 20px 0px 20px;
   }
 
   .food-intro__subtitle {
@@ -146,7 +141,6 @@ const images = [
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 900px;
     margin: 0 auto;
   }
 
@@ -233,6 +227,13 @@ const images = [
 
     .food-intro__slide {
       flex: 0 0 50%; /* 2 on mobile landscape / large phone */
+    }
+
+    .food-intro {
+      padding: 0px 0 0px 0;
+    }
+    .food-intro__text-container {
+      padding: 40px 40px 40px 40px;
     }
   }
 
