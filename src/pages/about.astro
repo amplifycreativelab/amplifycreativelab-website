@@ -4,9 +4,74 @@ import { Image } from "astro:assets";
 import jojoImage from "../assets/images/about/jojo-lead-photographer-creative-director-perth.webp";
 import stefanoImage from "../assets/images/about/stefano-web-developer-astro-expert-perth.webp";
 
-const pageTitle = "About Amplify Creative Lab | Jojo & Stefano";
+const pageTitle = "About Amplify Creative Lab | Perth Photography & Web Development Studio";
 const pageDescription =
-  "Meet Jojo, Perth food and product photographer, and Stefano, web developer behind Amplify Creative Lab.";
+  "Meet the team behind Amplify Creative Lab in Perth, WA. Jojo specialises in food, product and event photography. Stefano builds fast, SEO-optimised websites for hospitality brands across Western Australia.";
+
+const jojoPersonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://amplifycreativelab.com/#person-jojo",
+  name: "Jojo",
+  jobTitle: "Lead Photographer & Creative Director",
+  worksFor: {
+    "@id": "https://amplifycreativelab.com/#organization",
+  },
+  description: "Perth-based food, product and event photographer specialising in hospitality and lifestyle brands across Western Australia.",
+  knowsAbout: [
+    "Food Photography",
+    "Product Photography",
+    "Event Photography",
+    "Restaurant Photography",
+    "Hospitality Branding",
+    "Commercial Photography Perth"
+  ],
+  areaServed: {
+    "@type": "City",
+    name: "Perth",
+    containedInPlace: {
+      "@type": "State",
+      name: "Western Australia",
+      containedInPlace: {
+        "@type": "Country",
+        name: "Australia"
+      }
+    }
+  }
+};
+
+const stefanoPersonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://amplifycreativelab.com/#person-stefano",
+  name: "Stefano",
+  jobTitle: "Web Developer & Technical Strategist",
+  worksFor: {
+    "@id": "https://amplifycreativelab.com/#organization",
+  },
+  description: "Perth web developer specialising in fast, SEO-optimised websites for hospitality and lifestyle brands using Astro and modern frameworks.",
+  knowsAbout: [
+    "Web Development",
+    "Astro Framework",
+    "Technical SEO",
+    "Local SEO Perth",
+    "Core Web Vitals",
+    "Schema Markup",
+    "Website Performance Optimisation"
+  ],
+  areaServed: {
+    "@type": "City",
+    name: "Perth",
+    containedInPlace: {
+      "@type": "State",
+      name: "Western Australia",
+      containedInPlace: {
+        "@type": "Country",
+        name: "Australia"
+      }
+    }
+  }
+};
 
 const aboutPageSchema = {
   "@context": "https://schema.org",
@@ -14,8 +79,7 @@ const aboutPageSchema = {
   "@id": "https://amplifycreativelab.com/about/",
   url: "https://amplifycreativelab.com/about/",
   name: pageTitle,
-  description:
-    "Learn about Amplify Creative Lab, a Perth studio led by Jojo, a food, product and event photographer, and Stefano, a web developer and technical strategist.",
+  description: pageDescription,
   mainEntity: {
     "@id": "https://amplifycreativelab.com/#organization",
   },
@@ -66,7 +130,7 @@ const aboutPageSchema = {
           <div class="jojo-image-wrapper">
             <Image
               src={jojoImage}
-              alt="Portrait of Jojo, lead photographer and creative director."
+              alt="Jojo - Perth food, product and event photographer at Amplify Creative Lab"
               width={800}
               height={1000}
               loading="lazy"
@@ -114,7 +178,7 @@ const aboutPageSchema = {
           <div class="stefano-visual-inner">
             <Image
               src={stefanoImage}
-              alt="Stefano - Web Developer and Technical Strategist"
+              alt="Stefano - Perth web developer and technical SEO strategist at Amplify Creative Lab"
               width={800}
               height={1000}
               loading="lazy"
@@ -164,6 +228,12 @@ const aboutPageSchema = {
 
   <script type="application/ld+json">
     {JSON.stringify(aboutPageSchema)}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify(jojoPersonSchema)}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify(stefanoPersonSchema)}
   </script>
 
   <style is:global>
@@ -867,7 +937,7 @@ const aboutPageSchema = {
     .stefano-img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Fill the area */
+      object-fit: cover; /* Ensure full image is visible */
       display: block;
     }
 
@@ -934,13 +1004,81 @@ const aboutPageSchema = {
       border-color: #1E3019;
     }
 
-    @media (min-width: 900px) {
+    /* Mobile & Tablet Overrides (Max 1199px) - Mimic Jojo Section Layout */
+    @media (max-width: 1199px) {
+      .stefano-container {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .stefano-col-content {
+        display: contents; /* Unwrap container to reorder H2 and Body */
+      }
+      
+      .stefano-col-content h2 {
+        order: 1;
+        padding: 4rem 1.5rem 2rem 1.5rem; /* Headline padding */
+        text-align: left;
+      }
+      
+      .stefano-col-visual {
+        order: 2;
+        width: 100%;
+        min-height: 400px;
+      }
+      
+      .stefano-body {
+        order: 3;
+        padding: 2rem 1.5rem 4rem 1.5rem; /* Body padding */
+        gap: 1.5rem; /* Reduced gap for mobile */
+      }
+    }
+    
+    /* Optimize Image Size for Tablet (768-1199px) */
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .stefano-col-visual {
+        max-width: 600px;
+        margin: 0 auto;
+        min-height: auto;
+      }
+    }
+
+    /* Mobile & Tablet Colors (Max 1199px) - Jojo Green Theme */
+    @media (max-width: 1199px) {
+      .stefano-body {
+        background-color: #1f2a15; /* Jojo Green */
+        color: #fff;
+      }
+
+      .stefano-body p {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .stefano-body strong {
+        color: #fff;
+      }
+
+      .stefano-cta {
+        border-color: rgba(255, 255, 255, 0.4);
+        color: #fff;
+      }
+
+      .stefano-cta:hover {
+        background-color: #fff;
+        color: #1f2a15;
+        border-color: #fff;
+      }
+    }
+
+
+
+    @media (min-width: 1200px) {
       .stefano-section {
         padding: 0;
       }
 
       .stefano-container {
-        grid-template-columns: 4fr 6fr;
+        grid-template-columns: 5.5fr 4.5fr; /* 55% Image / 45% Text */
         align-items: stretch; /* Stretch to fill height */
         gap: 0;
       }
@@ -953,7 +1091,7 @@ const aboutPageSchema = {
       }
 
       .stefano-col-content {
-        padding: 6rem; /* Significant padding for text on desktop */
+        padding: 4rem; /* Reduced padding for narrower column */
       }
       
       .stefano-col-visual {
@@ -963,6 +1101,12 @@ const aboutPageSchema = {
       
       .stefano-visual-inner {
           margin-right: 0; 
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .stefano-container {
+        grid-template-columns: 4fr 6fr; /* 40/60 for Large Desktop */
       }
     }
   </style>
