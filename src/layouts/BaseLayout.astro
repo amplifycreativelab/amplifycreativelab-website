@@ -33,6 +33,7 @@ const {
 const siteUrl = "https://amplifycreativelab.com";
 const canonical = canonicalProp ?? new URL(Astro.url.pathname, siteUrl).toString();
 const GA_MEASUREMENT_ID = "G-4KRYBTPCTN";
+const GOOGLE_ADS_ID = "AW-17539052212";
 
 const logoUrl = new URL(logoAsset.src, siteUrl).toString();
 
@@ -299,7 +300,7 @@ const businessSchema = {
             {JSON.stringify(businessSchema)}
         </script>
 
-        <script define:vars={{ GA_MEASUREMENT_ID }}>
+        <script define:vars={{ GA_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
             // Initialize dataLayer immediately so events can be queued
             window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -307,6 +308,7 @@ const businessSchema = {
             }
             gtag("js", new Date());
             gtag("config", GA_MEASUREMENT_ID);
+            gtag("config", GOOGLE_ADS_ID); // Google Ads for conversion tracking
 
             // Lazy load GTM script
             function loadGTM() {
