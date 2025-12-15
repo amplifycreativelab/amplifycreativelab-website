@@ -5,7 +5,7 @@ import CookieConsent from "../components/CookieConsent.astro";
 import logoAsset from "../assets/images/logo/amplify-creative-lab-logo-perth-WA.svg";
 import appleTouchIcon from "../assets/favicons/apple-touch-icon.png";
 import favicon180 from "../assets/favicons/favicon-180x180.png";
-import favicon192 from "../assets/favicons/favicon-192x192.png";
+
 import favicon32 from "../assets/favicons/favicon-32x32.png";
 import msTileImage from "../assets/favicons/mstile-270x270.png";
 import "../styles/main.css";
@@ -283,7 +283,7 @@ const businessSchema = {
         />
         <link
             rel="icon"
-            href={favicon192.src}
+            href="/favicon-192.png"
             sizes="192x192"
             type="image/png"
         />
@@ -333,12 +333,15 @@ const businessSchema = {
     </head>
 
     <body>
-        <CookieConsent />
+
         <Header />
 
         <slot />
 
         <Footer />
+
+
+        <CookieConsent />
 
         <script src="/js/main.js" defer></script>
     </body>

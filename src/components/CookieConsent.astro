@@ -2,7 +2,7 @@
 const STORAGE_KEY = "acl-cookie-consent";
 ---
 
-<div class="cookie-banner" data-cookie-banner>
+<div class="cookie-banner" data-cookie-banner data-nosnippet>
   <div class="cookie-banner-inner">
     <p class="cookie-banner-text">
       We use cookies to make this site work properly and to understand how it’s
@@ -52,7 +52,6 @@ const STORAGE_KEY = "acl-cookie-consent";
     color: #fef8eb; /* cream */
     backdrop-filter: blur(6px);
     font-family: var(--font-body, system-ui);
-    
   }
 
   .cookie-banner-inner {
@@ -66,8 +65,7 @@ const STORAGE_KEY = "acl-cookie-consent";
   .cookie-banner-text {
     margin: 0;
     line-height: 1.6;
-    font-size:0.8rem;
-    
+    font-size: 0.8rem;
   }
 
   .cookie-banner-link {
@@ -87,14 +85,17 @@ const STORAGE_KEY = "acl-cookie-consent";
     padding: 0.55rem 1.4rem;
     border-radius: 999px;
     border: 1px solid rgba(254, 248, 235, 0.7);
-    background:  #fef8eb; 
-    color:  #152705;;
+    background: #fef8eb;
+    color: #152705;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     cursor: pointer;
-    transition: transform 0.12s ease, box-shadow 0.12s ease,
-      background-color 0.12s ease, border-color 0.12s ease;
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.12s ease,
+      background-color 0.12s ease,
+      border-color 0.12s ease;
   }
 
   .cookie-banner-button:hover {

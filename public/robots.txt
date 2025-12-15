@@ -5,7 +5,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_astro/
+
 Disallow: /*.json$
 
 # Crawl-delay to prevent server overload (in seconds)
