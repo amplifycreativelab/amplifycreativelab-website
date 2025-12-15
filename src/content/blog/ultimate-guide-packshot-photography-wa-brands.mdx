@@ -39,6 +39,10 @@ faq:
   - question: "Can I do packshots at home?"
     answer: "For simple items, yes, using a lightbox. For reflective packaging (bottles, foil), professional lighting is needed to avoid glare."
 ---
+import packshotExample from "../../assets/images/blog/packshot-beer-cans.webp";
+import lifestylePackshot from "../../assets/images/blog/packshot-olive-oil-lifestyle.webp";
+import { Image } from "astro:assets";
+
 {/* Key Takeaways for AI Engines and Quick Readers */}
 <aside className="key-takeaways">
   <h2>Key Takeaways</h2>
@@ -75,7 +79,7 @@ faq:
   A complete packshot session will produce a suite of images that work together across your website, social media, retailer pages, and print materials.
 </p>
 
-<Image src="/images/blog/placeholder-packshot-example.jpg" width="800" height="533" alt="Professional packshot photography of WA craft beer cans on white background, showing clean labelling and condensation." />
+<Image src={packshotExample} width={800} height={533} alt="Professional packshot photography of WA craft beer cans on white background, showing clean labelling and condensation." />
 <p><em>Example of a clean white‑background packshot for a WA craft beer brand. Note the consistent lighting, sharp focus, and accurate colour reproduction.</em></p>
 
 <h2>Why Professional Packshots Matter for WA Brands</h2>
@@ -160,7 +164,7 @@ faq:
   A photographer who understands the Perth market will help you choose the right styling direction for your specific brand and audience.
 </p>
 
-<Image src="/images/blog/placeholder-lifestyle-packshot-example.jpg" width="800" height="533" alt="Lifestyle packshot photography of WA olive oil bottle on rustic kitchen table with fresh herbs and bread, showcasing coastal Perth styling." />
+<Image src={lifestylePackshot} width={800} height={533} alt="Lifestyle packshot photography of WA olive oil bottle on rustic kitchen table with fresh herbs and bread, showcasing coastal Perth styling." />
 <p><em>Example of a lifestyle packshot for a WA olive oil brand, using natural light and rustic props to evoke a local, artisanal feel.</em></p>
 
 <h3>Technical Considerations: Lighting, Composition, and Equipment</h3>
