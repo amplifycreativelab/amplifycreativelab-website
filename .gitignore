@@ -12,15 +12,33 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
 # environment variables
 .env
 .env.production
+.env.local
+.env.*.local
 
 # macOS-specific files
 .DS_Store
+Thumbs.db
 
 # jetbrains setting folder
 .idea/
+
+# VS Code local settings (keep extensions.json, ignore launch.json if personal)
+.vscode/launch.json
+
+# AI assistant configs (local machine only)
+.claude/
+.agent/
+
+# Utility scripts (not needed in production)
+convert-images.cjs
+
+# Internal planning docs (not for deployment)
+docs/
+
+# Package lock (optional - uncomment if you prefer npm ci)
+# package-lock.json
 
 
