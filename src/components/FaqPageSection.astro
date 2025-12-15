@@ -19,28 +19,32 @@ interface Props {
 const { groups = [] } = Astro.props as Props;
 ---
 
-<section class="faq-page" aria-labelledby="faq-page-heading" itemscope itemtype="https://schema.org/FAQPage">
+<section
+  class="faq-page"
+  aria-labelledby="faq-page-heading"
+  itemscope
+  itemtype="https://schema.org/FAQPage"
+>
   <div class="faq-page-inner">
-    
     <header class="faq-page-header">
       <p class="faq-page-kicker">Common Questions</p>
       <h1 id="faq-page-heading" class="faq-page-title">
         Perth Web Design & Photography FAQ
       </h1>
       <p class="faq-page-lede">
-        Answers to common questions about our creative services. Whether you need 
-        <strong>high-performance web development</strong>, professional <strong>food & event photography</strong>, 
-        or a complete digital rebranding for your Perth business, we have you covered.
+        Answers to common questions about our creative services. Whether you
+        need
+        <strong>high-performance web development</strong>, professional <strong
+          >food & event photography</strong
+        >, or a complete digital rebranding for your Perth business, we have you
+        covered.
       </p>
     </header>
 
     <div class="faq-page-content">
       {
         groups.map((group) => (
-          <section
-            class="faq-group"
-            {...(group.id ? { id: group.id } : {})}
-          >
+          <section class="faq-group" {...(group.id ? { id: group.id } : {})}>
             <header class="faq-group-header">
               <h2 class="faq-group-title">
                 {group.icon && (
@@ -52,28 +56,32 @@ const { groups = [] } = Astro.props as Props;
             </header>
 
             <div class="faq-list">
-              {
-                group.items.map((item, index) => (
-                  <details
-                    class="faq-item"
-                    itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-                    {...(index === 0 && group.id === 'web-development' ? { open: true } : {})}
+              {group.items.map((item, index) => (
+                <details
+                  class="faq-item"
+                  itemscope
+                  itemprop="mainEntity"
+                  itemtype="https://schema.org/Question"
+                  {...(index === 0 && group.id === "web-development"
+                    ? { open: true }
+                    : {})}
+                >
+                  <summary class="faq-question" itemprop="name">
+                    <span>{item.question}</span>
+                    <span class="faq-toggle-icon" aria-hidden="true">
+                      +
+                    </span>
+                  </summary>
+                  <div
+                    class="faq-answer"
+                    itemscope
+                    itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer"
                   >
-                    <summary class="faq-question" itemprop="name">
-                      <span>{item.question}</span>
-                      <span class="faq-toggle-icon" aria-hidden="true">
-                        +
-                      </span>
-                    </summary>
-                    <div
-                      class="faq-answer"
-                      itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
-                    >
-                      <div itemprop="text" set:html={item.answer} />
-                    </div>
-                  </details>
-                ))
-              }
+                    <div itemprop="text" set:html={item.answer} />
+                  </div>
+                </details>
+              ))}
             </div>
           </section>
         ))
@@ -84,15 +92,13 @@ const { groups = [] } = Astro.props as Props;
       <div class="faq-cta-content">
         <h2 class="faq-cta-title">Have a specific project in mind?</h2>
         <p class="faq-cta-text">
-          We specialize in solving complex creative problems. If you need a custom website, 
-          a specific photoshoot brief, or both, let's chat about your goals.
+          We specialize in solving complex creative problems. If you need a
+          custom website, a specific photoshoot brief, or both, let's chat about
+          your goals.
         </p>
       </div>
-      <a class="faq-cta-link" href="/contact">
-        Start Your Project
-      </a>
+      <a class="faq-cta-link" href="/contact/"> Start Your Project </a>
     </aside>
-
   </div>
 </section>
 
@@ -147,7 +153,7 @@ const { groups = [] } = Astro.props as Props;
     font-size: 1rem;
     line-height: 1.7;
   }
-  
+
   .faq-page-lede strong {
     font-weight: 600;
     color: var(--color-heading);
@@ -209,7 +215,9 @@ const { groups = [] } = Astro.props as Props;
     background: transparent;
     border: 1px solid rgba(21, 39, 5, 0.1);
     padding: 0;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
   }
 
   .faq-item:hover {
@@ -259,12 +267,24 @@ const { groups = [] } = Astro.props as Props;
     line-height: 1.75;
     color: var(--color-text);
   }
-  
-  .faq-answer :global(p) { margin: 0 0 0.75rem; }
-  .faq-answer :global(p:last-child) { margin-bottom: 0; }
-  .faq-answer :global(ul) { margin: 0 0 1rem 1.2rem; padding: 0; }
-  .faq-answer :global(li) { margin: 0.25rem 0; }
-  .faq-answer :global(strong) { color: var(--color-heading); font-weight: 600; }
+
+  .faq-answer :global(p) {
+    margin: 0 0 0.75rem;
+  }
+  .faq-answer :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .faq-answer :global(ul) {
+    margin: 0 0 1rem 1.2rem;
+    padding: 0;
+  }
+  .faq-answer :global(li) {
+    margin: 0.25rem 0;
+  }
+  .faq-answer :global(strong) {
+    color: var(--color-heading);
+    font-weight: 600;
+  }
   .faq-answer :global(a) {
     color: var(--color-heading);
     text-decoration: underline;
@@ -324,13 +344,15 @@ const { groups = [] } = Astro.props as Props;
     background-color: #fef8eb;
     color: #152705;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .faq-cta-link:hover,
   .faq-cta-link:focus-visible {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
