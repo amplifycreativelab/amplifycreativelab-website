@@ -15,7 +15,7 @@ const pageDescription =
   noFollow={true}
 >
   <main class="thankyou-page">
-    <section class="thankyou-hero">
+    <div class="thankyou-hero">
       <div class="thankyou-inner">
         <!-- LEFT: text / content -->
         <div class="thankyou-content">
@@ -51,8 +51,8 @@ const pageDescription =
             src={thankYouHero}
             alt=""
             class="thankyou-hero-img"
-            width={1000}
-            height={1000}
+            width={800}
+            height={800}
           />
           <div class="thankyou-visual-inner">
             <p class="thankyou-visual-kicker">Photography + Web Design</p>
@@ -63,11 +63,14 @@ const pageDescription =
           </div>
         </aside>
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- Google Ads Conversion Tracking - fires when thank-you page loads -->
   <script>
+    // Declare gtag as a global function (defined by Google's gtag.js)
+    declare const gtag: ((...args: unknown[]) => void) | undefined;
+
     // Wait for gtag to be available, then fire conversion event
     function fireConversion() {
       if (typeof gtag === "function") {
