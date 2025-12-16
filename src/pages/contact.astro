@@ -46,7 +46,9 @@ const contactPageSchema = {
           <p class="contact-page-intro__meta-item">
             <strong>Email:</strong>
             {" "}
-            <a href="mailto:support@amplifycreativelab.com">support@amplifycreativelab.com</a>
+            <a href="mailto:support@amplifycreativelab.com"
+              >support@amplifycreativelab.com</a
+            >
           </p>
           <p class="contact-page-intro__meta-item">
             <strong>Phone:</strong>
@@ -140,7 +142,8 @@ const contactPageSchema = {
     }
   </style>
 
-  <script type="application/ld+json">
-    {JSON.stringify(contactPageSchema)}
-  </script>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(contactPageSchema)}
+  />
 </BaseLayout>

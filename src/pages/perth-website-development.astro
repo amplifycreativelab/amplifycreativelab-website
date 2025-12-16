@@ -18,15 +18,15 @@ const webDevSchema = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://amplifycreativelab.com/"
+          item: "https://amplifycreativelab.com/",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Website Design & Development",
-          item: "https://amplifycreativelab.com/perth-website-development/"
-        }
-      ]
+          item: "https://amplifycreativelab.com/perth-website-development/",
+        },
+      ],
     },
     {
       "@type": "Service",
@@ -37,8 +37,8 @@ const webDevSchema = {
         "Website design and development for Perth hospitality venues, lifestyle brands and local businesses, with fast, SEO-friendly builds focused on bookings and enquiries.",
       areaServed: "Perth, Western Australia",
       provider: {
-        "@id": "https://amplifycreativelab.com/#organization"
-      }
+        "@id": "https://amplifycreativelab.com/#organization",
+      },
     },
     {
       "@type": "FAQPage",
@@ -48,68 +48,68 @@ const webDevSchema = {
           name: "What types of businesses do you build websites for?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We work with a wide range of Perth businesses—from sole traders and creatives to hospitality venues and professional services. If you need a clear, modern site that drives enquiries, we can help."
-          }
+            text: "We work with a wide range of Perth businesses—from sole traders and creatives to hospitality venues and professional services. If you need a clear, modern site that drives enquiries, we can help.",
+          },
         },
         {
           "@type": "Question",
           name: "Do you only work with hospitality clients?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No. While we have deep experience in hospitality, we apply the same high standards of design and strategy to all our clients. We love working with anyone who values quality."
-          }
+            text: "No. While we have deep experience in hospitality, we apply the same high standards of design and strategy to all our clients. We love working with anyone who values quality.",
+          },
         },
         {
           "@type": "Question",
           name: "Which platforms or technologies do you use to build websites?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We choose tools based on your needs, focusing on performance, maintainability and SEO. This can include modern frameworks, CMS options and booking integrations that make it easy for your team to update content."
-          }
+            text: "We choose tools based on your needs, focusing on performance, maintainability and SEO. This can include modern frameworks, CMS options and booking integrations that make it easy for your team to update content.",
+          },
         },
         {
           "@type": "Question",
           name: "Will my website be SEO-friendly?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. We design with clean structure, fast loading and best-practice on-page SEO in mind so your site is well positioned to rank for local searches and to be understood by search and AI-driven platforms."
-          }
+            text: "Yes. We design with clean structure, fast loading and best-practice on-page SEO in mind so your site is well positioned to rank for local searches and to be understood by search and AI-driven platforms.",
+          },
         },
         {
           "@type": "Question",
           name: "Why do you use Astro.js instead of WordPress?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We prefer building with Astro.js because it is incredibly performant, secure, and lightweight compared to WordPress. While WordPress is a popular option, it often relies on heavy plugins that slow down sites. Astro gives us full control to build a faster, more efficient website that ranks better."
-          }
+            text: "We prefer building with Astro.js because it is incredibly performant, secure, and lightweight compared to WordPress. While WordPress is a popular option, it often relies on heavy plugins that slow down sites. Astro gives us full control to build a faster, more efficient website that ranks better.",
+          },
         },
         {
           "@type": "Question",
           name: "How long does a website project usually take?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Timelines depend on the scope of your website, but most smaller sites are completed within a few weeks once content and photography are ready. Larger or more complex projects may take longer and will include a clear proposed schedule."
-          }
+            text: "Timelines depend on the scope of your website, but most smaller sites are completed within a few weeks once content and photography are ready. Larger or more complex projects may take longer and will include a clear proposed schedule.",
+          },
         },
         {
           "@type": "Question",
           name: "Do you provide hosting, domain or ongoing support?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. We can advise on hosting and domain setup and connect your site to the right services. For clients who prefer a done-for-you option, we offer an optional care plan that covers hosting, security updates and technical maintenance from $60 per month."
-          }
+            text: "Yes. We can advise on hosting and domain setup and connect your site to the right services. For clients who prefer a done-for-you option, we offer an optional care plan that covers hosting, security updates and technical maintenance from $60 per month.",
+          },
         },
         {
           "@type": "Question",
           name: "Can you use our existing branding, copy and photography?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. We can work with existing assets or create new ones as needed. If you also require photography or brand refinement, we can combine website and content services into a single project."
-          }
-        }
-      ]
-    }
-  ]
+            text: "Yes. We can work with existing assets or create new ones as needed. If you also require photography or brand refinement, we can combine website and content services into a single project.",
+          },
+        },
+      ],
+    },
+  ],
 };
 ---
 
@@ -129,9 +129,9 @@ const webDevSchema = {
               What types of businesses do you build websites for?
             </summary>
             <p class="webdev-faq__answer">
-              We work with a wide range of Perth businesses—from sole traders and
-              creatives to hospitality venues and professional services. If you need
-              a clear, modern site that drives enquiries, we can help.
+              We work with a wide range of Perth businesses—from sole traders
+              and creatives to hospitality venues and professional services. If
+              you need a clear, modern site that drives enquiries, we can help.
             </p>
           </details>
 
@@ -140,13 +140,12 @@ const webDevSchema = {
               Do you only work with hospitality clients?
             </summary>
             <p class="webdev-faq__answer">
-              No. While we have deep experience in hospitality, we apply the same
-              high standards of design and strategy to all our clients. We love working
-              with anyone who values quality, whether you're a builder, a consultant,
-              or a boutique brand.
+              No. While we have deep experience in hospitality, we apply the
+              same high standards of design and strategy to all our clients. We
+              love working with anyone who values quality, whether you're a
+              builder, a consultant, or a boutique brand.
             </p>
           </details>
-
 
           <details class="webdev-faq__item">
             <summary class="webdev-faq__question">
@@ -165,11 +164,19 @@ const webDevSchema = {
               Why do you use Astro.js instead of WordPress?
             </summary>
             <p class="webdev-faq__answer">
-              We prefer <strong>Astro.js</strong> because it creates websites that are significantly faster, more secure, and easier to maintain than standard WordPress sites.
+              We prefer <strong>Astro.js</strong> because it creates websites that
+              are significantly faster, more secure, and easier to maintain than standard
+              WordPress sites.
               <br /><br />
-              While we can use WordPress if requested, we find it often becomes bloated with plugins that hurt performance. Astro allows us to deliver a top-tier, high-performance site that Google loves.
+              While we can use WordPress if requested, we find it often becomes bloated
+              with plugins that hurt performance. Astro allows us to deliver a top-tier,
+              high-performance site that Google loves.
               <br /><br />
-              <a href="/blog/astro-vs-wordpress-hospitality-websites-perth/" class="webdev-faq__link">Read our full comparison: Astro vs WordPress &rarr;</a>
+              <a
+                href="/blog/astro-vs-wordpress-hospitality-websites-perth/"
+                class="webdev-faq__link"
+                >Read our full comparison: Astro vs WordPress &rarr;</a
+              >
             </p>
           </details>
 
@@ -179,10 +186,14 @@ const webDevSchema = {
             </summary>
             <p class="webdev-faq__answer">
               Yes. We focus on clean structure, fast loading and on-page SEO
-              best practices so your site can perform well in search and is
-              easy for both people and AI-driven platforms to understand.
+              best practices so your site can perform well in search and is easy
+              for both people and AI-driven platforms to understand.
               <br /><br />
-              <a href="/blog/perth-hospitality-seo-how-to-rank-your-cafe-or-restaurant/" class="webdev-faq__link">Learn more about our SEO approach &rarr;</a>
+              <a
+                href="/blog/perth-hospitality-seo-how-to-rank-your-cafe-or-restaurant/"
+                class="webdev-faq__link"
+                >Learn more about our SEO approach &rarr;</a
+              >
             </p>
           </details>
 
@@ -203,10 +214,12 @@ const webDevSchema = {
               Do you help with hosting, domain and ongoing support?
             </summary>
             <p class="webdev-faq__answer">
-              Yes. We can guide you through hosting and domain setup and connect your
-              new site to reliable services. If you prefer a done-for-you option, we
-              offer an optional monthly care plan that covers hosting, security updates
-              and technical maintenance from <strong>$60 per month</strong>.
+              Yes. We can guide you through hosting and domain setup and connect
+              your new site to reliable services. If you prefer a done-for-you
+              option, we offer an optional monthly care plan that covers
+              hosting, security updates and technical maintenance from <strong
+                >$60 per month</strong
+              >.
             </p>
           </details>
 
@@ -219,15 +232,20 @@ const webDevSchema = {
               help you refresh them. If you need new photography or content, we
               can combine website and content services into one project.
               <br /><br />
-              <a href="/blog/roi-professional-food-photography-perth/" class="webdev-faq__link">See why professional visuals matter &rarr;</a>
+              <a
+                href="/blog/roi-professional-food-photography-perth/"
+                class="webdev-faq__link"
+                >See why professional visuals matter &rarr;</a
+              >
             </p>
           </details>
         </div>
       </div>
 
-      <script type="application/ld+json">
-        {JSON.stringify(webDevSchema)}
-      </script>
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(webDevSchema)}
+      />
     </section>
   </main>
 

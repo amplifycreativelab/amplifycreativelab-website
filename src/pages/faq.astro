@@ -19,7 +19,6 @@ type FaqGroup = {
   items: FaqItem[];
 };
 
-
 // SVG Icons for section headers (Now with fixed width/height for safety)
 const Icons = {
   calendar: `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`,
@@ -27,7 +26,7 @@ const Icons = {
   product: `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`,
   portrait: `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`,
   deliverables: `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>`,
-  web: `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="18" x2="12" y2="22"></line></svg>`
+  web: `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="18" x2="12" y2="22"></line></svg>`,
 };
 
 const faqGroups: FaqGroup[] = [
@@ -64,8 +63,7 @@ const faqGroups: FaqGroup[] = [
         `,
       },
       {
-        question:
-          "How do I book a session and what is the payment structure?",
+        question: "How do I book a session and what is the payment structure?",
         answer: `
           <p>Our booking process is designed to be simple and transparent:</p>
           <ul>
@@ -113,18 +111,18 @@ const faqGroups: FaqGroup[] = [
           </p>
         `,
       },
-      ],
-    },
-    {
-      id: "website-design-development",
-      title: "Website Design & Development",
-      icon: Icons.web,
-      intro:
-        "For Perth businesses that need a modern, fast website designed to work hand-in-hand with their photography and content.",
-      items: [
-        {
-          question: "Do you also build websites, or only offer photography?",
-          answer: `
+    ],
+  },
+  {
+    id: "website-design-development",
+    title: "Website Design & Development",
+    icon: Icons.web,
+    intro:
+      "For Perth businesses that need a modern, fast website designed to work hand-in-hand with their photography and content.",
+    items: [
+      {
+        question: "Do you also build websites, or only offer photography?",
+        answer: `
             <p>
               We offer both. Amplify Creative Lab is a <strong>photography and web design studio</strong> based in Perth.
               Many clients book us to <strong>plan their visuals and website together</strong> so that the photos, copy and layout
@@ -137,10 +135,11 @@ const faqGroups: FaqGroup[] = [
               <a href="/blog/why-perth-restaurants-lose-bookings-to-slow-sites/">See why integrated visuals and speed matter &rarr;</a>
             </p>
           `,
-        },
-        {
-          question: "What is included in your website design and development service?",
-          answer: `
+      },
+      {
+        question:
+          "What is included in your website design and development service?",
+        answer: `
             <p>
               Our website projects are structured so you know exactly what you are getting. A typical engagement includes:
             </p>
@@ -153,10 +152,10 @@ const faqGroups: FaqGroup[] = [
               <li>A short handover session so you know how to update content, menus and blog posts yourself.</li>
             </ul>
           `,
-        },
-        {
-          question: "How long does a website project usually take?",
-          answer: `
+      },
+      {
+        question: "How long does a website project usually take?",
+        answer: `
             <p>
               Timelines depend on scope, but most small business websites take <strong>4–8 weeks</strong> from signed proposal
               to launch, provided content and feedback are supplied on time.
@@ -166,10 +165,11 @@ const faqGroups: FaqGroup[] = [
               <a href="/contact/">contact form</a> so we can recommend a realistic timeline and priority features for launch.
             </p>
           `,
-        },
-        {
-          question: "Can you redesign my existing website instead of starting from scratch?",
-          answer: `
+      },
+      {
+        question:
+          "Can you redesign my existing website instead of starting from scratch?",
+        answer: `
             <p>
               Yes. If your current site is built on a common platform (such as WordPress or a modern site builder), we can either
               redesign within that ecosystem or migrate you to a more <strong>performance-focused setup</strong> while preserving
@@ -182,10 +182,10 @@ const faqGroups: FaqGroup[] = [
               <a href="/blog/how-to-fix-slow-hospitality-sites-without-rebuilding-everything/">Read our guide on fixing slow sites &rarr;</a>
             </p>
           `,
-        },
-        {
-          question: "Do you help with hosting, domain and ongoing support?",
-          answer: `
+      },
+      {
+        question: "Do you help with hosting, domain and ongoing support?",
+        answer: `
             <p>
               Yes. We can guide you through hosting and domain setup and connect your new site to reliable services.
             </p>
@@ -194,10 +194,10 @@ const faqGroups: FaqGroup[] = [
               updates and technical maintenance from <strong>$60 per month</strong>.
             </p>
           `,
-        },
-      ],
-    },
-    {
+      },
+    ],
+  },
+  {
     id: "food-restaurant-photography",
     title: "Food & Restaurant Photography",
     icon: Icons.food,
@@ -247,7 +247,8 @@ const faqGroups: FaqGroup[] = [
         `,
       },
       {
-        question: 'What is the difference between "Styled" and "Lifestyle" food photography?',
+        question:
+          'What is the difference between "Styled" and "Lifestyle" food photography?',
         answer: `
           <p>
             We generally split food photography into two main approaches, which can also be combined
@@ -480,7 +481,11 @@ const faqGroups: FaqGroup[] = [
   },
 ];
 
-const stripHtml = (html: string) => html.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+const stripHtml = (html: string) =>
+  html
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -492,7 +497,7 @@ const faqSchema = {
         "@type": "Answer",
         text: stripHtml(item.answer),
       },
-    }))
+    })),
   ),
 };
 ---
@@ -502,7 +507,5 @@ const faqSchema = {
     <FaqPageSection groups={faqGroups} />
   </main>
 
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>

@@ -43,7 +43,7 @@ if (contentTextColor) contentStyleParts.push(`color: ${contentTextColor};`);
 const contentStyle = contentStyleParts.join(" ");
 ---
 
-<section class="event-service" style={sectionStyle}>
+<div class="event-service" style={sectionStyle}>
   <div class={innerClass}>
     <!-- Image -->
     <figure class="event-service__media">
@@ -79,7 +79,7 @@ const contentStyle = contentStyleParts.join(" ");
       <slot />
     </div>
   </div>
-</section>
+</div>
 
 <style is:global>
   .event-service {

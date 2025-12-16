@@ -4,7 +4,8 @@ import { Image } from "astro:assets";
 import jojoImage from "../assets/images/about/jojo-lead-photographer-creative-director-perth.webp";
 import stefanoImage from "../assets/images/about/stefano-web-developer-astro-expert-perth.webp";
 
-const pageTitle = "About Amplify Creative Lab | Perth Photography & Web Development Studio";
+const pageTitle =
+  "About Amplify Creative Lab | Perth Photography & Web Development Studio";
 const pageDescription =
   "Meet the team behind Amplify Creative Lab in Perth, WA. Jojo specialises in food, product and event photography. Stefano builds fast, SEO-optimised websites for hospitality brands across Western Australia.";
 
@@ -17,14 +18,15 @@ const jojoPersonSchema = {
   worksFor: {
     "@id": "https://amplifycreativelab.com/#organization",
   },
-  description: "Perth-based food, product and event photographer specialising in hospitality and lifestyle brands across Western Australia.",
+  description:
+    "Perth-based food, product and event photographer specialising in hospitality and lifestyle brands across Western Australia.",
   knowsAbout: [
     "Food Photography",
     "Product Photography",
     "Event Photography",
     "Restaurant Photography",
     "Hospitality Branding",
-    "Commercial Photography Perth"
+    "Commercial Photography Perth",
   ],
   areaServed: {
     "@type": "City",
@@ -34,10 +36,10 @@ const jojoPersonSchema = {
       name: "Western Australia",
       containedInPlace: {
         "@type": "Country",
-        name: "Australia"
-      }
-    }
-  }
+        name: "Australia",
+      },
+    },
+  },
 };
 
 const stefanoPersonSchema = {
@@ -49,7 +51,8 @@ const stefanoPersonSchema = {
   worksFor: {
     "@id": "https://amplifycreativelab.com/#organization",
   },
-  description: "Perth web developer specialising in fast, SEO-optimised websites for hospitality and lifestyle brands using Astro and modern frameworks.",
+  description:
+    "Perth web developer specialising in fast, SEO-optimised websites for hospitality and lifestyle brands using Astro and modern frameworks.",
   knowsAbout: [
     "Web Development",
     "Astro Framework",
@@ -57,7 +60,7 @@ const stefanoPersonSchema = {
     "Local SEO Perth",
     "Core Web Vitals",
     "Schema Markup",
-    "Website Performance Optimisation"
+    "Website Performance Optimisation",
   ],
   areaServed: {
     "@type": "City",
@@ -67,10 +70,10 @@ const stefanoPersonSchema = {
       name: "Western Australia",
       containedInPlace: {
         "@type": "Country",
-        name: "Australia"
-      }
-    }
-  }
+        name: "Australia",
+      },
+    },
+  },
 };
 
 const aboutPageSchema = {
@@ -94,20 +97,20 @@ const aboutPageSchema = {
   <main class="page-about">
     <section class="about-poster" aria-label="About Amplify Creative Lab">
       <div class="poster">
-
         <div class="poster__grid">
           <div class="poster__spacer" aria-hidden="true"></div>
 
           <div class="poster__content">
             <p class="poster__kicker">ABOUT AMPLIFY CREATIVE LAB</p>
-            <h1 class="poster__headline">Photography and web development under one roof.</h1>
+            <h1 class="poster__headline">
+              Photography and web development under one roof.
+            </h1>
             <p class="poster__lede">
-              Amplify Creative Lab is a small Perth studio led by Jojo and Stefano. We combine commercial photography
-              with fast, search-friendly websites so your restaurant, bar or brand looks incredible everywhere it
-              shows up online.
+              Amplify Creative Lab is a small Perth studio led by Jojo and
+              Stefano. We combine commercial photography with fast,
+              search-friendly websites so your restaurant, bar or brand looks
+              incredible everywhere it shows up online.
             </p>
-
-
           </div>
         </div>
       </div>
@@ -117,7 +120,10 @@ const aboutPageSchema = {
       <div class="jojo-container">
         <!-- 1. Left Headline -->
         <div class="jojo-col-headline">
-          <h2>CAPTURING<br> THE SOUL BEHIND<br> YOUR FOOD,<br> MOMENTS AND<br> BRAND.</h2>
+          <h2>
+            CAPTURING<br /> THE SOUL BEHIND<br /> YOUR FOOD,<br /> MOMENTS AND<br
+            /> BRAND.
+          </h2>
         </div>
 
         <!-- 2. Center Image -->
@@ -139,27 +145,35 @@ const aboutPageSchema = {
         <div class="jojo-col-content">
           <h3>Hi, I’m Jojo,</h3>
           <p>
-            The photographer behind Amplify Creative Lab, <strong>based in Perth</strong>. I specialise in <strong
+            The photographer behind Amplify Creative Lab, <strong
+              >based in Perth</strong
+            >. I specialise in <strong
               >food, product and event photography</strong
             > for restaurants, cafés and hospitality brands across Western Australia.
           </p>
           <p>
-            With a strong background in hospitality and years spent shooting in real kitchens, I understand how service
-            flows, how food behaves under pressure, and how to capture dishes at their best – without disrupting your
-            team. From Uber Eats hero images to full restaurant rebrands, <strong
-              >my focus is simple: create visuals that feel authentic, look beautiful, and help you sell more.</strong
+            With a strong background in hospitality and years spent shooting in
+            real kitchens, I understand how service flows, how food behaves
+            under pressure, and how to capture dishes at their best – without
+            disrupting your team. From Uber Eats hero images to full restaurant
+            rebrands, <strong
+              >my focus is simple: create visuals that feel authentic, look
+              beautiful, and help you sell more.</strong
             >
           </p>
           <p>
-            More than just content creation, I work from your customer’s perspective. I pay close attention to people,
-            atmosphere and storytelling, capturing not only what your food looks like, but <strong
+            More than just content creation, I work from your customer’s
+            perspective. I pay close attention to people, atmosphere and
+            storytelling, capturing not only what your food looks like, but <strong
               >the soul behind your brand.</strong
             >
           </p>
           <p>
-            Whether you need clean packshots, lifestyle imagery in-venue, or content designed for social media and
-            online campaigns, <strong>every shoot is tailored to your menu, brand and marketing goals</strong>. Let’s
-            create visual content that connects, converts, and makes your brand stand out.
+            Whether you need clean packshots, lifestyle imagery in-venue, or
+            content designed for social media and online campaigns, <strong
+              >every shoot is tailored to your menu, brand and marketing goals</strong
+            >. Let’s create visual content that connects, converts, and makes
+            your brand stand out.
           </p>
           <a href="/portfolio/" class="jojo-btn">See Jojo’s Portfolio</a>
         </div>
@@ -185,24 +199,44 @@ const aboutPageSchema = {
         <!-- Content Column -->
         <div class="stefano-col-content">
           <h2>TURNING GREAT CONTENT INTO HIGH-PERFORMING WEBSITES.</h2>
-          
+
           <div class="stefano-body">
             <p>
-              I’m the web developer and technical strategist at Amplify Creative Lab. <strong>I plan, design and build high-performance websites for hospitality and lifestyle brands, with a strong focus on UX, speed and local SEO in Perth.</strong>
+              I’m the web developer and technical strategist at Amplify Creative
+              Lab. <strong
+                >I plan, design and build high-performance websites for
+                hospitality and lifestyle brands, with a strong focus on UX,
+                speed and local SEO in Perth.</strong
+              >
             </p>
             <p>
-              Using modern tools like Astro, I create fast, mobile-first websites that pass Core Web Vitals and are easy for search engines to understand. This means your photos, menus and booking links don't just look good – they’re structured to <strong>help more people find you on Google and take action.</strong>
+              Using modern tools like Astro, I create fast, mobile-first
+              websites that pass Core Web Vitals and are easy for search engines
+              to understand. This means your photos, menus and booking links
+              don't just look good – they’re structured to <strong
+                >help more people find you on Google and take action.</strong
+              >
             </p>
             <p>
-              Beyond design and development, I handle the technical details most business owners don't have time for: <strong>schema markup, on-page SEO, redirects, image optimisation and analytics</strong>, so you can clearly see how your site is performing.
+              Beyond design and development, I handle the technical details most
+              business owners don't have time for: <strong
+                >schema markup, on-page SEO, redirects, image optimisation and
+                analytics</strong
+              >, so you can clearly see how your site is performing.
             </p>
             <p>
-              <strong>With a background as a chef,</strong> I understand presentation, timing and storytelling – and I bring that mindset into every website I build. Think of me as the technical backbone that helps your brand stand out and convert visitors into customers.
+              <strong>With a background as a chef,</strong> I understand presentation,
+              timing and storytelling – and I bring that mindset into every website
+              I build. Think of me as the technical backbone that helps your brand
+              stand out and convert visitors into customers.
             </p>
             <p>
-              Let’s build a website that’s visually compelling, strategically optimised, and designed to <strong>grow your business.</strong>
+              Let’s build a website that’s visually compelling, strategically
+              optimised, and designed to <strong>grow your business.</strong>
             </p>
-            <a href="/perth-website-development/" class="stefano-cta">DISCOVER WEB SERVICES</a>
+            <a href="/perth-website-development/" class="stefano-cta"
+              >DISCOVER WEB SERVICES</a
+            >
           </div>
         </div>
       </div>
@@ -212,24 +246,28 @@ const aboutPageSchema = {
       <div class="cta">
         <h2 class="cta__title">Why work with a combined team?</h2>
         <p class="cta__text">
-          Most studios either shoot photos <em>or</em> build websites. We do both. Jojo plans shoots around the pages
-          Stefano is building, and Stefano designs layouts to showcase those real assets — so everything looks
-          intentional and works seamlessly.
+          Most studios either shoot photos <em>or</em> build websites. We do both.
+          Jojo plans shoots around the pages Stefano is building, and Stefano designs
+          layouts to showcase those real assets — so everything looks intentional
+          and works seamlessly.
         </p>
         <a href="/contact/" class="cta__btn">Get in Touch</a>
       </div>
     </section>
   </main>
 
-  <script type="application/ld+json">
-    {JSON.stringify(aboutPageSchema)}
-  </script>
-  <script type="application/ld+json">
-    {JSON.stringify(jojoPersonSchema)}
-  </script>
-  <script type="application/ld+json">
-    {JSON.stringify(stefanoPersonSchema)}
-  </script>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(aboutPageSchema)}
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(jojoPersonSchema)}
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(stefanoPersonSchema)}
+  />
 
   <style is:global>
     .page-about {
@@ -240,7 +278,7 @@ const aboutPageSchema = {
 
     .about-poster {
       padding: 0;
-      background: #e3d4b4; 
+      background: #e3d4b4;
       position: relative;
     }
 
@@ -258,7 +296,6 @@ const aboutPageSchema = {
 
     /* Keep simple background shapes or remove if they clash. 
        Let's lighten them for the new clean look */
-
 
     .poster__grid {
       position: relative;
@@ -282,13 +319,13 @@ const aboutPageSchema = {
       font-size: 0.9rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(0,0,0,0.6);
+      color: rgba(0, 0, 0, 0.6);
       margin: 0;
       font-weight: 500;
     }
 
     .poster__headline {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       font-weight: 500;
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       line-height: 1.2;
@@ -302,7 +339,7 @@ const aboutPageSchema = {
       font-family: var(--font-body);
       font-size: 1.15rem;
       line-height: 1.6;
-      color: rgba(0,0,0,0.8);
+      color: rgba(0, 0, 0, 0.8);
       margin: 0 auto;
       max-width: 60ch;
       font-weight: 400;
@@ -330,7 +367,7 @@ const aboutPageSchema = {
       transition: all 0.3s ease;
       background: transparent;
       color: #000;
-      border: 1px solid rgba(0,0,0,0.2);
+      border: 1px solid rgba(0, 0, 0, 0.2);
     }
 
     .poster__btn:hover {
@@ -341,12 +378,14 @@ const aboutPageSchema = {
     }
 
     /* Remove old variation classes to keep uniform look */
-    .poster__btn--warm, .poster__btn--green {
-       /* Handled by base class now */
+    .poster__btn--warm,
+    .poster__btn--green {
+      /* Handled by base class now */
     }
 
     .person {
-      padding: clamp(2.75rem, 6vw, 5rem) clamp(var(--container-pad-mobile), 5vw, var(--container-pad-desktop));
+      padding: clamp(2.75rem, 6vw, 5rem)
+        clamp(var(--container-pad-mobile), 5vw, var(--container-pad-desktop));
     }
 
     .person__inner {
@@ -410,7 +449,9 @@ const aboutPageSchema = {
       color: var(--color-heading);
       border-bottom: 1px solid rgba(21, 39, 5, 0.35);
       padding-bottom: 2px;
-      transition: transform 160ms ease, border-color 160ms ease;
+      transition:
+        transform 160ms ease,
+        border-color 160ms ease;
     }
 
     .person__link:hover {
@@ -481,7 +522,11 @@ const aboutPageSchema = {
     }
 
     .person--jojo {
-      background: linear-gradient(180deg, rgba(219, 200, 176, 0.22), rgba(219, 200, 176, 0));
+      background: linear-gradient(
+        180deg,
+        rgba(219, 200, 176, 0.22),
+        rgba(219, 200, 176, 0)
+      );
     }
 
     .person--jojo .person__visual::before {
@@ -489,8 +534,17 @@ const aboutPageSchema = {
       height: min(560px, 78vw);
       left: -18%;
       top: -12%;
-      background: radial-gradient(circle at 30% 35%, rgba(219, 200, 176, 0.95), rgba(219, 200, 176, 0) 65%),
-        radial-gradient(circle at 70% 70%, rgba(122, 103, 83, 0.55), rgba(122, 103, 83, 0) 62%);
+      background:
+        radial-gradient(
+          circle at 30% 35%,
+          rgba(219, 200, 176, 0.95),
+          rgba(219, 200, 176, 0) 65%
+        ),
+        radial-gradient(
+          circle at 70% 70%,
+          rgba(122, 103, 83, 0.55),
+          rgba(122, 103, 83, 0) 62%
+        );
       border-radius: 42% 58% 68% 32% / 48% 40% 60% 52%;
       filter: blur(0.2px);
     }
@@ -507,7 +561,11 @@ const aboutPageSchema = {
     }
 
     .person--stefano {
-      background: linear-gradient(180deg, rgba(194, 205, 186, 0.22), rgba(194, 205, 186, 0));
+      background: linear-gradient(
+        180deg,
+        rgba(194, 205, 186, 0.22),
+        rgba(194, 205, 186, 0)
+      );
     }
 
     .person--stefano .person__visual::before {
@@ -515,8 +573,17 @@ const aboutPageSchema = {
       height: min(560px, 78vw);
       right: -18%;
       top: -12%;
-      background: radial-gradient(circle at 30% 35%, rgba(194, 205, 186, 0.95), rgba(194, 205, 186, 0) 65%),
-        radial-gradient(circle at 70% 70%, rgba(36, 54, 15, 0.45), rgba(36, 54, 15, 0) 62%);
+      background:
+        radial-gradient(
+          circle at 30% 35%,
+          rgba(194, 205, 186, 0.95),
+          rgba(194, 205, 186, 0) 65%
+        ),
+        radial-gradient(
+          circle at 70% 70%,
+          rgba(36, 54, 15, 0.45),
+          rgba(36, 54, 15, 0) 62%
+        );
       border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%;
       filter: blur(0.2px);
     }
@@ -533,7 +600,8 @@ const aboutPageSchema = {
     }
 
     .about-cta {
-      padding: clamp(3.25rem, 5vw, 4.5rem) clamp(var(--container-pad-mobile), 5vw, var(--container-pad-desktop));
+      padding: clamp(3.25rem, 5vw, 4.5rem)
+        clamp(var(--container-pad-mobile), 5vw, var(--container-pad-desktop));
     }
 
     .cta {
@@ -578,7 +646,10 @@ const aboutPageSchema = {
       font-weight: 600;
       letter-spacing: 0.01em;
       text-decoration: none;
-      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
     }
 
@@ -628,14 +699,12 @@ const aboutPageSchema = {
       }
     }
 
-
     /* New Jojo Section Styles */
     .jojo-section {
       width: 100%;
       background: #fff; /* Restored white background */
       padding: 0;
       overflow: hidden;
-      
     }
 
     .jojo-container {
@@ -685,7 +754,7 @@ const aboutPageSchema = {
       position: absolute;
       background-color: #e0e0e0; /* Second section Grey */
       /* Fill container */
-      inset: 0; 
+      inset: 0;
       z-index: 0;
     }
 
@@ -701,7 +770,7 @@ const aboutPageSchema = {
       max-width: none;
       height: auto;
       display: block;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
       transform: translateX(-15%);
     }
 
@@ -737,13 +806,13 @@ const aboutPageSchema = {
       font-weight: 700;
       color: #fff;
     }
-    
+
     .jojo-btn {
       display: inline-block;
       width: fit-content;
       margin-top: 0.5rem;
       padding: 0.85rem 1.75rem;
-      border: 1px solid rgba(255,255,255,0.4);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: 999px;
       color: #fff;
       text-decoration: none;
@@ -766,7 +835,7 @@ const aboutPageSchema = {
       .jojo-container {
         display: grid;
         grid-template-columns: 4fr 6fr; /* 40% Slogan, 60% Image */
-        grid-template-areas: 
+        grid-template-areas:
           "headline image"
           "content content";
         gap: 0;
@@ -782,10 +851,10 @@ const aboutPageSchema = {
         background: #fff;
         z-index: 1;
       }
-      
+
       .jojo-col-headline h2 {
-         margin-left: auto;
-         font-size: 3rem; /* Increased for tablet */
+        margin-left: auto;
+        font-size: 3rem; /* Increased for tablet */
       }
 
       .jojo-col-image {
@@ -796,10 +865,10 @@ const aboutPageSchema = {
         background-color: #e0e0e0; /* Matches image BG */
         min-height: auto; /* Allow it to shrink/grow with headline */
       }
-      
+
       .jojo-image-wrapper {
-         width: 100%;
-         max-width: 100%;
+        width: 100%;
+        max-width: 100%;
       }
 
       .jojo-img {
@@ -836,49 +905,48 @@ const aboutPageSchema = {
         position: relative;
         z-index: 2; /* On top of Grey BG */
         /* Optional: subtle shadow for the box */
-        
       }
-      
+
       .jojo-col-headline h2 {
         max-width: 100%;
         margin-left: auto;
         font-size: clamp(2.2rem, 3.2vw, 4rem);
-        line-height: 1.9; 
+        line-height: 1.9;
       }
 
       .jojo-col-image {
-        padding: 0; 
+        padding: 0;
         align-items: flex-end;
         position: relative;
-        z-index: 1; 
+        z-index: 1;
       }
 
-       .jojo-image-wrapper {
-         /* Reset transforms as image is now pre-composed */
-         transform: none; 
-         max-width: 100%;
-         width: 100%;
-         position: relative;
-         z-index: 10; 
-       }
+      .jojo-image-wrapper {
+        /* Reset transforms as image is now pre-composed */
+        transform: none;
+        max-width: 100%;
+        width: 100%;
+        position: relative;
+        z-index: 10;
+      }
 
-       .jojo-img {
-         width: 100%;
-         max-width: 100%;
-         transform: none;
-       }
+      .jojo-img {
+        width: 100%;
+        max-width: 100%;
+        transform: none;
+      }
 
       .jojo-col-content {
         padding: 8rem 4rem 3rem 4rem;
       }
     }
-  /* Stefano Section Styles removed to separate block */
+    /* Stefano Section Styles removed to separate block */
   </style>
 
   <style>
     /* Stefano Section Styles */
     .stefano-section {
-      background-color: #EFECE6;
+      background-color: #efece6;
       color: #000;
       padding: 0;
       position: relative;
@@ -964,7 +1032,7 @@ const aboutPageSchema = {
       border: 1px solid rgba(30, 48, 25, 0.4);
       background-color: transparent;
       border-radius: 999px;
-      color: #1E3019;
+      color: #1e3019;
       text-decoration: none;
       font-family: var(--font-body);
       font-weight: 600;
@@ -975,9 +1043,9 @@ const aboutPageSchema = {
     }
 
     .stefano-cta:hover {
-      background-color: #1E3019;
+      background-color: #1e3019;
       color: #fff;
-      border-color: #1E3019;
+      border-color: #1e3019;
     }
 
     /* Mobile & Tablet Overrides (Max 1199px) - Mimic Jojo Section Layout */
@@ -986,30 +1054,30 @@ const aboutPageSchema = {
         display: flex;
         flex-direction: column;
       }
-      
+
       .stefano-col-content {
         display: contents; /* Unwrap container to reorder H2 and Body */
       }
-      
+
       .stefano-col-content h2 {
         order: 1;
         padding: 4rem 1.5rem 2rem 1.5rem; /* Headline padding */
         text-align: left;
       }
-      
+
       .stefano-col-visual {
         order: 2;
         width: 100%;
         min-height: 400px;
       }
-      
+
       .stefano-body {
         order: 3;
         padding: 2rem 1.5rem 4rem 1.5rem; /* Body padding */
         gap: 1.5rem; /* Reduced gap for mobile */
       }
     }
-    
+
     /* Optimize Image Size for Tablet (768-1199px) */
     @media (min-width: 768px) and (max-width: 1199px) {
       .stefano-col-visual {
@@ -1046,8 +1114,6 @@ const aboutPageSchema = {
       }
     }
 
-
-
     @media (min-width: 1200px) {
       .stefano-section {
         padding: 0;
@@ -1058,25 +1124,25 @@ const aboutPageSchema = {
         align-items: stretch; /* Stretch to fill height */
         gap: 0;
       }
-      
+
       .stefano-col-visual {
         justify-content: center;
         align-items: center;
         padding: 0; /* Remove padding */
-        background-color: #EFECE6; 
+        background-color: #efece6;
       }
 
       .stefano-col-content {
         padding: 4rem; /* Reduced padding for narrower column */
       }
-      
+
       .stefano-col-visual {
         justify-content: center; /* Center in its 50% column */
         padding-right: 0;
       }
-      
+
       .stefano-visual-inner {
-          margin-right: 0; 
+        margin-right: 0;
       }
     }
 
@@ -1086,7 +1152,7 @@ const aboutPageSchema = {
       }
     }
 
-    /*NEW*/ 
+    /*NEW*/
     @media (max-width: 768px) {
       /* Remove the big poster spacing and background color */
       .about-poster {
@@ -1116,7 +1182,7 @@ const aboutPageSchema = {
       }
 
       /* Hide elements that are purely decorative or less important */
-      .poster__spacer, 
+      .poster__spacer,
       .poster__kicker {
         display: none; /* Safe to hide these as they aren't the H1 */
       }
@@ -1139,4 +1205,3 @@ const aboutPageSchema = {
     }
   </style>
 </BaseLayout>
-

@@ -125,10 +125,8 @@ const faqSchema = {
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="page-perth-food-photography">
-    
-
     <FoodServiceRestaurant />
-    <PerthFoodPhotographyIntro/>
+    <PerthFoodPhotographyIntro />
 
     <section class="food-faq">
       <div class="food-faq__inner">
@@ -140,9 +138,13 @@ const faqSchema = {
               How much does food photography cost in Perth?
             </summary>
             <p class="food-faq__answer">
-              On average, a photographer charges <strong>$250–$500 per hour</strong>, but our studio charges <strong>$200 per hour the first time you book with us</strong>.
-              Most restaurant shoots run 2–4 hours depending on the number of dishes.
-              We provide a custom quote after discussing your menu, goals and deliverables.
+              On average, a photographer charges <strong
+                >$250–$500 per hour</strong
+              >, but our studio charges <strong
+                >$200 per hour the first time you book with us</strong
+              >. Most restaurant shoots run 2–4 hours depending on the number of
+              dishes. We provide a custom quote after discussing your menu,
+              goals and deliverables.
             </p>
           </details>
 
@@ -164,8 +166,9 @@ const faqSchema = {
             <p class="food-faq__answer">
               We cover the entire Perth metro area including the CBD, Fremantle,
               Northbridge, Subiaco, Leederville, Mount Lawley, Victoria Park,
-              South Perth, and surrounding suburbs. Travel to regional areas like
-              Margaret River or the Swan Valley is available with a travel fee.
+              South Perth, and surrounding suburbs. Travel to regional areas
+              like Margaret River or the Swan Valley is available with a travel
+              fee.
             </p>
           </details>
 
@@ -174,9 +177,9 @@ const faqSchema = {
               How long does a typical food photography session take?
             </summary>
             <p class="food-faq__answer">
-              Most sessions run between 2 and 6 hours depending on the number
-              of dishes, styling complexity and whether service is running at
-              the same time.
+              Most sessions run between 2 and 6 hours depending on the number of
+              dishes, styling complexity and whether service is running at the
+              same time.
             </p>
           </details>
 
@@ -190,7 +193,11 @@ const faqSchema = {
               on the menu and online. We provide a simple pre-shoot checklist so
               your team knows exactly what to do.
               <br /><br />
-              <a href="/blog/how-to-prepare-your-kitchen-for-a-successful-food-shoot/" class="food-faq__link">Read our full kitchen prep guide &rarr;</a>
+              <a
+                href="/blog/how-to-prepare-your-kitchen-for-a-successful-food-shoot/"
+                class="food-faq__link"
+                >Read our full kitchen prep guide &rarr;</a
+              >
             </p>
           </details>
 
@@ -204,7 +211,11 @@ const faqSchema = {
               that are framed, cropped and compressed for Uber Eats, DoorDash,
               Deliveroo and other online ordering platforms.
               <br /><br />
-              <a href="/blog/uber-eats-vs-direct-ordering-how-photography-impacts-commission-costs/" class="food-faq__link">See how photos impact delivery sales &rarr;</a>
+              <a
+                href="/blog/uber-eats-vs-direct-ordering-how-photography-impacts-commission-costs/"
+                class="food-faq__link"
+                >See how photos impact delivery sales &rarr;</a
+              >
             </p>
           </details>
 
@@ -238,15 +249,17 @@ const faqSchema = {
               quarterly shoots to keep their menus, websites and delivery
               platforms updated with fresh, on-brand imagery.
               <br /><br />
-              <a href="/blog/menu-engineering-how-photography-boosts-dish-sales/" class="food-faq__link">Learn how photography boosts dish sales &rarr;</a>
+              <a
+                href="/blog/menu-engineering-how-photography-boosts-dish-sales/"
+                class="food-faq__link"
+                >Learn how photography boosts dish sales &rarr;</a
+              >
             </p>
           </details>
         </div>
       </div>
 
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </script>
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     </section>
   </main>
 

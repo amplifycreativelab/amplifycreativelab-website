@@ -13,7 +13,6 @@ import "../styles/main.css";
 // Fonts
 import "../styles/fonts.css";
 
-
 const businessDescription =
     "Amplify Creative Lab is a Perth-based food photography and creative studio for hospitality brands and venues.";
 
@@ -31,7 +30,8 @@ const {
 } = Astro.props;
 
 const siteUrl = "https://amplifycreativelab.com";
-const canonical = canonicalProp ?? new URL(Astro.url.pathname, siteUrl).toString();
+const canonical =
+    canonicalProp ?? new URL(Astro.url.pathname, siteUrl).toString();
 const GA_MEASUREMENT_ID = "G-4KRYBTPCTN";
 const GOOGLE_ADS_ID = "AW-17539052212";
 
@@ -51,7 +51,8 @@ const resolvedOgDescription = ogDescription ?? description;
 const defaultSocialImage = `${siteUrl}/images/social/share-default.png`;
 const resolvedOgImage = toAbsoluteUrl(ogImage ?? defaultSocialImage);
 const resolvedOgImageAlt =
-    ogImageAlt ?? "Amplify Creative Lab – Perth food photography logo and branding";
+    ogImageAlt ??
+    "Amplify Creative Lab – Perth food photography logo and branding";
 
 const businessSchema = {
     "@context": "https://schema.org",
@@ -71,11 +72,13 @@ const businessSchema = {
                 url: logoUrl,
             },
             email: "support@amplifycreativelab.com",
-            telephone: "+61 460 526 441", 
+            telephone: "+61 460 526 441",
             address: {
                 "@type": "PostalAddress",
-                addressLocality: "Perth",
+                streetAddress: "Unit 6, 186-190 Grand Promenade",
+                addressLocality: "Doubleview",
                 addressRegion: "WA",
+                postalCode: "6018",
                 addressCountry: "AU",
             },
             areaServed: {
@@ -84,8 +87,8 @@ const businessSchema = {
             },
             geo: {
                 "@type": "GeoCoordinates",
-                latitude: -31.9523,
-                longitude: 115.8613,
+                latitude: -31.9001,
+                longitude: 115.7823,
             },
             knowsAbout: [
                 "Food photography",
@@ -131,7 +134,8 @@ const businessSchema = {
             "@id": `${siteUrl}/#service-food-photography`,
             name: "Food Photography",
             serviceType: "Food Photography",
-            description: "Professional food photography for Perth restaurants, cafés, bars and hospitality brands. Menu imagery, styled hero dishes, Uber Eats and delivery platform photos.",
+            description:
+                "Professional food photography for Perth restaurants, cafés, bars and hospitality brands. Menu imagery, styled hero dishes, Uber Eats and delivery platform photos.",
             areaServed: "Perth, Western Australia",
             provider: {
                 "@id": `${siteUrl}/#organization`,
@@ -144,7 +148,8 @@ const businessSchema = {
             "@id": `${siteUrl}/#service-event-photography`,
             name: "Event Photography",
             serviceType: "Event Photography",
-            description: "Perth event photography for corporate functions, brand activations, hospitality events and private celebrations. Candid, story-driven imagery for marketing and social media.",
+            description:
+                "Perth event photography for corporate functions, brand activations, hospitality events and private celebrations. Candid, story-driven imagery for marketing and social media.",
             areaServed: "Perth, Western Australia",
             provider: {
                 "@id": `${siteUrl}/#organization`,
@@ -157,7 +162,8 @@ const businessSchema = {
             "@id": `${siteUrl}/#service-product-photography`,
             name: "Product Photography",
             serviceType: "Product Photography",
-            description: "Product photography for Perth ecommerce and retail brands. Studio packshots, lifestyle imagery for Shopify, Amazon, Etsy and marketing campaigns.",
+            description:
+                "Product photography for Perth ecommerce and retail brands. Studio packshots, lifestyle imagery for Shopify, Amazon, Etsy and marketing campaigns.",
             areaServed: "Perth, Western Australia",
             provider: {
                 "@id": `${siteUrl}/#organization`,
@@ -170,7 +176,8 @@ const businessSchema = {
             "@id": `${siteUrl}/#service-website-development`,
             name: "Website Development",
             serviceType: "Website Development",
-            description: "Custom website design and development for Perth businesses, sole traders and hospitality venues. Fast, SEO-friendly, mobile-responsive sites from $400.",
+            description:
+                "Custom website design and development for Perth businesses, sole traders and hospitality venues. Fast, SEO-friendly, mobile-responsive sites from $400.",
             areaServed: "Perth, Western Australia",
             provider: {
                 "@id": `${siteUrl}/#organization`,
@@ -209,11 +216,34 @@ const businessSchema = {
             content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
 
-        <link rel="preload" href="/fonts/montserrat-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/fonts/montserrat-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/fonts/abril-fatface-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-
+        <link
+            rel="preload"
+            href="/fonts/montserrat-latin-300-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/montserrat-latin-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/montserrat-latin-600-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/abril-fatface-latin-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
 
         <title>{title}</title>
         {description && <meta name="description" content={description} />}
@@ -232,7 +262,6 @@ const businessSchema = {
             )
         }
 
-
         <link rel="canonical" href={canonical} />
 
         <meta property="og:type" content={resolvedOgType} />
@@ -241,7 +270,10 @@ const businessSchema = {
         <meta property="og:title" content={resolvedOgTitle} />
         {
             resolvedOgDescription && (
-                <meta property="og:description" content={resolvedOgDescription} />
+                <meta
+                    property="og:description"
+                    content={resolvedOgDescription}
+                />
             )
         }
         <meta property="og:url" content={canonical} />
@@ -262,9 +294,14 @@ const businessSchema = {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@amplifycreativelab" />
         <meta name="twitter:title" content={resolvedOgTitle} />
-        {resolvedOgDescription && (
-            <meta name="twitter:description" content={resolvedOgDescription} />
-        )}
+        {
+            resolvedOgDescription && (
+                <meta
+                    name="twitter:description"
+                    content={resolvedOgDescription}
+                />
+            )
+        }
         <meta name="twitter:image" content={resolvedOgImage} />
         <meta name="twitter:image:alt" content={resolvedOgImageAlt} />
         <!--
@@ -287,18 +324,19 @@ const businessSchema = {
             sizes="192x192"
             type="image/png"
         />
-        <link rel="apple-touch-icon" href={appleTouchIcon.src} sizes="180x180" />
-        <meta
-            name="msapplication-TileImage"
-            content={msTileImage.src}
+        <link
+            rel="apple-touch-icon"
+            href={appleTouchIcon.src}
+            sizes="180x180"
         />
-
+        <meta name="msapplication-TileImage" content={msTileImage.src} />
 
         <meta name="theme-color" content="#FEF8EB" />
 
-        <script type="application/ld+json">
-            {JSON.stringify(businessSchema)}
-        </script>
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(businessSchema)}
+        />
 
         <script define:vars={{ GA_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
             // Initialize dataLayer immediately so events can be queued
@@ -322,9 +360,18 @@ const businessSchema = {
             }
 
             // Load on user interaction
-            const events = ["mousedown", "mousemove", "keydown", "scroll", "touchstart"];
+            const events = [
+                "mousedown",
+                "mousemove",
+                "keydown",
+                "scroll",
+                "touchstart",
+            ];
             events.forEach((event) => {
-                window.addEventListener(event, loadGTM, { once: true, passive: true });
+                window.addEventListener(event, loadGTM, {
+                    once: true,
+                    passive: true,
+                });
             });
 
             // Fallback: load after 4 seconds if no interaction
@@ -333,13 +380,11 @@ const businessSchema = {
     </head>
 
     <body>
-
         <Header />
 
         <slot />
 
         <Footer />
-
 
         <CookieConsent />
 
