@@ -28,10 +28,13 @@ const {
       class="contact-form"
       name={formName}
       method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
       action={action}
       aria-label={heading}
+      {...{
+        "data-netlify": "true",
+        "netlify-honeypot": "bot-field",
+        "data-netlify-recaptcha": "true",
+      }}
     >
       <!-- Netlify form name -->
       <input type="hidden" name="form-name" value={formName} />
@@ -147,6 +150,13 @@ const {
 
         <!-- Optional extra fields slot -->
         <slot />
+      </div>
+
+      <!-- Netlify CAPTCHA -->
+      <div
+        class="form-field form-field-full form-captcha"
+        data-netlify-recaptcha="true"
+      >
       </div>
 
       <!-- Submit -->

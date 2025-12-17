@@ -16,7 +16,8 @@
 
 <body>
     <!-- Contact form registration for Netlify -->
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/" hidden>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true"
+        action="/thank-you/" hidden>
         <input type="hidden" name="form-name" value="contact" />
         <input name="bot-field" />
         <input name="name" type="text" />
