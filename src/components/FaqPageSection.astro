@@ -19,12 +19,7 @@ interface Props {
 const { groups = [] } = Astro.props as Props;
 ---
 
-<div
-  class="faq-page"
-  aria-labelledby="faq-page-heading"
-  itemscope
-  itemtype="https://schema.org/FAQPage"
->
+<div class="faq-page" aria-labelledby="faq-page-heading">
   <div class="faq-page-inner">
     <header class="faq-page-header">
       <p class="faq-page-kicker">Common Questions</p>
@@ -59,26 +54,18 @@ const { groups = [] } = Astro.props as Props;
               {group.items.map((item, index) => (
                 <details
                   class="faq-item"
-                  itemscope
-                  itemprop="mainEntity"
-                  itemtype="https://schema.org/Question"
                   {...(index === 0 && group.id === "web-development"
                     ? { open: true }
                     : {})}
                 >
-                  <summary class="faq-question" itemprop="name">
+                  <summary class="faq-question">
                     <span>{item.question}</span>
                     <span class="faq-toggle-icon" aria-hidden="true">
                       +
                     </span>
                   </summary>
-                  <div
-                    class="faq-answer"
-                    itemscope
-                    itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer"
-                  >
-                    <div itemprop="text" set:html={item.answer} />
+                  <div class="faq-answer">
+                    <div set:html={item.answer} />
                   </div>
                 </details>
               ))}
