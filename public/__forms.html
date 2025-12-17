@@ -1,0 +1,38 @@
+<!--
+  This hidden file registers the contact form with Netlify Forms.
+  Netlify's post-processing bot scans static HTML files to detect forms.
+  Since Astro generates HTML at build time, Netlify may not detect the form
+  in the component output. This file ensures the form is properly registered.
+  
+  IMPORTANT: The form name and fields here MUST match your actual ContactForm.astro
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Registration</title>
+</head>
+
+<body>
+    <!-- Contact form registration for Netlify -->
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/" hidden>
+        <input type="hidden" name="form-name" value="contact" />
+        <input name="bot-field" />
+        <input name="name" type="text" />
+        <input name="email" type="email" />
+        <input name="phone" type="tel" />
+        <select name="service">
+            <option value="event photography">Event Photography</option>
+            <option value="food photography">Food Photography</option>
+            <option value="product photography">Product Photography</option>
+            <option value="portrait photography">Portrait Photography</option>
+            <option value="website development">Website Development</option>
+        </select>
+        <input name="budget" type="text" />
+        <input name="event_date" type="date" />
+        <textarea name="message"></textarea>
+    </form>
+</body>
+
+</html>
