@@ -1,0 +1,23 @@
+# Netlify Redirects
+# Format: /old-path /new-path 301
+
+# --- Old WordPress Page Redirects ---
+/food-photography/       /perth-food-photography/        301
+/content-creation/       /                               301
+/category/pricing/       /faq/                           301
+/portfolio               /portfolio/                     301
+
+# --- WordPress System File Cleanup ---
+# Redirect old WP admin/content links to home to stop 404 errors in console
+/wp-admin/*              /                               301
+/wp-content/*            /                               301
+/wp-includes/*           /                               301
+/xmlrpc.php              /                               301
+/comments/feed/          /                               301
+/feed/                   /                               301
+# Catch-all for other PHP files specific to WP
+/*.php                   /                               301
+
+# --- Existing Content Checks ---
+# Ensure these specific "Page with redirect" warnings resolve correctly
+# (Netlify handles trailing slash automatically if configured, but explicit helps)
