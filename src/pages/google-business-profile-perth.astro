@@ -1,0 +1,252 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GbpIntro from "../components/google-business-profile-perth/GbpIntro.astro";
+import GbpWhySection from "../components/google-business-profile-perth/GbpWhySection.astro";
+import GbpPricingTiers from "../components/google-business-profile-perth/GbpPricingTiers.astro";
+
+const pageTitle =
+    "Google Business Profile Services Perth | Amplify Creative Lab";
+const pageDescription =
+    "Expert Google Business Profile setup, verification and management in Perth. We help local businesses rank higher on Google Maps and drive more customers.";
+
+const gbpSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://amplifycreativelab.com/",
+                },
+                {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Google Business Profile Services",
+                    item: "https://amplifycreativelab.com/google-business-profile-perth/",
+                },
+            ],
+        },
+        {
+            "@type": "Service",
+            "@id": "https://amplifycreativelab.com/#service-gbp",
+            name: "Google Business Profile Optimization",
+            url: "https://amplifycreativelab.com/google-business-profile-perth/",
+            description:
+                "Professional Google Business Profile setup, verification and optimization for Perth businesses. Get found on Google Maps and drive local traffic.",
+            areaServed: "Perth, Western Australia",
+            provider: {
+                "@id": "https://amplifycreativelab.com/#organization",
+            },
+        },
+        {
+            "@type": "FAQPage",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "How long does Google Business Profile verification take?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Verification methods vary (postcard, phone, video). Postcards take up to 14 days, while video verification can be faster. We assist with the process to ensure it's done correctly and as quickly as possible.",
+                    },
+                },
+                {
+                    "@type": "Question",
+                    name: "Why is my business not showing up on Google Maps?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "This can happen if your profile is unverified, suspended, or lacks optimization (missing categories, photos, or citations). We perform an audit to find the root cause and fix it.",
+                    },
+                },
+                {
+                    "@type": "Question",
+                    name: "Do I need a physical address to have a profile?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "You need a mailing address for verification, but if you are a service-area business (like a plumber or mobile photographer), you can hide your address from the public and show a service area instead.",
+                    },
+                },
+                {
+                    "@type": "Question",
+                    name: "Can you help remove bad reviews?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "We cannot delete legitimate reviews, but we can help you flag spam/fake reviews to Google for removal. For negative legitimate reviews, we provide a strategy for professional responses that can actually turn a negative into a positive for future customers.",
+                    },
+                },
+                {
+                    "@type": "Question",
+                    name: "How often should I post on my Google Business Profile?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "We recommend posting at least once a week to keep your profile active and signal to Google that you are open for business. Regular photo updates are also crucial.",
+                    },
+                },
+            ],
+        },
+    ],
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+    <main class="page-google-business-profile">
+        <GbpIntro />
+        <GbpWhySection />
+        <GbpPricingTiers />
+
+        <section class="gbp-faq">
+            <div class="gbp-faq__inner">
+                <h2 class="gbp-faq__title">Common Questions</h2>
+
+                <div class="gbp-faq__list">
+                    <details class="gbp-faq__item">
+                        <summary class="gbp-faq__question">
+                            How long does Google Business Profile verification
+                            take?
+                        </summary>
+                        <p class="gbp-faq__answer">
+                            Verification methods vary (postcard, phone, video).
+                            Postcards take up to 14 days, while video
+                            verification can be faster. We assist with the
+                            process to ensure it's done correctly and as quickly
+                            as possible.
+                        </p>
+                    </details>
+
+                    <details class="gbp-faq__item">
+                        <summary class="gbp-faq__question">
+                            Why is my business not showing up on Google Maps?
+                        </summary>
+                        <p class="gbp-faq__answer">
+                            This can happen if your profile is unverified,
+                            suspended, or lacks optimization (missing
+                            categories, photos, or citations). We perform an
+                            audit to find the root cause and fix it.
+                        </p>
+                    </details>
+
+                    <details class="gbp-faq__item">
+                        <summary class="gbp-faq__question">
+                            Do I need a physical address to have a profile?
+                        </summary>
+                        <p class="gbp-faq__answer">
+                            You need a mailing address for verification, but if
+                            you are a service-area business (like a plumber or
+                            mobile photographer), you can hide your address from
+                            the public and show a service area instead.
+                        </p>
+                    </details>
+
+                    <details class="gbp-faq__item">
+                        <summary class="gbp-faq__question">
+                            Can you help remove bad reviews?
+                        </summary>
+                        <p class="gbp-faq__answer">
+                            We cannot delete legitimate reviews, but we can help
+                            you flag spam/fake reviews to Google for removal.
+                            For negative legitimate reviews, we provide a
+                            strategy for professional responses.
+                        </p>
+                    </details>
+
+                    <details class="gbp-faq__item">
+                        <summary class="gbp-faq__question">
+                            How often should I post on my Google Business
+                            Profile?
+                        </summary>
+                        <p class="gbp-faq__answer">
+                            We recommend posting at least once a week to keep
+                            your profile active and signal to Google that you
+                            are open for business. Regular photo updates are
+                            also crucial.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+            <script
+                type="application/ld+json"
+                set:html={JSON.stringify(gbpSchema)}
+            />
+        </section>
+    </main>
+
+    <style is:global>
+        .page-google-business-profile {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .gbp-faq {
+            background-color: #f5ead7;
+            padding: 60px 24px;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #e3d4b4;
+        }
+
+        .gbp-faq__inner {
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .gbp-faq__title {
+            font-family: "Abril Fatface", serif;
+            font-size: 40px;
+            font-weight: 500;
+            margin: 0 0 24px;
+            color: #152705;
+            text-align: left;
+        }
+
+        .gbp-faq__list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .gbp-faq__item {
+            border-bottom: 1px solid rgba(36, 54, 15, 0.25);
+            padding: 8px 0 12px;
+        }
+
+        .gbp-faq__question {
+            font-family: "Darker Grotesque", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            color: #24360f;
+        }
+
+        .gbp-faq__answer {
+            font-family: "Darker Grotesque", sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-top: 6px;
+            color: #4a5e3a;
+        }
+
+        @media (max-width: 768px) {
+            .gbp-faq {
+                padding: 40px 16px;
+            }
+
+            .gbp-faq__title {
+                font-size: 32px;
+            }
+
+            .gbp-faq__question {
+                font-size: 18px;
+            }
+
+            .gbp-faq__answer {
+                font-size: 16px;
+            }
+        }
+    </style>
+</BaseLayout>

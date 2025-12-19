@@ -1,0 +1,149 @@
+---
+
+---
+
+<section class="gbp-why">
+    <div class="gbp-why__inner">
+        <div class="gbp-why__header">
+            <h2 class="gbp-why__title">Why a 5-star profile matters</h2>
+            <p class="gbp-why__subtitle">
+                It's not just about showing up. It's about showing up first and
+                looking like the best choice in town.
+            </p>
+        </div>
+
+        <div class="gbp-why__grid">
+            <div class="gbp-why__card">
+                <h3 class="card-title">Capture Local Traffic</h3>
+                <p class="card-body">
+                    Go where your customers are. Google Maps is the #1 way
+                    people find local services, restaurants, and shops in Perth.
+                </p>
+            </div>
+
+            <div class="gbp-why__card">
+                <h3 class="card-title">Build Instant Trust</h3>
+                <p class="card-body">
+                    A completed profile with recent photos and responded reviews
+                    gives new customers the confidence to choose you over
+                    competitors.
+                </p>
+            </div>
+
+            <div class="gbp-why__card">
+                <h3 class="card-title">Drive More Calls</h3>
+                <p class="card-body">
+                    Optimized profiles convert searches into phone calls, table
+                    bookings, and direction requests without them even visiting
+                    your website.
+                </p>
+            </div>
+
+            <div class="gbp-why__card">
+                <h3 class="card-title">Stand Out Visually</h3>
+                <p class="card-body">
+                    We use our professional photography background to ensure
+                    your profile pops with high-quality images that sell your
+                    brand.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Section Background */
+    .gbp-why {
+        background-color: #fef8eb;
+        padding: 5rem 1.5rem; /* Vertical | Horizontal */
+        border-bottom: 1px solid #e3d4b4;
+    }
+
+    .gbp-why__inner {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Header Text */
+    .gbp-why__header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3.5rem auto;
+    }
+
+    .gbp-why__title {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.5rem;
+        color: #152705;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+
+    .gbp-why__subtitle {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        color: #24360f;
+        margin: 0;
+    }
+
+    /* Grid Layout */
+    .gbp-why__grid {
+        display: grid;
+        grid-template-columns: repeat(
+            4,
+            1fr
+        ); /* 4 Equal Columns for inline layout */
+        gap: 1.5rem;
+    }
+
+    /* Individual Card Style */
+    .gbp-why__card {
+        background: #ffffff;
+        border: 1px solid rgba(227, 212, 180, 0.6);
+        padding: 2.5rem 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(21, 39, 5, 0.03);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: transform 0.2s ease;
+    }
+
+    .gbp-why__card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(21, 39, 5, 0.08);
+    }
+
+    /* Card Typography */
+    .card-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #152705;
+        margin: 0 0 1rem 0;
+    }
+
+    .card-body {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #4a5e3a;
+        margin: 0;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 900px) {
+        .gbp-why__grid {
+            grid-template-columns: 1fr; /* Stack vertically on tablet/mobile */
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .gbp-why__title {
+            font-size: 2rem;
+        }
+    }
+</style>

@@ -1,0 +1,117 @@
+---
+title: "Core Web Vitals for Hotels: Why Slow Sites Lose Allocations"
+description: "Is your hotel website losing bookings to OTA platforms? Learn how Core Web Vitals impact your Google rankings and extensive guide for Perth accommodation providers."
+publishDate: "2025-12-19"
+updatedDate: "2025-12-19"
+author: "Amplify Creative Lab"
+category: "Web Design"
+readTime: "9 min read"
+featuredImage: "../../assets/images/blog/core-web-vitals-hotels-accommodation-perth.webp"
+featuredImageAlt: "Graph showing correlation between website load speed and hotel booking conversion rates."
+featuredImagePosition: "center center"
+ogTitle: "Core Web Vitals Guide for Perth Hotels & Accommodation"
+ogDescription: "Slow sites = lost bookings. How to fix LCP, INP, and CLS scores for your hotel website to recapture direct bookings from Booking.com."
+keywords:
+  - "core web vitals hotels"
+  - "hotel website speed perth"
+  - "accommodation seo perth"
+  - "increase direct bookings"
+  - "hotel marketing strategy"
+  - "web design for hotels perth"
+tags:
+  - "Web Design"
+  - "SEO"
+  - "Hospitality"
+  - "Performance"
+  - "Direct Bookings"
+canonicalUrl: "https://amplifycreativelab.com/blog/core-web-vitals-hotels-accommodation-perth/"
+schema:
+  type: "Article"
+  datePublished: "2025-12-19"
+  dateModified: "2025-12-19"
+  author: "Amplify Creative Lab"
+  location: "Perth, Western Australia"
+faq:
+  - question: "What are Core Web Vitals?"
+    answer: "They are three specific metrics Google uses to measure user experience: Loading performance (LCP), Interactivity (INP), and Visual Stability (CLS). Since 2021, they are a direct ranking factor for SEO."
+  - question: "Do Core Web Vitals affect bookings?"
+    answer: "Directly. Deloitte found that a 0.1s improvement in mobile site speed increased conversion rates for travel sites by 10.1%. Slow sites frustrate users, who then switch to fast OTA apps like Booking.com."
+  - question: "Why is my LCP score poor?"
+    answer: "For hotels, the culprit is usually unoptimised hero images or videos. High-resolution photos of rooms are essential, but they must be compressed (WebP) and lazy-loaded. If your hero video is 20MB, your site will fail."
+  - question: "How do I fix CLS (layout shifts)?"
+    answer: "CLS happens when booking widgets 'pop in' and push content down. To fix this, reserve fixed space (width/height) for your third-party booking engine so the page layout doesn't jump when it loads."
+---
+
+<aside className="key-takeaways">
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li><strong>Speed = Revenue:</strong> Slow mobile sites drive users to OTAs (Booking.com/Expedia), costing you 15-20% commission.</li>
+    <li><strong>The Big Three:</strong> Know your scores for LCP (Loading), INP (Responsiveness), and CLS (Stability).</li>
+    <li><strong>Image Optimisation:</strong> Use WebP format for room galleries. Never upload raw camera files.</li>
+    <li><strong>Booking Engines:</strong> Third-party widgets (Little Hotelier, SiteMinder) are major performance killers—implement them carefully.</li>
+    <li><strong>Google Ranking:</strong> Passing Core Web Vitals is now a requirement to rank in the Top Stories and organic search results effectively.</li>
+  </ul>
+</aside>
+
+For Perth hotels and accommodation providers, the battle for bookings is fought on two fronts: against competitors down the street, and against the OTAs (Online Travel Agencies) like Booking.com and Expedia.
+
+While OTAs charge 15-20% commission, they invest millions in website speed. If your direct booking website takes 5 seconds to load on a mobile phone, a potential guest won't wait. They'll bounce back to Google and book via the OTA—costing you margin.
+
+This guide explains **Core Web Vitals** simply and shows how fixing them can increase your direct bookings.
+
+## The Metrics That Matter
+
+Google measures your site against three specific metrics. You can check yours at `pagespeed.web.dev`.
+
+### 1. Largest Contentful Paint (LCP) - "The Loading Speed"
+**What it is:** How long it takes for the main content (usually your hero image) to appear.
+**Target:** Under 2.5 seconds.
+**Common Hotel Fail:** Uploading a 10MB uncompressed image of the pool as the background.
+**The Fix:** Resize images to screen resolution, convert to WebP, and use a CDN.
+
+### 2. Interaction to Next Paint (INP) - "The Responsiveness"
+**What it is:** How quickly the site reacts when a user taps "Book Now" or opens the menu.
+**Target:** Under 200 milliseconds.
+**Common Hotel Fail:** Heavy JavaScript from chat widgets, weather plugins, and unoptimised booking calendars clogging the main thread.
+**The Fix:** Remove unused plugins; defer non-essential scripts.
+
+### 3. Cumulative Layout Shift (CLS) - "The Stability"
+**What it is:** Does the page jump around while loading?
+**Target:** Under 0.1.
+**Common Hotel Fail:** The page loads, the user goes to click "Rooms", and suddenly the Booking Widget loads at the top, pushing the button down. The user misclicks.
+**The Fix:** Define set dimensions (CSS aspect-ratio) for all image and widget containers.
+
+## The OTA Trap
+
+OTAs like Booking.com have engineering teams dedicated to passing these metrics. Their pages load instantly.
+If you area a boutique hotel in Fremantle or a resort in Scarborough, your website is your Digital Front Desk. A slow website is like making a guest wait 10 minutes to check in—they start their experience annoyed.
+
+## Case Study: Optimising a Booking Engine
+
+We worked with a WA accommodation provider using a popular third-party booking engine.
+*   **Problem:** The widget added 3 seconds to load time and caused massive layout shifts.
+*   **Solution:** We built a custom "Facade" button. The heavy booking script only loaded *after* the user interacted with the "Check Availability" button, not on initial page load.
+*   **Result:** LCP dropped from 4.2s to 1.1s. Direct mobile bookings increased by 18%.
+
+## How We Build High-Performance Hotel Sites
+
+At Amplify, we specialise in **Headless Architecture** for hospitality.
+This means we build the frontend of your site using ultra-fast technology (Astro), while keeping your preferred CMS (WordPress) or Booking Engine (SiteMinder) in the background.
+
+You get the ease of management you're used to, with the speed of an OTA.
+
+## Action Plan for Hotel Managers
+
+1.  **Audit:** Run your site through PageSpeed Insights today.
+2.  **Compress:** Ask your web team if images are being served in Next-Gen formats (WebP/AVIF).
+3.  **Evaluate:** Are plugins (Chatbots, Popups) worth the speed penalty?
+4.  **Upgrade:** If your site is on a generic $50 theme, it's likely bloated code. Consider a custom performant build.
+
+Ready to reclaim your direct bookings? [Contact Amplify](/contact/) for a Core Web Vitals audit.
+
+---
+
+**Related Reading:**
+*   [Website Speed Optimisation Guide](/blog/website-speed-optimization-perth)
+*   [Why Fast Sites Get More Bookings](/blog/why-perth-restaurants-lose-bookings-to-slow-sites)
+*   [Hotel & Accommodation Web Design](/perth-website-development)

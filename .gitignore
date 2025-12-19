@@ -33,7 +33,7 @@ Thumbs.db
 .agent/
 
 # Utility scripts (not needed in production)
-convert-images.cjs
+
 
 # Internal planning docs (not for deployment)
 docs/

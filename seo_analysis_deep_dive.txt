@@ -1,0 +1,36 @@
+--- Opportunity: Informational/Question Queries ---
+           Top queries  Impressions  Position
+98  what is a packshot            1      96.0
+
+--- Opportunity: Geo/Location Queries (Beyond just 'Perth') ---
+                    Top queries  Impressions  Position
+39           ahrefs subiaco.com            4      23.5
+68     food photography near me            1       8.0
+76  digital photography near me            1      19.0
+
+--- Opportunity: Metadata Optimization (High Imp, Low CTR) ---
+                            Top queries  CTR  Impressions  Position
+2                content creation perth  0.0          933     34.28
+3              content production perth  0.0          714     81.22
+4                 content creator perth  0.0          538     54.05
+5                food photography perth  0.0          241     34.95
+6            portrait photography perth  0.0          208     61.04
+7       restaurant photography services  0.0          181     59.57
+8   perth social media content creation  0.0          158     46.39
+9        restaurant content photography  0.0          140     52.71
+10            food photography in perth  0.0          138     26.60
+11                perth content creator  0.0          137     56.02
+
+--- Opportunity: Underperforming Pages (Striking Distance) ---
+                                                                                             Top pages  Impressions  Position     CTR
+17                     https://amplifycreativelab.com/blog/menu-engineering-decoy-dish-strategy-perth/            7     11.57  0.0000
+22                      https://amplifycreativelab.com/blog/skincare-beauty-product-photography-perth/            4     10.50  0.0000
+23                                     https://amplifycreativelab.com/blog/restaurant-seo-vs-paid-ads/            4     23.50  0.0000
+7                         https://amplifycreativelab.com/blog/roi-professional-food-photography-perth/            3     10.00  0.3333
+32  https://amplifycreativelab.com/blog/how-to-use-food-photography-across-website-instagram-ubereats/            2     16.00  0.0000
+33                            https://amplifycreativelab.com/blog/360-product-photography-video-perth/            2     22.50  0.0000
+43           https://amplifycreativelab.com/blog/how-to-build-pre-launch-landing-page-captures-emails/            1     11.00  0.0000
+44                           https://amplifycreativelab.com/blog/flat-lay-photography-perth-ecommerce/            1     12.00  0.0000
+45                            https://amplifycreativelab.com/blog/fremantle-hospitality-digital-guide/            1     12.00  0.0000
+46            https://amplifycreativelab.com/blog/why-do-it-yourself-wix-squarespace-sites-fail-perth/            1     22.00  0.0000
+

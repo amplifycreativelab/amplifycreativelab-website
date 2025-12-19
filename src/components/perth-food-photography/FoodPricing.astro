@@ -1,0 +1,315 @@
+---
+
+---
+
+<section class="food-pricing" id="food-pricing">
+    <div class="food-pricing__inner">
+        <header class="food-pricing__header">
+            <p class="food-pricing__kicker">PHOTOGRAPHY RATES</p>
+            <h2 class="food-pricing__title">Simple, hourly pricing</h2>
+            <p class="food-pricing__intro">
+                Most Perth food photographers charge by the image. We charge by
+                the hour, giving you more content for your marketing budget.
+            </p>
+        </header>
+
+        <div class="food-pricing__grid">
+            <article class="food-tier">
+                <div class="food-tier__content">
+                    <div class="food-tier__badge">First Shoot</div>
+                    <h3 class="food-tier__name">Intro Offer</h3>
+                    <p class="food-tier__price">
+                        <span class="price-discount">$200</span>
+                        <span class="price-original">/ hour</span>
+                    </p>
+                    <p class="food-tier__tagline">
+                        Experience our quality with a lower rate for your first
+                        session. Perfect for updating a seasonal menu.
+                    </p>
+
+                    <ul class="food-tier__features">
+                        <li>Planning & Creative Direction</li>
+                        <li>Professional Lighting Setup</li>
+                        <li>Unlimited Dishes (time permitting)</li>
+                        <li>Standard Editing Included</li>
+                    </ul>
+
+                    <a href="/contact/" class="food-tier__cta">
+                        Book Intro Shoot
+                    </a>
+                </div>
+            </article>
+
+            <article class="food-tier tier--highlight">
+                <div class="food-tier__content">
+                    <div class="food-tier__badge">Standard</div>
+                    <h3 class="food-tier__name">Hourly Rate</h3>
+                    <p class="food-tier__price">
+                        <span class="price-discount">$250</span>
+                        <span class="price-original">/ hour</span>
+                    </p>
+                    <p class="food-tier__tagline">
+                        Our standard rate for recurring clients and ad-hoc
+                        projects. Efficient, high-quality, and reliable.
+                    </p>
+
+                    <ul class="food-tier__features">
+                        <li>Full Usage Rights (Web & Social)</li>
+                        <li>High-Res & Web-Ready Files</li>
+                        <li>Food Styling Assistance</li>
+                        <li>Fast Turnaround (72 hours)</li>
+                    </ul>
+
+                    <a href="/contact/" class="food-tier__cta cta--primary">
+                        Book a Shoot
+                    </a>
+                </div>
+            </article>
+
+            <article class="food-tier">
+                <div class="food-tier__content">
+                    <div class="food-tier__badge">Full Day</div>
+                    <h3 class="food-tier__name">Day Rate</h3>
+                    <p class="food-tier__price">$1800</p>
+                    <p class="food-tier__tagline">
+                        For large menus, multi-venue groups, or brand launches
+                        requiring extensive content creation.
+                    </p>
+
+                    <ul class="food-tier__features">
+                        <li>Up to 8 Hours Coverage</li>
+                        <li>Multiple Lighting Setups</li>
+                        <li>Hero Shots & Motion Clips</li>
+                        <li>Priority Editing</li>
+                    </ul>
+
+                    <a href="/contact/" class="food-tier__cta"> Get a Quote </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- Section Container --- */
+    .food-pricing {
+        background-color: #f5ead7;
+        padding: 5rem 1.5rem;
+        position: relative;
+        border-bottom: 1px solid #e3d4b4;
+    }
+
+    .food-pricing__inner {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* --- Header --- */
+    .food-pricing__header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3.5rem auto;
+    }
+
+    .food-pricing__kicker {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #9c4323; /* Warmer tone for food */
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .food-pricing__title {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        color: #4a2e1c; /* Darker brown for food context */
+        margin: 0 0 1rem 0;
+    }
+
+    .food-pricing__intro {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: #4a2e1c;
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    /* --- Grid Layout --- */
+    .food-pricing__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    /* --- Card Styling --- */
+    .food-tier {
+        background-color: #fffaf1;
+        border-radius: 6px;
+        padding: 6px; /* Creates the outer rim for the double border */
+        box-shadow: 0 8px 30px rgba(74, 46, 28, 0.06);
+        height: 100%;
+    }
+
+    .food-tier__content {
+        border: 1px solid #e3d4b4; /* Inner Border */
+        padding: 2.5rem 1.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #fffaf1; /* Matches card bg */
+    }
+
+    /* Highlight Tier Styling */
+    .tier--highlight {
+        background-color: #4a2e1c;
+        color: #fef8eb;
+        box-shadow: 0 20px 40px rgba(74, 46, 28, 0.2);
+    }
+
+    .tier--highlight .food-tier__content {
+        background-color: #4a2e1c;
+        border-color: #9c4323;
+    }
+
+    /* --- Typography & Elements --- */
+    .food-tier__badge {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+        padding: 0.35rem 0.85rem;
+        background: #e3d4b4;
+        color: #4a2e1c;
+        border-radius: 99px;
+        font-weight: 600;
+    }
+
+    .tier--highlight .food-tier__badge {
+        background: #fadab8;
+    }
+
+    .food-tier__name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 0;
+    }
+
+    .food-tier__price {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.2rem;
+        color: #9c4323;
+        margin: 0.5rem 0 1rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .price-discount {
+        color: #9c4323;
+    }
+
+    .price-original {
+        font-size: 1.2rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        color: #4a2e1c;
+        opacity: 0.7;
+    }
+
+    .tier--highlight .food-tier__price {
+        color: #fadab8;
+    }
+
+    .tier--highlight .food-tier__price .price-discount {
+        color: #fadab8;
+    }
+
+    .tier--highlight .food-tier__price .price-original {
+        color: #fadab8;
+        opacity: 0.6;
+    }
+
+    .food-tier__tagline {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.4;
+        margin: 0 0 1.5rem;
+        opacity: 0.9;
+    }
+
+    /* List Styling */
+    .food-tier__features {
+        list-style: none;
+        padding: 1.5rem 0 0 0;
+        margin: 0 0 2rem 0;
+        width: 100%;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1rem;
+    }
+
+    .tier--highlight .food-tier__features {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Button Styling */
+    .food-tier__cta {
+        margin-top: auto;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid #4a2e1c;
+        border-radius: 999px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #4a2e1c;
+        background: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .food-tier__cta:hover {
+        background: #4a2e1c;
+        color: #fff;
+    }
+
+    .cta--primary {
+        background: #fadab8;
+        border-color: #fadab8;
+        color: #152705;
+    }
+
+    .cta--primary:hover {
+        background: #fff;
+        border-color: #fff;
+        color: #152705;
+    }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 900px) {
+        .food-pricing__grid {
+            grid-template-columns: 1fr; /* Stack into 1 column */
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .tier--highlight {
+            transform: none; /* Remove hover effect on mobile */
+        }
+    }
+</style>

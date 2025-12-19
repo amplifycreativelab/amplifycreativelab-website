@@ -1,0 +1,317 @@
+---
+
+---
+
+<section class="product-pricing" id="product-pricing">
+    <div class="product-pricing__inner">
+        <header class="product-pricing__header">
+            <p class="product-pricing__kicker">PRODUCT RATES</p>
+            <h2 class="product-pricing__title">Clear, per-hour pricing</h2>
+            <p class="product-pricing__intro">
+                Most studios charge per photo, which can get expensive fast. We
+                charge by the hour—so you get more images for your brand.
+            </p>
+        </header>
+
+        <div class="product-pricing__grid">
+            <article class="product-tier">
+                <div class="product-tier__content">
+                    <div class="product-tier__badge">First Shoot</div>
+                    <h3 class="product-tier__name">Intro Offer</h3>
+                    <p class="product-tier__price">
+                        <span class="price-discount">$200</span>
+                        <span class="price-original">/ hour</span>
+                    </p>
+                    <p class="product-tier__tagline">
+                        Test our studio with a special rate for your first
+                        session. Ideal for a small product launch or refresh.
+                    </p>
+
+                    <ul class="product-tier__features">
+                        <li>Studio or Location</li>
+                        <li>Basic Styling Included</li>
+                        <li>Unlimited Products (time permitting)</li>
+                        <li>Standard Editing Included</li>
+                    </ul>
+
+                    <a href="/contact/" class="product-tier__cta">
+                        Book Intro Shoot
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-tier tier--highlight">
+                <div class="product-tier__content">
+                    <div class="product-tier__badge">Standard</div>
+                    <h3 class="product-tier__name">Hourly Rate</h3>
+                    <p class="product-tier__price">
+                        <span class="price-discount">$250</span>
+                        <span class="price-original">/ hour</span>
+                    </p>
+                    <p class="product-tier__tagline">
+                        Our standard rate for established brands. Efficient
+                        workflows for catalogues, ecommerce and social content.
+                    </p>
+
+                    <ul class="product-tier__features">
+                        <li>Full Usage Rights (Web &amp; Social)</li>
+                        <li>Packshot &amp; Lifestyle Options</li>
+                        <li>High-Res &amp; Web-Ready Files</li>
+                        <li>Fast Turnaround</li>
+                    </ul>
+
+                    <a href="/contact/" class="product-tier__cta cta--primary">
+                        Book Product Shoot
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-tier">
+                <div class="product-tier__content">
+                    <div class="product-tier__badge">Full Day</div>
+                    <h3 class="product-tier__name">Day Rate</h3>
+                    <p class="product-tier__price">$1800</p>
+                    <p class="product-tier__tagline">
+                        Best for large catalogues, entire collection launches,
+                        or complex styled shoots requiring a full team.
+                    </p>
+
+                    <ul class="product-tier__features">
+                        <li>Up to 8 Hours Studio Access</li>
+                        <li>Multiple Lighting Setups</li>
+                        <li>Model Sourcing Assistance</li>
+                        <li>Priority Editing</li>
+                    </ul>
+
+                    <a href="/contact/" class="product-tier__cta">
+                        Get a Quote
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- Section Container --- */
+    .product-pricing {
+        background-color: var(--e-global-color-secondary, #e8d8c3);
+        padding: 5rem 1.5rem;
+        position: relative;
+        border-bottom: 1px solid rgba(232, 216, 195, 0.4);
+    }
+
+    .product-pricing__inner {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* --- Header --- */
+    .product-pricing__header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3.5rem auto;
+    }
+
+    .product-pricing__kicker {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--e-global-color-fadab83, #4a2e1c);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .product-pricing__title {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        color: var(--e-global-color-fadab83, #4a2e1c);
+        margin: 0 0 1rem 0;
+    }
+
+    .product-pricing__intro {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: var(--e-global-color-fadab83, #4a2e1c);
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    /* --- Grid Layout --- */
+    .product-pricing__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    /* --- Card Styling --- */
+    .product-tier {
+        background-color: #fffaf1;
+        border-radius: 6px;
+        padding: 6px;
+        box-shadow: 0 8px 30px rgba(74, 46, 28, 0.06);
+        height: 100%;
+    }
+
+    .product-tier__content {
+        border: 1px solid #e3d4b4;
+        padding: 2.5rem 1.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #fffaf1;
+    }
+
+    /* Highlight Tier Styling */
+    .tier--highlight {
+        background-color: #4a2e1c;
+        color: #fef8eb;
+        box-shadow: 0 20px 40px rgba(74, 46, 28, 0.2);
+    }
+
+    .tier--highlight .product-tier__content {
+        background-color: #4a2e1c;
+        border-color: #9c4323;
+    }
+
+    /* --- Typography & Elements --- */
+    .product-tier__badge {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+        padding: 0.35rem 0.85rem;
+        background: #e3d4b4;
+        color: #4a2e1c;
+        border-radius: 99px;
+        font-weight: 600;
+    }
+
+    .tier--highlight .product-tier__badge {
+        background: #fadab8;
+    }
+
+    .product-tier__name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 0;
+    }
+
+    .product-tier__price {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.2rem;
+        color: #9c4323;
+        margin: 0.5rem 0 1rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .price-discount {
+        color: #9c4323;
+    }
+
+    .price-original {
+        font-size: 1.2rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        color: #4a2e1c;
+        opacity: 0.7;
+    }
+
+    .tier--highlight .product-tier__price {
+        color: #fadab8;
+    }
+
+    .tier--highlight .product-tier__price .price-discount {
+        color: #fadab8;
+    }
+
+    .tier--highlight .product-tier__price .price-original {
+        color: #fadab8;
+        opacity: 0.6;
+    }
+
+    .product-tier__tagline {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.4;
+        margin: 0 0 1.5rem;
+        opacity: 0.9;
+    }
+
+    /* List Styling */
+    .product-tier__features {
+        list-style: none;
+        padding: 1.5rem 0 0 0;
+        margin: 0 0 2rem 0;
+        width: 100%;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1rem;
+    }
+
+    .tier--highlight .product-tier__features {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Button Styling */
+    .product-tier__cta {
+        margin-top: auto;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid #4a2e1c;
+        border-radius: 999px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #4a2e1c;
+        background: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .product-tier__cta:hover {
+        background: #4a2e1c;
+        color: #fff;
+    }
+
+    .cta--primary {
+        background: #fadab8;
+        border-color: #fadab8;
+        color: #152705;
+    }
+
+    .cta--primary:hover {
+        background: #fff;
+        border-color: #fff;
+        color: #152705;
+    }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 900px) {
+        .product-pricing__grid {
+            grid-template-columns: 1fr; /* Stack into 1 column */
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .tier--highlight {
+            transform: none; /* Remove hover effect on mobile */
+        }
+    }
+</style>

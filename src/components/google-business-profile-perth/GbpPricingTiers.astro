@@ -1,0 +1,315 @@
+---
+
+---
+
+<section class="gbp-pricing" id="gbp-pricing">
+    <div class="gbp-pricing__inner">
+        <header class="gbp-pricing__header">
+            <p class="gbp-pricing__kicker">SERVICE PACKAGES</p>
+            <h2 class="gbp-pricing__title">Simple, transparent rates</h2>
+            <p class="gbp-pricing__intro">
+                From a one-time setup to clean up your presence, to ongoing
+                management that keeps you ranking #1.
+            </p>
+        </header>
+
+        <div class="gbp-pricing__grid">
+            <article class="gbp-tier">
+                <div class="gbp-tier__content">
+                    <div class="gbp-tier__badge">New Business</div>
+                    <h3 class="gbp-tier__name">Setup &amp; Verify</h3>
+                    <p class="gbp-tier__price">
+                        <span class="price-discount">$250</span>
+                        <span class="price-original">$450</span>
+                    </p>
+                    <p class="gbp-tier__tagline">
+                        Perfect for new businesses that need to get on the map
+                        and verified correctly the first time.
+                    </p>
+
+                    <ul class="gbp-tier__features">
+                        <li>Profile Creation</li>
+                        <li>Verification Support</li>
+                        <li>Category Optimization</li>
+                        <li>Basic Business Info Setup</li>
+                    </ul>
+
+                    <a href="/contact/" class="gbp-tier__cta"> Get Verified </a>
+                </div>
+            </article>
+
+            <article class="gbp-tier tier--highlight">
+                <div class="gbp-tier__content">
+                    <div class="gbp-tier__badge">Most popular</div>
+                    <h3 class="gbp-tier__name">Optimization Audit</h3>
+                    <p class="gbp-tier__price">
+                        <span class="price-discount">$450</span>
+                        <span class="price-original">$750</span>
+                    </p>
+                    <p class="gbp-tier__tagline">
+                        For existing profiles that aren't ranking. We clean up,
+                        optimize keywords and overhaul your presence.
+                    </p>
+
+                    <ul class="gbp-tier__features">
+                        <li>Review & Citation Audit</li>
+                        <li>Keyword Optimization Strategy</li>
+                        <li>Photo Upload (Stock/Owner)</li>
+                        <li>Review Response Strategy</li>
+                        <li>Spam Check</li>
+                    </ul>
+
+                    <a href="/contact/" class="gbp-tier__cta cta--primary">
+                        Optimize My Profile
+                    </a>
+                </div>
+            </article>
+
+            <article class="gbp-tier">
+                <div class="gbp-tier__content">
+                    <div class="gbp-tier__badge">Ongoing</div>
+                    <h3 class="gbp-tier__name">Management</h3>
+                    <p class="gbp-tier__price">From $150 / mo</p>
+                    <p class="gbp-tier__tagline">
+                        We handle the weekly tasks that keep Google happy so you
+                        stay at the top of local search.
+                    </p>
+
+                    <ul class="gbp-tier__features">
+                        <li>Weekly Google Updates/Posts</li>
+                        <li>Review Responses</li>
+                        <li>New Photo Uploads</li>
+                        <li>Monthly Performance Report</li>
+                    </ul>
+
+                    <a href="/contact/" class="gbp-tier__cta">
+                        Chat about management
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- Section Container --- */
+    .gbp-pricing {
+        background-color: #f5ead7;
+        padding: 5rem 1.5rem;
+        position: relative;
+        border-bottom: 1px solid #e3d4b4;
+    }
+
+    .gbp-pricing__inner {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* --- Header --- */
+    .gbp-pricing__header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3.5rem auto;
+    }
+
+    .gbp-pricing__kicker {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #7b5b33;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .gbp-pricing__title {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        color: #152705;
+        margin: 0 0 1rem 0;
+    }
+
+    .gbp-pricing__intro {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: #24360f;
+        margin: 0;
+    }
+
+    /* --- Grid Layout --- */
+    .gbp-pricing__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    /* --- Card Styling --- */
+    .gbp-tier {
+        background-color: #fffaf1;
+        border-radius: 6px;
+        padding: 6px; /* Creates the outer rim for the double border */
+        box-shadow: 0 8px 30px rgba(21, 39, 5, 0.06);
+        height: 100%;
+    }
+
+    .gbp-tier__content {
+        border: 1px solid #e3d4b4; /* Inner Border */
+        padding: 2.5rem 1.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #fffaf1; /* Matches card bg */
+    }
+
+    /* Highlight Tier Styling */
+    .tier--highlight {
+        background-color: #152705;
+        color: #fef8eb;
+        box-shadow: 0 20px 40px rgba(21, 39, 5, 0.2);
+    }
+
+    .tier--highlight .gbp-tier__content {
+        background-color: #152705;
+        border-color: #7b5b33;
+    }
+
+    /* --- Typography & Elements --- */
+    .gbp-tier__badge {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+        padding: 0.35rem 0.85rem;
+        background: #e3d4b4;
+        color: #152705;
+        border-radius: 99px;
+        font-weight: 600;
+    }
+
+    .tier--highlight .gbp-tier__badge {
+        background: #fadab8;
+    }
+
+    .gbp-tier__name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 0;
+    }
+
+    .gbp-tier__price {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.2rem;
+        color: #7b5b33;
+        margin: 0.5rem 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .price-discount {
+        color: #7b5b33;
+    }
+
+    .price-original {
+        text-decoration: line-through;
+        opacity: 0.5;
+        font-size: 1.5rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+    }
+
+    .tier--highlight .gbp-tier__price {
+        color: #fadab8;
+    }
+
+    .tier--highlight .gbp-tier__price .price-discount {
+        color: #fadab8;
+    }
+
+    .tier--highlight .gbp-tier__price .price-original {
+        color: #fadab8;
+        opacity: 0.6;
+    }
+
+    .gbp-tier__tagline {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.4;
+        margin: 0 0 1.5rem;
+        opacity: 0.9;
+    }
+
+    /* List Styling */
+    .gbp-tier__features {
+        list-style: none;
+        padding: 1.5rem 0 0 0;
+        margin: 0 0 2rem 0;
+        width: 100%;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1rem;
+    }
+
+    .tier--highlight .gbp-tier__features {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Button Styling */
+    .gbp-tier__cta {
+        margin-top: auto;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid #152705;
+        border-radius: 999px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #152705;
+        background: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .gbp-tier__cta:hover {
+        background: #152705;
+        color: #fff;
+    }
+
+    .cta--primary {
+        background: #fadab8;
+        border-color: #fadab8;
+        color: #152705;
+    }
+
+    .cta--primary:hover {
+        background: #fff;
+        border-color: #fff;
+        color: #152705;
+    }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 900px) {
+        .gbp-pricing__grid {
+            grid-template-columns: 1fr; /* Stack into 1 column */
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .tier--highlight {
+            transform: none; /* Remove hover effect on mobile */
+        }
+    }
+</style>

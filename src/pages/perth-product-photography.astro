@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProductCataloguePhotography from "../components/perth-product-photography/ProductCataloguePhotography.astro";
 import ProductLifestylePhotography from "../components/perth-product-photography/ProductLifestylePhotography.astro";
+import ProductPricing from "../components/perth-product-photography/ProductPricing.astro";
 
 const pageTitle =
   "Perth Product Photographer | AmplifyCreativeLab Product Photography";
@@ -125,6 +126,7 @@ const productSchema = {
   <main class="page-perth-product-photography">
     <ProductCataloguePhotography />
     <ProductLifestylePhotography />
+    <ProductPricing />
 
     <section class="product-faq">
       <div class="product-faq__inner">
@@ -257,7 +259,7 @@ const productSchema = {
     }
 
     .product-faq {
-      background-color: var(--e-global-color-secondary, #e8d8c3);
+      background-color: #4a2e1c;
       padding: 60px 24px;
       display: flex;
       justify-content: center;
@@ -273,7 +275,7 @@ const productSchema = {
       font-size: 40px;
       font-weight: 500;
       margin: 0 0 24px;
-      color: var(--e-global-color-fadab83, #4a2e1c);
+      color: #e8d8c3;
       text-align: left;
     }
 
@@ -284,7 +286,7 @@ const productSchema = {
     }
 
     .product-faq__item {
-      border-bottom: 1px solid rgba(74, 46, 28, 0.25);
+      border-bottom: 1px solid rgba(232, 216, 195, 0.25);
       padding: 8px 0 12px;
     }
 
@@ -294,7 +296,7 @@ const productSchema = {
       font-weight: 600;
       cursor: pointer;
       list-style: none;
-      color: var(--e-global-color-fadab83, #4a2e1c);
+      color: #e8d8c3;
     }
 
     .product-faq__answer {
@@ -303,7 +305,7 @@ const productSchema = {
       font-weight: 400;
       line-height: 1.4;
       margin-top: 6px;
-      color: var(--e-global-color-fadab83, #4a2e1c);
+      color: #e8d8c3;
     }
 
     @media (max-width: 768px) {

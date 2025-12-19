@@ -1,0 +1,260 @@
+---
+import { Image } from "astro:assets";
+import stefanoImage from "../../assets/images/portfolio/portrait/tech-professional-male-laptop.webp";
+
+const title = "Google Business Profile Services";
+---
+
+<div class="gbp-intro">
+    <div class="gbp-intro__inner">
+        <div class="gbp-intro__content">
+            <div class="gbp-intro__kicker-wrapper">
+                <span class="gbp-intro__line"></span>
+                <p class="gbp-intro__kicker">
+                    FOR LOCAL BUSINESSES &amp; HOSPITALITY
+                </p>
+            </div>
+
+            <h1 class="gbp-intro__title">{title}</h1>
+
+            <p class="gbp-intro__lead">
+                Stop losing customers to competitors who rank higher on Maps. We
+                verify, optimize, and manage your Google Business Profile so you
+                get found first.
+            </p>
+
+            <p class="gbp-intro__body">
+                Your Google Business Profile is often the first thing customers
+                see—even before your website. We handle the technical setup,
+                verification headaches and ongoing optimization to ensure your
+                business drives calls, bookings and walk-ins. We pair this with
+                our professional photography to make your profile stand out.
+            </p>
+
+            <a href="#gbp-pricing" class="gbp-intro__cta">View Packages</a>
+        </div>
+
+        <div class="gbp-intro__visual">
+            <Image
+                src={stefanoImage}
+                alt="Stefano, digital marketing specialist in Perth, optimizing Google Business Profiles for local visibility."
+                width="600"
+                height="800"
+                loading="eager"
+                class="hero-image"
+            />
+        </div>
+    </div>
+</div>
+
+<style>
+    .gbp-intro {
+        /* Richer background with radial spotlight - slightly more 'Google' blue hint or just keep aligned with brand? Keeping brand specific dark green/gold */
+        background: radial-gradient(circle at 80% 20%, #2a4410 0%, #152705 60%);
+        color: #fef8eb;
+        padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 4rem);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Grain Texture Overlay */
+    .gbp-intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        pointer-events: none;
+        mix-blend-mode: overlay;
+        opacity: 0.3;
+        z-index: 0;
+    }
+
+    .gbp-intro__inner {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(3rem, 6vw, 8rem);
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .gbp-intro__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Kicker with decorative line */
+    .gbp-intro__kicker-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 2rem;
+    }
+
+    .gbp-intro__line {
+        width: 60px;
+        height: 1px;
+        background-color: #fadab8;
+        opacity: 0.6;
+    }
+
+    .gbp-intro__kicker {
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #fadab8;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    .gbp-intro__title {
+        font-family: "Abril Fatface", system-ui, serif;
+        font-size: clamp(3.5rem, 7vw, 5.5rem);
+        line-height: 1.05;
+        margin: 0 0 2.5rem;
+        position: relative;
+    }
+
+    /* Decorative hanging line for paragraphs */
+    .gbp-intro__lead {
+        font-family: "Darker Grotesque", system-ui, sans-serif;
+        font-size: 1.6rem;
+        line-height: 1.3;
+        max-width: 38rem;
+        margin: 0 0 1.5rem;
+        font-weight: 500;
+        color: #fff;
+        padding-left: 1.5rem;
+        border-left: 1px solid rgba(250, 218, 184, 0.3);
+    }
+
+    .gbp-intro__body {
+        font-family: "Darker Grotesque", system-ui, sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        max-width: 36rem;
+        margin: 0 0 3rem;
+        padding-left: 1.5rem; /* Align with lead */
+        opacity: 0.9;
+        color: #e3decb;
+        border-left: 1px solid transparent; /* Keeps alignment */
+    }
+
+    .gbp-intro__cta {
+        margin-left: 1.5rem; /* Align with text block */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: #fadab8;
+        padding: 1rem 2.5rem;
+        border: 1px solid rgba(250, 218, 184, 0.3);
+        border-radius: 999px;
+        text-decoration: none;
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+    }
+
+    .gbp-intro__cta:hover {
+        background: #fadab8;
+        color: #152705;
+        border-color: #fadab8;
+        transform: translateY(-2px);
+    }
+
+    /* --- ARCH VISUAL CONTAINER --- */
+    .gbp-intro__visual {
+        position: relative;
+        /* Create the Arch Shape on the container */
+        border-radius: 300px 300px 20px 20px;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+        width: 100%;
+        /* Strong gold border to make the shape pop */
+        border: 1px solid #fadab8;
+        /* Deep shadow for depth */
+        box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6);
+        transform: translateZ(0);
+        opacity: 0;
+        animation: fadeUp 1s ease-out forwards;
+        animation-delay: 0.2s;
+    }
+
+    .gbp-intro__visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Parallax/Zoom effect on hover */
+    .gbp-intro__visual:hover img {
+        transform: scale(1.05);
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .gbp-intro__title {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+        }
+    }
+
+    @media (max-width: 900px) {
+        .gbp-intro__inner {
+            grid-template-columns: 1fr;
+            text-align: left;
+            gap: 3rem;
+        }
+
+        .gbp-intro__visual {
+            order: -1;
+            max-height: 600px;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .gbp-intro {
+            padding-inline: 1.25rem;
+        }
+        .gbp-intro__lead,
+        .gbp-intro__body {
+            padding-left: 0;
+            border-left: none;
+            margin-left: 0;
+        }
+        .gbp-intro__line {
+            display: none; /* Hide decorative line on mobile */
+        }
+        .gbp-intro__kicker-wrapper {
+            margin-bottom: 1rem;
+        }
+        .gbp-intro__cta {
+            border-left: none;
+            margin-left: 0;
+        }
+    }
+</style>

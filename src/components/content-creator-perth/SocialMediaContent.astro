@@ -1,0 +1,54 @@
+---
+import FoodServiceLayout from "../perth-food-photography/FoodServiceLayout.astro";
+import videoImage from "../../assets/images/perth-event-photography/corporate-event-photo-booth-photography-perth.webp"; // Using an event/tech looking image
+---
+
+<FoodServiceLayout
+    imageSrc={videoImage}
+    imageAlt="Perth content creator setting up a video shoot for social media marketing."
+    reverse={true}
+    contentBackground="var(--e-global-color-fadab83, #4a2e1c)"
+    contentTextColor="#E8D8C3"
+>
+    <header class="food-service__heading">
+        <h2 class="food-service__title">Video &amp; Social Strategy</h2>
+    </header>
+
+    <div class="food-service__copy">
+        <p>
+            Posting randomly doesn't work.
+            <strong>
+                We help you build a content bank of high-quality Reels, TikToks,
+                and stories that align with your marketing goals.
+            </strong>
+        </p>
+        <p>
+            We specialise in short-form video for
+            <strong>
+                Perth businesses—from hospitality venues to professional
+                services and retail brands.
+            </strong>
+            Our content is designed to grab attention in the first 3 seconds and drive
+            engagement, not just views.
+        </p>
+        <p>
+            <strong>Trend-driven creative:</strong>
+            We stay on top of audio trends, transitions, and formats so you don't
+            have to. Whether it's a "day in the life", product showcase, or educational
+            clip, we make it look professional and on-brand.
+        </p>
+        <p>
+            <strong>Strategy first:</strong>
+            Every shoot starts with a plan. We define the hooks, the shots, and the
+            message before we pick up the camera, ensuring every piece of content
+            serves a purpose in your funnel.
+        </p>
+    </div>
+
+    <a
+        href="/contact/"
+        class="food-service__button food-service__button--light"
+    >
+        CONTACT
+    </a>
+</FoodServiceLayout>

@@ -1,0 +1,318 @@
+---
+
+---
+
+<section class="event-pricing" id="event-pricing">
+    <div class="event-pricing__inner">
+        <header class="event-pricing__header">
+            <p class="event-pricing__kicker">EVENT RATES</p>
+            <h2 class="event-pricing__title">Simple, hourly pricing</h2>
+            <p class="event-pricing__intro">
+                From corporate functions to private celebrations. We charge by
+                the hour, ensuring you get full coverage without hidden fees.
+            </p>
+        </header>
+
+        <div class="event-pricing__grid">
+            <article class="event-tier">
+                <div class="event-tier__content">
+                    <div class="event-tier__badge">First Booking</div>
+                    <h3 class="event-tier__name">Intro Offer</h3>
+                    <p class="event-tier__price">
+                        <span class="price-discount">$200</span>
+                        <span class="price-original">/ hour</span>
+                    </p>
+                    <p class="event-tier__tagline">
+                        Experience our candid style with a special rate for your
+                        first event. Perfect for smaller functions.
+                    </p>
+
+                    <ul class="event-tier__features">
+                        <li>Candid &amp; Posed Coverage</li>
+                        <li>Professional Lighting</li>
+                        <li>Unlimited Images Taken</li>
+                        <li>Standard Editing Included</li>
+                    </ul>
+
+                    <a href="/contact/" class="event-tier__cta">
+                        Book Intro Event
+                    </a>
+                </div>
+            </article>
+
+            <article class="event-tier tier--highlight">
+                <div class="event-tier__content">
+                    <div class="event-tier__badge">Standard</div>
+                    <h3 class="event-tier__name">Hourly Rate</h3>
+                    <p class="event-tier__price">
+                        <span class="price-discount">$250</span>
+                        <span class="price-original">/ hour</span>
+                    </p>
+                    <p class="event-tier__tagline">
+                        Our standard rate for corporate events, conferences, and
+                        brand activations. Reliable and professional.
+                    </p>
+
+                    <ul class="event-tier__features">
+                        <li>Full Usage Rights given</li>
+                        <li>High-Res &amp; Web-Ready Files</li>
+                        <li>Fast Turnaround (48-72 hours)</li>
+                        <li>Online Gallery Delivery</li>
+                    </ul>
+
+                    <a href="/contact/" class="event-tier__cta cta--primary">
+                        Book Event Coverage
+                    </a>
+                </div>
+            </article>
+
+            <article class="event-tier">
+                <div class="event-tier__content">
+                    <div class="event-tier__badge">Full Day</div>
+                    <h3 class="event-tier__name">Day Rate</h3>
+                    <p class="event-tier__price">$1800</p>
+                    <p class="event-tier__tagline">
+                        Comprehensive coverage for conferences, festivals, or
+                        multi-part events requiring extended hours.
+                    </p>
+
+                    <ul class="event-tier__features">
+                        <li>Up to 8 Hours Coverage</li>
+                        <li>Multiple Shooters Available</li>
+                        <li>Priority Editing</li>
+                        <li>Social Media Teasers</li>
+                    </ul>
+
+                    <a href="/contact/" class="event-tier__cta">
+                        Get a Quote
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- Section Container --- */
+    .event-pricing {
+        background-color: #4a2e1c;
+        padding: 5rem 1.5rem;
+        position: relative;
+        border-bottom: 1px solid rgba(232, 216, 195, 0.1);
+    }
+
+    .event-pricing__inner {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* --- Header --- */
+    .event-pricing__header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3.5rem auto;
+    }
+
+    .event-pricing__kicker {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #fadab8;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .event-pricing__title {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        color: #e8d8c3;
+        margin: 0 0 1rem 0;
+    }
+
+    .event-pricing__intro {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: #e8d8c3;
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    /* --- Grid Layout --- */
+    .event-pricing__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    /* --- Card Styling --- */
+    .event-tier {
+        background-color: #fffaf1;
+        border-radius: 6px;
+        padding: 6px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        height: 100%;
+    }
+
+    .event-tier__content {
+        border: 1px solid #e3d4b4;
+        padding: 2.5rem 1.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #fffaf1;
+    }
+
+    /* Highlight Tier Styling */
+    .tier--highlight {
+        background-color: #fadab8;
+        color: #4a2e1c;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .tier--highlight .event-tier__content {
+        background-color: #fadab8;
+        border-color: #fff;
+    }
+
+    /* --- Typography & Elements --- */
+    .event-tier__badge {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+        padding: 0.35rem 0.85rem;
+        background: #e3d4b4;
+        color: #4a2e1c;
+        border-radius: 99px;
+        font-weight: 600;
+    }
+
+    .tier--highlight .event-tier__badge {
+        background: #4a2e1c;
+        color: #fadab8;
+    }
+
+    .event-tier__name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 0;
+    }
+
+    .event-tier__price {
+        font-family: "Abril Fatface", serif;
+        font-size: 2.2rem;
+        color: #9c4323;
+        margin: 0.5rem 0 1rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .price-discount {
+        color: #9c4323;
+    }
+
+    .price-original {
+        font-size: 1.2rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        color: #4a2e1c;
+        opacity: 0.7;
+    }
+
+    .tier--highlight .event-tier__price {
+        color: #4a2e1c;
+    }
+
+    .tier--highlight .event-tier__price .price-discount {
+        color: #4a2e1c;
+    }
+
+    .tier--highlight .event-tier__price .price-original {
+        color: #4a2e1c;
+        opacity: 0.7;
+    }
+
+    .event-tier__tagline {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.4;
+        margin: 0 0 1.5rem;
+        opacity: 0.9;
+    }
+
+    /* List Styling */
+    .event-tier__features {
+        list-style: none;
+        padding: 1.5rem 0 0 0;
+        margin: 0 0 2rem 0;
+        width: 100%;
+        border-top: 1px solid rgba(74, 46, 28, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 1rem;
+    }
+
+    .tier--highlight .event-tier__features {
+        border-top: 1px solid rgba(74, 46, 28, 0.2);
+    }
+
+    /* Button Styling */
+    .event-tier__cta {
+        margin-top: auto;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid #4a2e1c;
+        border-radius: 999px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #4a2e1c;
+        background: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .event-tier__cta:hover {
+        background: #4a2e1c;
+        color: #fff;
+    }
+
+    .cta--primary {
+        background: #4a2e1c;
+        border-color: #4a2e1c;
+        color: #fadab8;
+    }
+
+    .cta--primary:hover {
+        background: #fff;
+        border-color: #fff;
+        color: #4a2e1c;
+    }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 900px) {
+        .event-pricing__grid {
+            grid-template-columns: 1fr; /* Stack into 1 column */
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .tier--highlight {
+            transform: none; /* Remove hover effect on mobile */
+        }
+    }
+</style>

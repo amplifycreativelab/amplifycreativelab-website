@@ -1,0 +1,351 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Areas We Serve | Amplify Creative Lab Perth";
+const description =
+    "Amplify Creative Lab provides food photography and web design services across the entire Perth metropolitan area, from Joondalup to Mandurah and the South West.";
+const canonical = "https://amplifycreativelab.com/areas-we-serve/";
+
+const areaGroups = [
+    {
+        title: "Perth CBD & Inner City",
+        suburbs: [
+            "Perth CBD",
+            "West Perth",
+            "East Perth",
+            "Northbridge",
+            "Highgate",
+            "West Leederville",
+            "Leederville",
+            "North Perth",
+            "Mount Lawley",
+            "Mount Hawthorn",
+            "Subiaco",
+            "Shenton Park",
+        ],
+    },
+    {
+        title: "Inner North & Inner West",
+        suburbs: [
+            "Wembley",
+            "Floreat",
+            "Osborne Park",
+            "Tuart Hill",
+            "Yokine",
+            "Dianella",
+            "Innaloo",
+            "Doubleview",
+            "Woodlands",
+            "Churchlands",
+            "Wembley Downs",
+            "Karrinyup",
+        ],
+    },
+    {
+        title: "Western Suburbs & Coast",
+        suburbs: [
+            "City Beach",
+            "Scarborough",
+            "Trigg",
+            "North Beach",
+            "Cottesloe",
+            "Swanbourne",
+            "Claremont",
+            "Peppermint Grove",
+            "Mosman Park",
+            "Nedlands",
+            "Dalkeith",
+            "Rottnest Island (travel available)",
+        ],
+    },
+    {
+        title: "Northern Suburbs (Coastal Corridor)",
+        suburbs: [
+            "Hillarys",
+            "Sorrento",
+            "Mullaloo",
+            "Ocean Reef",
+            "Connolly",
+            "Edgewater",
+            "Heathridge",
+            "Currambine",
+            "Joondalup",
+            "Kinross",
+            "Iluka",
+            "Burns Beach",
+            "Clarkson",
+            "Mindarie",
+            "Butler",
+            "Jindalee",
+            "Quinns Rocks",
+            "Alkimos",
+        ],
+    },
+    {
+        title: "Northern Suburbs (Inland)",
+        suburbs: [
+            "Duncraig",
+            "Greenwood",
+            "Warwick",
+            "Kingsley",
+            "Woodvale",
+            "Madeley",
+            "Landsdale",
+            "Balcatta",
+            "Stirling",
+            "Balga",
+            "Nollamara",
+            "Mirrabooka",
+        ],
+    },
+    {
+        title: "Inner East & Riverside",
+        suburbs: [
+            "Victoria Park",
+            "East Victoria Park",
+            "Burswood",
+            "Lathlain",
+            "Carlisle",
+            "Rivervale",
+            "Belmont",
+            "Ascot",
+            "Redcliffe",
+            "Maylands",
+            "Bayswater",
+            "Inglewood",
+        ],
+    },
+    {
+        title: "North East & Swan Valley Edge",
+        suburbs: [
+            "Morley",
+            "Noranda",
+            "Malaga",
+            "Beechboro",
+            "Bennett Springs",
+            "Ellenbrook",
+            "Brabham",
+            "Caversham",
+            "Dayton",
+            "Guildford",
+            "Swan Valley",
+        ],
+    },
+    {
+        title: "Perth Hills",
+        suburbs: [
+            "Midland",
+            "Bellevue",
+            "Helena Valley",
+            "Kalamunda",
+            "Lesmurdie",
+            "Gooseberry Hill",
+            "Mundaring",
+            "Roleystone",
+            "Darlington",
+            "Glen Forrest",
+        ],
+    },
+    {
+        title: "South Perth & Inner South",
+        suburbs: [
+            "South Perth",
+            "Como",
+            "Manning",
+            "Waterford",
+            "Applecross",
+            "Mount Pleasant",
+            "Ardross",
+            "Attadale",
+            "Bicton",
+            "Palmyra",
+        ],
+    },
+    {
+        title: "Fremantle & Port City",
+        suburbs: [
+            "Fremantle",
+            "North Fremantle",
+            "East Fremantle",
+            "South Fremantle",
+            "White Gum Valley",
+            "Beaconsfield",
+            "Hamilton Hill",
+            "Hilton",
+        ],
+    },
+    {
+        title: "Southern Suburbs (Canning & Melville)",
+        suburbs: [
+            "Booragoon",
+            "Myaree",
+            "Bull Creek",
+            "Murdoch",
+            "Winthrop",
+            "Leeming",
+            "Willetton",
+            "Rossmoyne",
+            "Shelley",
+            "Riverton",
+            "Lynwood",
+            "Parkwood",
+            "Canning Vale",
+            "Harrisdale",
+        ],
+    },
+    {
+        title: "South East (Victoria Park to Armadale Corridor)",
+        suburbs: [
+            "Bentley",
+            "Welshpool",
+            "Cannington",
+            "Thornlie",
+            "Gosnells",
+            "Kelmscott",
+            "Armadale",
+        ],
+    },
+    {
+        title: "Outer South & Coastal",
+        suburbs: [
+            "Cockburn Central",
+            "Success",
+            "Atwell",
+            "Aubin Grove",
+            "Jandakot",
+            "Kwinana",
+            "Rockingham",
+            "Safety Bay",
+            "Secret Harbour",
+            "Mandurah",
+        ],
+    },
+    {
+        title: "Regional WA (Travel Available)",
+        suburbs: [
+            "Busselton (travel fees may apply)",
+            "Dunsborough (travel fees may apply)",
+            "Margaret River (travel fees may apply)",
+            "Bunbury (travel fees may apply)",
+        ],
+    },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+    <main class="page-content">
+        <div class="container skin-text">
+            <h1>Areas We Serve in Western Australia</h1>
+            <p class="intro">
+                Amplify Creative Lab is a mobile photography studio and digital
+                agency based in Doubleview. We bring our lighting equipment and
+                creative strategy directly to your venue across Greater Perth
+                and regional WA (travel available).
+            </p>
+
+            <section class="service-areas">
+                <h2>Primary Service Areas</h2>
+                <div class="areas-grid">
+                    {
+                        areaGroups.map(({ title: groupTitle, suburbs }) => (
+                            <div class="area-group">
+                                <h3>{groupTitle}</h3>
+                                <ul>
+                                    {suburbs.map((suburb) => (
+                                        <li>{suburb}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <section class="contact-cta">
+                <h2>Don't see your suburb?</h2>
+                <p>
+                    We likely still cover your area. <a href="/contact/"
+                        >Contact us</a
+                    > to discuss your project.
+                </p>
+            </section>
+        </div>
+    </main>
+</BaseLayout>
+
+<style>
+    .page-content {
+        padding: 4rem 0;
+    }
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    h1 {
+        font-family: var(--font-heading);
+        color: var(--color-primary);
+        font-size: 2.5rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.1;
+    }
+    h2 {
+        font-family: var(--font-heading);
+        color: var(--color-primary);
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    h3 {
+        font-family: var(--font-body);
+        font-weight: 700;
+        color: var(--color-text);
+        font-size: 1.1rem;
+        margin: 0 0 0.75rem;
+    }
+    .intro {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        margin-bottom: 2.25rem;
+        max-width: 70ch;
+    }
+    .areas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.75rem;
+    }
+    .area-group {
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 12px;
+        padding: 1.25rem 1.25rem 1rem;
+    }
+    .area-group ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .area-group li {
+        margin-bottom: 0.45rem;
+        color: var(--color-text);
+    }
+    @media (min-width: 768px) {
+        .area-group ul {
+            columns: 2;
+            column-gap: 1.25rem;
+        }
+        .area-group li {
+            break-inside: avoid;
+        }
+    }
+    .contact-cta {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .contact-cta a {
+        color: var(--color-primary);
+        font-weight: 600;
+        text-decoration: underline;
+    }
+</style>

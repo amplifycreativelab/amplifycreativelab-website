@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import EventPhotography from "../components/perth-event-photography/EventPhotography.astro";
 import FamilyPhotography from "../components/perth-event-photography/FamilyPhotography.astro";
 import PortraitPhotography from "../components/perth-event-photography/PortraitPhotography.astro";
+import EventPricing from "../components/perth-event-photography/EventPricing.astro";
 
 const pageTitle =
   "Perth Event Photographer | Amplify Creative Lab Event Photography";
@@ -120,6 +121,7 @@ const eventSchema = {
     <EventPhotography />
     <PortraitPhotography />
     <FamilyPhotography />
+    <EventPricing />
 
     <section class="event-faq">
       <div class="event-faq__inner">
@@ -238,7 +240,7 @@ const eventSchema = {
     }
 
     .event-faq {
-      background-color: var(--e-global-color-fadab83, #4a2e1c);
+      background-color: #e8d8c3;
       padding: 60px 24px;
       display: flex;
       justify-content: center;
@@ -254,7 +256,7 @@ const eventSchema = {
       font-size: 40px;
       font-weight: 500;
       margin: 0 0 24px;
-      color: var(--e-global-color-secondary, #e8d8c3);
+      color: #4a2e1c;
       text-align: left;
     }
 
@@ -265,7 +267,7 @@ const eventSchema = {
     }
 
     .event-faq__item {
-      border-bottom: 1px solid rgba(232, 216, 195, 0.25);
+      border-bottom: 1px solid rgba(74, 46, 28, 0.25);
       padding: 8px 0 12px;
     }
 
@@ -275,7 +277,7 @@ const eventSchema = {
       font-weight: 600;
       cursor: pointer;
       list-style: none;
-      color: var(--e-global-color-secondary, #e8d8c3);
+      color: #4a2e1c;
     }
 
     .event-faq__answer {
@@ -284,22 +286,19 @@ const eventSchema = {
       font-weight: 400;
       line-height: 1.4;
       margin-top: 6px;
-      color: var(--e-global-color-secondary, #e8d8c3);
+      color: #4a2e1c;
     }
 
     @media (max-width: 768px) {
       .event-faq {
         padding: 40px 16px;
       }
-
       .event-faq__title {
         font-size: 32px;
       }
-
       .event-faq__question {
         font-size: 18px;
       }
-
       .event-faq__answer {
         font-size: 16px;
       }

@@ -21,3 +21,12 @@
 # --- Existing Content Checks ---
 # Ensure these specific "Page with redirect" warnings resolve correctly
 # (Netlify handles trailing slash automatically if configured, but explicit helps)
+
+# --- Legacy URL Recovery (Phase 0) ---
+/perth-content-creation/        /blog/content-creation-services-perth/      301
+/content-creation/              /blog/content-creation-services-perth/      301
+/brand-story/                   /about/                                     301
+/home-2/                        /                                           301
+/about-us/                      /about/                                     301
+/perth-portrait-photography/    /perth-event-photography/                   301
+/portrait-photography/          /perth-event-photography/                   301
