@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Areas We Serve | Amplify Creative Lab Perth";
 const description =
-    "Amplify Creative Lab provides food photography and web design services across the entire Perth metropolitan area, from Joondalup to Mandurah and the South West.";
+    "Amplify Creative Lab is a Perth-based photography and web design studio working across the Perth metro area and Western Australia. Travel available by request, fees may apply.";
 const canonical = "https://amplifycreativelab.com/areas-we-serve/";
 
 const areaGroups = [
@@ -55,7 +55,7 @@ const areaGroups = [
             "Mosman Park",
             "Nedlands",
             "Dalkeith",
-            "Rottnest Island (travel available)",
+            "Rottnest Island",
         ],
     },
     {
@@ -220,15 +220,6 @@ const areaGroups = [
             "Mandurah",
         ],
     },
-    {
-        title: "Regional WA (Travel Available)",
-        suburbs: [
-            "Busselton (travel fees may apply)",
-            "Dunsborough (travel fees may apply)",
-            "Margaret River (travel fees may apply)",
-            "Bunbury (travel fees may apply)",
-        ],
-    },
 ];
 ---
 
@@ -236,15 +227,28 @@ const areaGroups = [
     <main class="page-content">
         <div class="container skin-text">
             <h1>Areas We Serve in Western Australia</h1>
+
             <p class="intro">
-                Amplify Creative Lab is a mobile photography studio and digital
-                agency based in Doubleview. We bring our lighting equipment and
-                creative strategy directly to your venue across Greater Perth
-                and regional WA (travel available).
+                Amplify Creative Lab is a Perth-based photography and web design
+                studio working across the Perth metropolitan area and Western
+                Australia. We operate as a mobile studio, bringing our lighting,
+                equipment and creative strategy directly to your venue.
             </p>
 
+            <section class="coverage-policy">
+                <h2>Coverage & Travel Policy</h2>
+                <p>
+                    Most projects are delivered on-location across the Perth
+                    metro area, including food photography, product photography,
+                    event coverage and website projects. Travel within the Perth
+                    metro area is typically included. For Peel, the South West
+                    and regional Western Australia, travel is available by
+                    request and any travel fees are confirmed upfront.
+                </p>
+            </section>
+
             <section class="service-areas">
-                <h2>Primary Service Areas</h2>
+                <h2>Common Areas We Work In</h2>
                 <div class="areas-grid">
                     {
                         areaGroups.map(({ title: groupTitle, suburbs }) => (
@@ -262,11 +266,11 @@ const areaGroups = [
             </section>
 
             <section class="contact-cta">
-                <h2>Don't see your suburb?</h2>
+                <h2>Don’t see your area?</h2>
                 <p>
-                    We likely still cover your area. <a href="/contact/"
-                        >Contact us</a
-                    > to discuss your project.
+                    We likely still cover your location.{" "}
+                    <a href="/contact/">Contact us</a> to discuss your project
+                    and confirm availability.
                 </p>
             </section>
         </div>

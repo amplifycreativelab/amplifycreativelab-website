@@ -7,11 +7,34 @@ const portfolioImageModules = import.meta.glob(
     { eager: true },
 );
 
+const BRAND_NAME = "Amplify Creative Lab";
+const BRAND_LOCATION = "Perth, Western Australia";
+
 function getPortfolioImage(folder: string, file: string) {
     const key = `../../assets/images/portfolio/${folder}/${file}`;
     const mod = (portfolioImageModules as Record<string, any>)[key];
     if (!mod) return undefined;
     return mod.default ?? mod;
+}
+
+function humanizeAltFromFilename(file: string) {
+    const base = file.replace(/\.[^/.]+$/, "");
+    const spaced = base.replace(/[-_]+/g, " ");
+    return spaced
+        .replace(/\b(perth|wa|western australia|australia)\b/gi, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function buildGeoCaption(alt: string, serviceTitle: string) {
+    const normalizedAlt = alt.toLowerCase();
+    const mentionsPerth = normalizedAlt.includes("perth");
+    const mentionsWA =
+        normalizedAlt.includes("western australia") ||
+        normalizedAlt.match(/\bwa\b/) !== null;
+    const locationSuffix = mentionsPerth || mentionsWA ? "" : ` in ${BRAND_LOCATION}`;
+
+    return `${serviceTitle} by ${BRAND_NAME}${locationSuffix}. ${alt}`;
 }
 
 // Image file arrays
@@ -605,6 +628,7 @@ interface ImageItem {
     thumbSrcSet: string;
     fullSrc: string;
     alt: string;
+    geoCaption: string;
     title: string;
 }
 
@@ -639,11 +663,15 @@ async function processImages(
                 quality: 90,
             });
 
+            const alt = alts[file] || humanizeAltFromFilename(file) || `${title} image`;
+            const geoCaption = buildGeoCaption(alt, title);
+
             items.push({
                 thumbSrc: thumb.src,
                 thumbSrcSet: thumb.srcSet?.attribute || "",
                 fullSrc: full.src,
-                alt: alts[file] || `${title} image`,
+                alt,
+                geoCaption,
                 title,
             });
         } catch (e) {
@@ -670,6 +698,83 @@ const [food, event, family, product, portrait] = await Promise.all([
 
 const allData = { food, event, family, product, portrait };
 const dataJson = JSON.stringify(allData).replace(/</g, "\\u003c");
+
+const siteUrl = "https://amplifycreativelab.com";
+const toAbsoluteUrl = (value: string) => {
+    try {
+        return new URL(value, siteUrl).toString();
+    } catch {
+        return value;
+    }
+};
+
+const TOP_IMAGE_OBJECT_COUNT = 20;
+const portfolioPageUrl = `${siteUrl}/portfolio/`;
+
+const topImages = [
+    ...food.slice(0, 8).map((item) => ({
+        ...item,
+        aboutId: `${siteUrl}/#service-food-photography`,
+    })),
+    ...product.slice(0, 4).map((item) => ({
+        ...item,
+        aboutId: `${siteUrl}/#service-product-photography`,
+    })),
+    ...event.slice(0, 4).map((item) => ({
+        ...item,
+        aboutId: `${siteUrl}/#service-event-photography`,
+    })),
+    ...portrait.slice(0, 2).map((item) => ({
+        ...item,
+        aboutId: `${siteUrl}/#service-event-photography`,
+    })),
+    ...family.slice(0, 2).map((item) => ({
+        ...item,
+        aboutId: `${siteUrl}/#service-event-photography`,
+    })),
+].slice(0, TOP_IMAGE_OBJECT_COUNT);
+
+const topImageObjects = topImages.map((item, index) => ({
+    "@type": "ImageObject",
+    "@id": `${portfolioPageUrl}#image-${index + 1}`,
+    contentUrl: toAbsoluteUrl(item.fullSrc),
+    thumbnailUrl: toAbsoluteUrl(item.thumbSrc),
+    caption: item.geoCaption,
+    description: item.geoCaption,
+    creator: { "@id": `${siteUrl}/#organization` },
+    about: { "@id": item.aboutId },
+    contentLocation: {
+        "@type": "Place",
+        name: "Perth, Western Australia, Australia",
+    },
+}));
+
+const portfolioSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": `${portfolioPageUrl}#webpage`,
+            url: portfolioPageUrl,
+            name: "Portfolio | Amplify Creative Lab",
+            about: { "@id": `${siteUrl}/#organization` },
+            mainEntity: { "@id": `${portfolioPageUrl}#top-images` },
+        },
+        {
+            "@type": "ItemList",
+            "@id": `${portfolioPageUrl}#top-images`,
+            name: "Top portfolio images",
+            itemListElement: topImageObjects.map((img, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                item: { "@id": img["@id"] },
+            })),
+        },
+        ...topImageObjects,
+    ],
+};
+
+const portfolioSchemaJson = JSON.stringify(portfolioSchema).replace(/</g, "\\u003c");
 
 const categories = [
     { value: "food", label: "Food" },
@@ -717,6 +822,7 @@ const initialItems = food.slice(0, BATCH);
                         data-index={i}
                         data-full={item.fullSrc}
                         data-alt={item.alt}
+                        data-caption={item.geoCaption}
                         data-title={item.title}
                     >
                         <figure class="portfolio-item-figure">
@@ -789,10 +895,13 @@ const initialItems = food.slice(0, BATCH);
                 decoding="async"
             />
             <figcaption class="portfolio-lightbox__caption">
-                <span id="lightbox-title" class="portfolio-lightbox__title"
-                ></span>
-                <span id="lightbox-index" class="portfolio-lightbox__index"
-                ></span>
+                <div class="portfolio-lightbox__meta">
+                    <span id="lightbox-title" class="portfolio-lightbox__title"
+                    ></span>
+                    <span id="lightbox-index" class="portfolio-lightbox__index"
+                    ></span>
+                </div>
+                <p id="lightbox-caption" class="portfolio-lightbox__geo"></p>
             </figcaption>
         </figure>
         <button
@@ -805,6 +914,7 @@ const initialItems = food.slice(0, BATCH);
 </div>
 
 <script type="application/json" id="portfolio-data" set:html={dataJson} />
+<script type="application/ld+json" set:html={portfolioSchemaJson} />
 
 <script>
     const BATCH = 12;
@@ -822,6 +932,7 @@ const initialItems = food.slice(0, BATCH);
     ) as HTMLImageElement;
     const lightboxTitle = document.getElementById("lightbox-title")!;
     const lightboxIndex = document.getElementById("lightbox-index")!;
+    const lightboxCaption = document.getElementById("lightbox-caption")!;
     const closeBtn = document.getElementById("lightbox-close")!;
     const prevBtn = document.getElementById("lightbox-prev")!;
     const nextBtn = document.getElementById("lightbox-next")!;
@@ -832,6 +943,7 @@ const initialItems = food.slice(0, BATCH);
         thumbSrcSet: string;
         fullSrc: string;
         alt: string;
+        geoCaption: string;
         title: string;
     };
     type AllData = Record<string, ImageItem[]>;
@@ -869,6 +981,7 @@ const initialItems = food.slice(0, BATCH);
         link.dataset.index = String(index);
         link.dataset.full = item.fullSrc;
         link.dataset.alt = item.alt;
+        link.dataset.caption = item.geoCaption;
         link.dataset.title = item.title;
 
         link.innerHTML = `
@@ -935,6 +1048,7 @@ const initialItems = food.slice(0, BATCH);
         lightboxImg.alt = item.alt;
         lightboxTitle.textContent = item.title;
         lightboxIndex.textContent = `${index + 1} / ${items.length}`;
+        lightboxCaption.textContent = item.geoCaption;
 
         lightbox.classList.add("is-active");
         lightbox.setAttribute("aria-hidden", "false");
@@ -947,6 +1061,7 @@ const initialItems = food.slice(0, BATCH);
         lightbox.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
         lightboxImg.src = "";
+        lightboxCaption.textContent = "";
     }
 
     function showPrev() {
@@ -1217,14 +1332,22 @@ const initialItems = food.slice(0, BATCH);
         color: #ffffff;
         font-family: "Montserrat", sans-serif;
         font-size: 0.85rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
         text-align: center;
         opacity: 0.85;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+        justify-content: center;
+    }
+
+    .portfolio-lightbox__meta {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
         justify-content: center;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
     }
 
     .portfolio-lightbox__title {
@@ -1233,6 +1356,16 @@ const initialItems = food.slice(0, BATCH);
 
     .portfolio-lightbox__index {
         font-weight: 200;
+    }
+
+    .portfolio-lightbox__geo {
+        margin: 0;
+        font-family: "Darker Grotesque", system-ui, sans-serif;
+        font-size: 1.1rem;
+        letter-spacing: normal;
+        text-transform: none;
+        opacity: 0.95;
+        max-width: min(70ch, 90vw);
     }
 
     .portfolio-lightbox__close {
