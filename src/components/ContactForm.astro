@@ -33,7 +33,6 @@ const {
       {...{
         "data-netlify": "true",
         "netlify-honeypot": "bot-field",
-        "data-netlify-recaptcha": "true",
       }}
     >
       <!-- Netlify form name -->
@@ -150,13 +149,6 @@ const {
 
         <!-- Optional extra fields slot -->
         <slot />
-      </div>
-
-      <!-- Netlify CAPTCHA -->
-      <div
-        class="form-field form-field-full form-captcha"
-        data-netlify-recaptcha="true"
-      >
       </div>
 
       <!-- Submit -->

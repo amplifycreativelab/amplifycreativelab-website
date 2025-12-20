@@ -84,20 +84,20 @@ await sharp(inputPath).webp({ quality: 85 }).toFile(outputPath);
 If rate limits are hit before finishing the generations, update the plan to reflect the missing images, so we can generate later.
 
 **⚠️ Placeholder Images (Action Required Later):**
-The following posts are currently using `best-perth-suburbs-hospitality-venues.webp` as a placeholder (verified 2025-12-19) and will need distinct images generated when quota permits:
-- `subiaco-premium-brand-building-hospitality.mdx`
-- `joondalup-venue-growth-online-digital-strategy.mdx`
-- `cottesloe-beachside-dining-marketing.mdx`
-- `maylands-indie-cafe-marketing.mdx`
-- `south-perth-riverside-dining-views.mdx`
-- `perth-cbd-corporate-dining-marketing.mdx`
-- `guildford-historic-pubs-heritage-hospitality.mdx`
-- `applecross-jacaranda-season-affluent-dining.mdx`
+The following posts have been updated with fresh visuals (Actioned 2025-12-20):
+- ✅ `subiaco-premium-brand-building-hospitality.mdx`
+- ✅ `joondalup-venue-growth-online-digital-strategy.mdx`
+- ✅ `cottesloe-beachside-dining-marketing.mdx`
+- ✅ `maylands-indie-cafe-marketing.mdx`
+- ✅ `south-perth-riverside-dining-views.mdx`
+- ✅ `perth-cbd-corporate-dining-marketing.mdx`
+- ✅ `guildford-historic-pubs-heritage-hospitality.mdx`
+- ✅ `applecross-jacaranda-season-affluent-dining.mdx`
 
 Other image follow-ups:
-- `claremont-western-suburbs-premium-dining.mdx` (generated but still using a PNG; convert to WebP)
-- `what-is-a-packshot-product-photography.mdx` (needs `cosmetic-cream-swatch-texture-photography-perth.webp`)
-- `why-diy-websites-fail-perth-business.mdx` (needs `diy-vs-professional-website-perth.webp`)
+- ✅ `claremont-western-suburbs-premium-dining.mdx` (Converted to WebP)
+- ⏳ `what-is-a-packshot-product-photography.mdx` (needs `cosmetic-cream-swatch-texture-photography-perth.webp` - Rate Limit Hit)
+- ⏳ `why-diy-websites-fail-perth-business.mdx` (needs `diy-vs-professional-website-perth.webp` - Rate Limit Hit)
 ---
 
 ## Implementation Progress
@@ -553,7 +553,7 @@ These pages are ranking on Page 2 (Pos 11-20). Action: Refresh content, add inte
 
 | Page / Topic | Current Pos | Action Required |
 |--------------|-------------|-----------------|
-| `menu-engineering-decoy-dish-strategy-perth` | 11.6 | ✅ **DONE** (`menu-engineering-decoy-dish-strategy-perth.mdx`): Updated title to "Menu Engineering Perth: The Decoy Dish Strategy for Restaurants" and added a section on the "Shared Plates" trend common in Perth venues. Next: link from new food photography posts. |
+| `menu-engineering-decoy-dish-strategy-perth` | 11.6 | ✅ **DONE** (`menu-engineering-decoy-dish-strategy-perth.mdx`): Updated title to "Menu Engineering Perth: The Decoy Dish Strategy for Restaurants" and added a section on the "Shared Plates" trend common in Perth venues. Next: link from new food photography posts (✅ **DONE**). |
 | `skincare-beauty-product-photography-perth` | 10.5 | ✅ **DONE** (`skincare-beauty-product-photography-perth.mdx`): Added "cosmetic photography" to keywords and content to capture missing intent. Next: request re-index in GSC. |
 | `roi-professional-food-photography-perth` | 10.0 | ✅ **DONE** (`roi-professional-food-photography-perth.mdx`): Updated title to "The ROI of Professional Food Photography in Perth: Is It Worth It?" and added a section on "The Hidden ROI of Social Media Content". |
 | `how-to-build-pre-launch-landing-page-captures-emails` | 11.0 | ✅ **DONE** (`how-to-build-pre-launch-landing-page-captures-emails.mdx`): Changed title to "How to Build a High-Converting Coming Soon Page in Perth" and injected "coming soon page" keywords. |
@@ -576,7 +576,7 @@ Data shows `food photography near me` (Pos 8) and `digital photography near me` 
 2.  **Create "Areas We Serve" Page:** A dedicated text-based page linked from the Sitemap or Contact page, listing all suburbs to capture specific location queries without cluttering the main design.
     - ✅ **DONE** (`src/pages/areas-we-serve.astro`)
 3.  **Content Injection:** Subtly mention "Serving [Suburb]" in the intro/outro of existing service pages.
-    - 🆕 Proposed
+    - ✅ **DONE** (Applied to Web Dev, Product, and Event intros)
 
 ---
 

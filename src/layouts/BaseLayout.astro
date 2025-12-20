@@ -65,7 +65,11 @@ const areasServed = [
         name: "Perth metropolitan area",
         sameAs: "https://en.wikipedia.org/wiki/Perth_metropolitan_area",
     },
-    { "@type": "City", name: "Perth", sameAs: "https://en.wikipedia.org/wiki/Perth" },
+    {
+        "@type": "City",
+        name: "Perth",
+        sameAs: "https://en.wikipedia.org/wiki/Perth",
+    },
 ];
 
 const businessSchema = {
@@ -429,8 +433,8 @@ const businessSchema = {
                 });
             });
 
-            // Fallback: load after 4 seconds if no interaction
-            setTimeout(loadGTM, 4000);
+            // Fallback: load after 8 seconds if no interaction
+            setTimeout(loadGTM, 8000);
         </script>
     </head>
 

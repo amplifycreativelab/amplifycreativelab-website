@@ -51,6 +51,7 @@ const socialImage =
   (typeof featuredImage === "string" ? featuredImage : featuredImage.src);
 
 const siteUrl = "https://amplifycreativelab.com";
+const organizationId = `${siteUrl}/#organization`;
 const toAbsoluteUrl = (value: string) => {
   try {
     return new URL(value, siteUrl).toString();
@@ -75,12 +76,16 @@ const blogSchema = {
         },
       }
     : {}),
-  author: {
-    "@type": "Organization",
-    name: author,
-  },
+  author:
+    author === "Amplify Creative Lab"
+      ? { "@id": organizationId }
+      : {
+          "@type": "Organization",
+          name: author,
+        },
   publisher: {
     "@type": "Organization",
+    "@id": organizationId,
     name: "Amplify Creative Lab",
     logo: {
       "@type": "ImageObject",
