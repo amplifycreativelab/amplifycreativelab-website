@@ -4,7 +4,6 @@ import Footer from "../components/Footer.astro";
 import CookieConsent from "../components/CookieConsent.astro";
 import logoAsset from "../assets/images/logo/amplify-creative-lab-logo-perth-WA.svg";
 import appleTouchIcon from "../assets/favicons/apple-touch-icon.png";
-import favicon180 from "../assets/favicons/favicon-180x180.png";
 
 import favicon32 from "../assets/favicons/favicon-32x32.png";
 import msTileImage from "../assets/favicons/mstile-270x270.png";
@@ -370,19 +369,13 @@ const businessSchema = {
         -->
 
         <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon" />
-        <link rel="icon" href={favicon32.src} sizes="32x32" type="image/png" />
-        <link
-            rel="icon"
-            href={favicon180.src}
-            sizes="180x180"
-            type="image/png"
-        />
         <link
             rel="icon"
             href="/favicon-192.png"
             sizes="192x192"
             type="image/png"
         />
+        <link rel="icon" href={favicon32.src} sizes="32x32" type="image/png" />
         <link
             rel="apple-touch-icon"
             href={appleTouchIcon.src}
