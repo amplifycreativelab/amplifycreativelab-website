@@ -320,7 +320,7 @@ const businessSchema = {
             )
         }
 
-        <link rel="canonical" href={canonical} />
+        {!noIndex && <link rel="canonical" href={canonical} />}
 
         <meta property="og:type" content={resolvedOgType} />
         <meta property="og:locale" content="en_AU" />

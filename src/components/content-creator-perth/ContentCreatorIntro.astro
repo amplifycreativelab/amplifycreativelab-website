@@ -2,27 +2,42 @@
 // src/components/content-creator-perth/ContentCreatorIntro.astro
 
 // Placeholder video data structure
-// When real videos are available, import them or reference public path
+// Updated with SEO-optimized filenames and descriptions including location (Perth) and business context
 const videos = [
     {
-        src: "/videos/content-creator/perth-food-videography-restaurant-marketing.mp4",
+        src: "/videos/content-creator/restaurant-marketing-behind-the-scenes-perth.mp4",
+        poster: "",
+        alt: "Behind the scenes team video for Io e Te - Restaurant Marketing and Content Creation in Perth.",
+    },
+    {
+        src: "/videos/content-creator/perth-food-content-creation-recipe.mp4",
+        poster: "",
+        alt: "Slow-motion homemade shepherds pie recipe video - Food Content Creation Perth.",
+    },
+    {
+        src: "/videos/content-creator/restaurant-videography-dining-experience-perth.mp4",
+        poster: "",
+        alt: "Dining atmosphere and wood-fired pizza compilation - Restaurant Videography Perth.",
+    },
+    {
+        src: "/videos/content-creator/perth-content-creator-menu-launch.mp4",
+        poster: "",
+        alt: "New Italian menu launch featuring fresh pasta - Content Creation for Perth Restaurants.",
+    },
+    {
+        src: "/videos/content-creator/perth-food-videography-steak-dinner.mp4",
         poster: "", // Optional poster image
-        alt: "Perth food videography for restaurant marketing",
+        alt: "Close-up of a juicy grilled steak at Io e Te restaurant - Perth Food Videography by Amplify Creative Lab.",
     },
     {
-        src: "/videos/content-creator/social-media-content-creator-perth-reels.mp4",
+        src: "/videos/content-creator/cooking-video-production-perth.mp4",
         poster: "",
-        alt: "Social media content creator Perth creating reels",
+        alt: "Step-by-step cooking process video production for Perth food brands.",
     },
     {
-        src: "/videos/content-creator/new-menu-launch-video-production-perth.mp4",
+        src: "/videos/content-creator/seasonal-restaurant-marketing-video-perth.mp4",
         poster: "",
-        alt: "New menu launch video production in Perth",
-    },
-    {
-        src: "/videos/content-creator/seasonal-holiday-campaign-video-perth.mp4",
-        poster: "",
-        alt: "Seasonal holiday campaign video for Perth business",
+        alt: "Seasonal holiday campaign video for Io e Te - Christmas Restaurant Marketing Perth.",
     },
 ];
 ---
@@ -53,9 +68,8 @@ const videos = [
 
             <p class="content-intro__text">
                 Whether you need a monthly content bank, event coverage, or a
-                one-off campaign, we handle the strategy,
-                shooting, and editing so you can post with confidence and grow
-                your following locally.
+                one-off campaign, we handle the strategy, shooting, and editing
+                so you can post with confidence and grow your following locally.
             </p>
         </div>
     </div>
@@ -65,15 +79,20 @@ const videos = [
             videos.map((vid, index) => (
                 <div class="content-intro__slide">
                     {vid.src ? (
-                        <video
-                            class="content-intro__video"
-                            controls
-                            playsinline
-                            poster={vid.poster}
-                        >
-                            <source src={vid.src} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="content-intro__video-wrapper">
+                            <video
+                                class="content-intro__video"
+                                playsinline
+                                preload="none"
+                                poster={vid.poster}
+                            >
+                                <source src={vid.src} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="content-intro__play-overlay">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </div>
                     ) : (
                         <div class="content-intro__video-placeholder">
                             <span>Video Placeholder {index + 1}</span>
@@ -198,6 +217,13 @@ const videos = [
         margin-left: 1.5%;
     }
 
+    .content-intro__video-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
     .content-intro__video {
         width: 100%;
         height: 100%;
@@ -205,193 +231,31 @@ const videos = [
         display: block;
     }
 
-    .content-intro__video-placeholder {
+    .content-intro__play-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: rgba(255, 255, 255, 0.2);
-        font-family: "Montserrat", sans-serif;
-        border: 1px dashed rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.2);
+        transition: opacity 0.3s ease;
+        z-index: 2;
     }
 
-    .content-intro__slide:hover {
-        transform: translateY(-10px);
+    .play-icon {
+        font-size: 3rem;
+        color: white;
+        opacity: 0.8;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
     }
 
-    @media (max-width: 1024px) {
-        .content-intro__slide {
-            flex: 0 0 30%; /* 3-ish on tablet */
-        }
-    }
-
-    @media (max-width: 768px) {
-        .content-intro__title {
-            font-size: 32px;
-        }
-
-        .content-intro__slide {
-            flex: 0 0 45%; /* 2-ish on mobile */
-            margin-right: 15px;
-        }
-
-        .content-intro__slide:first-child {
-            margin-left: 15px;
-        }
-
-        .content-intro {
-            padding: 0px 0 0px 0;
-        }
-        .content-intro__text-container {
-            </p>
-        </div>
-    </div>
-
-    <div class="content-intro__slider-container">
-        {
-            videos.map((vid, index) => (
-                <div class="content-intro__slide">
-                    {vid.src ? (
-                        <video
-                            class="content-intro__video"
-                            playsinline
-                            poster={vid.poster}
-                            controls
-                        >
-                            <source src={vid.src} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    ) : (
-                        <div class="content-intro__video-placeholder">
-                            <span>Video Placeholder {index + 1}</span>
-                            <small>9:16 Vertical Video</small>
-                        </div>
-                    )}
-                </div>
-            ))
-        }
-    </div>
-</section>
-
-<style>
-    :root {
-        --text-color: #fef8eb;
-        --bg-color-dark: #3e2b22;
-    }
-
-    .content-intro {
-        background-color: var(--bg-color-dark);
-        color: var(--text-color);
-        padding: 60px 0 0 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        overflow: hidden;
-    }
-
-    .content-intro__text-container {
-        padding: 0 20px 0px 20px;
-    }
-
-    .content-intro__subtitle {
-        font-family: "Darker Grotesque", sans-serif;
-        font-size: 14px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        display: block;
-        margin-bottom: 20px;
-        opacity: 0.9;
-    }
-
-    .content-intro__title {
-        font-family: "Abril Fatface", serif;
-        font-size: 48px;
-        font-weight: 500;
-        line-height: 1.2;
-        margin: 0 0 30px 0;
-        color: var(--text-color);
-    }
-
-    .content-intro__description {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin: 0 auto;
-    }
-
-    .content-intro__text-highlight {
-        font-family: "Darker Grotesque", sans-serif;
-        font-size: 18px;
-        font-weight: 600;
-        font-style: italic;
-        line-height: 1.5;
-        opacity: 0.9;
-        margin: 0;
-    }
-
-    .content-intro__text {
-        font-family: "Darker Grotesque", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.6;
-        margin: 0;
-        opacity: 0.85;
-        font-style: italic;
-    }
-
-    /* Slider Styles */
-    .content-intro__slider-container {
-        width: 100%;
-        margin-top: 40px;
-        display: flex;
-        overflow-x: auto;
-        /* Hide scrollbar for cleaner look */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
-        /* Enhance scrolling on touch devices */
-        -webkit-overflow-scrolling: touch;
-        cursor: grab; /* Indicate draggable */
-        user-select: none; /* Prevent text selection while dragging */
-        padding-bottom: 40px; /* Space for shadow/hover effect */
-    }
-
-    .content-intro__slider-container:active {
-        cursor: grabbing;
-    }
-
-    .content-intro__slider-container::-webkit-scrollbar {
-        display: none; /* Chrome/Safari/Opera */
-    }
-
-    .content-intro__slide {
-        position: relative;
-        /* 
-       For vertical video (9:16), we want them to stand tall.
-       Let's say 25% width on desktop to show ~4 at a time.
-    */
-        flex: 0 0 22%;
-        aspect-ratio: 9 / 16;
-        margin-right: 1.5%;
-        border-radius: 12px;
-        overflow: hidden;
-        background: #2a1e17; /* Darker placeholder bg */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
-    }
-
-    /* Add margin to first item so it doesn't stick to left edge */
-    .content-intro__slide:first-child {
-        margin-left: 1.5%;
-    }
-
-    .content-intro__video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+    /* Hide overlay when video is playing (handled by class in JS) */
+    .content-intro__video-wrapper.playing .content-intro__play-overlay {
+        opacity: 0;
+        pointer-events: none;
     }
 
     .content-intro__video-placeholder {
@@ -453,18 +317,65 @@ const videos = [
         // Auto-scroll logic (Slower for video usually better)
         const autoScrollSpeed = 0.5;
 
-        // Detect video playing state
-        const videos = slider.querySelectorAll('video');
-        videos.forEach(video => {
-            video.addEventListener('play', () => {
-                isVideoPlaying = true;
-            });
-            video.addEventListener('pause', () => {
-                isVideoPlaying = false;
-            });
-            video.addEventListener('ended', () => {
-                isVideoPlaying = false;
-            });
+        const videoWrappers = slider.querySelectorAll(
+            ".content-intro__video-wrapper",
+        );
+
+        videoWrappers.forEach((wrapper) => {
+            const video = wrapper.querySelector("video");
+            const overlay = wrapper.querySelector(
+                ".content-intro__play-overlay",
+            );
+
+            if (video && overlay) {
+                // Click to play
+                wrapper.addEventListener("click", () => {
+                    if (video.paused) {
+                        // Pause all other videos
+                        slider.querySelectorAll("video").forEach((v) => {
+                            if (v !== video) {
+                                v.pause();
+                                v.currentTime = 0; // Optional: reset others
+                                // Update their wrappers if needed
+                                const parent = v.closest(
+                                    ".content-intro__video-wrapper",
+                                );
+                                if (parent) {
+                                    parent.classList.remove("playing");
+                                    v.controls = false;
+                                }
+                            }
+                        });
+
+                        video.play();
+                        video.controls = true; // Show controls when playing
+                        wrapper.classList.add("playing");
+                        isVideoPlaying = true;
+                    } else {
+                        video.pause();
+                        video.controls = false;
+                        wrapper.classList.remove("playing");
+                        isVideoPlaying = false;
+                    }
+                });
+
+                video.addEventListener("play", () => {
+                    isVideoPlaying = true;
+                    wrapper.classList.add("playing");
+                });
+
+                video.addEventListener("pause", () => {
+                    isVideoPlaying = false;
+                    wrapper.classList.remove("playing");
+                    video.controls = false;
+                });
+
+                video.addEventListener("ended", () => {
+                    isVideoPlaying = false;
+                    wrapper.classList.remove("playing");
+                    video.controls = false;
+                });
+            }
         });
 
         function startAutoScroll() {
@@ -510,9 +421,10 @@ const videos = [
 
         // Drag Logic
         slider.addEventListener("mousedown", (e) => {
-            // Prevent dragging if clicking controls
-            if ((e.target as HTMLElement).tagName === 'VIDEO') return;
-            
+            // Prevent dragging if clicking controls or video (though wrapper handles click)
+            // But we allow dragging on the wrapper if it's not playing maybe?
+            // Actually, keep drag behavior but ensure click doesn't register as drag.
+
             isDown = true;
             slider.classList.add("active");
             startX = e.pageX - slider.offsetLeft;
