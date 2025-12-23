@@ -40,11 +40,14 @@ const videos = [
         alt: "Seasonal holiday campaign video for Io e Te - Christmas Restaurant Marketing Perth.",
     },
 ];
+
+// Duplicate videos to create a seamless infinite loop effect
+const allVideos = [...videos, ...videos];
 ---
 
 <section class="content-intro">
     <div class="content-intro__text-container">
-        <h1 class="content-intro__title">Content Creator Perth</h1>
+        <h1 class="content-intro__title">Content Creation Perth</h1>
 
         <div class="content-intro__description">
             <p class="content-intro__text">
@@ -76,7 +79,7 @@ const videos = [
 
     <div class="content-intro__slider-container">
         {
-            videos.map((vid, index) => (
+            allVideos.map((vid, index) => (
                 <div class="content-intro__slide">
                     {vid.src ? (
                         <div class="content-intro__video-wrapper">
@@ -95,7 +98,9 @@ const videos = [
                         </div>
                     ) : (
                         <div class="content-intro__video-placeholder">
-                            <span>Video Placeholder {index + 1}</span>
+                            <span>
+                                Video Placeholder {(index % videos.length) + 1}
+                            </span>
                             <small>9:16 Vertical Video</small>
                         </div>
                     )}
@@ -312,10 +317,14 @@ const videos = [
     let scrollLeft: number;
     let animationId: number;
     let isVideoPlaying = false;
+    let preciseScrollLeft = 0; // Track float position for smooth scrolling
 
     if (slider) {
+        // Init precise scroll
+        preciseScrollLeft = slider.scrollLeft;
+
         // Auto-scroll logic (Slower for video usually better)
-        const autoScrollSpeed = 0.5;
+        const autoScrollSpeed = 0.7;
 
         const videoWrappers = slider.querySelectorAll(
             ".content-intro__video-wrapper",
@@ -378,17 +387,26 @@ const videos = [
             }
         });
 
+        // Sync our tracker with actual DOM scroll position
+        const syncScrollState = () => {
+            preciseScrollLeft = slider.scrollLeft;
+        };
+
         function startAutoScroll() {
             if (!isDown && !isVideoPlaying) {
                 // Only auto-scroll if user isn't dragging AND no video is playing
-                slider.scrollLeft += autoScrollSpeed;
+                preciseScrollLeft += autoScrollSpeed;
 
-                // Loop back check
-                if (
-                    slider.scrollLeft >=
-                    slider.scrollWidth - slider.clientWidth - 1
-                ) {
-                    slider.scrollLeft = 0;
+                // Infinite loop check
+                // Reset when we've scrolled past exactly half the total width (the length of the original set)
+                const halfWidth = slider.scrollWidth / 2;
+
+                if (preciseScrollLeft >= halfWidth) {
+                    // Silently jump back to start (preserving overflow)
+                    preciseScrollLeft = preciseScrollLeft - halfWidth;
+                    slider.scrollLeft = preciseScrollLeft;
+                } else {
+                    slider.scrollLeft = preciseScrollLeft;
                 }
             }
             animationId = requestAnimationFrame(startAutoScroll);
@@ -398,23 +416,30 @@ const videos = [
         animationId = requestAnimationFrame(startAutoScroll);
 
         // Stop auto-scroll on interaction
-        slider.addEventListener("mouseenter", () =>
-            cancelAnimationFrame(animationId),
-        );
-        slider.addEventListener("touchstart", () =>
-            cancelAnimationFrame(animationId),
-        );
+        slider.addEventListener("mouseenter", () => {
+            syncScrollState();
+            cancelAnimationFrame(animationId);
+        });
+
+        slider.addEventListener("touchstart", () => {
+            isDown = true; // Mark as down for touch too
+            syncScrollState();
+            cancelAnimationFrame(animationId);
+        });
 
         // Resume auto-scroll when interaction ends
         slider.addEventListener("mouseleave", () => {
             isDown = false;
             slider.classList.remove("active");
+            syncScrollState(); // Update position before resuming
             cancelAnimationFrame(animationId);
             // Only resume if we want to (the loop checks isVideoPlaying anyway)
             animationId = requestAnimationFrame(startAutoScroll);
         });
 
         slider.addEventListener("touchend", () => {
+            isDown = false;
+            syncScrollState(); // Update position before resuming
             cancelAnimationFrame(animationId);
             animationId = requestAnimationFrame(startAutoScroll);
         });
@@ -429,12 +454,14 @@ const videos = [
             slider.classList.add("active");
             startX = e.pageX - slider.offsetLeft;
             scrollLeft = slider.scrollLeft;
+            syncScrollState();
             cancelAnimationFrame(animationId);
         });
 
         slider.addEventListener("mouseup", () => {
             isDown = false;
             slider.classList.remove("active");
+            syncScrollState();
         });
 
         slider.addEventListener("mousemove", (e) => {
@@ -443,6 +470,7 @@ const videos = [
             const x = e.pageX - slider.offsetLeft;
             const walk = (x - startX) * 2;
             slider.scrollLeft = scrollLeft - walk;
+            syncScrollState(); // Keep syncing while dragging
         });
     }
 </script>

@@ -73,6 +73,10 @@ const blogSchema = {
         image: {
           "@type": "ImageObject",
           url: blogImageUrl,
+          license: `${siteUrl}/terms/`,
+          acquireLicensePage: `${siteUrl}/contact/`,
+          copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,
+          creditText: "Amplify Creative Lab",
         },
       }
     : {}),
@@ -90,6 +94,10 @@ const blogSchema = {
     logo: {
       "@type": "ImageObject",
       url: "https://amplifycreativelab.com/images/logo/logo-web.png",
+      license: `${siteUrl}/terms/`,
+      acquireLicensePage: `${siteUrl}/contact/`,
+      copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,
+      creditText: "Amplify Creative Lab",
     },
   },
   mainEntityOfPage: {

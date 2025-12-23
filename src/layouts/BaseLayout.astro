@@ -47,7 +47,7 @@ const toAbsoluteUrl = (value: string) => {
 const resolvedOgType = ogType ?? "website";
 const resolvedOgTitle = ogTitle ?? title;
 const resolvedOgDescription = ogDescription ?? description;
-const defaultSocialImage = `${siteUrl}/images/social/share-default.png`;
+const defaultSocialImage = `${siteUrl}/images/logo/amplify-creative-lab-logo-email-compressed.jpg`;
 const resolvedOgImage = toAbsoluteUrl(ogImage ?? defaultSocialImage);
 const resolvedOgImageAlt =
     ogImageAlt ??
@@ -83,10 +83,18 @@ const businessSchema = {
             image: {
                 "@type": "ImageObject",
                 url: logoUrl,
+                license: `${siteUrl}/terms/`,
+                acquireLicensePage: `${siteUrl}/contact/`,
+                copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,
+                creditText: "Amplify Creative Lab",
             },
             logo: {
                 "@type": "ImageObject",
                 url: logoUrl,
+                license: `${siteUrl}/terms/`,
+                acquireLicensePage: `${siteUrl}/contact/`,
+                copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,
+                creditText: "Amplify Creative Lab",
             },
             email: "support@amplifycreativelab.com",
             telephone: "+61 460 526 441",
@@ -232,7 +240,7 @@ const businessSchema = {
         {
             "@type": "Service",
             "@id": `${siteUrl}/#service-gbp`,
-            name: "Google Business Profile Services",
+            name: "Google Maps SEO Services",
             serviceType: "Google Business Profile Optimization",
             description:
                 "Google Business Profile setup, verification and optimisation for Perth local businesses to improve Maps visibility, calls and enquiries.",

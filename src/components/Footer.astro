@@ -15,6 +15,12 @@
           <a href="/perth-website-development/">Website<br />Development</a>
         </li>
 
+        <li>
+          <a href="/content-creator-perth/">Content<br />Creation</a>
+        </li>
+        <li>
+          <a href="/google-business-profile-perth/">Google Maps<br />SEO</a>
+        </li>
         <li><a href="/faq/">FAQ</a></li>
       </ul>
     </nav>
@@ -214,10 +220,11 @@
       max-width: 1200px;
       margin: 15px auto 0;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: auto auto auto auto;
       grid-template-areas: "copy email legal icons";
       align-items: center;
-      column-gap: 1.5rem;
+      justify-content: space-between;
+      column-gap: 1rem;
       font-size: 0.7rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -314,7 +321,7 @@
           "email"
           "legal"
           "icons";
-        row-gap: 6px;
+        row-gap: 1.5rem; /* Increased from 6px */
         text-align: center;
         font-size: 0.6rem;
         letter-spacing: 0.03em;
