@@ -475,6 +475,9 @@ const rightMenu: MenuItem[] = [
     .mobile-nav-inner {
       width: min(80vw, 340px);
       max-width: 400px;
+      height: 100%;
+      overflow-y: auto;
+      overscroll-behavior: contain;
       background: var(--color-bg);
       padding: 24px 20px 32px;
       box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
@@ -497,6 +500,7 @@ const rightMenu: MenuItem[] = [
       background: transparent;
       font-size: 24px;
       cursor: pointer;
+      flex-shrink: 0; /* Prevent shrinking when scrolling is active */
     }
 
     .mobile-nav-list {
@@ -505,7 +509,7 @@ const rightMenu: MenuItem[] = [
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px; /* Reduced from 12px */
     }
 
     .mobile-nav-item {
@@ -514,9 +518,9 @@ const rightMenu: MenuItem[] = [
 
     .mobile-nav-link {
       display: block;
-      padding: 15px 0; /* approx 45px+ touch target */
+      padding: 12px 0; /* Reduced from 15px */
       font-family: var(--font-body);
-      font-size: 15px;
+      font-size: 14px; /* Reduced from 15px */
       font-weight: 400;
       text-transform: uppercase;
       text-decoration: none;
@@ -531,8 +535,8 @@ const rightMenu: MenuItem[] = [
 
     .mobile-submenu-link {
       display: block;
-      padding: 15px 0; /* Safe touch target > 48px */
-      font-size: 14px;
+      padding: 10px 0; /* Reduced from 15px */
+      font-size: 13px; /* Reduced from 14px */
       text-decoration: none;
       color: var(--color-text);
     }
