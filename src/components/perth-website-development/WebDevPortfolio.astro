@@ -1,0 +1,365 @@
+---
+import { Image } from "astro:assets";
+import bobaPopImage from "../../assets/images/portfolio/websites/boba-pop-website-portfolio.webp";
+import pulseForgeImage from "../../assets/images/portfolio/websites/pulse-forge-website-portfolio.webp";
+import venueNightsImage from "../../assets/images/portfolio/websites/venue-nights-website-portfolio.webp";
+import localTraderImage from "../../assets/images/portfolio/websites/local-trader-website-portfolio.webp";
+import professionalServiceImage from "../../assets/images/portfolio/websites/professional-service-website-portfolio.webp";
+import cafeRestaurantImage from "../../assets/images/portfolio/websites/cafe-restaurant-website-portfolio.webp";
+import accommodationVenueImage from "../../assets/images/portfolio/websites/accommodation-venue-website-portfolio.webp";
+import businessBrochureImage from "../../assets/images/portfolio/websites/business-brochure-website-portfolio.webp";
+import pizzaTakeawayImage from "../../assets/images/portfolio/websites/pizza-takeaway-website-portfolio.webp";
+
+const projects = [
+    {
+        title: "Lumina Stay",
+        category: "Accommodation & Travel",
+        description:
+            "A boutique accommodation booking site. Features high-end room showcases, amenity highlights, and a seamless enquiry funnel.",
+        link: "https://amplifycreativelab.github.io/demo-accomodation-venue/",
+        color: "#18181B", // Zinc 900 / Luxurious Dark
+        image: accommodationVenueImage,
+    },
+    {
+        title: "PulseForge Gym",
+        category: "Health & Fitness",
+        description:
+            "A high-octane fitness brand. Features kinetic typography, aggressive motion design, and a conversion-focused membership funnel.",
+        link: "https://amplifycreativelab.github.io/demo-gym-pulse-force/",
+        color: "#FF3366", // Cyber Red
+        image: pulseForgeImage,
+    },
+    {
+        title: "Boba Pop!",
+        category: "Hospitality & Brand Experience",
+        description:
+            "Perth's loudest boba brand. A high-voltage, sticker-aesthetic website featuring a custom menu builder and vibrant motion design.",
+        link: "https://amplifycreativelab.github.io/demo-bubble-tea-boba-pop/",
+        color: "#FF9F43", // Vibrant Pop Orange
+        image: bobaPopImage,
+    },
+    {
+        title: "QuickQuote Plumbing",
+        category: "Trades & Services",
+        description:
+            "A high-trust lead generation site for local tradies. Features instant quote forms, service area mapping, and mobile-first functional design.",
+        link: "https://amplifycreativelab.github.io/demo-local-trader/",
+        color: "#0284C7", // Trust Blue
+        image: localTraderImage,
+    },
+    {
+        title: "Venue Nights",
+        category: "Entertainment & Nightlife",
+        description:
+            "A dark-mode, neon-accented nightlife website. Features event schedule integration, VIP booth booking system, and immersive atmosphere.",
+        link: "https://amplifycreativelab.github.io/demo-night-venue/",
+        color: "#6D28D9", // Deep Neon Purple
+        image: venueNightsImage,
+    },
+    {
+        title: "The Olive Branch",
+        category: "Hospitality & Dining",
+        description:
+            "A warm, inviting restaurant website emphasizing seasonal menus and table bookings. Features rich imagery and an easy reservation flow.",
+        link: "https://amplifycreativelab.github.io/demo-cafe-restaurant/",
+        color: "#5B7553", // Olive Green
+        image: cafeRestaurantImage,
+    },
+    {
+        title: "Takeaway Express",
+        category: "Hospitality & QSR",
+        description:
+            "A high-speed online ordering site for busy takeaway venues. Optimized for mobile, local SEO presence, and rapid conversion.",
+        link: "https://amplifycreativelab.github.io/demo-pizza-tekeaway/",
+        color: "#DC2626", // Red 600
+        image: pizzaTakeawayImage,
+    },
+    {
+        title: "Local Business Brochure",
+        category: "Small Business",
+        description:
+            "A clean, effective digital presence for local businesses. Highlights services, service areas, and clear calls to action to drive enquiries.",
+        link: "https://amplifycreativelab.github.io/demo-business-brochure/",
+        color: "#334155", // Slate Blue/Grey
+        image: businessBrochureImage,
+    },
+    {
+        title: "Modern Consultant",
+        category: "Professional Services",
+        description:
+            "A clean, authority-building site for high-end consultants. Focuses on content hierarchy, service clarity, and trust signals.",
+        link: "https://amplifycreativelab.github.io/demo-professional-service/",
+        color: "#0F172A", // Slate Dark
+        image: professionalServiceImage,
+    },
+];
+---
+
+<section class="webdev-portfolio">
+    <div class="webdev-portfolio__inner">
+        <div class="webdev-portfolio__header">
+            <h2 class="webdev-portfolio__title">Perth Website Design Demos</h2>
+            <p class="webdev-portfolio__subtitle">
+                Explore our latest high-performance concepts. Custom-built for
+                <strong>Perth local SEO</strong>, lightning-fast speed, and
+                maximum conversion.
+            </p>
+        </div>
+
+        <div class="webdev-portfolio__grid">
+            {
+                projects.map((project) => (
+                    <a
+                        href={project.link}
+                        class="portfolio-card"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <div
+                            class="portfolio-card__image-container"
+                            style={`background-color: ${project.color}`}
+                        >
+                            {project.image ? (
+                                <Image
+                                    src={project.image}
+                                    alt={`Website design for ${project.title}`}
+                                    class="portfolio-card__image"
+                                    width={600}
+                                />
+                            ) : (
+                                <div class="portfolio-card__placeholder">
+                                    <span>{project.title}</span>
+                                </div>
+                            )}
+                        </div>
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__category">
+                                {project.category}
+                            </span>
+                            <h3 class="portfolio-card__title">
+                                {project.title}
+                            </h3>
+                            <p class="portfolio-card__desc">
+                                {project.description}
+                            </p>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .webdev-portfolio {
+        padding: 100px 24px;
+        background-color: #f5ead7;
+        border-top: 1px solid #e3d4b4;
+        width: 100%;
+    }
+
+    .webdev-portfolio__inner {
+        max-width: 1800px; /* Increased for 4 columns */
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    .webdev-portfolio__header {
+        max-width: 800px;
+        margin: 0 auto 64px;
+        text-align: center;
+    }
+
+    .webdev-portfolio__title {
+        font-family: "Abril Fatface", serif;
+        font-size: 48px;
+        color: #152705;
+        margin-bottom: 24px;
+        line-height: 1.1;
+    }
+
+    .webdev-portfolio__subtitle {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 24px;
+        color: #4a5e3a;
+        line-height: 1.4;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .webdev-portfolio__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 Columns on large screens */
+        gap: 32px;
+    }
+
+    .portfolio-card {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: inherit;
+        group: pointer;
+        transition: transform 0.4s ease;
+    }
+
+    .portfolio-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .portfolio-card__image-container {
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 16/10;
+        margin-bottom: 20px;
+        background: #e3d4b4;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(21, 39, 5, 0.08);
+        transition: box-shadow 0.4s ease;
+    }
+
+    .portfolio-card:hover .portfolio-card__image-container {
+        box-shadow: 0 12px 30px rgba(21, 39, 5, 0.12);
+    }
+
+    .portfolio-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .portfolio-card:hover .portfolio-card__image {
+        transform: scale(1.05);
+    }
+
+    .portfolio-card__placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: "Abril Fatface", serif;
+        font-size: 24px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .portfolio-card__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .portfolio-card__category {
+        font-family: "Darker Grotesque", sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 13px;
+        color: #7b5b33;
+        letter-spacing: 1.5px;
+        margin-bottom: 6px;
+    }
+
+    .portfolio-card__title {
+        font-family: "Abril Fatface", serif;
+        font-size: 24px;
+        color: #152705;
+        margin: 0 0 8px;
+        line-height: 1.2;
+    }
+
+    .portfolio-card__desc {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 17px;
+        color: #4a5e3a;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 1440px) {
+        .webdev-portfolio__grid {
+            grid-template-columns: repeat(
+                3,
+                1fr
+            ); /* 3 columns on smaller desktops */
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .webdev-portfolio__grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        }
+
+        .webdev-portfolio__inner {
+            padding: 0 24px;
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .webdev-portfolio {
+            padding: 40px 0;
+        }
+
+        .webdev-portfolio__inner {
+            padding: 0 16px;
+        }
+
+        .webdev-portfolio__title {
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+
+        .webdev-portfolio__subtitle {
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        /* 
+           Force 2 columns on mobile. 
+           Grid gap reduced to fit 2 items + padding comfortably.
+        */
+        .webdev-portfolio__grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px; /* Tight gap for mobile 2-col */
+        }
+
+        .portfolio-card__image-container {
+            margin-bottom: 10px;
+            /* Slightly taller ratio for mobile cards to look less squat */
+            aspect-ratio: 4/3;
+        }
+
+        .portfolio-card__title {
+            font-size: 18px; /* Further reduced */
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-card__category {
+            font-size: 10px;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-card__desc {
+            font-size: 14px;
+            line-height: 1.3;
+            /* Clamp description to 3 lines to keep heights uniform-ish */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    /* Extra small screens (very narrow phones) -> back to 1 column */
+    @media (max-width: 380px) {
+        .webdev-portfolio__grid {
+            grid-template-columns: 1fr;
+        }
+
+        .portfolio-card__image-container {
+            aspect-ratio: 16/10;
+        }
+    }
+</style>
