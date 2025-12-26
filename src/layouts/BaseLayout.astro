@@ -31,7 +31,7 @@ const {
 const siteUrl = "https://amplifycreativelab.com";
 const canonical =
     canonicalProp ?? new URL(Astro.url.pathname, siteUrl).toString();
-const GA_MEASUREMENT_ID = "G-4KRYBTPCTN";
+const GA_MEASUREMENT_ID = "GT-WBZNSN3B";
 const GOOGLE_ADS_ID = "AW-17539052212";
 
 const logoUrl = new URL(logoAsset.src, siteUrl).toString();
@@ -276,6 +276,12 @@ const businessSchema = {
 <!doctype html>
 <html lang="en-AU">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+        ></script>
+
         <meta charset="utf-8" />
         <meta
             name="viewport"
@@ -399,43 +405,15 @@ const businessSchema = {
         />
 
         <script define:vars={{ GA_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
-            // Initialize dataLayer immediately so events can be queued
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
+            window.gtag = window.gtag || gtag;
+
             gtag("js", new Date());
+            gtag("config", GOOGLE_ADS_ID);
             gtag("config", GA_MEASUREMENT_ID);
-            gtag("config", GOOGLE_ADS_ID); // Google Ads for conversion tracking
-
-            // Lazy load GTM script
-            function loadGTM() {
-                if (window.gtmLoaded) return;
-                window.gtmLoaded = true;
-
-                const script = document.createElement("script");
-                script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-                script.async = true;
-                document.head.appendChild(script);
-            }
-
-            // Load on user interaction
-            const events = [
-                "mousedown",
-                "mousemove",
-                "keydown",
-                "scroll",
-                "touchstart",
-            ];
-            events.forEach((event) => {
-                window.addEventListener(event, loadGTM, {
-                    once: true,
-                    passive: true,
-                });
-            });
-
-            // Fallback: load after 8 seconds if no interaction
-            setTimeout(loadGTM, 8000);
         </script>
     </head>
 

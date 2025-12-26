@@ -68,35 +68,16 @@ const pageDescription =
 
   <!-- Google Ads Conversion Tracking - fires when thank-you page loads -->
   <script>
-    // Declare gtag as a global function (defined by Google's gtag.js)
-    declare const gtag: ((...args: unknown[]) => void) | undefined;
-
-    // Wait for gtag to be available, then fire conversion event
     function fireConversion() {
-      if (typeof gtag === "function") {
-        gtag("event", "conversion_event_submit_lead_form", {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion_event_submit_lead_form", {
           event_category: "Lead",
           event_label: "Contact Form Submission",
         });
       }
     }
 
-    // Fire immediately if gtag exists, otherwise wait for it
-    if (typeof gtag === "function") {
-      fireConversion();
-    } else {
-      // Wait for gtag to load (max 5 seconds)
-      let attempts = 0;
-      const checkGtag = setInterval(() => {
-        attempts++;
-        if (typeof gtag === "function") {
-          fireConversion();
-          clearInterval(checkGtag);
-        } else if (attempts > 50) {
-          clearInterval(checkGtag);
-        }
-      }, 100);
-    }
+    fireConversion();
   </script>
 </BaseLayout>
 
