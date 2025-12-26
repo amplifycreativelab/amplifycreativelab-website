@@ -14,6 +14,12 @@ const pageDescription =
   noIndex={true}
   noFollow={true}
 >
+  <script slot="head" is:inline>
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion_event_submit_lead_form_2");
+    }
+  </script>
+
   <main class="thankyou-page">
     <div class="thankyou-hero">
       <div class="thankyou-inner">
@@ -65,20 +71,6 @@ const pageDescription =
       </div>
     </div>
   </main>
-
-  <!-- Google Ads Conversion Tracking - fires when thank-you page loads -->
-  <script>
-    function fireConversion() {
-      if (typeof window.gtag === "function") {
-        window.gtag("event", "conversion_event_submit_lead_form", {
-          event_category: "Lead",
-          event_label: "Contact Form Submission",
-        });
-      }
-    }
-
-    fireConversion();
-  </script>
 </BaseLayout>
 
 <style>
