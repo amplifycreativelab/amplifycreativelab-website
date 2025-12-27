@@ -71,9 +71,40 @@ const areasServed = [
     },
 ];
 
-const businessSchema = {
+const baseSchema = {
     "@context": "https://schema.org",
     "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": `${siteUrl}/#website`,
+            url: siteUrl,
+            name: "Amplify Creative Lab",
+            description: businessDescription,
+            publisher: {
+                "@id": `${siteUrl}/#organization`,
+            },
+            inLanguage: "en-AU",
+        },
+        {
+            "@type": "WebPage",
+            "@id": canonical,
+            url: canonical,
+            name: title,
+            description: description,
+            isPartOf: {
+                "@id": `${siteUrl}/#website`,
+            },
+            about: {
+                "@id": `${siteUrl}/#organization`,
+            },
+            creator: {
+                "@id": `${siteUrl}/#organization`,
+            },
+            publisher: {
+                "@id": `${siteUrl}/#organization`,
+            },
+            inLanguage: "en-AU",
+        },
         {
             "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
             "@id": `${siteUrl}/#organization`,
@@ -414,7 +445,7 @@ const businessSchema = {
 
         <script
             type="application/ld+json"
-            set:html={JSON.stringify(businessSchema)}
+            set:html={JSON.stringify(baseSchema)}
         />
     </head>
 
