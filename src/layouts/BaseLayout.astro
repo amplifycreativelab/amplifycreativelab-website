@@ -33,6 +33,7 @@ const canonical =
     canonicalProp ?? new URL(Astro.url.pathname, siteUrl).toString();
 const GA_MEASUREMENT_ID = "GT-WBZNSN3B";
 const GOOGLE_ADS_ID = "AW-17539052212";
+const shouldLoadTracking = process.env.CONTEXT === "production";
 
 const logoUrl = new URL(logoAsset.src, siteUrl).toString();
 
@@ -313,23 +314,29 @@ const baseSchema = {
 <!doctype html>
 <html lang="en-AU">
     <head>
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-        ></script>
-        <script define:vars={{ GA_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
-            window.dataLayer = window.dataLayer || [];
-            window.gtag =
-                window.gtag ||
-                function () {
-                    window.dataLayer.push(arguments);
-                };
+        {
+            shouldLoadTracking && (
+                <>
+                    <!-- Google tag (gtag.js) -->
+                    <script
+                        async
+                        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+                    ></script>
+                    <script define:vars={{ GA_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
+                        window.dataLayer = window.dataLayer || [];
+                        window.gtag =
+                            window.gtag ||
+                            function () {
+                                window.dataLayer.push(arguments);
+                            };
 
-            window.gtag("js", new Date());
-            window.gtag("config", GOOGLE_ADS_ID);
-            window.gtag("config", GA_MEASUREMENT_ID);
-        </script>
+                        window.gtag("js", new Date());
+                        window.gtag("config", GOOGLE_ADS_ID);
+                        window.gtag("config", GA_MEASUREMENT_ID);
+                    </script>
+                </>
+            )
+        }
         <slot name="head" />
 
         <meta charset="utf-8" />
