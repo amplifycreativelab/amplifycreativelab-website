@@ -73,6 +73,7 @@ const blogSchema = {
         image: {
           "@type": "ImageObject",
           url: blogImageUrl,
+          creator: { "@id": organizationId },
           license: `${siteUrl}/terms/`,
           acquireLicensePage: `${siteUrl}/contact/`,
           copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,
@@ -94,6 +95,7 @@ const blogSchema = {
     logo: {
       "@type": "ImageObject",
       url: "https://amplifycreativelab.com/images/logo/logo-web.png",
+      creator: { "@id": organizationId },
       license: `${siteUrl}/terms/`,
       acquireLicensePage: `${siteUrl}/contact/`,
       copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,

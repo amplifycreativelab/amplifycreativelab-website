@@ -114,6 +114,9 @@ const baseSchema = {
             image: {
                 "@type": "ImageObject",
                 url: logoUrl,
+                creator: {
+                    "@id": `${siteUrl}/#organization`,
+                },
                 license: `${siteUrl}/terms/`,
                 acquireLicensePage: `${siteUrl}/contact/`,
                 copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,
@@ -122,6 +125,9 @@ const baseSchema = {
             logo: {
                 "@type": "ImageObject",
                 url: logoUrl,
+                creator: {
+                    "@id": `${siteUrl}/#organization`,
+                },
                 license: `${siteUrl}/terms/`,
                 acquireLicensePage: `${siteUrl}/contact/`,
                 copyrightNotice: `© ${new Date().getFullYear()} Amplify Creative Lab`,

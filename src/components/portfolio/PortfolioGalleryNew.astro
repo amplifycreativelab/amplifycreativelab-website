@@ -238,6 +238,123 @@ const productFiles = [
     "lifestyle-product-photography-tennis-bag-model.webp",
 ];
 
+type WebsiteProject = {
+    file: string;
+    title: string;
+    href: string;
+};
+
+const websiteProjects: WebsiteProject[] = [
+    {
+        file: "accommodation-venue-website-portfolio.webp",
+        title: "Lumina Stay",
+        href: "https://amplifycreativelab.github.io/demo-accomodation-venue/",
+    },
+    {
+        file: "pulse-forge-website-portfolio.webp",
+        title: "PulseForge Gym",
+        href: "https://amplifycreativelab.github.io/demo-gym-pulse-force/",
+    },
+    {
+        file: "boba-pop-website-portfolio.webp",
+        title: "Boba Pop!",
+        href: "https://amplifycreativelab.github.io/demo-bubble-tea-boba-pop/",
+    },
+    {
+        file: "local-trader-website-portfolio.webp",
+        title: "QuickQuote Plumbing",
+        href: "https://amplifycreativelab.github.io/demo-local-trader/",
+    },
+    {
+        file: "venue-nights-website-portfolio.webp",
+        title: "Venue Nights",
+        href: "https://amplifycreativelab.github.io/demo-night-venue/",
+    },
+    {
+        file: "cafe-restaurant-website-portfolio.webp",
+        title: "The Olive Branch",
+        href: "https://amplifycreativelab.github.io/demo-cafe-restaurant/",
+    },
+    {
+        file: "pizza-takeaway-website-portfolio.webp",
+        title: "Takeaway Express",
+        href: "https://amplifycreativelab.github.io/demo-pizza-tekeaway/",
+    },
+    {
+        file: "business-brochure-website-portfolio.webp",
+        title: "Local Business Brochure",
+        href: "https://amplifycreativelab.github.io/demo-business-brochure/",
+    },
+    {
+        file: "professional-service-website-portfolio.webp",
+        title: "Modern Consultant",
+        href: "https://amplifycreativelab.github.io/demo-professional-service/",
+    },
+    {
+        file: "dark-luxe-craft-website-portfolio.webp",
+        title: "INK//RITUAL",
+        href: "https://amplifycreativelab.github.io/demo-dark-luxe-craft/",
+    },
+    {
+        file: "drop-culture-website-portfolio.webp",
+        title: "DropCulture",
+        href: "https://amplifycreativelab.github.io/demo-drop-culture/",
+    },
+    {
+        file: "perth-architect-portfolio-minimal-grid-design.webp",
+        title: "Mono Grid",
+        href: "https://amplifycreativelab.github.io/demo-mono-grid/",
+    },
+    {
+        file: "perth-health-wellness-clean-website-design.webp",
+        title: "Still Water",
+        href: "https://amplifycreativelab.github.io/demo-still-water/",
+    },
+    {
+        file: "perth-adventure-tourism-modern-website-design.webp",
+        title: "Wild Track",
+        href: "https://amplifycreativelab.github.io/demo-wild-track/",
+    },
+    {
+        file: "perth-creative-agency-bold-website-design.webp",
+        title: "Poster Wave",
+        href: "https://amplifycreativelab.github.io/demo-poster-wave/",
+    },
+    {
+        file: "perth-childcare-education-playful-website-design.webp",
+        title: "Play Patch",
+        href: "https://amplifycreativelab.github.io/demo-play-patch/",
+    },
+    {
+        file: "perth-startup-landing-page-conversion-design.webp",
+        title: "Sprint Launch",
+        href: "https://amplifycreativelab.github.io/demo-one-page-sprint/",
+    },
+    {
+        file: "perth-tech-saas-modern-interface-design.webp",
+        title: "Holo Stack",
+        href: "https://amplifycreativelab.github.io/demo-holo-stack/",
+    },
+    {
+        file: "perth-function-venue-event-website-design.webp",
+        title: "The Grand Function",
+        href: "https://amplifycreativelab.github.io/demo-function-venue/",
+    },
+    {
+        file: "perth-creative-portfolio-showcase-website-design.webp",
+        title: "Studio Showcase",
+        href: "https://amplifycreativelab.github.io/demo-creative-portfolio/",
+    },
+];
+
+const websitesFiles = websiteProjects.map((project) => project.file);
+const websitesAlts: Record<string, string> = Object.fromEntries(
+    websiteProjects.map((project) => [
+        project.file,
+        `Website design demo for ${project.title}`,
+    ]),
+);
+
 // Alt text maps
 const foodAlts: Record<string, string> = {
     "arancini-balls-with-parmesan-food-photography-perth.webp":
@@ -623,7 +740,7 @@ const portraitAlts: Record<string, string> = {
 };
 
 // Types
-type Category = "food" | "event" | "family" | "product" | "portrait";
+type Category = "food" | "event" | "family" | "product" | "portrait" | "websites";
 interface ImageItem {
     thumbSrc: string;
     thumbSrcSet: string;
@@ -631,6 +748,7 @@ interface ImageItem {
     alt: string;
     geoCaption: string;
     title: string;
+    href?: string;
 }
 
 // Generate optimized images
@@ -685,7 +803,7 @@ async function processImages(
 }
 
 // Process all categories
-const [food, event, family, product, portrait] = await Promise.all([
+const [food, event, family, product, portrait, websitesBase] = await Promise.all([
     processImages("food", foodFiles, foodAlts, "Food Photography"),
     processImages("event", eventFiles, eventAlts, "Event Photography"),
     processImages("family", familyFiles, familyAlts, "Family Photography"),
@@ -696,9 +814,21 @@ const [food, event, family, product, portrait] = await Promise.all([
         portraitAlts,
         "Portrait Photography",
     ),
+    processImages(
+        "websites",
+        websitesFiles,
+        websitesAlts,
+        "Website Design & Development",
+    ),
 ]);
 
-const allData = { food, event, family, product, portrait };
+const websites = websitesBase.map((item, index) => ({
+    ...item,
+    title: websiteProjects[index]?.title ?? item.title,
+    href: websiteProjects[index]?.href,
+}));
+
+const allData = { food, event, family, product, portrait, websites };
 const dataJson = JSON.stringify(allData).replace(/</g, "\\u003c");
 
 const siteUrl = "https://amplifycreativelab.com";
@@ -793,6 +923,7 @@ const categories = [
     { value: "family", label: "Family" },
     { value: "product", label: "Product" },
     { value: "portrait", label: "Portrait" },
+    { value: "websites", label: "Websites" },
 ];
 
 const BATCH = 12;
@@ -829,7 +960,9 @@ const initialItems = food.slice(0, BATCH);
                 initialItems.map((item, i) => (
                     <a
                         class="portfolio-item"
-                        href="#"
+                        href={item.href ?? "#"}
+                        target={item.href ? "_blank" : undefined}
+                        rel={item.href ? "noopener noreferrer" : undefined}
                         data-index={i}
                         data-full={item.fullSrc}
                         data-alt={item.alt}
@@ -853,7 +986,7 @@ const initialItems = food.slice(0, BATCH);
                                     {item.title}
                                 </span>
                                 <span class="portfolio-item-label">
-                                    - view -
+                                    {item.href ? "- visit -" : "- view -"}
                                 </span>
                             </figcaption>
                         </figure>
@@ -956,6 +1089,7 @@ const initialItems = food.slice(0, BATCH);
         alt: string;
         geoCaption: string;
         title: string;
+        href?: string;
     };
     type AllData = Record<string, ImageItem[]>;
 
@@ -965,6 +1099,7 @@ const initialItems = food.slice(0, BATCH);
         family: [],
         product: [],
         portrait: [],
+        websites: [],
     };
     try {
         const raw =
@@ -987,8 +1122,14 @@ const initialItems = food.slice(0, BATCH);
         index: number,
     ): HTMLAnchorElement {
         const link = document.createElement("a");
+        const href = item.href || "#";
+        const actionLabel = href === "#" ? "- view -" : "- visit -";
         link.className = "portfolio-item";
-        link.href = "#";
+        link.href = href;
+        if (href !== "#") {
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+        }
         link.dataset.index = String(index);
         link.dataset.full = item.fullSrc;
         link.dataset.alt = item.alt;
@@ -1010,7 +1151,7 @@ const initialItems = food.slice(0, BATCH);
         />
         <figcaption class="portfolio-item-overlay">
           <span class="portfolio-item-title">${item.title}</span>
-          <span class="portfolio-item-label">- view -</span>
+          <span class="portfolio-item-label">${actionLabel}</span>
         </figcaption>
       </figure>
     `;
@@ -1099,13 +1240,16 @@ const initialItems = food.slice(0, BATCH);
     loadMoreBtn.addEventListener("click", loadMore);
 
     grid.addEventListener("click", (e) => {
-        e.preventDefault();
         const target = e.target as Element;
         const link = target.closest(
             ".portfolio-item",
         ) as HTMLAnchorElement | null;
         if (!link) return;
 
+        const href = link.getAttribute("href");
+        if (href && href !== "#") return;
+
+        e.preventDefault();
         const index = parseInt(link.dataset.index || "-1", 10);
         if (index >= 0) openLightbox(index);
     });
