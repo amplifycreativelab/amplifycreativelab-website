@@ -74,6 +74,65 @@ Create **one Search campaign** dedicated to this promo (keeps budgets + messagin
 
 ---
 
+## Signals (Performance Max ƒ?" Audience signals)
+
+If youƒ?Tre building a **Performance Max** campaign, add this under **Signals ƒ+' Search themes** (copy/paste):
+
+```
+free website design perth
+website design perth
+web design perth
+web designer perth
+perth website development
+perth website developer
+affordable website design perth
+small business website design perth
+custom website perth
+mobile friendly website design
+website redesign perth
+pay monthly website design
+no upfront website design
+website design payment plan
+subscription web design
+website maintenance perth
+website hosting perth
+restaurant website design perth
+cafe website design perth
+hospitality website design perth
+tradie website design perth
+plumber website design perth
+electrician website design perth
+builder website design perth
+local seo website perth
+professional design perth
+lawyer design perth
+```
+
+## Audience signal (Performance Max ’'?" Your data)
+
+If you have GA4 linked to Google Ads, add these **Your data** segments (pick what exists):
+
+- All website visitors (last `180` days)
+- Visited `/free-website-promo/` (last `30ƒ?"90` days)
+- Visited `/perth-website-development/` (last `30ƒ?"90` days)
+- Visited `/contact/` (last `30ƒ?"90` days)
+
+If you have a customer list, also add:
+
+- Customer Match: past leads + past clients (email/phone)
+
+## Long headline (Performance Max - asset)
+
+Paste 1-3 of these (all ≤ 90 characters):
+
+```
+$0 upfront website design in Perth - just $60/mo hosting, updates & support
+Get a custom Perth website with $0 upfront and a simple $60/mo care plan
+Perth websites built to convert: $0 upfront design + $60/mo hosting & support
+No upfront website costs in Perth. Mobile-first build, hosting & updates for $60/mo
+Limited Perth spots: $0 upfront web design, fast hosting, monthly support from $60/mo
+```
+
 ## Ad Group Structure + Keywords (copy/paste)
 
 **Match type rule (simple):** start with **Phrase** (`"keyword"`) + **Exact** (`[keyword]`) only. Add Broad later only if you can manage search terms + negatives.
@@ -269,10 +328,10 @@ Amplify Creative Lab Perth
 Descriptions (paste 4):
 
 ```
-Get a custom website with $0 upfront. $60/mo hosting, updates & support. Perth-based.
-Limited-time offer for Perth businesses. Mobile-first design built for conversions. Apply now.
-Skip the $3,000 upfront fee. Modern, secure website. Cancel anytime after 12 months.
-Restaurants, tradies & services. You own your domain. Enquire in 2 minutes.
+Custom website, $0 upfront. $60/mo hosting, updates & support. Perth-based.
+Limited Perth spots. Mobile-first website designed to convert. Apply today.
+Skip the $3k upfront. Fast, secure site. Cancel anytime after 12 months.
+Restaurants, tradies & services. You own the domain. Enquire in 2 mins.
 ```
 
 ### RSA Template B (Ad-group keyword mirror) — swap in 3–5 headlines per ad group
@@ -456,4 +515,3 @@ utm_source=google&utm_medium=cpc&utm_campaign=free_website_promo_search&utm_term
 - Search terms checked after 48–72 hours (add negatives immediately)
 
 If you want, tell me your exact service area (just Perth vs all WA/remote) and your starting daily budget, and I’ll tailor the keyword lists + ad copy to match that tighter.
-
