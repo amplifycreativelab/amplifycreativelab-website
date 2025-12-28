@@ -316,13 +316,24 @@ const baseSchema = {
     <head>
         {
             shouldLoadTracking && (
-                <>
-                    <!-- Google tag (gtag.js) -->
-                    <script
-                        async
-                        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-                    ></script>
-                    <script define:vars={{ GA_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
+                <script is:inline define:vars={{ GA_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
+                    (function () {
+                        if (typeof window === "undefined") return;
+
+                        var hostname = window.location.hostname || "";
+                        var isAllowedHost =
+                            hostname === "amplifycreativelab.com" ||
+                            hostname === "www.amplifycreativelab.com";
+
+                        if (!isAllowedHost) return;
+
+                        var tagScript = document.createElement("script");
+                        tagScript.async = true;
+                        tagScript.src =
+                            "https://www.googletagmanager.com/gtag/js?id=" +
+                            GOOGLE_ADS_ID;
+                        document.head.appendChild(tagScript);
+
                         window.dataLayer = window.dataLayer || [];
                         window.gtag =
                             window.gtag ||
@@ -333,8 +344,8 @@ const baseSchema = {
                         window.gtag("js", new Date());
                         window.gtag("config", GOOGLE_ADS_ID);
                         window.gtag("config", GA_MEASUREMENT_ID);
-                    </script>
-                </>
+                    })();
+                </script>
             )
         }
         <slot name="head" />
