@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import stefanoImage from "../../assets/images/portfolio/portrait/tech-professional-male-laptop.webp";
 
-const title = "Website Design & Development";
+const title = "Perth Website Design & Development";
 ---
 
 <div class="webdev-intro">
@@ -41,9 +41,13 @@ const title = "Website Design & Development";
       <Image
         src={stefanoImage}
         alt="Stefano, lead web developer in Perth holding a laptop, specializing in high-performance Astro and custom-coded websites."
-        width="600"
-        height="800"
+        width={600}
+        height={800}
+        widths={[300, 450, 600, 900]}
+        sizes="(max-width: 900px) 100vw, 50vw"
         loading="eager"
+        decoding="async"
+        fetchpriority="high"
         class="hero-image"
       />
     </div>
@@ -202,9 +206,6 @@ const title = "Website Design & Development";
     /* Deep shadow for depth */
     box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6);
     transform: translateZ(0);
-    opacity: 0;
-    animation: fadeUp 1s ease-out forwards;
-    animation-delay: 0.2s;
   }
 
   .webdev-intro__visual img {
@@ -221,12 +222,16 @@ const title = "Website Design & Development";
 
   @keyframes fadeUp {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(16px) translateZ(0);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) translateZ(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .webdev-intro__visual {
+      animation: fadeUp 0.8s ease-out;
     }
   }
 

@@ -4,10 +4,32 @@ import WebDevIntro from "../components/perth-website-development/WebDevIntro.ast
 import WebDevWhySection from "../components/perth-website-development/WebDevWhySection.astro";
 import WebDevPortfolio from "../components/perth-website-development/WebDevPortfolio.astro";
 import WebDevPricingTiers from "../components/perth-website-development/WebDevPricingTiers.astro";
+import WebDevFinalCTA from "../components/perth-website-development/WebDevFinalCTA.astro";
 
 const pageTitle = "Perth Website Design & Development | Amplify Creative Lab";
 const pageDescription =
   "Custom websites for Perth businesses, sole traders and lifestyle brands. Strategy-led design and fast, SEO-friendly builds.";
+
+const canonicalUrl = "https://amplifycreativelab.com/perth-website-development/";
+const contactUrl = "https://amplifycreativelab.com/contact/";
+
+const serviceArea = [
+  {
+    "@type": "AdministrativeArea",
+    name: "Western Australia",
+    sameAs: "https://en.wikipedia.org/wiki/Western_Australia",
+  },
+  {
+    "@type": "AdministrativeArea",
+    name: "Perth metropolitan area",
+    sameAs: "https://en.wikipedia.org/wiki/Perth_metropolitan_area",
+  },
+  {
+    "@type": "City",
+    name: "Perth",
+    sameAs: "https://en.wikipedia.org/wiki/Perth",
+  },
+];
 
 const webDevSchema = {
   "@context": "https://schema.org",
@@ -25,20 +47,28 @@ const webDevSchema = {
           "@type": "ListItem",
           position: 2,
           name: "Website Design & Development",
-          item: "https://amplifycreativelab.com/perth-website-development/",
+          item: canonicalUrl,
         },
       ],
     },
     {
       "@type": "Service",
       "@id": "https://amplifycreativelab.com/#service-website-development",
-      name: "Website Design & Development",
-      url: "https://amplifycreativelab.com/perth-website-development/",
+      name: "Perth Website Design & Development",
+      serviceType: "Website design and development",
+      url: canonicalUrl,
       description:
         "Website design and development for Perth hospitality venues, lifestyle brands and local businesses, with fast, SEO-friendly builds focused on bookings and enquiries.",
-      areaServed: "Perth, Western Australia",
+      areaServed: serviceArea,
       provider: {
         "@id": "https://amplifycreativelab.com/#organization",
+      },
+      mainEntityOfPage: {
+        "@id": canonicalUrl,
+      },
+      potentialAction: {
+        "@type": "ContactAction",
+        target: contactUrl,
       },
     },
     {
@@ -115,6 +145,13 @@ const webDevSchema = {
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
+  <Fragment slot="head">
+    <meta name="geo.region" content="AU-WA" />
+    <meta name="geo.placename" content="Perth, Western Australia" />
+    <meta name="geo.position" content="-31.9001;115.7823" />
+    <meta name="ICBM" content="-31.9001, 115.7823" />
+  </Fragment>
+
   <main class="page-perth-website-development">
     <WebDevIntro />
     <WebDevWhySection />
@@ -249,6 +286,8 @@ const webDevSchema = {
         set:html={JSON.stringify(webDevSchema)}
       />
     </section>
+
+    <WebDevFinalCTA />
   </main>
 
   <style is:global>
