@@ -82,6 +82,77 @@
 
 ---
 
+## Signals (Performance Max - Audience signals)
+
+If you're building a **Performance Max** campaign, add this under **Signals -> Search themes** (copy/paste):
+
+```
+perth food photographer
+food photographer perth
+food photography perth
+commercial food photographer
+restaurant food photographer
+menu photography perth
+restaurant menu photography
+cafe menu photography
+bar menu photography
+menu photos perth
+professional menu photos
+hero dish photography
+dish photography perth
+drinks photography perth
+cocktail photography perth
+hospitality photographer perth
+restaurant photographer perth
+cafe photographer perth
+bar photographer perth
+uber eats menu photos
+doordash menu photos
+deliveroo menu photos
+menulog menu photos
+food photos for delivery apps
+restaurant social media photography
+food content photography
+food photographer near me
+```
+
+## Audience signal (Performance Max - Your data)
+
+If GA4 is linked to Google Ads, add these **Your data** segments (pick what exists):
+
+- All website visitors (last `180` days)
+- Visited `/perth-food-photography/` (last `30-90` days)
+- Visited `/portfolio/` (last `30-90` days)
+- Visited `/contact/` (last `30-90` days)
+- Visited food photo shoot prep + menu/delivery blog posts (last `30-180` days)
+
+If you have a customer list, also add:
+
+- Customer Match: past leads + past clients (email/phone)
+
+## Long headline (Performance Max - asset)
+
+Paste 1-3 of these (all <= 90 characters):
+
+```
+Perth food photography for restaurants & cafes - menu + delivery app images
+Perth food photographer for menus, Uber Eats & socials - get a fast quote
+Intro rate $200/hr: Perth food photos for menus, websites & delivery apps
+On-location food photography in Perth - lighting included, fast turnaround
+Restaurant menu photography Perth - consistent images that boost orders online
+Food photos for Uber Eats, DoorDash & Deliveroo - Perth on-location shoots
+Seasonal menu updates in Perth - professional food photos for busy venues
+Perth hospitality food photography - hero dishes, drinks & full menu sets
+Perth menu photography that makes dishes look irresistible - get a fast quote
+Increase delivery orders with better photos - Perth Uber Eats menu photography
+Book a Perth food photographer - lighting brought to venue + edited gallery delivered
+Professional menu photos in Perth - web, print & delivery-platform exports included
+Fast quote + efficient shoot day - Perth food photographer for venues
+Make your menu sell more - Perth food photos for websites & delivery platforms
+Perth cafe & bar photography - clean, appetising images for online ordering
+Consistent menu photos in Perth - web + print files included
+```
+
 ## Ad Group Structure + Keywords (copy/paste)
 
 **Match type rule (simple):** start with **Phrase** (`"keyword"`) + **Exact** (`[keyword]`) only. Add Broad later only if you check search terms 2–3x/week and keep negatives tight.
@@ -407,4 +478,3 @@ utm_source=google&utm_medium=cpc&utm_campaign=food_photography_search&utm_term={
 - At least **4 sitelinks** + **6 callouts** + **1 structured snippet**
 - Search terms checked after 48–72 hours (add negatives immediately)
 - After ~2 weeks: review CPA + search terms, then expand keywords or test Search Partners
-
