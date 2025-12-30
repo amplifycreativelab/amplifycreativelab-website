@@ -251,28 +251,40 @@ const images = [
   let isDown = false;
   let startX: number;
   let scrollLeft: number;
+  let maxScrollLeft = 0;
   let animationId: number;
 
   if (slider) {
     // Auto-scroll logic
     const autoScrollSpeed = 1; // Pixels per frame
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const updateMaxScrollLeft = () => {
+      maxScrollLeft = Math.max(0, slider.scrollWidth - slider.clientWidth);
+    };
+
+    updateMaxScrollLeft();
+    window.addEventListener("resize", updateMaxScrollLeft, { passive: true });
+
     function startAutoScroll() {
       if (!isDown) {
         // Only auto-scroll if user isn't dragging
-        slider.scrollLeft += autoScrollSpeed;
-
-        // Loop back to start if we reached the end (approximate check)
-        // Note: exact loop requires content duplication, this is a simple reset
-        if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - 1) {
-          slider.scrollLeft = 0;
-        }
+        const nextScrollLeft = slider.scrollLeft + autoScrollSpeed;
+        slider.scrollLeft =
+          maxScrollLeft > 0 && nextScrollLeft >= maxScrollLeft
+            ? 0
+            : nextScrollLeft;
       }
       animationId = requestAnimationFrame(startAutoScroll);
     }
 
     // Start auto-scroll initially
-    animationId = requestAnimationFrame(startAutoScroll);
+    if (!prefersReducedMotion) {
+      animationId = requestAnimationFrame(startAutoScroll);
+    }
 
     // Stop auto-scroll on interaction
     slider.addEventListener("mouseenter", () =>
@@ -286,13 +298,17 @@ const images = [
     slider.addEventListener("mouseleave", () => {
       isDown = false;
       slider.classList.remove("active");
-      cancelAnimationFrame(animationId); // Ensure no duplicate loops
-      animationId = requestAnimationFrame(startAutoScroll);
+      if (!prefersReducedMotion) {
+        cancelAnimationFrame(animationId); // Ensure no duplicate loops
+        animationId = requestAnimationFrame(startAutoScroll);
+      }
     });
 
     slider.addEventListener("touchend", () => {
-      cancelAnimationFrame(animationId);
-      animationId = requestAnimationFrame(startAutoScroll);
+      if (!prefersReducedMotion) {
+        cancelAnimationFrame(animationId);
+        animationId = requestAnimationFrame(startAutoScroll);
+      }
     });
 
     // Drag Logic

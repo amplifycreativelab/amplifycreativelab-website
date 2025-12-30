@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import FaqSection from "../components/home/HomeFaqSection.astro";
@@ -10,12 +11,35 @@ import HomeWhyUs from "../components/home/HomeWhyUs.astro";
 import HeroNew from "../components/home/HeroNew.astro";
 import HomeBentoGrid from "../components/home/HomeBentoGrid.astro";
 
+import heroSlide1Fallback from "../assets/images/hero/beef-ravioli-pumpkin-cream-sauce-flatlay.webp";
+
 const pageTitle = "Perth Food Photographer | AmplifyCreativeLab";
 const pageDescription =
   "Perth food photographer specializing in restaurant imagery for menus, websites & socials.";
+
+const heroPreload = await getImage({
+  src: heroSlide1Fallback,
+  width: 1920,
+  height: 1080,
+  widths: [640, 960, 1280, 1600, 1920],
+  sizes: "100vw",
+  quality: 40,
+  format: "webp",
+});
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href={heroPreload.src}
+      imagesrcset={heroPreload.srcSet.attribute}
+      imagesizes="100vw"
+      type="image/webp"
+      fetchpriority="high"
+    />
+  </Fragment>
   <main class="page-home">
     <HeroNew />
 
