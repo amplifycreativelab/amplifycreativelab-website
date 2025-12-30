@@ -5,6 +5,7 @@ interface Props {
   formName?: string;
   action?: string;
   sectionClass?: string;
+  whatsappNumber?: string;
 }
 
 const {
@@ -13,10 +14,17 @@ const {
   formName = "contact",
   action = "/thank-you/",
   sectionClass = "",
+  whatsappNumber = "61460526441",
 } = Astro.props;
+
+import bgImage from "../assets/images/portfolio/family/lifestyle-portrait-women-bench.webp";
 ---
 
-<section class={`contact-section ${sectionClass}`} id={id}>
+<section
+  class={`contact-section ${sectionClass}`}
+  id={id}
+  style={`background-image: linear-gradient(rgba(254, 248, 235, 0.5), rgba(254, 248, 235, 0.5)), url('${bgImage.src}');`}
+>
   <div class="contact-inner">
     <h2 class="contact-heading">{heading}</h2>
     <p class="contact-intro">
@@ -171,193 +179,34 @@ const {
         </button>
       </div>
     </form>
+
+    <!-- WhatsApp alternative -->
+    <div class="whatsapp-connect">
+      <span class="whatsapp-prompt">Prefer to chat?</span>
+      <a
+        href={`https://wa.me/${whatsappNumber}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-button"
+        aria-label="Message us on WhatsApp"
+      >
+        <svg
+          class="whatsapp-icon"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+          ></path>
+        </svg>
+        Message Us Now
+      </a>
+    </div>
   </div>
 </section>
 
 <style>
-  /* Contact section wrapper (replaces .elementor-element-63c7e2a) */
-  .contact-section {
-    /* Layout */
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-
-    /* Background image */
-    background-image: url("https://amplifycreativelab.com/wp-content/uploads/2024/06/07-Get-in-touch-scaled.jpg");
-    /* Or your local copy, e.g.: background-image: url("/images/home/get-in-touch.jpg"); */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  /* Inner container (mimics Elementor container max-width + edge padding) */
-  .contact-inner {
-    width: min(100%, 1490px);
-    margin: 0 auto;
-    padding-inline: clamp(24px, 6vw, 130px);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .contact-heading {
-    font-family: "Abril Fatface", Sans-serif;
-    font-size: 28px;
-    font-weight: 300;
-    font-style: normal;
-    line-height: 32px;
-
-    letter-spacing: 2.5px;
-    padding: 0px;
-    color: var(--color-heading, #152705);
-  }
-
-  .contact-intro {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-heading, #152705);
-  }
-
-  .contact-form {
-    width: 100%;
-  }
-
-  .contact-form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  /* Half-width fields (name, email, phone, date) */
-  .form-field-half {
-    width: 100%;
-  }
-
-  /* Full-width fields (message, extra slot fields if needed) */
-  .form-field-full {
-    grid-column: 1 / -1;
-  }
-
-  /* Mobile: stack everything in one column */
-  @media (max-width: 768px) {
-    .contact-form-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .form-label {
-    font-family:
-      var(--e-global-typography-text-font-family, "Roboto"), sans-serif;
-    font-size: 0.9rem;
-    color: var(--e-global-color-primary, #fef8eb);
-  }
-
-  .form-input,
-  .form-textarea {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: #24360f;
-    background-color: rgba(254, 248, 235, 0.9);
-    /* #FEF8EB with a touch of transparency */
-    outline: none;
-    transition:
-      border-color 0.15s ease,
-      box-shadow 0.15s ease,
-      background-color 0.15s ease;
-  }
-
-  .form-input:focus,
-  .form-textarea:focus {
-    border-color: var(--theme-palette-color-1, #2872fa);
-    box-shadow: 0 0 0 2px rgba(40, 114, 250, 0.25);
-    background-color: #ffffff;
-  }
-
-  .form-textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  /* Honeypot: keep it invisible but in the DOM */
-  .contact-form-honeypot {
-    display: none;
-  }
-
-  .form-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    /* or center / flex-start */
-  }
-
-  /* Match Elementor button look */
-  .form-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
-    /* Typography */
-    font-family: "Abril Fatface", sans-serif;
-    font-size: 17px;
-    font-weight: 100;
-    line-height: 12px;
-    text-transform: none;
-    letter-spacing: 0;
-
-    /* Visuals */
-    background-color: transparent;
-    /* #24360F00 */
-    color: var(--e-global-color-fadab83, #4a2e1c);
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    /* matches the Elementor kit overrides */
-
-    cursor: pointer;
-    box-shadow: none;
-    transition:
-      color 0.15s ease,
-      transform 0.12s ease;
-  }
-
-  .form-button:hover {
-    color: var(--e-global-color-fadab83, #4a2e1c);
-    transform: translateY(-1px);
-  }
-
-  .form-button:active {
-    transform: translateY(0);
-  }
-
-  .form-button-inner {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 18px;
-  }
-
-  .form-button-svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-  }
-
   /* FORM SECTION*/
 
   /* Contact section wrapper (replaces .elementor-element-63c7e2a) */
@@ -369,9 +218,8 @@ const {
     justify-content: center;
     padding: 30px 0;
 
-    /* Background image */
-    background-image: url("https://amplifycreativelab.com/wp-content/uploads/2024/06/07-Get-in-touch-scaled.jpg");
-    /* Or your local copy, e.g.: background-image: url("/images/home/get-in-touch.jpg"); */
+    /* Background image - overridden by inline style */
+    /* background-image: url("https://amplifycreativelab.com/wp-content/uploads/2024/06/07-Get-in-touch-scaled.jpg"); */
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -548,5 +396,82 @@ const {
     width: 18px;
     height: 18px;
     fill: currentColor;
+  }
+
+  /* WhatsApp Connect */
+  .whatsapp-connect {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  /* Optional separator line */
+  .whatsapp-connect::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background-color: rgba(21, 39, 5, 0.1);
+    margin-bottom: 8px;
+  }
+
+  .whatsapp-prompt {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-heading, #152705);
+  }
+
+  .whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+
+    background-color: transparent;
+    color: var(--e-global-color-fadab83, #4a2e1c);
+
+    font-family: "Abril Fatface", sans-serif;
+    font-size: 17px;
+    font-weight: 100;
+    line-height: 12px;
+    text-transform: none;
+    text-decoration: none;
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    transition:
+      color 0.15s ease,
+      transform 0.12s ease;
+  }
+
+  .whatsapp-button:hover {
+    transform: translateY(-1px);
+    color: var(--e-global-color-fadab83, #fef8eb);
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .whatsapp-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  @media (max-width: 768px) {
+    .whatsapp-connect {
+      margin-top: 2.5rem;
+    }
+
+    .whatsapp-button {
+      padding: 10px; /* Slight padding for touch target without visual bulk */
+      min-height: 44px; /* Ensure accessible touch area */
+      width: auto;
+    }
   }
 </style>
