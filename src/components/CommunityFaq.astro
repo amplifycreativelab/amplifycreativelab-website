@@ -1,0 +1,148 @@
+---
+interface FaqItem {
+    question: string;
+    answer: string;
+}
+
+interface FaqGroup {
+    id?: string;
+    title: string;
+    intro?: string;
+    icon?: string;
+    items: FaqItem[];
+}
+
+interface Props {
+    groups: FaqGroup[];
+}
+
+const { groups = [] } = Astro.props as Props;
+---
+
+<div class="faq-section" aria-labelledby="faq-support-heading">
+    <header class="section-header">
+        <h2 id="faq-support-heading" class="section-title">Common questions</h2>
+    </header>
+
+    <div class="faq-content">
+        {
+            groups.map((group) => (
+                <section
+                    class="faq-group"
+                    {...(group.id ? { id: group.id } : {})}
+                >
+                    <div class="faq-list">
+                        {group.items.map((item, index) => (
+                            <details class="faq-item">
+                                <summary class="faq-question">
+                                    <span>{item.question}</span>
+                                    <span
+                                        class="faq-toggle-icon"
+                                        aria-hidden="true"
+                                    >
+                                        +
+                                    </span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <div set:html={item.answer} />
+                                </div>
+                            </details>
+                        ))}
+                    </div>
+                </section>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .faq-section {
+        width: 100%;
+        margin-top: 60px;
+        padding-top: 60px;
+        border-top: 1px solid rgba(21, 39, 5, 0.1);
+    }
+
+    .section-header {
+        margin-bottom: 32px;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--text-primary);
+    }
+
+    /* --- List & Items --- */
+    .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .faq-item {
+        border-radius: 0.5rem;
+        background: transparent;
+        border: 1px solid rgba(21, 39, 5, 0.1);
+        padding: 0;
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .faq-item:hover {
+        border-color: rgba(21, 39, 5, 0.3);
+    }
+
+    .faq-item[open] {
+        background: #fff;
+        border-color: rgba(21, 39, 5, 0.15);
+        box-shadow: 0 4px 12px rgba(21, 39, 5, 0.03);
+    }
+
+    .faq-question {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        font-family: inherit;
+    }
+
+    .faq-question::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-toggle-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+        transform-origin: center;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+        color: rgba(21, 39, 5, 0.5);
+    }
+
+    .faq-item[open] .faq-toggle-icon {
+        transform: rotate(45deg);
+        color: var(--text-primary);
+    }
+
+    .faq-answer {
+        padding: 0 1.25rem 1.25rem;
+        font-size: 0.95rem;
+        line-height: 1.75;
+        color: var(--text-secondary);
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .faq-answer :global(p) {
+        margin: 0 0 0.75rem;
+    }
+    .faq-answer :global(p:last-child) {
+        margin-bottom: 0;
+    }
+</style>

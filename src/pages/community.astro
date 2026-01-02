@@ -1,0 +1,543 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/portfolio/event/outdoor-group-dance-performance-teal.webp";
+
+import visualBreakImage from "../assets/images/portfolio/event/kids-traditional-tambourine-dance.webp";
+import CommunityFaq from "../components/CommunityFaq.astro";
+
+// Metadata
+const title = "Community Support for Perth Charities | Amplify Creative Lab";
+const description =
+    "Free creative and photography support for Perth charities and non-profits.";
+// Schema
+const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description: description,
+    url: "https://amplifycreativelab.com/community/",
+    isPartOf: {
+        "@type": "WebSite",
+        name: "Amplify Creative Lab",
+        url: "https://amplifycreativelab.com/",
+    },
+};
+
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://amplifycreativelab.com/",
+        },
+        {
+            "@type": "ListItem",
+            position: 2,
+            name: "Community Support",
+            item: "https://amplifycreativelab.com/community/",
+        },
+    ],
+};
+---
+
+<BaseLayout title={title} description={description}>
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(webPageSchema)}
+        slot="head"
+    />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(breadcrumbSchema)}
+        slot="head"
+    />
+    <main class="community-page">
+        <!-- HERO SECTION (Option 1: Split Editorial) -->
+        <section class="hero-section">
+            <div class="hero-split-layout">
+                <div class="hero-text-col">
+                    <h1 class="hero-heading">
+                        Free Creative Support for Perth Charities & Non-Profits
+                    </h1>
+                    <p class="hero-subheading">
+                        Supporting organisations that support our local
+                        community across Perth and WA.
+                    </p>
+                </div>
+                <div class="hero-img-col">
+                    <div class="hero-img-wrapper">
+                        <Image
+                            src={heroImage}
+                            alt="Community event performance in Perth"
+                            width={800}
+                            height={1000}
+                            class="hero-img"
+                            loading="eager"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT WRAPPER -->
+        <div class="content-wrapper">
+            <!-- COMMUNITY SUPPORT MODULES -->
+            <section class="section-block">
+                <h2 class="section-title">Community Support Modules</h2>
+                <p class="section-subtitle">
+                    We provide high-impact, limited-scope resources in two key
+                    areas.
+                </p>
+
+                <div class="split-content modules-grid">
+                    <!-- Module 1: Visual -->
+                    <div class="col module-col">
+                        <h3 class="col-title">Visual Content</h3>
+                        <ul class="styled-list">
+                            <li>Professional event & team photography</li>
+                            <li>Social-ready campaign imagery</li>
+                            <li>Hero assets for existing websites</li>
+                            <li>Usage rights for non-profit marketing</li>
+                        </ul>
+                    </div>
+
+                    <!-- Module 2: Web & Digital -->
+                    <div class="col module-col">
+                        <h3 class="col-title">Web & Digital</h3>
+                        <ul class="styled-list">
+                            <li>Campaign microsites & landing pages</li>
+                            <li>Accessibility & performance audits</li>
+                            <li>
+                                Custom frontend components (Calculators, Maps)
+                            </li>
+                            <li>UI/UX polish for non-profit stacks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="section-note">
+                    * We offer a limited number of pro-bono projects each
+                    quarter. Support is module-based and does not include
+                    ongoing maintenance.
+                </p>
+            </section>
+
+            <!-- WHO THIS IS FOR -->
+            <section class="section-block">
+                <h2 class="section-title">Who This Is For</h2>
+                <div class="split-content">
+                    <div class="col">
+                        <h3 class="col-title">We Support</h3>
+                        <ul class="check-list">
+                            <li>Registered Perth-based charities</li>
+                            <li>Non-profits & community organisations</li>
+                            <li>Volunteer-led groups serving WA communities</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h3 class="col-title">Exclusions</h3>
+                        <p class="text-body">
+                            This program does not apply to commercial businesses
+                            or individuals.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISUAL BREAK (Option 3) -->
+        <section class="visual-break-section">
+            <div class="visual-break-inner">
+                <Image
+                    src={visualBreakImage}
+                    alt="Community celebration dance"
+                    width={1600}
+                    height={800}
+                    class="break-img"
+                />
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <!-- HOW PARTNERSHIPS WORK -->
+            <section class="section-block">
+                <h2 class="section-title">How Partnerships Work</h2>
+                <p class="text-body large-text">
+                    There’s no obligation. If you find the work helpful, we
+                    appreciate an honest review and a photo credit when images
+                    are used.
+                </p>
+            </section>
+
+            <!-- FAQ SECTION -->
+            <CommunityFaq
+                groups={[
+                    {
+                        title: "Support FAQ",
+                        items: [
+                            {
+                                question: "What counts as 'limited scope'?",
+                                answer: "We focus on specific, deliverable assets like a single event photoshoot, a campaign landing page, or a specific component (e.g., a donation calculator). We don't take on full website builds or ongoing maintenance contracts.",
+                            },
+                            {
+                                question:
+                                    "Do I need to be a registered charity?",
+                                answer: "Priority is given to registered charities, but we also support volunteer-led community groups and non-profits that serve the WA community.",
+                            },
+                            {
+                                question:
+                                    "What happens after the project is done?",
+                                answer: "We hand over the files and assets to you. Because this is pro-bono work, we can't offer ongoing support or updates, but we ensure everything is easy for your team to use.",
+                            },
+                            {
+                                question: "What do we need to provide?",
+                                answer: "You’ll need to nominate a single project lead from your side to handle approvals. For web projects, we’ll need your brand logo, colors, and any text you want included. For photography, we just need a date and permission to shoot.",
+                            },
+                            {
+                                question:
+                                    "Why is Type 'Community Support' required?",
+                                answer: "This helps filter your request directly to our pro-bono queue so it doesn't get mixed up with commercial inquiries.",
+                            },
+                        ],
+                    },
+                ]}
+            />
+        </div>
+
+        <!-- APPLICATION FORM -->
+        <section class="application-section">
+            <div class="application-intro">
+                <h2 class="section-title center">
+                    Apply for Supported Creative
+                </h2>
+                <p class="application-note">
+                    To apply, please use the form below. <br />
+                    <strong>Important:</strong> Type "Community Support" in the Budget
+                    field.
+                </p>
+            </div>
+
+            <ContactForm
+                heading="Apply for Support"
+                id="community-application"
+                formName="community-support"
+                action="/thank-you/"
+                whatsappNumber="61460526441"
+            />
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+    /* PAGE VARIABLES */
+    :root {
+        --page-bg: #fef8eb;
+        --text-primary: #152705;
+        --text-secondary: #4a2e1c;
+        --accent-color: #d4c5a3; /* Soft gold/beige */
+    }
+
+    .community-page {
+        background-color: var(--page-bg);
+        color: var(--text-primary);
+        overflow-x: hidden;
+    }
+
+    /* UTILS */
+    .content-wrapper {
+        width: min(100%, 1200px);
+        margin: 0 auto;
+        padding: 0 clamp(24px, 5vw, 60px);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(60px, 10vw, 120px);
+    }
+
+    .section-block {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        border-top: 1px solid rgba(21, 39, 5, 0.1);
+        padding-top: 60px;
+    }
+
+    /* HEADINGS */
+    h1,
+    h2,
+    h3 {
+        font-family: "Abril Fatface", serif;
+        font-weight: 400;
+        line-height: 1.1;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--text-primary);
+    }
+
+    .section-subtitle {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin-top: -16px;
+        opacity: 0.9;
+    }
+
+    .section-title.center {
+        text-align: center;
+    }
+
+    .col-title {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        opacity: 0.8;
+    }
+
+    /* BODY TEXT */
+    .text-body {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+    .text-body.large-text {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        font-weight: 300;
+    }
+
+    /* HERO SECTION (Split Editorial) */
+    .hero-section {
+        padding: clamp(120px, 15vh, 160px) clamp(24px, 5vw, 60px) 60px;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .hero-split-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr; /* Desktop Split */
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+    }
+
+    .hero-heading {
+        font-size: clamp(3rem, 5.5vw, 5rem);
+        color: var(--text-primary);
+        margin-bottom: 32px;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+
+    .hero-subheading {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: var(--text-secondary);
+        max-width: 500px;
+        line-height: 1.6;
+        font-weight: 300;
+    }
+
+    .hero-img-wrapper {
+        position: relative;
+        border-radius: 200px 200px 0 0; /* Organic arch shape */
+        overflow: hidden;
+        /* aspect-ratio removed, explicit height added for stability */
+        height: 600px;
+        width: 100%;
+        box-shadow: 0 20px 40px rgba(21, 39, 5, 0.15);
+    }
+
+    .hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* MEDIA QUERIES must come AFTER base styles */
+    @media (max-width: 1024px) {
+        .hero-split-layout {
+            grid-template-columns: 1fr; /* Stack on tablet/mobile */
+            gap: 40px;
+        }
+
+        .hero-text-col {
+            order: 1;
+        }
+
+        .hero-img-col {
+            order: 2;
+            width: 100%;
+        }
+
+        .hero-img-wrapper {
+            height: 400px; /* Smaller fixed height for tablet */
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 12px;
+        }
+    }
+
+    /* LISTS */
+    .styled-list,
+    .check-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+    }
+
+    .styled-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 12px;
+    }
+
+    .styled-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--text-primary);
+        font-weight: bold;
+    }
+
+    .check-list li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 12px;
+    }
+
+    .check-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--text-primary);
+        font-weight: bold;
+    }
+
+    .section-note {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.9rem;
+        font-style: italic;
+        opacity: 0.7;
+        margin-top: -16px;
+    }
+
+    /* LAYOUT GRID */
+    .split-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .modules-grid .module-col {
+        background: rgba(255, 255, 255, 0.4);
+        padding: 30px;
+        border-radius: 8px;
+        border: 1px solid rgba(21, 39, 5, 0.05);
+    }
+
+    /* VISUAL BREAK SECTION */
+    .visual-break-section {
+        width: 100%;
+        margin: 80px 0;
+        overflow: hidden;
+    }
+
+    .visual-break-inner {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        height: 800px;
+    }
+
+    .break-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%; /* Focus on interesting part */
+    }
+
+    @media (max-width: 768px) {
+        .hero-split-layout {
+            grid-template-columns: 1fr;
+        }
+        .hero-img-wrapper {
+            max-width: 100%;
+            border-radius: 12px;
+            aspect-ratio: 4/5;
+        }
+        .split-content {
+            grid-template-columns: 1fr;
+        }
+        .modules-grid .module-col {
+            padding: 20px;
+        }
+        .visual-break-inner {
+            height: 250px;
+        }
+    }
+
+    /* COMMUNITY PROOF */
+    .proof-grid {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .proof-placeholder {
+        width: 120px;
+        height: 80px;
+        background: rgba(21, 39, 5, 0.05);
+        border-radius: 4px;
+    }
+
+    /* APPLICATION SECTION */
+    .application-section {
+        margin-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .application-intro {
+        max-width: 800px;
+        margin: 0 auto 40px;
+        text-align: center;
+        padding: 0 24px;
+    }
+
+    .application-note {
+        font-family: "Montserrat", sans-serif;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(21, 39, 5, 0.1);
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 0.95rem;
+    }
+
+    /* ANIMATION ENTRY */
+    main {
+        animation: fade-in 0.8s ease-out forwards;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

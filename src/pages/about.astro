@@ -254,6 +254,17 @@ const aboutPageSchema = {
         <a href="/contact/" class="cta__btn">Get in Touch</a>
       </div>
     </section>
+
+    <!-- Community Support Strip -->
+    <section class="community-strip">
+      <div class="community-strip-inner">
+        <p>
+          <strong>Community Support:</strong> We dedicate time each quarter to pro-bono
+          creative projects for registered Perth charities.
+          <a href="/community/">View our support modules &rarr;</a>
+        </p>
+      </div>
+    </section>
   </main>
 
   <script
@@ -1202,6 +1213,35 @@ const aboutPageSchema = {
       .jojo-col-headline {
         display: none;
       }
+    }
+
+    /* Community Strip */
+    .community-strip {
+      padding: 1rem 1.5rem;
+      background-color: #fef8eb;
+      border-top: 1px solid rgba(21, 39, 5, 0.1);
+      text-align: center;
+    }
+
+    .community-strip-inner p {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: rgba(21, 39, 5, 0.8);
+    }
+
+    .community-strip-inner a {
+      color: #1f2a15;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(31, 42, 21, 0.3);
+      margin-left: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .community-strip-inner a:hover {
+      border-bottom-color: #1f2a15;
+      background: rgba(31, 42, 21, 0.05);
     }
   </style>
 </BaseLayout>

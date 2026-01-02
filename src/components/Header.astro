@@ -25,7 +25,15 @@ const leftMenu: MenuItem[] = [
       { label: "CONTENT CREATION", href: "/content-creator-perth/" },
     ],
   },
-  { label: "ABOUT", href: "/about/" },
+  {
+    label: "ABOUT",
+    href: "/about/",
+    children: [
+      { label: "ABOUT US", href: "/about/" },
+      { label: "COMMUNITY SUPPORT", href: "/community/" },
+      { label: "CAREERS", href: "/careers/" },
+    ],
+  },
 ];
 
 const rightMenu: MenuItem[] = [

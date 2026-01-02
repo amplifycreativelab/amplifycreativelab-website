@@ -1,0 +1,525 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { Image } from "astro:assets";
+// Using a "creative agency" style image to signal professionalism
+import heroImage from "../assets/images/portfolio/portrait/photographer-aiming-camera-portrait.webp";
+import visualBreakImage from "../assets/images/portfolio/event/lifestyle-branding-team-meeting.webp";
+
+// Metadata
+const title = "Careers at Amplify Creative Lab | Perth Creative Studio";
+const description =
+    "A Perth-based creative studio built on craft, clarity, and community. Learn about our culture and future collaboration opportunities.";
+
+// Schema
+const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description: description,
+    url: "https://amplifycreativelab.com/careers/",
+    isPartOf: {
+        "@type": "WebSite",
+        name: "Amplify Creative Lab",
+        url: "https://amplifycreativelab.com/",
+    },
+};
+
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://amplifycreativelab.com/",
+        },
+        {
+            "@type": "ListItem",
+            position: 2,
+            name: "About",
+            item: "https://amplifycreativelab.com/about/",
+        },
+        {
+            "@type": "ListItem",
+            position: 3,
+            name: "Careers",
+            item: "https://amplifycreativelab.com/careers/",
+        },
+    ],
+};
+---
+
+<BaseLayout title={title} description={description}>
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(webPageSchema)}
+        slot="head"
+    />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(breadcrumbSchema)}
+        slot="head"
+    />
+
+    <main class="careers-page">
+        <!-- HERO SECTION (Split Editorial Style) -->
+        <section class="hero-section">
+            <div class="hero-split-layout">
+                <div class="hero-text-col">
+                    <h1 class="hero-heading">
+                        Careers at Amplify Creative Lab
+                    </h1>
+                    <p class="hero-subheading">
+                        A Perth-based creative studio built on craft, clarity,
+                        and community.
+                    </p>
+                </div>
+                <div class="hero-img-col">
+                    <div class="hero-img-wrapper">
+                        <Image
+                            src={heroImage}
+                            alt="Creative studio collaboration"
+                            width={800}
+                            height={1000}
+                            class="hero-img"
+                            loading="eager"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT WRAPPER -->
+        <div class="content-wrapper">
+            <!-- WHY WORK WITH US -->
+            <section class="section-block">
+                <h2 class="section-title">Why Work With Us</h2>
+                <ul class="styled-list">
+                    <li>Quality over volume</li>
+                    <li>Thoughtful, focused work</li>
+                    <li>Direct collaboration (no layers)</li>
+                    <li>Respect for time and craft</li>
+                    <li>
+                        Community and non-profit support as part of how we
+                        operate
+                    </li>
+                </ul>
+            </section>
+
+            <!-- HOW WE WORK -->
+            <section class="section-block">
+                <h2 class="section-title">How We Work</h2>
+                <div class="split-content">
+                    <div class="col">
+                        <p class="text-body">
+                            We are a small, intentionally lean studio. We
+                            prioritize project-based collaborations and flexible
+                            partnerships rather than traditional employment
+                            pipelines.
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="text-body">
+                            Our work spans high-performance web development,
+                            design, photography, and digital experiences. We
+                            also dedicate time to <a
+                                href="/community/"
+                                class="content-link">Community Support</a
+                            > projects.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COLLABORATIONS & OPPORTUNITIES -->
+            <section class="section-block">
+                <h2 class="section-title">Collaborations & Opportunities</h2>
+                <p class="section-subtitle">
+                    Instead of roles, we occasionally collaborate with:
+                </p>
+                <div class="split-content modules-grid">
+                    <div class="col module-col">
+                        <ul class="check-list">
+                            <li>Designers</li>
+                            <li>Developers</li>
+                            <li>Photographers / videographers</li>
+                        </ul>
+                    </div>
+                    <div class="col module-col">
+                        <ul class="check-list">
+                            <li>Writers</li>
+                            <li>Digital creatives</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="section-note">
+                    * Opportunities are project-based and vary throughout the
+                    year. No promises. No timelines.
+                </p>
+            </section>
+
+            <!-- STUDENTS & COMMUNITY -->
+            <section class="section-block">
+                <h2 class="section-title">Students & Community Contributors</h2>
+                <p class="text-body">
+                    We occasionally welcome collaboration with students or
+                    early-career creatives, often connected to our community or
+                    non-profit projects. While we do not offer formal
+                    internships or guaranteed placements, we value the energy
+                    and perspective of emerging talent.
+                </p>
+            </section>
+        </div>
+
+        <!-- VISUAL BREAK -->
+        <section class="visual-break-section">
+            <div class="visual-break-inner">
+                <Image
+                    src={visualBreakImage}
+                    alt="Amplify Studio Culture - Team Meeting"
+                    width={1600}
+                    height={800}
+                    class="break-img"
+                />
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <!-- CURRENT OPENINGS -->
+            <section class="section-block">
+                <h2 class="section-title">Current Openings</h2>
+                <div class="notice-box">
+                    <p class="text-body large-text">
+                        <strong
+                            >We don’t have any open roles at this time.</strong
+                        >
+                    </p>
+                    <p class="text-body">
+                        This page exists to share how we work and to make it
+                        easy to introduce yourself for future collaborations,
+                        should the right opportunity arise.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- APPLICATION FORM -->
+        <section class="application-section">
+            <div class="application-intro">
+                <h2 class="section-title center">Introduce Yourself</h2>
+                <p class="application-note">
+                    To reach out, please use the form below. <br />
+                    <strong>Important:</strong> Type "Job Application" in the Budget
+                    field.
+                </p>
+            </div>
+
+            <ContactForm
+                heading="Get in Touch"
+                id="careers-application"
+                formName="careers-intro"
+                action="/thank-you/"
+            />
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+    /* PAGE VARIABLES */
+    :root {
+        --page-bg: #fef8eb;
+        --text-primary: #152705;
+        --text-secondary: #4a2e1c;
+        --accent-color: #d4c5a3; /* Soft gold/beige */
+    }
+
+    .careers-page {
+        background-color: var(--page-bg);
+        color: var(--text-primary);
+        overflow-x: hidden;
+    }
+
+    /* UTILS */
+    .content-wrapper {
+        width: min(100%, 1200px);
+        margin: 0 auto;
+        padding: 0 clamp(24px, 5vw, 60px);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(60px, 10vw, 120px);
+    }
+
+    .content-link {
+        color: var(--text-primary);
+        text-decoration: underline;
+        text-decoration-color: rgba(21, 39, 5, 0.3);
+        text-underline-offset: 4px;
+        font-weight: 500;
+    }
+
+    .content-link:hover {
+        text-decoration-color: var(--text-primary);
+    }
+
+    .section-block {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        border-top: 1px solid rgba(21, 39, 5, 0.1);
+        padding-top: 60px;
+    }
+
+    /* HEADINGS */
+    h1,
+    h2,
+    h3 {
+        font-family: "Abril Fatface", serif;
+        font-weight: 400;
+        line-height: 1.1;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--text-primary);
+    }
+
+    .section-subtitle {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin-top: -16px;
+        opacity: 0.9;
+    }
+
+    .section-title.center {
+        text-align: center;
+    }
+
+    /* BODY TEXT */
+    .text-body {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+    .text-body.large-text {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        font-weight: 300;
+    }
+
+    /* HERO SECTION (Split Editorial) */
+    .hero-section {
+        padding: clamp(120px, 15vh, 160px) clamp(24px, 5vw, 60px) 60px;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .hero-split-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr; /* Desktop Split */
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+    }
+
+    .hero-heading {
+        font-size: clamp(3rem, 5.5vw, 5rem);
+        color: var(--text-primary);
+        margin-bottom: 32px;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+
+    .hero-subheading {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: var(--text-secondary);
+        max-width: 500px;
+        line-height: 1.6;
+        font-weight: 300;
+    }
+
+    .hero-img-wrapper {
+        position: relative;
+        border-radius: 200px 200px 0 0; /* Organic arch shape */
+        overflow: hidden;
+        height: 600px;
+        width: 100%;
+        box-shadow: 0 20px 40px rgba(21, 39, 5, 0.15);
+    }
+
+    .hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* MEDIA QUERIES must come AFTER base styles */
+    @media (max-width: 1024px) {
+        .hero-split-layout {
+            grid-template-columns: 1fr; /* Stack on tablet/mobile */
+            gap: 40px;
+        }
+
+        .hero-text-col {
+            order: 1;
+        }
+
+        .hero-img-col {
+            order: 2;
+            width: 100%;
+        }
+
+        .hero-img-wrapper {
+            height: 400px; /* Smaller fixed height for tablet/mobile */
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 12px;
+        }
+    }
+
+    /* LISTS */
+    .styled-list,
+    .check-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+    }
+
+    .styled-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 12px;
+    }
+
+    .styled-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--text-primary);
+        font-weight: bold;
+    }
+
+    .check-list li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 12px;
+    }
+
+    .check-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--text-primary);
+        font-weight: bold;
+    }
+
+    .section-note {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.9rem;
+        font-style: italic;
+        opacity: 0.7;
+        margin-top: -16px;
+    }
+
+    /* LAYOUT GRID */
+    .split-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .modules-grid .module-col {
+        background: rgba(255, 255, 255, 0.4);
+        padding: 30px;
+        border-radius: 8px;
+        border: 1px solid rgba(21, 39, 5, 0.05);
+    }
+
+    /* VISUAL BREAK SECTION */
+    .visual-break-section {
+        width: 100%;
+        margin: 80px 0;
+        overflow: hidden;
+    }
+
+    .visual-break-inner {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        height: 800px;
+    }
+
+    .break-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%; /* Focus on interesting part */
+    }
+
+    @media (max-width: 768px) {
+        .split-content {
+            grid-template-columns: 1fr;
+        }
+        .modules-grid .module-col {
+            padding: 20px;
+        }
+        .visual-break-inner {
+            height: 250px;
+        }
+    }
+
+    /* NOTICE BOX */
+    .notice-box {
+        background: rgba(21, 39, 5, 0.05);
+        padding: 32px;
+        border-radius: 8px;
+        border-left: 4px solid var(--text-primary);
+    }
+
+    /* APPLICATION SECTION */
+    .application-section {
+        margin-top: 100px;
+    }
+
+    .application-intro {
+        max-width: 800px;
+        margin: 0 auto 40px;
+        text-align: center;
+        padding: 0 24px;
+    }
+
+    .application-note {
+        font-family: "Montserrat", sans-serif;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(21, 39, 5, 0.1);
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 0.95rem;
+    }
+
+    /* ANIMATION ENTRY */
+    main {
+        animation: fade-in 0.8s ease-out forwards;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
